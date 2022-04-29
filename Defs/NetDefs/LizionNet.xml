@@ -317,8 +317,8 @@
 		<description>A serie of condensors, supercoolers, centifuge and nanomembranes extracts the trace amount of lizion withing the atmosphere</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
-			<texPath>Things/Building/BDP_SmallLizionRefinery</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Things/Building/BDP_SmallLizionFiller</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(2,2)</drawSize>
 			<damageData>
 				<cornerTL>Damage/Corner</cornerTL>
@@ -327,7 +327,7 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
-		<rotatable>false</rotatable>
+		<rotatable>true</rotatable>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
 		<pathCost>50</pathCost>
@@ -336,11 +336,12 @@
 		<fillPercent>0.40</fillPercent>
 		<tickerType>Normal</tickerType>
 		<statBases>
+			<Mass>10</Mass>
 			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>1000</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<size>(2,2)</size>
+		<size>(1,1)</size>
 		<costList>
 			<Steel>200</Steel>
 			<ComponentIndustrial>4</ComponentIndustrial>
@@ -378,13 +379,13 @@
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>50</basePowerConsumption>
+				<basePowerConsumption>10</basePowerConsumption>
 				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
 			<li Class="CompProperties_Refuelable">
 				<fuelConsumptionRate>0</fuelConsumptionRate>
 				<fuelCapacity>100</fuelCapacity>
-				<autoRefuelPercent>0.1</autoRefuelPercent>
+				<autoRefuelPercent>0.5</autoRefuelPercent>
 				<showFuelGizmo>true</showFuelGizmo>
 				<fuelFilter>
 					<thingDefs>
@@ -400,6 +401,10 @@
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<thingCategories>
+			<li>BuildingsProduction</li>
+		</thingCategories>
 		<researchPrerequisites>
 			<li>BiofuelRefining</li>
 		</researchPrerequisites>
