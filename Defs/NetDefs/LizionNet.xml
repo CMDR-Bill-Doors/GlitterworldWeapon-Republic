@@ -283,7 +283,7 @@
 						<eachTicks>300</eachTicks>
 
 						<thing>Gas_Lizion</thing>
-						<thingCount>3</thingCount>
+						<thingCount>1</thingCount>
 
 						<net>BDP_LizionNetwork</net>
 						<netCount>1</netCount>
