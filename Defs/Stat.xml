@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!--
+	<StatDef>
+		<defName>BDP_CasingReturnChance</defName>
+		<workerClass>BDsPlasmaWeapon.</workerClass>
+		<label>empty casing return chance</label>
+		<description>How likely a casing, canister, battery, cell etc. may remain intact after being fired from this weapon.</description>
+		<category>Weapon</category>
+		<showIfUndefined>false</showIfUndefined>
+		<displayPriorityInCategory>500</displayPriorityInCategory>
+	</StatDef>
+	-->
+</Defs>

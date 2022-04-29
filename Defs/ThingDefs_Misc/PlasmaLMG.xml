@@ -1,0 +1,687 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BaseMakeableGun">
+		<defName>BDP_PlasmaLMG</defName>
+		<label>Lizion Plasma Machinegun</label>
+		<description>MG38A general purpose machinegun is a heavy lizion plasma accelerator developed by Pan-Humanoid Republic Arsenals.</description>
+		<graphicData>
+			<texPath>Things/Weapons/BDP_PlasmaLMG</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.3,1.3)</drawSize>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<statBases>
+			<WorkToMake>55000</WorkToMake>
+			<Mass>11.5</Mass>
+			<Bulk>17.3</Bulk>
+			<SwayFactor>1.7</SwayFactor>
+			<ShotSpread>0.05</ShotSpread>
+			<SightsEfficiency>1.5</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.57</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>55</Steel>
+			<Plasteel>30</Plasteel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<verbs>
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>BDsPlasmaWeapon.Verb_ShootWithCasingReturn</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_LizionRifleNormal</defaultProjectile>
+				<warmupTime>1.2</warmupTime>
+				<burstShotCount>10</burstShotCount>
+				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<ammoConsumedPerShotCount>2</ammoConsumedPerShotCount>
+				<range>48</range>
+				<soundCast>Shot_ChargeBlaster</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<recoilAmount>1.2</recoilAmount>
+				<muzzleFlashScale>12</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>150</magazineSize>
+				<reloadTime>4.9</reloadTime>
+				<ammoSet>AmmoSet_LizionCellRifle</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aimedBurstShotCount>5</aimedBurstShotCount>
+				<aiAimMode>SuppressFire</aiAimMode>
+			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
+				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
+				<casingAmount>2</casingAmount>
+				<casingRate>0.75</casingRate>
+			</li>
+		</comps>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>CE_MachineGun</li>
+		</weaponTags>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>1.55</cooldownTime>
+				<chanceFactor>1.5</chanceFactor>
+				<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>5</power>
+				<cooldownTime>2.02</cooldownTime>
+				<armorPenetrationBlunt>1.630</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>1.55</cooldownTime>
+				<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>ChargedShot</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>FabricationBench</li>
+			</recipeUsers>
+		</recipeMaker>
+		<modExtensions>
+			<li Class="CombatExtended.GunDrawExtension">
+				<DrawSize>1.3,1.3</DrawSize>
+				<DrawOffset>0.15,-0.05</DrawOffset>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseMakeableGun">
+		<defName>BDP_PlasmaPistol</defName>
+		<label>Lizion Plasma Pistol</label>
+		<description>P3066 compact sidearm is a light lizion plasma accelerator developed by Pan-Humanoid Republic Arsenals.</description>
+		<graphicData>
+			<texPath>Things/Weapons/BDP_PlasmaPistol</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<statBases>
+			<WorkToMake>17500</WorkToMake>
+			<Mass>1.50</Mass>
+			<Bulk>2.60</Bulk>
+			<SwayFactor>1.07</SwayFactor>
+			<ShotSpread>0.15</ShotSpread>
+			<SightsEfficiency>0.8</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>20</Steel>
+			<Plasteel>30</Plasteel>
+			<Chemfuel>5</Chemfuel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<verbs>
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>BDsPlasmaWeapon.Verb_ShootWithCasingReturn</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_LizionPistolNormal</defaultProjectile>
+				<warmupTime>0.5</warmupTime>
+				<range>12</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Light</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>8</magazineSize>
+				<reloadTime>4</reloadTime>
+				<ammoSet>AmmoSet_LizionCellPistol</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aiAimMode>SuppressFire</aiAimMode>
+			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
+				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
+				<casingAmount>1</casingAmount>
+				<casingRate>0.9</casingRate>
+			</li>
+		</comps>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>CE_Sidearm</li>
+			<li>CE_OneHandedWeapon</li>
+		</weaponTags>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>grip</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>2</power>
+				<cooldownTime>1.54</cooldownTime>
+				<chanceFactor>1.5</chanceFactor>
+				<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>2</power>
+				<cooldownTime>1.54</cooldownTime>
+				<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>ChargedShot</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>FabricationBench</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseMakeableGun">
+		<defName>BDP_PlasmaSMG</defName>
+		<label>Lizion Plasma SMG</label>
+		<description>The designers of MP19 are probably too affected by those filthy elves in 3HST limited that they come up with this bullpup abnormity, but never less this is the only design that fullfilled the republic army's requirement for sidearm.</description>
+		<graphicData>
+			<texPath>Things/Weapons/BDP_PlasmaSMG</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<statBases>
+			<WorkToMake>36000</WorkToMake>
+			<Mass>2.80</Mass>
+			<Bulk>5.00</Bulk>
+			<SwayFactor>0.8</SwayFactor>
+			<ShotSpread>0.16</ShotSpread>
+			<SightsEfficiency>1.2</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>45</Steel>
+			<Plasteel>25</Plasteel>
+			<Chemfuel>15</Chemfuel>
+			<ComponentIndustrial>7</ComponentIndustrial>
+		</costList>
+		<verbs>
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>BDsPlasmaWeapon.Verb_ShootWithCasingReturn</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_LizionPistolNormal</defaultProjectile>
+				<warmupTime>0.5</warmupTime>
+				<range>28</range>
+				<burstShotCount>5</burstShotCount>
+				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<soundCast>Shot_ChargeBlaster</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<recoilAmount>1.20</recoilAmount>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>25</magazineSize>
+				<reloadTime>4</reloadTime>
+				<ammoSet>AmmoSet_LizionCellPistol</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aimedBurstShotCount>3</aimedBurstShotCount>
+				<aiAimMode>Snapshot</aiAimMode>
+			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
+				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
+				<casingAmount>1</casingAmount>
+				<casingRate>0.9</casingRate>
+			</li>
+		</comps>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>CE_Sidearm</li>
+			<li>CE_AI_AssaultWeapon</li>
+		</weaponTags>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>grip</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>6</power>
+				<cooldownTime>1.54</cooldownTime>
+				<chanceFactor>1.5</chanceFactor>
+				<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>6</power>
+				<cooldownTime>1.54</cooldownTime>
+				<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>ChargedShot</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>FabricationBench</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BaseMakeableGun">
+		<defName>BDP_PlasmaCarbine</defName>
+		<label>Lizion Plasma Carbine</label>
+		<description>Originally designed to be a submachinegun, the AR32C carbine proved too bulky as a sidearm and was instead converted into full power rifle to compensate for the failing assault rifle project of the republic arsenal.</description>
+		<graphicData>
+			<texPath>Things/Weapons/BDP_PlasmaCarbine</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<statBases>
+			<WorkToMake>36000</WorkToMake>
+			<Mass>3.2</Mass>
+			<Bulk>7.00</Bulk>
+			<SwayFactor>1.25</SwayFactor>
+			<ShotSpread>0.16</ShotSpread>
+			<SightsEfficiency>1</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.46</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>55</Steel>
+			<Plasteel>25</Plasteel>
+			<Chemfuel>15</Chemfuel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<verbs>
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>BDsPlasmaWeapon.Verb_ShootWithCasingReturn</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_LizionRifleNormal</defaultProjectile>
+				<warmupTime>1</warmupTime>
+				<ammoConsumedPerShotCount>2</ammoConsumedPerShotCount>
+				<range>48</range>
+				<burstShotCount>6</burstShotCount>
+				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<soundCast>Shot_ChargeBlaster</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<recoilAmount>1.50</recoilAmount>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>48</magazineSize>
+				<reloadTime>4</reloadTime>
+				<ammoSet>AmmoSet_LizionCellRifle</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aimedBurstShotCount>3</aimedBurstShotCount>
+				<aiAimMode>SuppressFire</aiAimMode>
+			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
+				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
+				<casingAmount>2</casingAmount>
+				<casingRate>0.8</casingRate>
+			</li>
+		</comps>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>CE_Sidearm</li>
+			<li>CE_AI_AssaultWeapon</li>
+		</weaponTags>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>grip</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>6</power>
+				<cooldownTime>1.54</cooldownTime>
+				<chanceFactor>1.5</chanceFactor>
+				<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>6</power>
+				<cooldownTime>1.54</cooldownTime>
+				<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>ChargedShot</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>FabricationBench</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseMakeableGun">
+		<defName>BDP_PlasmaSniper</defName>
+		<label>Lizion Plasma Sniper</label>
+		<description>M19 precise rifle is a heavy lizion plasma accelerator developed by Pan-Humanoid Republic Arsenals.</description>
+		<graphicData>
+			<texPath>Things/Weapons/BDP_PlasmaSniper</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.3,1.3)</drawSize>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<statBases>
+			<WorkToMake>50500</WorkToMake>
+			<Mass>6.0</Mass>
+			<Bulk>12.0</Bulk>
+			<SwayFactor>1.9</SwayFactor>
+			<ShotSpread>0.05</ShotSpread>
+			<SightsEfficiency>2.6</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>60</Steel>
+			<Plasteel>30</Plasteel>
+			<Chemfuel>15</Chemfuel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<verbs>
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>BDsPlasmaWeapon.Verb_ShootWithCasingReturn</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_LizionSniperNormal</defaultProjectile>
+				<ammoConsumedPerShotCount>4</ammoConsumedPerShotCount>
+				<warmupTime>2</warmupTime>
+				<range>68</range>
+				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>16</magazineSize>
+				<reloadTime>4</reloadTime>
+				<ammoSet>AmmoSet_LizionCellSniper</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aiAimMode>AimedShot</aiAimMode>
+			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
+				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
+				<casingAmount>4</casingAmount>
+				<casingRate>0.8</casingRate>
+			</li>
+		</comps>
+		<weaponTags>
+			<li>SniperRifle</li>
+			<li>SpacerGun</li>
+		</weaponTags>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>1.55</cooldownTime>
+				<chanceFactor>1.5</chanceFactor>
+				<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>5</power>
+				<cooldownTime>2.02</cooldownTime>
+				<armorPenetrationBlunt>1.630</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>1.55</cooldownTime>
+				<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>ChargedShot</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>FabricationBench</li>
+			</recipeUsers>
+		</recipeMaker>
+		<modExtensions>
+			<li Class="CombatExtended.GunDrawExtension">
+				<DrawSize>1.3,1.3</DrawSize>
+				<DrawOffset>0.15,-0.05</DrawOffset>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseMakeableGun">
+		<defName>BDP_PlasmaShotgun</defName>
+		<label>Lizion Plasma Shotgun</label>
+		<description>RA-870 cluster projector is a heavy lizion plasma accelerator developed by Pan-Humanoid Republic Arsenals.</description>
+		<graphicData>
+			<texPath>Things/Weapons/BDP_PlasmaShotgun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<statBases>
+			<WorkToMake>47500</WorkToMake>
+			<Mass>4.35</Mass>
+			<Bulk>6.0</Bulk>
+			<SwayFactor>1.25</SwayFactor>
+			<ShotSpread>0.14</ShotSpread>
+			<SightsEfficiency>1</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>50</Steel>
+			<Plasteel>25</Plasteel>
+			<Chemfuel>15</Chemfuel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<verbs>
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>BDsPlasmaWeapon.Verb_ShootWithCasingReturn</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_LizionShotgunNormal</defaultProjectile>
+				<ammoConsumedPerShotCount>6</ammoConsumedPerShotCount>
+				<warmupTime>0.7</warmupTime>
+				<range>20</range>
+				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>18</magazineSize>
+				<reloadTime>4.5</reloadTime>
+				<ammoSet>AmmoSet_LizionCellShotgun</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aiAimMode>AimedShot</aiAimMode>
+			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
+				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
+				<casingAmount>6</casingAmount>
+				<casingRate>0.8</casingRate>
+			</li>
+		</comps>
+		<weaponTags>
+			<li>CE_AI_AssaultWeapon</li>
+			<li>SpacerGun</li>
+		</weaponTags>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>1.55</cooldownTime>
+				<chanceFactor>1.5</chanceFactor>
+				<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>5</power>
+				<cooldownTime>2.02</cooldownTime>
+				<armorPenetrationBlunt>1.630</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>1.55</cooldownTime>
+				<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>ChargedShot</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>FabricationBench</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseMakeableGun">
+		<defName>BDP_PlasmaCannon</defName>
+		<label>Lizion Plasma Cannon</label>
+		<description>Effectly an shoulder resting vehicular cannon, the HIT M2203 heavy lizion cannon is a dreaded sight for both enemy infantry and vehicles.</description>
+		<graphicData>
+			<texPath>Things/Weapons/BDP_PlasmaCannon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.5,1.5)</drawSize>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<statBases>
+			<WorkToMake>90000</WorkToMake>
+			<Mass>24.0</Mass>
+			<Bulk>15.65</Bulk>
+			<SwayFactor>3.24</SwayFactor>
+			<ShotSpread>0.01</ShotSpread>
+			<SightsEfficiency>2.5</SightsEfficiency>
+			<RangedWeapon_Cooldown>1.9</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>125</Steel>
+			<Plasteel>45</Plasteel>
+			<ComponentIndustrial>10</ComponentIndustrial>
+		</costList>
+		<verbs>
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>BDsPlasmaWeapon.Verb_ShootWithCasingReturn</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_LizionHeavyNormal</defaultProjectile>
+				<ammoConsumedPerShotCount>20</ammoConsumedPerShotCount>
+				<warmupTime>3</warmupTime>
+				<range>48</range>
+				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>20</magazineSize>
+				<reloadTime>8</reloadTime>
+				<ammoSet>AmmoSet_LizionCellHeavy</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aiAimMode>AimedShot</aiAimMode>
+			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
+				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
+				<casingAmount>20</casingAmount>
+				<casingRate>0.6</casingRate>
+			</li>
+		</comps>
+		<weaponTags>
+			<li>GunHeavy</li>
+			<li>SpacerGun</li>
+		</weaponTags>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>1.55</cooldownTime>
+				<chanceFactor>1.5</chanceFactor>
+				<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>5</power>
+				<cooldownTime>2.02</cooldownTime>
+				<armorPenetrationBlunt>1.630</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>8</power>
+				<cooldownTime>1.55</cooldownTime>
+				<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>ChargedShot</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>FabricationBench</li>
+			</recipeUsers>
+		</recipeMaker>
+		<modExtensions>
+			<li Class="CombatExtended.GunDrawExtension">
+				<DrawSize>1.5,1.5</DrawSize>
+				<DrawOffset>-0.2,0.15</DrawOffset>
+			</li>
+		</modExtensions>
+	</ThingDef>
+</Defs>

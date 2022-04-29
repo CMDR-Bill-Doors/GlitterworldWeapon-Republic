@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef>
+		<defName>Gas_Lizion</defName>
+		<label>lizion</label>
+		<thingClass>ThingWithComps</thingClass>
+		<category>Gas</category>
+		<altitudeLayer>Filth</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<texPath>Things/Gas/Puff</texPath>
+			<drawSize>2.2</drawSize>
+			<color>(1.0,1.0,1.0,0.5)</color>
+			<graphicClass>Graphic_Gas</graphicClass>
+			<shaderType>Transparent</shaderType>
+		</graphicData>
+		<comps>
+			<li>
+				<compClass>BDsPlasmaWeapon.CompPuffer</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>
