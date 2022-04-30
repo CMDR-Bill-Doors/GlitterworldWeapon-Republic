@@ -141,7 +141,7 @@
 				<pipeNet>BDP_AirNetwork</pipeNet>
 			</li>
 			<li Class="PipeSystem.CompProperties_SpillWhenDamaged">
-				<spillEachTicks>1200</spillEachTicks>
+				<spillEachTicks>5</spillEachTicks>
 				<startAtHitPointsPercent>0.333</startAtHitPointsPercent>
 				<amountToDraw>1</amountToDraw>
 				<filthMaxSpawnRadius>2</filthMaxSpawnRadius>
@@ -169,7 +169,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>BDP_AirTankSmall</defName>
 		<label>air buffer tank</label>
-		<description>Debug.</description>
+		<description>An pressurized air tank meant to be used as a buffer.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/BDP_AirTank_Small</texPath>
@@ -241,7 +241,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>BDP_AirInlet</defName>
 		<label>air inlet</label>
-		<description>Debug.</description>
+		<description>A large machine that draws air in, force them through filters to remove dust and other contaminants that may otherwise damage lizion extractors, then feed the clean air into pipes.\n\nAir inlets require an area of clear space to operate, any wind blocking structures will decrease it's efficiency.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/BDP_AirInlet</texPath>
@@ -316,7 +316,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>BDP_GeyserIntake</defName>
 		<label>geyser intake</label>
-		<description>Debug.</description>
+		<description>A structure that taps lizion rich underground gas from geysers, cool and purify it for later use.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/BDP_GeyserIntake</texPath>
