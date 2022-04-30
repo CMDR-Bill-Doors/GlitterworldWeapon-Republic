@@ -23,8 +23,9 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb_Secondary</damageDef>
+			<damageDef>Bomb</damageDef>
 			<damageAmountBase>5</damageAmountBase>
+			<armorPenetrationBlunt>14.52</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame_Secondary</def>
@@ -43,8 +44,9 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb_Secondary</damageDef>
+			<damageDef>Bomb</damageDef>
 			<damageAmountBase>5</damageAmountBase>
+			<armorPenetrationBlunt>14.52</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame</def>
@@ -123,8 +125,9 @@
 			<spreadMult>17.8</spreadMult>
 			<pelletCount>3</pelletCount>
 			<speed>200</speed>
-			<damageDef>Bomb_Secondary</damageDef>
+			<damageDef>Bomb</damageDef>
 			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationBlunt>34.52</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame_Secondary</def>
@@ -145,8 +148,9 @@
 			<spreadMult>17.8</spreadMult>
 			<pelletCount>3</pelletCount>
 			<speed>200</speed>
-			<damageDef>Bomb_Secondary</damageDef>
+			<damageDef>Bomb</damageDef>
 			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationBlunt>34.52</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame</def>
@@ -227,8 +231,9 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb_Secondary</damageDef>
+			<damageDef>Bomb</damageDef>
 			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationBlunt>44.52</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame_Secondary</def>
@@ -248,8 +253,9 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb_Secondary</damageDef>
+			<damageDef>Bomb</damageDef>
 			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationBlunt>44.52</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame</def>
@@ -271,7 +277,7 @@
 			<speed>200</speed>
 			<damageDef>Blunt</damageDef>
 			<damageAmountBase>10</damageAmountBase>
-			<armorPenetrationBlunt>34.52</armorPenetrationBlunt>
+			<armorPenetrationBlunt>44.52</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame_Secondary</def>
@@ -329,8 +335,9 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb_Secondary</damageDef>
+			<damageDef>Bomb</damageDef>
 			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationBlunt>53.8</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame_Secondary</def>
@@ -350,8 +357,9 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb_Secondary</damageDef>
+			<damageDef>Bomb</damageDef>
 			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationBlunt>53.8</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame</def>
@@ -431,7 +439,7 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb_Secondary</damageDef>
+			<damageDef>Bomb</damageDef>
 			<damageAmountBase>26</damageAmountBase>
 			<explosionRadius>1.5</explosionRadius>
 			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
@@ -454,7 +462,7 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb_Secondary</damageDef>
+			<damageDef>Bomb</damageDef>
 			<damageAmountBase>26</damageAmountBase>
 			<explosionRadius>1.5</explosionRadius>
 			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
@@ -481,7 +489,7 @@
 			<speed>200</speed>
 			<damageDef>Blunt</damageDef>
 			<damageAmountBase>40</damageAmountBase>
-			<armorPenetrationBlunt>2500</armorPenetrationBlunt>
+			<armorPenetrationBlunt>150</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame_Secondary</def>
