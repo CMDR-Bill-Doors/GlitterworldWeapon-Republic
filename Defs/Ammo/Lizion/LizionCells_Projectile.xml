@@ -25,6 +25,7 @@
 			<speed>200</speed>
 			<damageDef>Bomb_Secondary</damageDef>
 			<damageAmountBase>5</damageAmountBase>
+			<armorPenetrationBlunt>14.52</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame_Secondary</def>
@@ -45,6 +46,7 @@
 			<speed>200</speed>
 			<damageDef>Bomb_Secondary</damageDef>
 			<damageAmountBase>5</damageAmountBase>
+			<armorPenetrationBlunt>14.52</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame</def>
