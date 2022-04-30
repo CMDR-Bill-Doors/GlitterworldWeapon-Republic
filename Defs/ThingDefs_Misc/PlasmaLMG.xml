@@ -4,7 +4,7 @@
 		<defName>BDP_PlasmaLMG</defName>
 		<label>Lizion Plasma Machinegun</label>
 		<description>MG38A general purpose machinegun is a heavy lizion plasma accelerator developed by Pan-Humanoid Republic Arsenals.</description>
-		<generateCommonality>0.5</generateCommonality>
+		<generateAllowChance>0.5</generateAllowChance>
 		<graphicData>
 			<texPath>Things/Weapons/BDP_PlasmaLMG</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -584,7 +584,7 @@
 		<defName>BDP_PlasmaCannon</defName>
 		<label>Lizion Plasma Cannon</label>
 		<description>Effectly an shoulder resting vehicular cannon, the HIT M2203 heavy lizion cannon is a dreaded sight for both enemy infantry and vehicles.</description>
-		<generateCommonality>0.5</generateCommonality>
+		<generateAllowChance>0.5</generateAllowChance>
 		<graphicData>
 			<texPath>Things/Weapons/BDP_PlasmaCannon</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

@@ -116,7 +116,7 @@
 		<defName>Ammo_LizionCellIncendiary</defName>
 		<label>incendiary lizion cell</label>
 		<description>A lizion cell with prometheum content, ignites target on impact.</description>
-		<generateCommonality>0.5</generateCommonality>
+		<generateAllowChance>0.5</generateAllowChance>
 		<statBases>
 			<MarketValue>0.34</MarketValue>
 		</statBases>
@@ -149,7 +149,7 @@
 		<defName>Ammo_LizionCellInert</defName>
 		<label>inert lizion cell</label>
 		<description>A less pressurized lizion cell, less lethal than a standard cell but good when you want somebody downed alive.</description>
-		<generateCommonality>0.5</generateCommonality>
+		<generateAllowChance>0.5</generateAllowChance>
 		<statBases>
 			<MarketValue>0.14</MarketValue>
 		</statBases>
@@ -176,7 +176,7 @@
 		<defName>Ammo_LizionCellOvercharged</defName>
 		<label>overcharged lizion cell</label>
 		<description>A dangerously overpressurized lizion cell, while it packs more punch, the extra pressure inteferes with plasma chamber injection, disrupts projectile trajectory and hurts accuracy a lot.</description>
-		<generateCommonality>0.1</generateCommonality>
+		<generateAllowChance>0.1</generateAllowChance>
 		<statBases>
 			<MarketValue>0.44</MarketValue>
 		</statBases>
