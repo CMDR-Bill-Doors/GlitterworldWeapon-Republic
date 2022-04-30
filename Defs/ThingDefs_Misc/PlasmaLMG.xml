@@ -414,6 +414,7 @@
 				<soundCast>ChargeLance_Fire</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
+				<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
 			</li>
 		</verbs>
 		<comps>
@@ -615,6 +616,7 @@
 				<soundCast>ChargeLance_Fire</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
+				<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>
