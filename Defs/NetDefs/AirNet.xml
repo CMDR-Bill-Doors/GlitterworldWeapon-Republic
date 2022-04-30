@@ -272,7 +272,8 @@
 		</statBases>
 		<size>(2,2)</size>
 		<costList>
-			<Steel>140</Steel>
+			<Steel>100</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
 		</costList>
 		<comps>
 			<li Class="CompProperties_Power">
@@ -346,6 +347,7 @@
 		<size>(4,4)</size>
 		<costList>
 			<Steel>140</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
 		</costList>
 		<placeWorkers>
 			<li>PlaceWorker_OnSteamGeyser</li>
