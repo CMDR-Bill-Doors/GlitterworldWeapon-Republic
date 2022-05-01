@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<!--
 	<StatDef>
-		<defName>BDP_CasingReturnChance</defName>
-		<workerClass>BDsPlasmaWeapon.</workerClass>
-		<label>empty casing return chance</label>
-		<description>How likely a casing, canister, battery, cell etc. may remain intact after being fired from this weapon.</description>
-		<category>Weapon</category>
+		<defName>BDP_CasingReturn</defName>
+		<label>Casing return chance</label>
+		<description>The probability of empty casings get ejected from the weapon undamaged. This value is affected by weapon't inherited base chance and weapon's quality.\n\nAwful: x50%\nPoor: x80%\nNormal: x100%\nGood: +5%\nExcellent: +10%\nMasterwork: +15%\nLegendary: Fixed 100%</description>
+		<category>Weapon_Ranged</category>
+		<defaultBaseValue>0</defaultBaseValue>
+		<minValue>0</minValue>
+		<maxValue>1</maxValue>
+		<toStringStyle>PercentZero</toStringStyle>
 		<showIfUndefined>false</showIfUndefined>
-		<displayPriorityInCategory>500</displayPriorityInCategory>
+		<parts>
+			<li Class="BDsPlasmaWeapon.StatPart_Quality"/>
+		</parts>
+		<displayPriorityInCategory>6000</displayPriorityInCategory>
 	</StatDef>
-	-->
 </Defs>

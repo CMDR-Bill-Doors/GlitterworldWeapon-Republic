@@ -18,6 +18,7 @@
 			<ShotSpread>0.05</ShotSpread>
 			<SightsEfficiency>1.5</SightsEfficiency>
 			<RangedWeapon_Cooldown>0.57</RangedWeapon_Cooldown>
+			<BDP_CasingReturn>0.75</BDP_CasingReturn>
 		</statBases>
 		<costList>
 			<Steel>55</Steel>
@@ -53,7 +54,6 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>2</casingAmount>
-				<casingRate>0.75</casingRate>
 			</li>
 		</comps>
 		<weaponTags>
@@ -124,6 +124,7 @@
 			<ShotSpread>0.15</ShotSpread>
 			<SightsEfficiency>0.8</SightsEfficiency>
 			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+			<BDP_CasingReturn>0.9</BDP_CasingReturn>
 		</statBases>
 		<costList>
 			<Steel>20</Steel>
@@ -155,7 +156,119 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>1</casingAmount>
-				<casingRate>0.9</casingRate>
+			</li>
+		</comps>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>CE_Sidearm</li>
+			<li>CE_OneHandedWeapon</li>
+		</weaponTags>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>grip</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>2</power>
+				<cooldownTime>1.54</cooldownTime>
+				<chanceFactor>1.5</chanceFactor>
+				<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>2</power>
+				<cooldownTime>1.54</cooldownTime>
+				<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>ChargedShot</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>FabricationBench</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseMakeableGun">
+		<defName>BDP_PlasmaCharger</defName>
+		<label>Lizion Plasma Charger</label>
+		<description>An modified lizion plasma accelerator with dual fire modes.</description>
+		<graphicData>
+			<texPath>Things/Weapons/BDP_PlasmaPistol</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<statBases>
+			<WorkToMake>17500</WorkToMake>
+			<Mass>1.50</Mass>
+			<Bulk>2.60</Bulk>
+			<SwayFactor>1.07</SwayFactor>
+			<ShotSpread>0.15</ShotSpread>
+			<SightsEfficiency>0.8</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+			<BDP_CasingReturn>0.8</BDP_CasingReturn>
+		</statBases>
+		<costList>
+			<Steel>20</Steel>
+			<Plasteel>30</Plasteel>
+			<Chemfuel>5</Chemfuel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<verbs>
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>BDsPlasmaWeapon.Verb_ShootWithCasingReturn</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_LizionPistolNormal</defaultProjectile>
+				<warmupTime>0.5</warmupTime>
+				<ammoConsumedPerShotCount>3</ammoConsumedPerShotCount>
+				<range>12</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Light</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>4</magazineSize>
+				<reloadTime>0.9</reloadTime>
+				<reloadOneAtATime>true</reloadOneAtATime>
+				<ammoSet>AmmoSet_LizionCellPistol</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aiAimMode>SuppressFire</aiAimMode>
+			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
+				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
+				<casingAmount>-1</casingAmount>
+			</li>
+			<li Class="WeaponUtility.CE.CompProperties_SecondaryAmmo">
+				<secondaryAmmoProps>
+					<magazineSize>4</magazineSize>
+					<reloadTime>0.9</reloadTime>
+					<reloadOneAtATime>true</reloadOneAtATime>
+					<ammoSet>AmmoSet_LizionCellSniper</ammoSet>
+				</secondaryAmmoProps>
+				<secondaryVerb>
+					<verbClass>BDsPlasmaWeapon.Verb_ShootWithCasingReturn</verbClass>
+					<hasStandardCommand>true</hasStandardCommand>
+					<defaultProjectile>Projectile_LizionSniperNormal</defaultProjectile>
+					<warmupTime>1.3</warmupTime>
+					<range>12</range>
+					<ammoConsumedPerShotCount>4</ammoConsumedPerShotCount>
+					<soundCast>Shot_ChargeBlaster</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+				</secondaryVerb>
+				<mainWeaponLabel>Offgrid mode</mainWeaponLabel>
+				<secondaryWeaponLabel>Piped mode</secondaryWeaponLabel>
+				<description>switch between piped mode and offgrid mode</description>
+				<mainCommandIcon>UI/Icons/FireModes/PlasmaTurret_Off</mainCommandIcon>
+				<secondaryCommandIcon>UI/Icons/FireModes/PlasmaTurret_On</secondaryCommandIcon>
 			</li>
 		</comps>
 		<weaponTags>
@@ -211,6 +324,7 @@
 			<ShotSpread>0.16</ShotSpread>
 			<SightsEfficiency>1.2</SightsEfficiency>
 			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+			<BDP_CasingReturn>0.9</BDP_CasingReturn>
 		</statBases>
 		<costList>
 			<Steel>45</Steel>
@@ -246,7 +360,6 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>1</casingAmount>
-				<casingRate>0.9</casingRate>
 			</li>
 		</comps>
 		<weaponTags>
@@ -303,6 +416,7 @@
 			<ShotSpread>0.16</ShotSpread>
 			<SightsEfficiency>1</SightsEfficiency>
 			<RangedWeapon_Cooldown>0.46</RangedWeapon_Cooldown>
+			<BDP_CasingReturn>0.8</BDP_CasingReturn>
 		</statBases>
 		<costList>
 			<Steel>55</Steel>
@@ -339,7 +453,6 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>2</casingAmount>
-				<casingRate>0.8</casingRate>
 			</li>
 		</comps>
 		<weaponTags>
@@ -396,6 +509,7 @@
 			<ShotSpread>0.05</ShotSpread>
 			<SightsEfficiency>2.6</SightsEfficiency>
 			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+			<BDP_CasingReturn>0.8</BDP_CasingReturn>
 		</statBases>
 		<costList>
 			<Steel>60</Steel>
@@ -429,7 +543,6 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>4</casingAmount>
-				<casingRate>0.8</casingRate>
 			</li>
 		</comps>
 		<weaponTags>
@@ -500,6 +613,7 @@
 			<ShotSpread>0.14</ShotSpread>
 			<SightsEfficiency>1</SightsEfficiency>
 			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+			<BDP_CasingReturn>0.8</BDP_CasingReturn>
 		</statBases>
 		<costList>
 			<Steel>50</Steel>
@@ -532,7 +646,6 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>6</casingAmount>
-				<casingRate>0.8</casingRate>
 			</li>
 		</comps>
 		<weaponTags>
@@ -599,6 +712,7 @@
 			<ShotSpread>0.01</ShotSpread>
 			<SightsEfficiency>2.5</SightsEfficiency>
 			<RangedWeapon_Cooldown>1.9</RangedWeapon_Cooldown>
+			<BDP_CasingReturn>0.6</BDP_CasingReturn>
 		</statBases>
 		<costList>
 			<Steel>125</Steel>
@@ -634,7 +748,6 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>20</casingAmount>
-				<casingRate>0.6</casingRate>
 			</li>
 		</comps>
 		<weaponTags>

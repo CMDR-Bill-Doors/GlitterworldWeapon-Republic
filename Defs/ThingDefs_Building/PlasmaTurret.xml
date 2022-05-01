@@ -21,6 +21,7 @@
 			<Bulk>25</Bulk>
 			<AimingAccuracy>0.5</AimingAccuracy>
 			<ShootingAccuracyTurret>1</ShootingAccuracyTurret>
+			<BDP_CasingReturn>0.9</BDP_CasingReturn>
 		</statBases>
 		<techLevel>Spacer</techLevel>
 		<comps>
@@ -103,7 +104,6 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>2</casingAmount>
-				<casingRate>0.9</casingRate>
 			</li>
 			<!--
 			<li Class="WeaponUtility.CE.CompProperties_SecondaryVerb">
