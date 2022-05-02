@@ -340,7 +340,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Projectile_LizionPistolNormal</defaultProjectile>
 				<warmupTime>0.5</warmupTime>
-				<range>28</range>
+				<range>22</range>
 				<burstShotCount>5</burstShotCount>
 				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
 				<soundCast>Shot_ChargeBlaster</soundCast>
@@ -612,7 +612,7 @@
 			<Mass>4.35</Mass>
 			<Bulk>6.0</Bulk>
 			<SwayFactor>1.25</SwayFactor>
-			<ShotSpread>0.14</ShotSpread>
+			<ShotSpread>0.24</ShotSpread>
 			<SightsEfficiency>1</SightsEfficiency>
 			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
 			<BDP_CasingReturn>0.8</BDP_CasingReturn>
@@ -630,7 +630,7 @@
 				<defaultProjectile>Projectile_LizionShotgunNormal</defaultProjectile>
 				<ammoConsumedPerShotCount>6</ammoConsumedPerShotCount>
 				<warmupTime>0.7</warmupTime>
-				<range>20</range>
+				<range>16</range>
 				<soundCast>ChargeLance_Fire</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>

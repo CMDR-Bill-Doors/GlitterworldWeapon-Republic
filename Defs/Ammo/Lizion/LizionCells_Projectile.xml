@@ -3,6 +3,9 @@
 
 	<ThingDef Name="BaseLizionBullet" ParentName="BaseBullet" Abstract="true">
 		<thingClass>BDsPlasmaWeapon.DisintegratingProjectile</thingClass>
+		<graphicData>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
 	</ThingDef>
 
 	<!-- ================== Pistol ================== -->
@@ -25,9 +28,10 @@
 			<texPath>Things/Projectile/Charged/charge_regular</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<color>(200,100,100)</color>
+			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
-			<speed>200</speed>
+			<speed>20</speed>
 			<damageDef>Bomb</damageDef>
 			<damageAmountBase>5</damageAmountBase>
 			<armorPenetrationBlunt>14.52</armorPenetrationBlunt>
