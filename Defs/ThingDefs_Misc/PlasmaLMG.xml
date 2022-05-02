@@ -194,6 +194,7 @@
 		</recipeMaker>
 	</ThingDef>
 
+	<!--
 	<ThingDef ParentName="BaseMakeableGun">
 		<defName>BDP_PlasmaCharger</defName>
 		<label>Lizion Plasma Charger</label>
@@ -306,6 +307,7 @@
 			</recipeUsers>
 		</recipeMaker>
 	</ThingDef>
+-->
 
 	<ThingDef ParentName="BaseMakeableGun">
 		<defName>BDP_PlasmaSMG</defName>
