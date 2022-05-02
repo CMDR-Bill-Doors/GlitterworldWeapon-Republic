@@ -549,8 +549,8 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_LizionCooler">
 				<pipeNet>BDP_LizionNetwork</pipeNet>
 				<maxModes>10</maxModes>
-				<heatPerMode>-15</heatPerMode>
-				<consumptionPerMode>0.6</consumptionPerMode>
+				<heatPerMode>-8</heatPerMode>
+				<consumptionPerMode>0.4</consumptionPerMode>
 				<turnUpIcon>UI/Icons/LizionCooler_Up</turnUpIcon>
 				<turnUpLabel>Turn Up</turnUpLabel>
 				<turnDownIcon>UI/Icons/LizionCooler_Down</turnDownIcon>

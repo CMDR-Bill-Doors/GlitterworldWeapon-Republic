@@ -7,4 +7,5 @@
 	<HealthAbove85NoPenalty>Weapon health above 85%, no penalty applied</HealthAbove85NoPenalty>
 	<CurrentHitPointPercentage>Current weapon health: </CurrentHitPointPercentage>
 	<hitPointPenaltyApplied>health penalty applied</hitPointPenaltyApplied>
+	<CurrentMode>Current mode: </CurrentMode>
 </LanguageData>
