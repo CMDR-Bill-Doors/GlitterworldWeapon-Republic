@@ -214,12 +214,10 @@
 				<centerOffset>(-0.067, 0, -0.24)</centerOffset>
 			</li>
 			<li Class="PipeSystem.CompProperties_ExplosiveContent">
-				<explosiveMaxRadius>12</explosiveMaxRadius>
-				<explosiveDamageType>Flame</explosiveDamageType>
-				<destroyThingOnExplosionSize>2</destroyThingOnExplosionSize>
+				<explosiveMaxRadius>5</explosiveMaxRadius>
+				<explosiveDamageType>LizionExplosion</explosiveDamageType>
+				<destroyThingOnExplosionSize>0</destroyThingOnExplosionSize>
 				<startWickHitPointsPercent>0.333</startWickHitPointsPercent>
-				<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
-				<preExplosionSpawnChance>1</preExplosionSpawnChance>
 				<wickTicks>70~150</wickTicks>
 			</li>
 		</comps>
@@ -289,12 +287,10 @@
 				<centerOffset>(0, 0, -0.5)</centerOffset>
 			</li>
 			<li Class="PipeSystem.CompProperties_ExplosiveContent">
-				<explosiveMaxRadius>12</explosiveMaxRadius>
-				<explosiveDamageType>Flame</explosiveDamageType>
-				<destroyThingOnExplosionSize>2</destroyThingOnExplosionSize>
+				<explosiveMaxRadius>15</explosiveMaxRadius>
+				<explosiveDamageType>LizionExplosion</explosiveDamageType>
+				<destroyThingOnExplosionSize>0</destroyThingOnExplosionSize>
 				<startWickHitPointsPercent>0.333</startWickHitPointsPercent>
-				<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
-				<preExplosionSpawnChance>1</preExplosionSpawnChance>
 				<wickTicks>70~150</wickTicks>
 			</li>
 		</comps>
