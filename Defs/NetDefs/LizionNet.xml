@@ -19,7 +19,7 @@
 			<li>BDP_LizionPipeUnderground</li>
 		</pipeDefs>
 		<designator>
-			<deconstructIconPath>ui/designators/Deconstruct</deconstructIconPath>
+			<deconstructIconPath>Things/Building/BDP_LizionPipe_Icon_Deconstruct</deconstructIconPath>
 			<designationCategoryDef>Structure</designationCategoryDef>
 		</designator>
 		<overlayOptions>
