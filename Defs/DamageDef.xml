@@ -14,13 +14,13 @@
 		<defaultDamage>68</defaultDamage>
 		<defaultArmorPenetration>100</defaultArmorPenetration>
 		<explosionHeatEnergyPerCell>-150</explosionHeatEnergyPerCell>
-		<explosionCellFleck>BlastFlame</explosionCellFleck>
+		<explosionCellFleck>BlastDry</explosionCellFleck>
 		<explosionColorCenter>(184, 233, 255)</explosionColorCenter>
 		<explosionColorEdge>(255, 255, 255)</explosionColorEdge>
 		<soundExplosion>Explosion_Flame</soundExplosion>
 		<combatLogRules>Damage_Flame</combatLogRules>
 		<canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
-		<explosionSnowMeltAmount>-1</explosionSnowMeltAmount>
+		<explosionSnowMeltAmount>-2</explosionSnowMeltAmount>
 		<buildingDamageFactorImpassable>0</buildingDamageFactorImpassable>
 		<buildingDamageFactorPassable>0</buildingDamageFactorPassable>
 		<plantDamageFactor>4</plantDamageFactor>
