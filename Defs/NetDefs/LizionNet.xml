@@ -267,15 +267,15 @@
 		<tickerType>Normal</tickerType>
 		<rotatable>false</rotatable>
 		<statBases>
-			<MaxHitPoints>150</MaxHitPoints>
+			<MaxHitPoints>500</MaxHitPoints>
 			<WorkToBuild>800</WorkToBuild>
 			<Mass>10</Mass>
 			<Flammability>0.1</Flammability>
 		</statBases>
 		<size>(3,3)</size>
 		<costList>
-			<Silver>100</Silver>
-			<Steel>140</Steel>
+			<Silver>900</Silver>
+			<Steel>1500</Steel>
 			<ComponentIndustrial>1</ComponentIndustrial>
 		</costList>
 		<comps>
