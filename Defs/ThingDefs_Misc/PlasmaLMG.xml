@@ -226,7 +226,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Projectile_LizionPistolNormal</defaultProjectile>
 				<warmupTime>0.5</warmupTime>
-				<ammoConsumedPerShotCount>3</ammoConsumedPerShotCount>
+				<ammoConsumedPerShotCount>1</ammoConsumedPerShotCount>
 				<range>12</range>
 				<soundCast>Shot_ChargeRifle</soundCast>
 				<soundCastTail>GunTail_Light</soundCastTail>

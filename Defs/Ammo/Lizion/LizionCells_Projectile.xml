@@ -32,7 +32,7 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>5</damageAmountBase>
 			<armorPenetrationBlunt>14.52</armorPenetrationBlunt>
 			<secondaryDamage>
@@ -53,7 +53,7 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>5</damageAmountBase>
 			<armorPenetrationBlunt>14.52</armorPenetrationBlunt>
 			<secondaryDamage>
@@ -96,7 +96,7 @@
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<spreadMult>100</spreadMult>
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>10</damageAmountBase>
 			<explosionRadius>0.5</explosionRadius>
 			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
@@ -134,7 +134,7 @@
 			<spreadMult>17.8</spreadMult>
 			<pelletCount>3</pelletCount>
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>10</damageAmountBase>
 			<armorPenetrationBlunt>34.52</armorPenetrationBlunt>
 			<secondaryDamage>
@@ -157,7 +157,7 @@
 			<spreadMult>17.8</spreadMult>
 			<pelletCount>3</pelletCount>
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>10</damageAmountBase>
 			<armorPenetrationBlunt>34.52</armorPenetrationBlunt>
 			<secondaryDamage>
@@ -203,7 +203,7 @@
 			<pelletCount>3</pelletCount>
 			<spreadMult>178</spreadMult>
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>20</damageAmountBase>
 			<explosionRadius>0.5</explosionRadius>
 			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
@@ -240,7 +240,7 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>10</damageAmountBase>
 			<armorPenetrationBlunt>44.52</armorPenetrationBlunt>
 			<secondaryDamage>
@@ -262,7 +262,7 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>10</damageAmountBase>
 			<armorPenetrationBlunt>44.52</armorPenetrationBlunt>
 			<secondaryDamage>
@@ -307,7 +307,7 @@
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<spreadMult>100</spreadMult>
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>20</damageAmountBase>
 			<explosionRadius>0.5</explosionRadius>
 			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
@@ -344,7 +344,7 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>18</damageAmountBase>
 			<armorPenetrationBlunt>53.8</armorPenetrationBlunt>
 			<secondaryDamage>
@@ -366,7 +366,7 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>18</damageAmountBase>
 			<armorPenetrationBlunt>53.8</armorPenetrationBlunt>
 			<secondaryDamage>
@@ -411,7 +411,7 @@
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<spreadMult>100</spreadMult>
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>36</damageAmountBase>
 			<explosionRadius>0.5</explosionRadius>
 			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
@@ -448,7 +448,7 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>55</damageAmountBase>
 			<explosionRadius>2.5</explosionRadius>
 			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
@@ -471,7 +471,7 @@
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>55</damageAmountBase>
 			<explosionRadius>2.5</explosionRadius>
 			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
@@ -519,7 +519,7 @@
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<spreadMult>100</spreadMult>
 			<speed>200</speed>
-			<damageDef>Bomb</damageDef>
+			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>115</damageAmountBase>
 			<explosionRadius>3.5</explosionRadius>
 			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>

@@ -32,4 +32,12 @@
 			</li>
 		</modExtensions>
 	</DamageDef>
+
+	<DamageDef ParentName="Bomb">
+		<defName>LizionPlasma</defName>
+		<label>plasma blast</label>
+		<deathMessage>{0} was pulverized by plasma bolts.</deathMessage>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<minDamageToFragment>15</minDamageToFragment>
+	</DamageDef>
 </Defs>

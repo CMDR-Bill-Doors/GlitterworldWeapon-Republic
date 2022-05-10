@@ -27,9 +27,14 @@
 			<li Class="PipeSystem.CompProperties_Resource">
 				<pipeNet>BDP_LizionNetwork</pipeNet>
 			</li>
+			<!--
 			<li>
 				<compClass>WeaponUtility.CE.CompTurretWithSecondaryVerb</compClass>
 			</li>
+			<li>
+				<compClass>BDsPlasmaWeapon.CompTurretFix</compClass>
+			</li>
+			-->
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>950</basePowerConsumption>
@@ -93,6 +98,9 @@
 		</verbs>
 		<comps>
 			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<!--
+				<compClass>BDsPlasmaWeapon.CompAmmoUserHidden</compClass>
+				-->
 				<magazineSize>400</magazineSize>
 				<reloadTime>7.8</reloadTime>
 				<ammoSet>AmmoSet_LizionCellSniper</ammoSet>
