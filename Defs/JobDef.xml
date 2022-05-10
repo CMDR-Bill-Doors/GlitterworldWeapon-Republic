@@ -12,7 +12,7 @@
 	</JobDef>
 
 	<WorkGiverDef>
-		<defName>ReloadTurrets</defName>
+		<defName>BDP_ReloadTurrets</defName>
 		<label>reload turrets</label>
 		<giverClass>BDsPlasmaWeapon.WorkGiver_ReloadTurret</giverClass>
 		<workType>Hauling</workType>
