@@ -3,7 +3,7 @@
 	<ThingDef ParentName="BaseMakeableGun">
 		<defName>BDP_PlasmaLMG</defName>
 		<label>Lizion Plasma Machinegun</label>
-		<description>MG38A general purpose machinegun is a heavy lizion plasma accelerator developed by Pan-Humanoid Republic Arsenals.</description>
+		<description>MG38A general purpose machinegun is a heavy lizion plasma accelerator developed by Pan-Humanoid Republic Arsenals. Gulping lizion gas cells and inaccurately spray out energized plasma, this machinegun will suppress anyone within its limited range until the cells run dry.</description>
 		<generateAllowChance>0.5</generateAllowChance>
 		<graphicData>
 			<texPath>Things/Weapons/BDP_PlasmaLMG</texPath>
@@ -15,15 +15,16 @@
 			<Mass>11.5</Mass>
 			<Bulk>17.3</Bulk>
 			<SwayFactor>1.7</SwayFactor>
-			<ShotSpread>0.05</ShotSpread>
+			<ShotSpread>0.1</ShotSpread>
 			<SightsEfficiency>1.5</SightsEfficiency>
 			<RangedWeapon_Cooldown>0.57</RangedWeapon_Cooldown>
 			<BDP_CasingReturn>0.75</BDP_CasingReturn>
 		</statBases>
 		<costList>
-			<Steel>55</Steel>
-			<Plasteel>30</Plasteel>
+			<Steel>70</Steel>
+			<Plasteel>40</Plasteel>
 			<ComponentIndustrial>10</ComponentIndustrial>
+			<ComponentSpacer>8</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
@@ -131,6 +132,7 @@
 			<Plasteel>30</Plasteel>
 			<Chemfuel>5</Chemfuel>
 			<ComponentIndustrial>2</ComponentIndustrial>
+			<ComponentSpacer>1</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
@@ -333,6 +335,7 @@
 			<Plasteel>25</Plasteel>
 			<Chemfuel>15</Chemfuel>
 			<ComponentIndustrial>7</ComponentIndustrial>
+			<ComponentSpacer>3</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
@@ -425,6 +428,7 @@
 			<Plasteel>25</Plasteel>
 			<Chemfuel>15</Chemfuel>
 			<ComponentIndustrial>10</ComponentIndustrial>
+			<ComponentSpacer>5</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
@@ -514,10 +518,10 @@
 			<BDP_CasingReturn>0.8</BDP_CasingReturn>
 		</statBases>
 		<costList>
-			<Steel>60</Steel>
-			<Plasteel>30</Plasteel>
-			<Chemfuel>15</Chemfuel>
+			<Steel>70</Steel>
+			<Plasteel>40</Plasteel>
 			<ComponentIndustrial>10</ComponentIndustrial>
+			<ComponentSpacer>8</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
@@ -622,6 +626,7 @@
 			<Plasteel>25</Plasteel>
 			<Chemfuel>15</Chemfuel>
 			<ComponentIndustrial>10</ComponentIndustrial>
+			<ComponentSpacer>5</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
@@ -720,6 +725,7 @@
 			<Steel>125</Steel>
 			<Plasteel>45</Plasteel>
 			<ComponentIndustrial>10</ComponentIndustrial>
+			<ComponentSpacer>8</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
