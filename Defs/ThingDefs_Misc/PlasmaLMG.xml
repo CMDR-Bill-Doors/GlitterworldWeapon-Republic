@@ -249,7 +249,7 @@
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>-1</casingAmount>
 			</li>
-			<li Class="WeaponUtility.CE.CompProperties_SecondaryAmmo">
+			<li Class="BDsPlasmaWeapon.CompProperties_SecondaryAmmo">
 				<secondaryAmmoProps>
 					<magazineSize>4</magazineSize>
 					<reloadTime>0.9</reloadTime>
