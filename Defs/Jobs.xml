@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<JobDef>
+		<defName>BDP_JobDefRefillFromFiller</defName>
+		<driverClass>BDsPlasmaWeapon.JobDriver_ReloadFromFiller</driverClass>
+		<reportString>reloading TargetA from TargetB.</reportString>
+		<suspendable>false</suspendable>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+</Defs>

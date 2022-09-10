@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<ThingDef>
+	<ThingDef Class="CombatExtended.AmmoDef">
 		<defName>Gas_Lizion</defName>
 		<label>lizion</label>
 		<thingClass>ThingWithComps</thingClass>

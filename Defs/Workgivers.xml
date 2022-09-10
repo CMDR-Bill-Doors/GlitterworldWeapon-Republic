@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<WorkGiverDef>
+		<defName>RefuelRefuelableWithCasingReturn</defName>
+		<label>refuel fuelable with casing return</label>
+		<giverClass>WorkGiver_Refuel</giverClass>
+		<workType>Hauling</workType>
+		<verb>refuel</verb>
+		<gerund>refueling</gerund>
+		<priorityInType>141</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+	</WorkGiverDef>
+</Defs>

@@ -22,20 +22,24 @@
 		</graphicData>
 		<uiIconPath>UI/Icons/BDP_PlasmaTurret_Icon</uiIconPath>
 		<statBases>
-			<WorkToBuild>48000</WorkToBuild>
-			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>80000</WorkToBuild>
+			<MaxHitPoints>600</MaxHitPoints>
 			<Mass>20</Mass>
 			<Bulk>25</Bulk>
 			<AimingAccuracy>0.5</AimingAccuracy>
 			<ShootingAccuracyTurret>1</ShootingAccuracyTurret>
+			<Flammability>0</Flammability>
 		</statBases>
 		<techLevel>Spacer</techLevel>
+		<fillPercent>0.85</fillPercent>
 		<description>Automatic turret equipped with two lizion plasma blasters.</description>
 		<designatorDropdown>Group_PlasmaTurrets</designatorDropdown>
 		<costList>
-			<Steel>65</Steel>
-			<Plasteel>30</Plasteel>
-			<ComponentIndustrial>12</ComponentIndustrial>
+			<Steel>325</Steel>
+			<Plasteel>140</Plasteel>
+			<ComponentIndustrial>20</ComponentIndustrial>
+			<ComponentSpacer>4</ComponentSpacer>
+			<Jade>50</Jade>
 		</costList>
 		<building>
 			<turretGunDef>BDP_PlasmaTurretGun</turretGunDef>
@@ -56,6 +60,56 @@
 		<researchPrerequisites>
 			<li>CE_ChargeTurret</li>
 		</researchPrerequisites>
+		<damageMultipliers>
+			<li>
+				<damageDef>RangedStab</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Arrow</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>ArrowHighVelocity</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Bullet</damageDef>
+				<multiplier>0.5</multiplier>
+			</li>
+			<li>
+				<damageDef>Cut</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Poke</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Stab</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Scratch</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>ScratchToxic</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Bite</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>ToxicBite</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Flame</damageDef>
+				<multiplier>0</multiplier>
+			</li>
+		</damageMultipliers>
 	</ThingDef>
 
 	<ThingDef ParentName="BaseAutoTurretGun">
@@ -83,7 +137,7 @@
 				<defaultProjectile>Projectile_LizionSniperNormal</defaultProjectile>
 				<warmupTime>1.3</warmupTime>
 				<range>68</range>
-				<minRange>5</minRange>
+				<minRange>3</minRange>
 				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>4</ammoConsumedPerShotCount>
 				<burstShotCount>10</burstShotCount>
@@ -91,6 +145,8 @@
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 				<recoilPattern>Mounted</recoilPattern>
+				<stopBurstWithoutLos>false</stopBurstWithoutLos>
+				<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
 			</li>
 		</verbs>
 		<comps>
@@ -123,14 +179,16 @@
 		</graphicData>
 		<uiIconPath>UI/Icons/BDP_PlasmaTurret_Icon</uiIconPath>
 		<statBases>
-			<WorkToBuild>48000</WorkToBuild>
+			<WorkToBuild>80000</WorkToBuild>
 			<MaxHitPoints>600</MaxHitPoints>
 			<Mass>20</Mass>
 			<Bulk>25</Bulk>
 			<AimingAccuracy>0.5</AimingAccuracy>
 			<ShootingAccuracyTurret>1</ShootingAccuracyTurret>
+			<Flammability>0</Flammability>
 		</statBases>
 		<techLevel>Spacer</techLevel>
+		<fillPercent>0.85</fillPercent>
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -140,9 +198,11 @@
 		<description>Automatic turret equipped with a heavy lizion cannon.</description>
 		<designatorDropdown>Group_PlasmaTurrets</designatorDropdown>
 		<costList>
-			<Steel>65</Steel>
-			<Plasteel>30</Plasteel>
-			<ComponentIndustrial>12</ComponentIndustrial>
+			<Steel>325</Steel>
+			<Plasteel>140</Plasteel>
+			<ComponentIndustrial>20</ComponentIndustrial>
+			<ComponentSpacer>4</ComponentSpacer>
+			<Jade>50</Jade>
 		</costList>
 		<building>
 			<turretGunDef>BDP_PlasmaTurretGunHeavy</turretGunDef>
@@ -192,6 +252,8 @@
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 				<recoilPattern>Mounted</recoilPattern>
+				<stopBurstWithoutLos>false</stopBurstWithoutLos>
+				<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
 			</li>
 		</verbs>
 		<comps>
@@ -205,6 +267,56 @@
 				<casingAmount>20</casingAmount>
 			</li>
 		</comps>
+		<damageMultipliers>
+			<li>
+				<damageDef>RangedStab</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Arrow</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>ArrowHighVelocity</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Bullet</damageDef>
+				<multiplier>0.5</multiplier>
+			</li>
+			<li>
+				<damageDef>Cut</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Poke</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Stab</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Scratch</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>ScratchToxic</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Bite</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>ToxicBite</damageDef>
+				<multiplier>0.2</multiplier>
+			</li>
+			<li>
+				<damageDef>Flame</damageDef>
+				<multiplier>0</multiplier>
+			</li>
+		</damageMultipliers>
 	</ThingDef>
 
 	<!--==================== Small turret =========================-->
@@ -228,8 +340,10 @@
 			<Bulk>25</Bulk>
 			<AimingAccuracy>0.5</AimingAccuracy>
 			<ShootingAccuracyTurret>1</ShootingAccuracyTurret>
+			<Flammability>0</Flammability>
 		</statBases>
 		<techLevel>Spacer</techLevel>
+		<fillPercent>0.5</fillPercent>
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -242,6 +356,8 @@
 			<Steel>65</Steel>
 			<Plasteel>30</Plasteel>
 			<ComponentIndustrial>12</ComponentIndustrial>
+			<ComponentSpacer>1</ComponentSpacer>
+			<Jade>15</Jade>
 		</costList>
 		<building>
 			<turretGunDef>BDP_PlasmaTurretGunSmall</turretGunDef>

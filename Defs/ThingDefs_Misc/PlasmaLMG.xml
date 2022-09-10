@@ -8,6 +8,7 @@
 		<graphicData>
 			<texPath>Things/Weapons/BDP_PlasmaLMG</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.3,1.3)</drawSize>
 		</graphicData>
 		<soundInteract>Interact_ChargeRifle</soundInteract>
 		<statBases>
@@ -15,16 +16,16 @@
 			<Mass>11.5</Mass>
 			<Bulk>17.3</Bulk>
 			<SwayFactor>1.7</SwayFactor>
-			<ShotSpread>0.1</ShotSpread>
+			<ShotSpread>0.2</ShotSpread>
 			<SightsEfficiency>1.5</SightsEfficiency>
 			<RangedWeapon_Cooldown>0.57</RangedWeapon_Cooldown>
-			<BDP_CasingReturn>0.75</BDP_CasingReturn>
+			<BDP_CasingReturn>0.7</BDP_CasingReturn>
 		</statBases>
 		<costList>
 			<Steel>70</Steel>
 			<Plasteel>40</Plasteel>
 			<ComponentIndustrial>10</ComponentIndustrial>
-			<ComponentSpacer>8</ComponentSpacer>
+			<ComponentSpacer>3</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
@@ -38,7 +39,7 @@
 				<range>48</range>
 				<soundCast>Shot_ChargeBlaster</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
-				<recoilAmount>1.2</recoilAmount>
+				<recoilAmount>1.5</recoilAmount>
 				<muzzleFlashScale>12</muzzleFlashScale>
 			</li>
 		</verbs>
@@ -102,8 +103,8 @@
 		</recipeMaker>
 		<modExtensions>
 			<li Class="CombatExtended.GunDrawExtension">
-				<DrawSize>1,1</DrawSize>
-				<DrawOffset>0.15,-0.05</DrawOffset>
+				<DrawSize>1.3,1.3</DrawSize>
+				<DrawOffset>0.1,-0.05</DrawOffset>
 			</li>
 		</modExtensions>
 	</ThingDef>
@@ -194,15 +195,21 @@
 				<li>FabricationBench</li>
 			</recipeUsers>
 		</recipeMaker>
+		<modExtensions>
+			<li Class="CombatExtended.GunDrawExtension">
+				<DrawSize>1,1</DrawSize>
+				<DrawOffset>-0.10,-0.07</DrawOffset>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
-	<!--
+
 	<ThingDef ParentName="BaseMakeableGun">
 		<defName>BDP_PlasmaCharger</defName>
 		<label>Lizion Plasma Charger</label>
 		<description>An modified lizion plasma accelerator with dual fire modes.</description>
 		<graphicData>
-			<texPath>Things/Weapons/BDP_PlasmaPistol</texPath>
+			<texPath>Things/Weapons/BDP_PlasmaCharger</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<soundInteract>Interact_ChargeRifle</soundInteract>
@@ -228,6 +235,8 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Projectile_LizionPistolNormal</defaultProjectile>
 				<warmupTime>0.5</warmupTime>
+				<burstShotCount>4</burstShotCount>
+				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>1</ammoConsumedPerShotCount>
 				<range>12</range>
 				<soundCast>Shot_ChargeRifle</soundCast>
@@ -243,6 +252,7 @@
 				<ammoSet>AmmoSet_LizionCellPistol</ammoSet>
 			</li>
 			<li Class="CombatExtended.CompProperties_FireModes">
+				<noSingleShot>true</noSingleShot>
 				<aiAimMode>SuppressFire</aiAimMode>
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
@@ -260,16 +270,16 @@
 					<verbClass>BDsPlasmaWeapon.Verb_ShootWithCasingReturn</verbClass>
 					<hasStandardCommand>true</hasStandardCommand>
 					<defaultProjectile>Projectile_LizionSniperNormal</defaultProjectile>
-					<warmupTime>1.3</warmupTime>
+					<warmupTime>2.3</warmupTime>
 					<range>12</range>
 					<ammoConsumedPerShotCount>4</ammoConsumedPerShotCount>
 					<soundCast>Shot_ChargeBlaster</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</secondaryVerb>
-				<mainWeaponLabel>Offgrid mode</mainWeaponLabel>
-				<secondaryWeaponLabel>Piped mode</secondaryWeaponLabel>
-				<description>switch between piped mode and offgrid mode</description>
+				<mainWeaponLabel>Burst mode</mainWeaponLabel>
+				<secondaryWeaponLabel>Charged mode</secondaryWeaponLabel>
+				<description>switch between bursh mode and charged mode</description>
 				<mainCommandIcon>UI/Icons/FireModes/PlasmaTurret_Off</mainCommandIcon>
 				<secondaryCommandIcon>UI/Icons/FireModes/PlasmaTurret_On</secondaryCommandIcon>
 			</li>
@@ -309,7 +319,7 @@
 			</recipeUsers>
 		</recipeMaker>
 	</ThingDef>
--->
+
 
 	<ThingDef ParentName="BaseMakeableGun">
 		<defName>BDP_PlasmaSMG</defName>
@@ -335,7 +345,7 @@
 			<Plasteel>25</Plasteel>
 			<Chemfuel>15</Chemfuel>
 			<ComponentIndustrial>7</ComponentIndustrial>
-			<ComponentSpacer>3</ComponentSpacer>
+			<ComponentSpacer>2</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
@@ -428,7 +438,7 @@
 			<Plasteel>25</Plasteel>
 			<Chemfuel>15</Chemfuel>
 			<ComponentIndustrial>10</ComponentIndustrial>
-			<ComponentSpacer>5</ComponentSpacer>
+			<ComponentSpacer>3</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
@@ -521,7 +531,7 @@
 			<Steel>70</Steel>
 			<Plasteel>40</Plasteel>
 			<ComponentIndustrial>10</ComponentIndustrial>
-			<ComponentSpacer>8</ComponentSpacer>
+			<ComponentSpacer>4</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
@@ -626,7 +636,7 @@
 			<Plasteel>25</Plasteel>
 			<Chemfuel>15</Chemfuel>
 			<ComponentIndustrial>10</ComponentIndustrial>
-			<ComponentSpacer>5</ComponentSpacer>
+			<ComponentSpacer>4</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
@@ -725,7 +735,7 @@
 			<Steel>125</Steel>
 			<Plasteel>45</Plasteel>
 			<ComponentIndustrial>10</ComponentIndustrial>
-			<ComponentSpacer>8</ComponentSpacer>
+			<ComponentSpacer>6</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
