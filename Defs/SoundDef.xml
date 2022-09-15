@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<SoundDef>
+		<defName>BDP_HissOneShot</defName>
+		<context>MapOnly</context>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>Misc/Hiss/HissSmall</clipPath>
+					</li>
+				</grains>
+				<volumeRange>10~10</volumeRange>
+				<pitchRange>1.1~1.3</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+</Defs>

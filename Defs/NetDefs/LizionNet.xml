@@ -415,11 +415,11 @@
 		</statBases>
 		<size>(3,5)</size>
 		<costList>
-			<Gold>50</Gold>
-			<Silver>150</Silver>
-			<Uranium>50</Uranium>
-			<Steel>200</Steel>
-			<ComponentIndustrial>10</ComponentIndustrial>
+			<Gold>150</Gold>
+			<Hyperweave>150</Hyperweave>
+			<Steel>1000</Steel>
+			<ComponentIndustrial>20</ComponentIndustrial>
+			<ComponentSpacer>5</ComponentSpacer>
 		</costList>
 		<comps>
 			<li Class="PipeSystem.CompProperties_ResourceProcessor">
@@ -449,7 +449,7 @@
 				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
 		</comps>
-		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<designationCategory>Production</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
@@ -633,6 +633,12 @@
 			<li Class="PipeSystem.CompProperties_Resource">
 				<pipeNet>BDP_LizionNetwork</pipeNet>
 			</li>
+			<li Class="CompProperties_ThingContainer">
+				<compClass>CompEggContainer</compClass>
+				<stackLimit>50</stackLimit>
+				<minCountToEmpty>30</minCountToEmpty>
+				<drawStackLabel>false</drawStackLabel>
+			</li>
 			<li Class="CompProperties_Refuelable">
 				<fuelConsumptionRate>0</fuelConsumptionRate>
 				<fuelCapacity>50</fuelCapacity>
@@ -726,6 +732,12 @@
 				</results>
 				<soundAmbient>ChemfuelFiredGenerator_Ambience</soundAmbient>
 				<notWorkingKey>BDP_CantRefine</notWorkingKey>
+			</li>
+			<li Class="CompProperties_ThingContainer">
+				<compClass>CompEggContainer</compClass>
+				<stackLimit>1000</stackLimit>
+				<minCountToEmpty>100</minCountToEmpty>
+				<drawStackLabel>false</drawStackLabel>
 			</li>
 			<li Class="PipeSystem.CompProperties_Resource">
 				<pipeNet>BDP_LizionNetwork</pipeNet>

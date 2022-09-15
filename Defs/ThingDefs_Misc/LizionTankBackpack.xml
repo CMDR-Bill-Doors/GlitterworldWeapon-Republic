@@ -7,7 +7,7 @@
 		<tickerType>Normal</tickerType>
 		<description>A comfortable and spacious backpack for storing all kinds of items.</description>
 		<graphicData>
-			<texPath>Things/Apparel/Backpack/CE_Backpack</texPath>
+			<texPath>Things/Apparel/PlasmaBackpack/PlasmaBackpack</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
@@ -16,16 +16,11 @@
 			<Mass>1</Mass>
 			<Bulk>3</Bulk>
 			<BDP_LizionHeatShieldEfficiency>1</BDP_LizionHeatShieldEfficiency>
-			<BDP_LizionHeatShieldHiccupChance>0.1</BDP_LizionHeatShieldHiccupChance>
+			<BDP_LizionHeatShieldHiccupChance>0.2</BDP_LizionHeatShieldHiccupChance>
 		</statBases>
 		<equippedStatOffsets>
-			<CarryBulk>30</CarryBulk>
+			<MoveSpeed>-0.4</MoveSpeed>
 		</equippedStatOffsets>
-		<costStuffCount>40</costStuffCount>
-		<stuffCategories>
-			<li>Fabric</li>
-			<li>Leathery</li>
-		</stuffCategories>
 		<apparel>
 			<countsAsClothingForNudity>false</countsAsClothingForNudity>
 			<careIfDamaged>false</careIfDamaged>
@@ -36,14 +31,7 @@
 			<layers>
 				<li>Backpack</li>
 			</layers>
-			<tags>
-				<li>IndustrialBasic</li>
-				<li>IndustrialMilitaryBasic</li>
-			</tags>
-			<defaultOutfitTags>
-				<li>Soldier</li>
-			</defaultOutfitTags>
-			<wornGraphicPath>Things/Apparel/Backpack/CE_Backpack</wornGraphicPath>
+			<wornGraphicPath>Things/Apparel/PlasmaBackpack/PlasmaBackpack</wornGraphicPath>
 			<wornGraphicData>
 				<renderUtilityAsPack>true</renderUtilityAsPack>
 				<east>
@@ -122,6 +110,24 @@
 				<hotKey>Misc4</hotKey>
 				<chargeNoun>smokepop</chargeNoun>
 			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_LizionHeatShieldDataInterface">
+				<onIcon>UI/Icons/PlasmaShield_on</onIcon>
+				<offIcon>UI/Icons/PlasmaShield_off</offIcon>
+			</li>
 		</comps>
+		<recipeMaker>
+			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+			<researchPrerequisite>BiofuelRefining</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>FabricationBench</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<Plasteel>80</Plasteel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
 	</ThingDef>
 </Defs>

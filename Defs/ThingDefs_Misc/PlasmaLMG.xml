@@ -57,10 +57,17 @@
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>2</casingAmount>
 			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_TankFeedWeapon">
+				<onIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_on</onIcon>
+				<onLabel>Siphon on</onLabel>
+				<offIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_off</offIcon>
+				<offLabel>Siphon off</offLabel>
+			</li>
 		</comps>
 		<weaponTags>
 			<li>SpacerGun</li>
 			<li>CE_MachineGun</li>
+			<li>NoSwitch</li>
 		</weaponTags>
 		<tools>
 			<li Class="CombatExtended.ToolCE">
@@ -159,6 +166,12 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>1</casingAmount>
+			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_TankFeedWeapon">
+				<onIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_on</onIcon>
+				<onLabel>Siphon on</onLabel>
+				<offIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_off</offIcon>
+				<offLabel>Siphon off</offLabel>
 			</li>
 		</comps>
 		<weaponTags>
@@ -376,6 +389,12 @@
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>1</casingAmount>
 			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_TankFeedWeapon">
+				<onIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_on</onIcon>
+				<onLabel>Siphon on</onLabel>
+				<offIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_off</offIcon>
+				<offLabel>Siphon off</offLabel>
+			</li>
 		</comps>
 		<weaponTags>
 			<li>SpacerGun</li>
@@ -470,6 +489,12 @@
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>2</casingAmount>
 			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_TankFeedWeapon">
+				<onIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_on</onIcon>
+				<onLabel>Siphon on</onLabel>
+				<offIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_off</offIcon>
+				<offLabel>Siphon off</offLabel>
+			</li>
 		</comps>
 		<weaponTags>
 			<li>SpacerGun</li>
@@ -559,6 +584,12 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>4</casingAmount>
+			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_TankFeedWeapon">
+				<onIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_on</onIcon>
+				<onLabel>Siphon on</onLabel>
+				<offIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_off</offIcon>
+				<offLabel>Siphon off</offLabel>
 			</li>
 		</comps>
 		<weaponTags>
@@ -664,6 +695,12 @@
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>6</casingAmount>
 			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_TankFeedWeapon">
+				<onIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_on</onIcon>
+				<onLabel>Siphon on</onLabel>
+				<offIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_off</offIcon>
+				<offLabel>Siphon off</offLabel>
+			</li>
 		</comps>
 		<weaponTags>
 			<li>CE_AI_AssaultWeapon</li>
@@ -767,6 +804,12 @@
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>20</casingAmount>
 			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_TankFeedWeapon">
+				<onIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_on</onIcon>
+				<onLabel>Siphon on</onLabel>
+				<offIcon>UI/Icons/FireModes/PlasmaWeaponTankMode_off</offIcon>
+				<offLabel>Siphon off</offLabel>
+			</li>
 		</comps>
 		<weaponTags>
 			<li>GunHeavy</li>
@@ -814,7 +857,7 @@
 		<modExtensions>
 			<li Class="CombatExtended.GunDrawExtension">
 				<DrawSize>1.5,1.5</DrawSize>
-				<DrawOffset>-0.2,0.15</DrawOffset>
+				<DrawOffset>-0.3,0</DrawOffset>
 			</li>
 		</modExtensions>
 	</ThingDef>
