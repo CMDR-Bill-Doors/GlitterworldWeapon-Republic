@@ -8,6 +8,7 @@
 		<verb>refuel</verb>
 		<gerund>refueling</gerund>
 		<priorityInType>141</priorityInType>
+		<canBeDoneWhileDrafted>true</canBeDoneWhileDrafted>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
@@ -22,6 +23,7 @@
 		<verb>refuel</verb>
 		<gerund>refueling</gerund>
 		<priorityInType>141</priorityInType>
+		<canBeDoneWhileDrafted>true</canBeDoneWhileDrafted>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
@@ -36,6 +38,7 @@
 		<verb>empty</verb>
 		<gerund>emptying</gerund>
 		<priorityInType>20</priorityInType>
+		<canBeDoneWhileDrafted>true</canBeDoneWhileDrafted>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
@@ -49,8 +52,20 @@
 		<verb>empty</verb>
 		<gerund>emptying</gerund>
 		<priorityInType>20</priorityInType>
+		<canBeDoneWhileDrafted>true</canBeDoneWhileDrafted>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>FlickLizionCooler</defName>
+		<label>flick switches</label>
+		<giverClass>BDsPlasmaWeapon.WorkGiver_FlickLizionCooler</giverClass>
+		<workType>BasicWorker</workType>
+		<verb>flick switch on</verb>
+		<gerund>flicking switch on</gerund>
+		<canBeDoneWhileDrafted>true</canBeDoneWhileDrafted>
+		<priorityInType>450</priorityInType>
 	</WorkGiverDef>
 </Defs>

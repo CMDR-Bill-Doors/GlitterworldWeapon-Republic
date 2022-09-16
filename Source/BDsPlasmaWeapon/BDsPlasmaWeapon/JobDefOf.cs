@@ -9,5 +9,7 @@ namespace BDsPlasmaWeapon
     public static class JobDefOf
     {
         public static JobDef BDP_JobDefRefillFromFiller;
+
+        public static JobDef BDP_FlickLizionCooler;
     }
 }

@@ -12,7 +12,7 @@ namespace BDsPlasmaWeapon
 
         public static ThingDef BDP_LizionFillerLarge;
 
-        public static ThingDef BDP_PrimitiveGeyserCollector;
+        public static ThingDef BDP_LizionCooler;
 
         public static SoundDef BDP_HissOneShot;
     }

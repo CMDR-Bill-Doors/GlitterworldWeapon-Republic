@@ -4,6 +4,8 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 using System;
+using Verse.Sound;
+using Verse.AI;
 
 namespace BDsPlasmaWeapon
 {
@@ -25,12 +27,25 @@ namespace BDsPlasmaWeapon
 
         private int currentMode = 0;
 
+        private int targetMode = 0;
+
         private PipeNet pipeNet;
 
         public override void PostPostMake()
         {
             base.PostPostMake();
             currentMode = 0;
+        }
+
+        public bool WantsFlick()
+        {
+            return targetMode != currentMode;
+        }
+
+        public void DoFlick()
+        {
+            currentMode = targetMode;
+            SoundDefOf.FlickSwitch.PlayOneShot(new TargetInfo(parent.Position, parent.Map));
         }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -49,6 +64,7 @@ namespace BDsPlasmaWeapon
         {
             base.PostExposeData();
             Scribe_Values.Look(ref currentMode, "currentMode", 0);
+            Scribe_Values.Look(ref targetMode, "targetMode", 0);
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
@@ -80,23 +96,23 @@ namespace BDsPlasmaWeapon
 
         public override string CompInspectStringExtra()
         {
-            string inspectStringExtra = "CurrentMode".Translate() + currentMode;
+            string inspectStringExtra = "CurrentMode".Translate() + currentMode + "\n" + "TargetMode".Translate() + targetMode;
             return inspectStringExtra;
         }
 
         public void turnUp()
         {
-            if (currentMode < Props.maxModes)
+            if (targetMode < Props.maxModes)
             {
-                currentMode++;
+                targetMode++;
             }
         }
 
         public void turnDown()
         {
-            if (currentMode > 0)
+            if (targetMode > 0)
             {
-                currentMode--;
+                targetMode--;
             }
         }
 
@@ -155,6 +171,70 @@ namespace BDsPlasmaWeapon
         public CompProperties_LizionCooler()
         {
             compClass = typeof(CompLizionCooler);
+        }
+    }
+
+
+
+    public class JobDriver_FlickLizionCooler : JobDriver
+    {
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
+        {
+            return pawn.Reserve(job.targetA, job, 1, -1, null, errorOnFailed);
+        }
+
+        protected override IEnumerable<Toil> MakeNewToils()
+        {
+            this.FailOnDespawnedOrNull(TargetIndex.A);
+            yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
+            yield return Toils_General.Wait(15).FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
+            Toil finalize = new Toil();
+            finalize.initAction = delegate
+            {
+                Pawn actor = finalize.actor;
+                ThingWithComps thingWithComps = (ThingWithComps)actor.CurJob.targetA.Thing;
+                for (int i = 0; i < thingWithComps.AllComps.Count; i++)
+                {
+                    if (thingWithComps.AllComps[i] is CompLizionCooler compLizionCooler && compLizionCooler.WantsFlick())
+                    {
+                        compLizionCooler.DoFlick();
+                    }
+                }
+                actor.records.Increment(RecordDefOf.SwitchesFlicked);
+            };
+            finalize.defaultCompleteMode = ToilCompleteMode.Instant;
+            yield return finalize;
+        }
+    }
+
+    public class WorkGiver_FlickLizionCooler : WorkGiver_Scanner
+    {
+        public override PathEndMode PathEndMode => PathEndMode.Touch;
+
+        public override Danger MaxPathDanger(Pawn pawn)
+        {
+            return Danger.Deadly;
+        }
+
+        public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForDef(ThingDefOf.BDP_LizionCooler);
+
+        public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
+        {
+            CompLizionCooler comp = t.TryGetComp<CompLizionCooler>();
+            if (comp == null || !comp.WantsFlick())
+            {
+                return false;
+            }
+            if (!pawn.CanReserve(t, 1, -1, null, forced))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
+        {
+            return JobMaker.MakeJob(JobDefOf.BDP_FlickLizionCooler, t);
         }
     }
 }

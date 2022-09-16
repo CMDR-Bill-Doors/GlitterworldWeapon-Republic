@@ -1,0 +1,10 @@
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GlitterworldWeapon-Republic\Source\BDsPlasmaWeapon\BDsPlasmaWeapon\obj\Release\net472\BDsPlasmaWeapon.csproj.AssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GlitterworldWeapon-Republic\Source\BDsPlasmaWeapon\BDsPlasmaWeapon\obj\Release\net472\BDsPlasmaWeapon.GeneratedMSBuildEditorConfig.editorconfig
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GlitterworldWeapon-Republic\Source\BDsPlasmaWeapon\BDsPlasmaWeapon\obj\Release\net472\BDsPlasmaWeapon.AssemblyInfoInputs.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GlitterworldWeapon-Republic\Source\BDsPlasmaWeapon\BDsPlasmaWeapon\obj\Release\net472\BDsPlasmaWeapon.AssemblyInfo.cs
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GlitterworldWeapon-Republic\Source\BDsPlasmaWeapon\BDsPlasmaWeapon\obj\Release\net472\BDsPlasmaWeapon.csproj.CoreCompileInputs.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GlitterworldWeapon-Republic\Assemblies\Release\net472\BDsPlasmaWeapon.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GlitterworldWeapon-Republic\Assemblies\Release\net472\BDsPlasmaWeapon.pdb
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GlitterworldWeapon-Republic\Source\BDsPlasmaWeapon\BDsPlasmaWeapon\obj\Release\net472\BDsPlasmaWeapon.csproj.CopyComplete
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GlitterworldWeapon-Republic\Source\BDsPlasmaWeapon\BDsPlasmaWeapon\obj\Release\net472\BDsPlasmaWeapon.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GlitterworldWeapon-Republic\Source\BDsPlasmaWeapon\BDsPlasmaWeapon\obj\Release\net472\BDsPlasmaWeapon.pdb

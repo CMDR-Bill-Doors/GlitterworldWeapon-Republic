@@ -9,6 +9,9 @@ using System;
 using Verse.AI;
 using Verse.Noise;
 using PipeSystem;
+using static HarmonyLib.Code;
+using System.Runtime.Remoting.Messaging;
+using System.Diagnostics;
 
 namespace BDsPlasmaWeapon
 {
@@ -19,6 +22,10 @@ namespace BDsPlasmaWeapon
         private VerbTracker verbTracker;
 
         public CompProperties_Reloadable Props => props as CompProperties_Reloadable;
+
+        public CompActiveVentDataInterface compActiveVentData => parent.TryGetComp<CompActiveVentDataInterface>();
+
+        public CompGasJumpDataInterface compGasJumpData => parent.TryGetComp<CompGasJumpDataInterface>();
 
         public int MaxCharges
         {
@@ -155,25 +162,33 @@ namespace BDsPlasmaWeapon
             ThingWithComps gear = parent;
             foreach (Verb allVerb in VerbTracker.AllVerbs)
             {
-                if (allVerb.verbProps.hasStandardCommand)
+                if (allVerb is Verb_ActiveVent && compActiveVentData != null)
                 {
-                    yield return CreateVerbTargetCommand(gear, allVerb);
+                    yield return CreateActiveVentTargetCommand(allVerb as Verb_ActiveVent, compActiveVentData);
+                }
+                if (allVerb is Verb_GasJump && compGasJumpData != null)
+                {
+                    yield return CreateGasJumpTargetCommand(allVerb as Verb_GasJump, compGasJumpData);
                 }
             }
             if (Prefs.DevMode)
             {
-                Command_Action command_Action = new Command_Action();
-                command_Action.defaultLabel = "Debug: Reload to full";
-                command_Action.action = delegate
+                Command_Action command_Action = new Command_Action
                 {
-                    remainingCharges = MaxCharges;
+                    defaultLabel = "Debug: Reload to full",
+                    action = delegate
+                    {
+                        remainingCharges = MaxCharges;
+                    }
                 };
                 yield return command_Action;
-                Command_Action command_Action2 = new Command_Action();
-                command_Action2.defaultLabel = "Debug: Empty";
-                command_Action2.action = delegate
+                Command_Action command_Action2 = new Command_Action
                 {
-                    remainingCharges = 0;
+                    defaultLabel = "Debug: Empty",
+                    action = delegate
+                    {
+                        remainingCharges = 0;
+                    }
                 };
                 yield return command_Action2;
             }
@@ -186,27 +201,13 @@ namespace BDsPlasmaWeapon
             }
         }
 
-        private Command_ReloadableFromFiller CreateVerbTargetCommand(Thing gear, Verb verb)
+        private Command_ReloadableFromFiller CreateActiveVentTargetCommand(Verb_ActiveVent verb, CompActiveVentDataInterface compActiveVentData)
         {
             Command_ReloadableFromFiller command_Reloadable = new Command_ReloadableFromFiller(this);
-            command_Reloadable.defaultDesc = gear.def.description;
-            command_Reloadable.hotKey = Props.hotKey;
-            command_Reloadable.defaultLabel = verb.verbProps.label;
+            command_Reloadable.defaultDesc = compActiveVentData.Props.description;
+            command_Reloadable.defaultLabel = compActiveVentData.Props.Label;
             command_Reloadable.verb = verb;
-            if (verb.verbProps.defaultProjectile != null && verb.verbProps.commandIcon == null)
-            {
-                command_Reloadable.icon = verb.verbProps.defaultProjectile.uiIcon;
-                command_Reloadable.iconAngle = verb.verbProps.defaultProjectile.uiIconAngle;
-                command_Reloadable.iconOffset = verb.verbProps.defaultProjectile.uiIconOffset;
-                command_Reloadable.overrideColor = verb.verbProps.defaultProjectile.graphicData.color;
-            }
-            else
-            {
-                command_Reloadable.icon = ((verb.UIIcon != BaseContent.BadTex) ? verb.UIIcon : gear.def.uiIcon);
-                command_Reloadable.iconAngle = gear.def.uiIconAngle;
-                command_Reloadable.iconOffset = gear.def.uiIconOffset;
-                command_Reloadable.defaultIconColor = gear.DrawColor;
-            }
+            command_Reloadable.icon = ContentFinder<Texture2D>.Get(compActiveVentData.Props.Icon, false);
             if (!Wearer.IsColonistPlayerControlled)
             {
                 command_Reloadable.Disable();
@@ -217,7 +218,29 @@ namespace BDsPlasmaWeapon
             }
             else if (!CanBeUsed)
             {
-                command_Reloadable.Disable(DisabledReason(MinAmmoNeeded(allowForcedReload: false), MaxAmmoNeeded(allowForcedReload: false)));
+                command_Reloadable.Disable("CommandReload_NoCharges".Translate(Props.ChargeNounArgument));
+            }
+            return command_Reloadable;
+        }
+
+        private Command_ReloadableFromFiller CreateGasJumpTargetCommand(Verb_GasJump verb, CompGasJumpDataInterface compGasJumoData)
+        {
+            Command_ReloadableFromFiller command_Reloadable = new Command_ReloadableFromFiller(this);
+            command_Reloadable.defaultDesc = compGasJumoData.Props.description;
+            command_Reloadable.defaultLabel = compGasJumoData.Props.Label;
+            command_Reloadable.verb = verb;
+            command_Reloadable.icon = ContentFinder<Texture2D>.Get(compGasJumoData.Props.Icon, false);
+            if (!Wearer.IsColonistPlayerControlled)
+            {
+                command_Reloadable.Disable();
+            }
+            else if (verb.verbProps.violent && Wearer.WorkTagIsDisabled(WorkTags.Violent))
+            {
+                command_Reloadable.Disable("IsIncapableOfViolenceLower".Translate(Wearer.LabelShort, Wearer).CapitalizeFirst() + ".");
+            }
+            else if (!CanBeUsed)
+            {
+                command_Reloadable.Disable("CommandReload_NoCharges".Translate(Props.ChargeNounArgument));
             }
             return command_Reloadable;
         }
@@ -415,7 +438,6 @@ namespace BDsPlasmaWeapon
         {
             verb.DrawHighlight(LocalTargetInfo.Invalid);
         }
-
         public override bool GroupsWith(Gizmo other)
         {
             if (!base.GroupsWith(other))
@@ -429,12 +451,9 @@ namespace BDsPlasmaWeapon
             return comp.parent.def == command_Reloadable.comp.parent.def;
         }
     }
-
-
     public class JobGiver_ReloadFromFiller : ThinkNode_JobGiver
     {
         private const bool forceReloadWhenLookingForWork = false;
-
         public override float GetPriority(Pawn pawn)
         {
             return 5.9f;
