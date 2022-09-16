@@ -114,7 +114,43 @@
 				<onIcon>UI/Icons/PlasmaShield_on</onIcon>
 				<offIcon>UI/Icons/PlasmaShield_off</offIcon>
 			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_ActiveVentDataInterface">
+				<Label>active vent</Label>
+				<description>1</description>
+			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_GasJumpDataInterface">
+				<Label>eruption jump</Label>
+				<description>1</description>
+				<maxConsumption>25</maxConsumption>
+			</li>
 		</comps>
+		<verbs>
+			<li>
+				<verbClass>BDsPlasmaWeapon.Verb_ActiveVent</verbClass>
+				<label>pop smoke</label>
+				<violent>false</violent>
+				<hasStandardCommand>true</hasStandardCommand>
+				<targetable>false</targetable>
+				<nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+				<onlyManualCast>True</onlyManualCast>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Royalty">
+				<verbClass>BDsPlasmaWeapon.Verb_GasJump</verbClass>
+				<label>jump</label>
+				<violent>false</violent>
+				<hasStandardCommand>true</hasStandardCommand>
+				<onlyManualCast>True</onlyManualCast>
+				<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+				<warmupTime>0.5</warmupTime>
+				<warmupEffecter>JumpWarmupEffect</warmupEffecter>
+				<requireLineOfSight>true</requireLineOfSight>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+					<canTargetPawns>false</canTargetPawns>
+					<canTargetBuildings>false</canTargetBuildings>
+				</targetParams>
+			</li>
+		</verbs>
 		<recipeMaker>
 			<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
 			<researchPrerequisite>BiofuelRefining</researchPrerequisite>
