@@ -8,7 +8,7 @@ namespace BDsPlasmaWeapon
     {
         public CompProperties_SecondaryAmmo()
         {
-            this.compClass = typeof(CompSecondaryAmmo);
+            compClass = typeof(CompSecondaryAmmo);
         }
 
         public CompProperties_AmmoUser secondaryAmmoProps;

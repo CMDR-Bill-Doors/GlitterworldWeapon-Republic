@@ -93,7 +93,7 @@ namespace BDsPlasmaWeapon
         public override void CompTick()
         {
             base.CompTick();
-            PipeNet pipeNet = this.PipeNet;
+            PipeNet pipeNet = PipeNet;
             int ticksGame = Find.TickManager.TicksGame;
             if (ticksGame >= nextProcessTick)
             {
@@ -172,7 +172,7 @@ namespace BDsPlasmaWeapon
             }
             else
             {
-                PipeNet pipeNet = this.PipeNet;
+                PipeNet pipeNet = PipeNet;
                 pipeNet.DrawAmongStorage(ChoosedResult.countNeeded, pipeNet.storages);
                 compRefuelable.ConsumeFuel(ChoosedResult.thingCount);
             }

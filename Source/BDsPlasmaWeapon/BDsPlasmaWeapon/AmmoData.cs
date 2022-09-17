@@ -22,14 +22,14 @@ namespace BDsPlasmaWeapon
 
         public void ExposeData()
         {
-            Scribe_Values.Look<int>(ref this.curMagCount, "magCount", 0);
-            Scribe_Defs.Look<AmmoDef>(ref this.selectedAmmo, "selectedAmmo");
+            Scribe_Values.Look<int>(ref curMagCount, "magCount", 0);
+            Scribe_Defs.Look<AmmoDef>(ref selectedAmmo, "selectedAmmo");
         }
 
 
         public override string ToString()
         {
-            return "Magazine: " + this.curMagCount + ", Ammo: " + this.selectedAmmo.defName;
+            return "Magazine: " + curMagCount + ", Ammo: " + selectedAmmo.defName;
         }
     }
 }

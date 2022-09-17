@@ -5,6 +5,7 @@ using CombatExtended;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using System.Drawing;
 
 namespace BDsPlasmaWeapon
 {
@@ -20,28 +21,37 @@ namespace BDsPlasmaWeapon
 
         public CompReloadableFromFiller compReloadableFromFiller;
 
+        public bool alwaysTrue => Props.alwaysTrue;
+
         public bool isOn;
         public override void PostPostMake()
         {
             base.PostPostMake();
-            searchTank();
-            isOn = false;
+            searchTank(1, false);
+            isOn = alwaysTrue;
         }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-            searchTank();
+            searchTank(1, false);
             if (!respawningAfterLoad)
             {
-                isOn = false;
+                isOn = alwaysTrue;
             }
 
         }
 
         public override void Notify_Equipped(Pawn pawn)
         {
-            searchTank();
+            if (alwaysTrue || isOn)
+            {
+                searchTank();
+            }
+            else
+            {
+                searchTank(1, false);
+            }
         }
 
         public override void PostExposeData()
@@ -54,7 +64,7 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                return this.Verb.caster as Pawn;
+                return Verb.caster as Pawn;
             }
         }
 
@@ -75,7 +85,7 @@ namespace BDsPlasmaWeapon
             }
         }
 
-        public bool searchTank(int t)
+        public bool searchTank(int t = 1, bool notify = true)
         {
             if (CasterPawn != null)
             {
@@ -90,13 +100,19 @@ namespace BDsPlasmaWeapon
                     }
                 }
             }
-            isOn = false;
+            isOn = alwaysTrue;
+            if (notify)
+            {
+                if (CasterPawn != null)
+                {
+                    Messages.Message(string.Format("BDP_LizionTankSearchFailedWithPawn".Translate(), parent.LabelCap, CasterPawn), parent, MessageTypeDefOf.RejectInput, historical: false);
+                }
+                else
+                {
+                    Messages.Message(string.Format("BDP_LizionTankSearchFailed".Translate(), parent.LabelCap), parent, MessageTypeDefOf.RejectInput, historical: false);
+                }
+            }
             return false;
-        }
-
-        public bool searchTank()
-        {
-            return searchTank(1);
         }
 
 
@@ -109,35 +125,37 @@ namespace BDsPlasmaWeapon
                 yield break;
             }
 
-
-            string commandIcon = isOn ? Props.onIcon : Props.offIcon;
-
-            if (commandIcon == "")
+            if (!alwaysTrue)
             {
-                commandIcon = "UI/Buttons/Reload";
+                string commandIcon = isOn ? Props.onIcon : Props.offIcon;
+
+                if (commandIcon == "")
+                {
+                    commandIcon = "UI/Buttons/Reload";
+                }
+
+                Command_Action switchSecondaryLauncher = new Command_Action
+                {
+                    action = new Action(toggle),
+                    defaultLabel = isOn ? Props.onLabel : Props.offLabel,
+                    defaultDesc = Props.description,
+                    icon = ContentFinder<Texture2D>.Get(commandIcon, false),
+                    //tutorTag = "Switch between rifle and grenade launcher"
+                };
+                yield return switchSecondaryLauncher;
             }
 
-            Command_Action switchSecondaryLauncher = new Command_Action
+            Command_Action command_Action = new Command_Action
             {
-                action = new Action(toggle),
-                defaultLabel = isOn ? this.Props.onLabel : Props.offLabel,
-                defaultDesc = this.Props.description,
-                icon = ContentFinder<Texture2D>.Get(commandIcon, false),
-                //tutorTag = "Switch between rifle and grenade launcher"
-            };
-            yield return switchSecondaryLauncher;
-
-            if (Prefs.DevMode)
-            {
-                Command_Action command_Action = new Command_Action();
-                command_Action.defaultLabel = "Debug: search tank";
-                command_Action.action = delegate
+                defaultLabel = Props.reconnectLabel,
+                icon = ContentFinder<Texture2D>.Get("UI/Icons/PlasmaBackpack_Reconnect", false),
+                defaultDesc = Props.reconnectdescription,
+                action = delegate
                 {
                     searchTank();
-                    Log.Message("tank found " + (compReloadableFromFiller != null).ToString());
-                };
-                yield return command_Action;
-            }
+                }
+            };
+            yield return command_Action;
 
             yield break;
         }
@@ -146,7 +164,7 @@ namespace BDsPlasmaWeapon
         {
             if (compReloadableFromFiller == null)
             {
-                if (!searchTank())
+                if (!searchTank() && !alwaysTrue)
                 {
                     isOn = false;
                 }
@@ -169,7 +187,9 @@ namespace BDsPlasmaWeapon
         public string offIcon = "UI/Commands/DesirePower";
         public string offLabel = "take mode off";
         public string description = "";
-
+        public bool alwaysTrue = false;
+        public string reconnectLabel = "reconnect";
+        public string reconnectdescription = "";
         public CompProperties_TankFeedWeapon()
         {
             compClass = typeof(CompTankFeedWeapon);

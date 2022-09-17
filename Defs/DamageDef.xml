@@ -7,6 +7,7 @@
 		<makesBlood>false</makesBlood>
 		<canInterruptJobs>false</canInterruptJobs>
 		<externalViolence>true</externalViolence>
+		<hasForcefulImpact>false</hasForcefulImpact>
 		<deathMessage>{0} has succumbed to frostbite.</deathMessage>
 		<hediff>Frostbite</hediff>
 		<armorCategory>Heat</armorCategory>
@@ -17,7 +18,7 @@
 		<explosionCellFleck>BlastDry</explosionCellFleck>
 		<explosionColorCenter>(184, 233, 255)</explosionColorCenter>
 		<explosionColorEdge>(255, 255, 255)</explosionColorEdge>
-		<soundExplosion>Explosion_Flame</soundExplosion>
+		<soundExplosion>BDP_HissOneShot</soundExplosion>
 		<combatLogRules>Damage_Flame</combatLogRules>
 		<canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
 		<explosionSnowMeltAmount>-2</explosionSnowMeltAmount>
@@ -39,5 +40,33 @@
 		<deathMessage>{0} was pulverized by plasma bolts.</deathMessage>
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<minDamageToFragment>15</minDamageToFragment>
+	</DamageDef>
+
+	<DamageDef ParentName="Bomb">
+		<defName>LizionPlasmaFlamer</defName>
+		<label>plasma blast</label>
+		<deathMessage>{0} was barbequed by plasma jets.</deathMessage>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<minDamageToFragment>15</minDamageToFragment>
+		<hasForcefulImpact>false</hasForcefulImpact>
+		<plantDamageFactor>0.25</plantDamageFactor>
+		<modExtensions>
+			<li Class="CombatExtended.DamageDefExtensionCE">
+				<harmOnlyOutsideLayers>true</harmOnlyOutsideLayers>
+			</li>
+		</modExtensions>
+	</DamageDef>
+
+	<DamageDef>
+		<workerClass>BDsPlasmaWeapon.DamageWorker_ExtinguishWithoutShake</workerClass>
+		<defName>BDP_ExtinguishButQuiet</defName>
+		<label>extinguish</label>
+		<canInterruptJobs>false</canInterruptJobs>
+		<makesBlood>false</makesBlood>
+		<defaultDamage>999999</defaultDamage>
+		<explosionColorEdge>(1, 1, 1, 0.05)</explosionColorEdge>
+		<soundExplosion>BDP_HissOneShot</soundExplosion>
+		<harmsHealth>false</harmsHealth>
+		<combatLogRules>Damage_Extinguish</combatLogRules>
 	</DamageDef>
 </Defs>

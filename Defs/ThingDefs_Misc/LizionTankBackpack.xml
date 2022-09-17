@@ -113,15 +113,18 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_LizionHeatShieldDataInterface">
 				<onIcon>UI/Icons/PlasmaShield_on</onIcon>
 				<offIcon>UI/Icons/PlasmaShield_off</offIcon>
+				<heatstrokeMitigationConstant>10</heatstrokeMitigationConstant>
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_ActiveVentDataInterface">
 				<Label>active vent</Label>
 				<description>1</description>
+				<Icon>UI/Icons/PlasmaBackpackActiveVent</Icon>
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_GasJumpDataInterface">
 				<Label>eruption jump</Label>
 				<description>1</description>
 				<maxConsumption>25</maxConsumption>
+				<Icon>UI/Icons/PlasmaBackpackJump</Icon>
 			</li>
 		</comps>
 		<verbs>

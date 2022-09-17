@@ -48,7 +48,7 @@ namespace BDsPlasmaWeapon
             Rect textRect = inRect;
             textRect.height = overRect.height / 2;
             Text.Font = GameFont.Tiny;
-            this.Label = compAmmo.IsSecondaryAmmoSelected ? compAmmo.MainAmmoName : compAmmo.SecondaryAmmoName;
+            Label = compAmmo.IsSecondaryAmmoSelected ? compAmmo.MainAmmoName : compAmmo.SecondaryAmmoName;
             Widgets.Label(textRect, Label);
 
             // Bar

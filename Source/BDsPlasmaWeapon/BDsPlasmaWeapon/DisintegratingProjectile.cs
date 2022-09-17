@@ -1,13 +1,49 @@
 ﻿using CombatExtended;
+using RimWorld;
 using System;
 using System.Reflection;
 using UnityEngine;
 using Verse;
+using static HarmonyLib.Code;
 
 namespace BDsPlasmaWeapon
 {
     public class DisintegratingProjectile : BulletCE
     {
+        public DefModExtension_DisintegratingProjectile data
+        {
+            get
+            {
+                return def.GetModExtension<DefModExtension_DisintegratingProjectile>();
+            }
+        }
+
+        System.Random random = new System.Random();
+
+        private float fadeOutStartPercentage
+        {
+            get
+            {
+                if (data != null && data.fadeOutStartPercentage > 0 && data.fadeOutStartPercentage < 1)
+                {
+                    return data.fadeOutStartPercentage;
+                }
+                return (2 / 3f);
+            }
+        }
+
+        private float fadeOutExpandMultiplier
+        {
+            get
+            {
+                if (data != null)
+                {
+                    return data.fadeOutExpandMultiplier;
+                }
+                return 1;
+            }
+        }
+
         public PropertyInfo P_ShadowMaterial
         {
             get
@@ -57,7 +93,7 @@ namespace BDsPlasmaWeapon
                 return distance / equipmentDef.Verbs[0].range;
             }
         }
-        public float FadeOutPercent => Math.Max(0f, (float)(DistancePercent - (2 / 3f)) / (2 / 3f));
+        public float FadeOutPercent => Math.Max(0f, (float)(DistancePercent - fadeOutStartPercentage) / ((4 / 3f) - fadeOutStartPercentage));
         public override void Tick()
         {
             if (DistancePercent <= 1f)
@@ -79,13 +115,58 @@ namespace BDsPlasmaWeapon
                     Position = ((Vector3)P_LastPos.GetValue(this)).ToIntVec3();
                     Destroy();
                 }
-                Position = this.ExactPosition.ToIntVec3();
+                Position = ExactPosition.ToIntVec3();
                 if (ticksToImpact <= 0)
                 {
                     Destroy();
                 }
             }
         }
+
+        public override void Impact(Thing hitThing)
+        {
+            Map map = base.Map;
+            base.Impact(hitThing);
+            if (data != null && data.shouldStartFire)
+            {
+                if (landed)
+                {
+                    startFire(map);
+                }
+                else
+                {
+                    startFire(hitThing, map);
+                }
+            }
+        }
+
+        private void startFire(Map map)
+        {
+            if (random.NextDouble() < data.chanceOfFire)
+            {
+                float fireSize = data.minFireSize + (float)(random.NextDouble() * (data.maxFireSize - data.minFireSize));
+                Log.Message(ExactPosition.ToIntVec3().ToString());
+                FireUtility.TryStartFireIn(ExactPosition.ToIntVec3(), map, fireSize);
+            }
+        }
+
+        private void startFire(Thing thing, Map map)
+        {
+            if (random.NextDouble() < data.chanceOfFire)
+            {
+                float fireSize = data.minFireSize + (float)(random.NextDouble() * (data.maxFireSize - data.minFireSize));
+
+                if (thing is Pawn)
+                {
+                    FireUtility.TryAttachFire(thing, fireSize);
+                }
+                else if (thing.FlammableNow)
+                {
+                    FireUtility.TryStartFireIn(thing.Position, map, fireSize);
+                }
+            }
+        }
+
         public override void Draw()
         {
             if (!(FlightTicks == 0 && launcher != null && launcher is Pawn))
@@ -94,7 +175,7 @@ namespace BDsPlasmaWeapon
                 Color color = material.color;
                 color.a *= 1 - FadeOutPercent;
                 material.color = color;
-                float drawSize = 1 + FadeOutPercent;
+                float drawSize = 1 + (FadeOutPercent * fadeOutExpandMultiplier);
                 Graphics.DrawMesh(MeshPool.GridPlane(def.graphicData.drawSize * drawSize), DrawPos, DrawRotation, material, 0);
                 if (castShadow)
                 {
@@ -107,5 +188,15 @@ namespace BDsPlasmaWeapon
                 }
             }
         }
+    }
+
+    public class DefModExtension_DisintegratingProjectile : DefModExtension
+    {
+        public float fadeOutStartPercentage = (2 / 3f);
+        public float fadeOutExpandMultiplier = 1;
+        public bool shouldStartFire = false;
+        public float chanceOfFire = 1f;
+        public float minFireSize = 0.1f;
+        public float maxFireSize = 1;
     }
 }

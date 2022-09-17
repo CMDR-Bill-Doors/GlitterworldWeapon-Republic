@@ -10,7 +10,7 @@ namespace BDsPlasmaWeapon
         public override void TransformValue(StatRequest req, ref float val)
         {
             float num;
-            if (this.TryGetValue(req, out num))
+            if (TryGetValue(req, out num))
             {
                 val += num;
             }
@@ -20,7 +20,7 @@ namespace BDsPlasmaWeapon
         public override string ExplanationPart(StatRequest req)
         {
             float val;
-            return (!this.TryGetValue(req, out val)) ? null : ("CE_StatsReport_LoadedAmmo".Translate() + ": " + this.parentStat.ValueToString(val, ToStringNumberSense.Absolute, true));
+            return (!TryGetValue(req, out val)) ? null : ("CE_StatsReport_LoadedAmmo".Translate() + ": " + parentStat.ValueToString(val, ToStringNumberSense.Absolute, true));
         }
 
         // Token: 0x0600037A RID: 890 RVA: 0x000225B8 File Offset: 0x000209B8
@@ -32,8 +32,8 @@ namespace BDsPlasmaWeapon
                 CompSecondaryAmmo compAmmoUser = req.Thing.TryGetComp<CompSecondaryAmmo>();
                 if (compAmmoUser != null && !compAmmoUser.IsSharedAmmo && compAmmoUser.CurrentSecondaryAmmo != null)
                 {
-                    num = compAmmoUser.CurrentSecondaryAmmo.GetStatValueAbstract(this.parentStat, null) * (float)compAmmoUser.ScondaryMagCount;
-                    if (this.parentStat == CE_StatDefOf.Bulk)
+                    num = compAmmoUser.CurrentSecondaryAmmo.GetStatValueAbstract(parentStat, null) * (float)compAmmoUser.ScondaryMagCount;
+                    if (parentStat == CE_StatDefOf.Bulk)
                     {
                         num *= compAmmoUser.Props.loadedAmmoBulkFactor;
                     }

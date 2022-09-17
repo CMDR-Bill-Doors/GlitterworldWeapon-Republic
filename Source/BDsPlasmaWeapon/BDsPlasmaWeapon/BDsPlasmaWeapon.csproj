@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <BaseOutputPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\GlitterworldWeapon-Republic\Assemblies</BaseOutputPath>
+    <BaseOutputPath></BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

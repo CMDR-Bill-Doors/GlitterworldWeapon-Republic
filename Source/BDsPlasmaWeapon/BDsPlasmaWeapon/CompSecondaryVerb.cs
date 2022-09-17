@@ -13,7 +13,7 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                return (CompProperties_SecondaryVerb)this.props;
+                return (CompProperties_SecondaryVerb)props;
             }
         }
 
@@ -21,7 +21,7 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                return this.isSecondaryVerbSelected;
+                return isSecondaryVerbSelected;
             }
         }
 
@@ -29,12 +29,12 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                if (this.EquipmentSource.PrimaryVerb == null)
+                if (EquipmentSource.PrimaryVerb == null)
                 {
                     return null;
                 }
 
-                Verb_LaunchProjectileCE verb = this.EquipmentSource.PrimaryVerb as Verb_LaunchProjectileCE;
+                Verb_LaunchProjectileCE verb = EquipmentSource.PrimaryVerb as Verb_LaunchProjectileCE;
                 return verb;
             }
         }
@@ -45,15 +45,15 @@ namespace BDsPlasmaWeapon
             {
                 if (compEquippableInt != null)
                 {
-                    return this.compEquippableInt;
+                    return compEquippableInt;
                 }
-                this.compEquippableInt = this.parent.TryGetComp<CompEquippable>();
+                compEquippableInt = parent.TryGetComp<CompEquippable>();
                 if (compEquippableInt == null)
                 {
-                    Log.ErrorOnce(this.parent.LabelCap + " has CompSecondaryVerb but no CompEquippable", 50020);
+                    Log.ErrorOnce(parent.LabelCap + " has CompSecondaryVerb but no CompEquippable", 50020);
 
                 }
-                return this.compEquippableInt;
+                return compEquippableInt;
             }
         }
 
@@ -61,7 +61,7 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                return this.Verb.caster as Pawn;
+                return Verb.caster as Pawn;
             }
         }
 
@@ -70,11 +70,11 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                if (this.verbInt == null)
+                if (verbInt == null)
                 {
-                    this.verbInt = this.EquipmentSource.PrimaryVerb;
+                    verbInt = EquipmentSource.PrimaryVerb;
                 }
-                return this.verbInt;
+                return verbInt;
             }
         }
 
@@ -96,13 +96,13 @@ namespace BDsPlasmaWeapon
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
 
-            if (this.CasterPawn != null && !this.CasterPawn.Faction.Equals(Faction.OfPlayer))
+            if (CasterPawn != null && !CasterPawn.Faction.Equals(Faction.OfPlayer))
             {
                 yield break;
             }
 
 
-            string commandIcon = IsSecondaryVerbSelected ? this.Props.secondaryCommandIcon : this.Props.mainCommandIcon;
+            string commandIcon = IsSecondaryVerbSelected ? Props.secondaryCommandIcon : Props.mainCommandIcon;
 
             if (commandIcon == "")
             {
@@ -111,9 +111,9 @@ namespace BDsPlasmaWeapon
 
             Command_Action switchSecondaryLauncher = new Command_Action
             {
-                action = new Action(this.SwitchVerb),
-                defaultLabel = IsSecondaryVerbSelected ? this.Props.secondaryWeaponLabel : this.Props.mainWeaponLabel,
-                defaultDesc = this.Props.description,
+                action = new Action(SwitchVerb),
+                defaultLabel = IsSecondaryVerbSelected ? Props.secondaryWeaponLabel : Props.mainWeaponLabel,
+                defaultDesc = Props.description,
                 icon = ContentFinder<Texture2D>.Get(commandIcon, false),
                 //tutorTag = "Switch between rifle and grenade launcher"
             };
@@ -126,11 +126,11 @@ namespace BDsPlasmaWeapon
         {
             base.PostExposeData();
 
-            Scribe_Values.Look<bool>(ref this.isSecondaryVerbSelected, "PLA_useSecondaryVerb", false);
+            Scribe_Values.Look<bool>(ref isSecondaryVerbSelected, "PLA_useSecondaryVerb", false);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
-                this.PostAmmoDataLoaded();
+                PostAmmoDataLoaded();
             }
         }
 
@@ -139,12 +139,12 @@ namespace BDsPlasmaWeapon
             if (!IsSecondaryVerbSelected)
             {
 
-                this.EquipmentSource.verbTracker.AllVerbs.Replace(this.EquipmentSource.PrimaryVerb, secondaryVerb);
-                this.isSecondaryVerbSelected = true;
+                EquipmentSource.PrimaryVerb.verbProps = Props.verbProps;
+                isSecondaryVerbSelected = true;
                 return;
             }
-            this.EquipmentSource.verbTracker.AllVerbs.Replace(this.EquipmentSource.PrimaryVerb, mainVerb);
-            this.isSecondaryVerbSelected = false;
+            EquipmentSource.PrimaryVerb.verbProps = parent.def.Verbs[0];
+            isSecondaryVerbSelected = false;
         }
 
         private void PostAmmoDataLoaded()
@@ -154,21 +154,19 @@ namespace BDsPlasmaWeapon
 
             if (isSecondaryVerbSelected)
             {
-                this.EquipmentSource.verbTracker.AllVerbs.Replace(this.EquipmentSource.PrimaryVerb, secondaryVerb);
+                EquipmentSource.verbTracker.AllVerbs.Replace(EquipmentSource.PrimaryVerb, secondaryVerb);
             }
         }
 
         public void InitData()
         {
-            mainVerb = this.EquipmentSource.PrimaryVerb;
+            mainVerb = EquipmentSource.PrimaryVerb;
 
-            Log.Message("Has caster: " + (mainVerb.caster != null));
-
-            secondaryVerb = (Verb)Activator.CreateInstance(this.Props.verbProps.verbClass);
-            secondaryVerb.verbProps = this.Props.verbProps;
-            secondaryVerb.verbTracker = new VerbTracker(this.EquipmentSource);
-            secondaryVerb.caster = this.mainVerb.Caster;
-            secondaryVerb.castCompleteCallback = this.mainVerb.castCompleteCallback;
+            secondaryVerb = (Verb)Activator.CreateInstance(Props.verbProps.verbClass);
+            secondaryVerb.verbProps = Props.verbProps;
+            secondaryVerb.verbTracker = new VerbTracker(EquipmentSource);
+            secondaryVerb.caster = mainVerb.Caster;
+            secondaryVerb.castCompleteCallback = mainVerb.castCompleteCallback;
         }
 
 

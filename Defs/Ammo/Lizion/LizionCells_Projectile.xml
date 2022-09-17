@@ -8,6 +8,86 @@
 		</graphicData>
 	</ThingDef>
 
+
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_LizionCellFlamethrower</defName>
+		<label>Lizion Cell</label>
+		<ammoTypes>
+			<Ammo_LizionCellNormal>Projectile_LizionFlameThrower</Ammo_LizionCellNormal>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+
+	<ThingDef ParentName="BaseLizionBullet">
+		<defName>Projectile_LizionFlameThrower</defName>
+		<label>Plasma flame</label>
+		<graphicData>
+			<texPath>Things/Projectile/Charged/charge_regular</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(200,100,100)</color>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>(3,1.4)</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<spreadMult>10</spreadMult>
+			<pelletCount>3</pelletCount>
+			<speed>50</speed>
+			<damageDef>LizionPlasmaFlamer</damageDef>
+			<damageAmountBase>5</damageAmountBase>
+			<armorPenetrationBlunt>14.52</armorPenetrationBlunt>
+			<preExplosionSpawnChance>0.2</preExplosionSpawnChance>
+			<preExplosionSpawnThingDef>Fire</preExplosionSpawnThingDef>
+			<secondaryDamage>
+				<li>
+					<def>Flame</def>
+					<amount>4</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+				<fadeOutStartPercentage>0.25</fadeOutStartPercentage>
+				<fadeOutExpandMultiplier>5</fadeOutExpandMultiplier>
+				<shouldStartFire>true</shouldStartFire>
+				<chanceOfFire>0.2</chanceOfFire>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseLizionBullet">
+		<defName>Projectile_LizionFlameThrowerCold</defName>
+		<label>lizion gas</label>
+		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+		<graphicData>
+			<texPath>Things/Gas/Puff</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>(1.4,1.4)</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<spreadMult>10</spreadMult>
+			<speed>50</speed>
+			<damageDef>LizionExplosion</damageDef>
+			<damageAmountBase>2</damageAmountBase>
+			<explosionRadius>1.5</explosionRadius>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_ExplosiveCE">
+				<explosiveDamageType>Extinguish</explosiveDamageType>
+				<explosiveRadius>1.5</explosiveRadius>
+				<explosionSound>BDP_HissOneShot</explosionSound>
+				<preExplosionSpawnThingDef>Filth_Water</preExplosionSpawnThingDef>
+				<preExplosionSpawnChance>0.03</preExplosionSpawnChance>
+			</li>
+		</comps>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+				<fadeOutStartPercentage>0.25</fadeOutStartPercentage>
+				<fadeOutExpandMultiplier>5</fadeOutExpandMultiplier>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
 	<!-- ================== Pistol ================== -->
 
 	<CombatExtended.AmmoSetDef>
@@ -63,6 +143,13 @@
 				</li>
 			</secondaryDamage>
 		</projectile>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+				<shouldStartFire>true</shouldStartFire>
+				<chanceOfFire>0.5</chanceOfFire>
+				<maxFireSize>0.3</maxFireSize>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="BaseLizionBullet">
@@ -167,6 +254,13 @@
 				</li>
 			</secondaryDamage>
 		</projectile>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+				<shouldStartFire>true</shouldStartFire>
+				<chanceOfFire>0.3</chanceOfFire>
+				<maxFireSize>0.3</maxFireSize>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="BaseLizionBullet">
@@ -241,12 +335,12 @@
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
 			<damageDef>LizionPlasma</damageDef>
-			<damageAmountBase>10</damageAmountBase>
+			<damageAmountBase>8</damageAmountBase>
 			<armorPenetrationBlunt>44.52</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame_Secondary</def>
-					<amount>8</amount>
+					<amount>6</amount>
 				</li>
 			</secondaryDamage>
 		</projectile>
@@ -263,15 +357,22 @@
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<speed>200</speed>
 			<damageDef>LizionPlasma</damageDef>
-			<damageAmountBase>10</damageAmountBase>
+			<damageAmountBase>8</damageAmountBase>
 			<armorPenetrationBlunt>44.52</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame</def>
-					<amount>8</amount>
+					<amount>6</amount>
 				</li>
 			</secondaryDamage>
 		</projectile>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+				<shouldStartFire>true</shouldStartFire>
+				<chanceOfFire>0.6</chanceOfFire>
+				<minFireSize>0.3</minFireSize>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="BaseLizionBullet">
@@ -308,7 +409,7 @@
 			<spreadMult>50</spreadMult>
 			<speed>200</speed>
 			<damageDef>LizionPlasma</damageDef>
-			<damageAmountBase>20</damageAmountBase>
+			<damageAmountBase>16</damageAmountBase>
 			<explosionRadius>0.5</explosionRadius>
 			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
 			<secondaryDamage>
@@ -376,6 +477,14 @@
 				</li>
 			</secondaryDamage>
 		</projectile>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+				<shouldStartFire>true</shouldStartFire>
+				<chanceOfFire>0.8</chanceOfFire>
+				<maxFireSize>0.3</maxFireSize>
+				<minFireSize>1.5</minFireSize>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="BaseLizionBullet">
@@ -484,6 +593,14 @@
 				</li>
 			</secondaryDamage>
 		</projectile>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+				<shouldStartFire>true</shouldStartFire>
+				<chanceOfFire>0.9</chanceOfFire>
+				<minFireSize>0.5</minFireSize>
+				<maxFireSize>1.5</maxFireSize>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="BaseLizionBullet">

@@ -30,7 +30,7 @@ namespace BDsPlasmaWeapon
             {
                 return true;
             }
-            if (gun != null && gun.isOn && gun.searchTank((verb.verbProps as VerbPropertiesCE).ammoConsumedPerShotCount))
+            if (gun != null && gun.isOn && gun.searchTank((verb.verbProps as VerbPropertiesCE).ammoConsumedPerShotCount, false))
             {
                 return true;
             }

@@ -59,6 +59,7 @@ namespace BDsPlasmaWeapon
             }
         }
 
+
         public ThingDef AmmoDef => Props.ammoDef;
 
         public bool CanBeUsed => remainingCharges > 0;
@@ -292,7 +293,7 @@ namespace BDsPlasmaWeapon
                 {
                     return;
                 }
-                int num = Mathf.Clamp(ammo.stackCount / Props.ammoCountPerCharge, 0, MaxCharges - remainingCharges);
+                int num = Mathf.Clamp(ammo.stackCount / Props.ammoCountPerCharge, 0, emptySpace);
                 ammo.SplitOff(num * Props.ammoCountPerCharge).Destroy();
                 remainingCharges += num;
             }
@@ -325,8 +326,10 @@ namespace BDsPlasmaWeapon
             {
                 return Props.ammoCountToRefill;
             }
-            return Props.ammoCountPerCharge * (MaxCharges - remainingCharges);
+            return Props.ammoCountPerCharge * (emptySpace);
         }
+
+        public int emptySpace => MaxCharges - remainingCharges;
 
         public int MaxAmmoAmount()
         {
@@ -362,23 +365,29 @@ namespace BDsPlasmaWeapon
             if (amount <= remainingCharges)
             {
                 remainingCharges -= amount;
-                TargetInfo a = parent;
                 for (int i = 0; i < amount; i++)
                 {
                     Effecter effecter = BDStatDefOf.LizionCoolerHigh.Spawn(parent.Position, parent.Map);
-                    effecter.Trigger(a, TargetInfo.Invalid);
+                    effecter.Trigger(parent, TargetInfo.Invalid);
                 }
             }
             else
             {
                 amount = remainingCharges;
                 remainingCharges = 0;
-                ThingDefOf.BDP_HissOneShot.PlayOneShot(new TargetInfo(parent.Position, parent.Map));
-                TargetInfo a = parent;
+                ThingDefOf.BDP_HissOneShot.PlayOneShot(parent);
+                if (parent.ParentHolder is Pawn pawn)
+                {
+                    Messages.Message(string.Format("BDP_LizionTankDepletedWithPawn".Translate(), parent.LabelCap, pawn), parent, MessageTypeDefOf.RejectInput, historical: false);
+                }
+                else
+                {
+                    Messages.Message(string.Format("BDP_LizionTankDepleted".Translate(), parent.LabelCap), parent, MessageTypeDefOf.RejectInput, historical: false);
+                }
                 for (int i = 0; i < amount; i++)
                 {
                     Effecter effecter = BDStatDefOf.LizionCoolerHigh.Spawn(parent.Position, parent.Map);
-                    effecter.Trigger(a, TargetInfo.Invalid);
+                    effecter.Trigger(parent, TargetInfo.Invalid);
                 }
             }
         }
@@ -403,13 +412,12 @@ namespace BDsPlasmaWeapon
             {
                 if (remainingCharges + amount > MaxCharges)
                 {
-                    amount = MaxCharges - remainingCharges;
+                    amount = emptySpace;
                 }
-                ThingDefOf.BDP_HissOneShot.PlayOneShot(new TargetInfo(parent.Position, parent.Map));
+                ThingDefOf.BDP_HissOneShot.PlayOneShot(parent);
                 remainingCharges += amount;
-                TargetInfo a = parent;
                 Effecter effecter = BDStatDefOf.LizionCoolerLow.Spawn(parent.Position, parent.Map);
-                effecter.Trigger(a, TargetInfo.Invalid);
+                effecter.Trigger(parent, TargetInfo.Invalid);
             }
         }
 
@@ -453,7 +461,7 @@ namespace BDsPlasmaWeapon
     }
     public class JobGiver_ReloadFromFiller : ThinkNode_JobGiver
     {
-        private const bool forceReloadWhenLookingForWork = false;
+        private const bool forceReloadWhenLookingForWork = true;
         public override float GetPriority(Pawn pawn)
         {
             return 5.9f;
@@ -542,9 +550,9 @@ namespace BDsPlasmaWeapon
         {
             CompReloadableFromFiller compReloadableFromFiller = Gear?.TryGetComp<CompReloadableFromFiller>();
             PipeNet filler = job.GetTarget(TargetIndex.B).Thing.TryGetComp<CompLizionCellFiller>().PipeNet; int LizionAvaliable = (int)filler.Stored;
-            if (LizionAvaliable > compReloadableFromFiller.MaxAmmoNeeded(true))
+            if (LizionAvaliable > compReloadableFromFiller.emptySpace)
             {
-                LizionAvaliable = compReloadableFromFiller.MaxAmmoNeeded(true);
+                LizionAvaliable = compReloadableFromFiller.emptySpace;
             }
             this.FailOn(() => compReloadableFromFiller == null);
             this.FailOn(() => compReloadableFromFiller.Wearer != pawn);

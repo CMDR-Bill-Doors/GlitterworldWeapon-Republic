@@ -14,7 +14,7 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                return (CompProperties_SecondaryAmmo)this.props;
+                return (CompProperties_SecondaryAmmo)props;
             }
         }
 
@@ -22,12 +22,12 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                if (this.CompEquippable.PrimaryVerb == null)
+                if (CompEquippable.PrimaryVerb == null)
                 {
                     return null;
                 }
 
-                Verb_LaunchProjectileCE verb = this.CompEquippable.PrimaryVerb as Verb_LaunchProjectileCE;
+                Verb_LaunchProjectileCE verb = CompEquippable.PrimaryVerb as Verb_LaunchProjectileCE;
                 return verb;
             }
         }
@@ -40,11 +40,11 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                if (this.compAmmo == null && base.parent != null)
+                if (compAmmo == null && base.parent != null)
                 {
-                    this.compAmmo = base.parent.TryGetComp<CompAmmoUser>();
+                    compAmmo = base.parent.TryGetComp<CompAmmoUser>();
                 }
-                return this.compAmmo;
+                return compAmmo;
             }
         }
 
@@ -52,11 +52,11 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                if (this.compEquippable == null && base.parent != null)
+                if (compEquippable == null && base.parent != null)
                 {
-                    this.compEquippable = base.parent.TryGetComp<CompEquippable>();
+                    compEquippable = base.parent.TryGetComp<CompEquippable>();
                 }
-                if (this.compEquippable == null)
+                if (compEquippable == null)
                 {
                     Log.Error("Can not get CompEquippable.");
                 }
@@ -68,15 +68,15 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                if (this.compInventory == null && this.Holder != null)
+                if (compInventory == null && Holder != null)
                 {
-                    this.compInventory = this.Holder.TryGetComp<CompInventory>();
+                    compInventory = Holder.TryGetComp<CompInventory>();
                 }
-                if (this.compInventory == null)
+                if (compInventory == null)
                 {
                     Log.Error("Can not get CompInventory.");
                 }
-                return this.compInventory;
+                return compInventory;
             }
         }
 
@@ -102,11 +102,11 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                if (this.originAmmoProps == null)
+                if (originAmmoProps == null)
                 {
                     Log.Error("CompProperties_AmmoUser 'originAmmoProps' not initialized");
                 }
-                return this.originAmmoProps;
+                return originAmmoProps;
             }
         }
 
@@ -114,11 +114,11 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                if (this.secondaryAmmoProps == null)
+                if (secondaryAmmoProps == null)
                 {
                     Log.Error("CompProperties_AmmoUser 'secondaryAmmoProps' not initialized");
                 }
-                return this.secondaryAmmoProps;
+                return secondaryAmmoProps;
             }
         }
 
@@ -152,7 +152,7 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                return this.OriginAmmoSetData.ammoSet.label;
+                return OriginAmmoSetData.ammoSet.label;
             }
         }
 
@@ -160,7 +160,7 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                return this.SecondaryAmmoSetData.ammoSet.label;
+                return SecondaryAmmoSetData.ammoSet.label;
             }
         }
 
@@ -179,9 +179,9 @@ namespace BDsPlasmaWeapon
             {
                 if (mainAmmo == null)
                 {
-                    this.mainAmmo = new AmmoData(0, this.CompAmmo.Props.ammoSet.ammoTypes[0].ammo);
+                    mainAmmo = new AmmoData(0, CompAmmo.Props.ammoSet.ammoTypes[0].ammo);
                 }
-                return this.mainAmmo;
+                return mainAmmo;
             }
         }
 
@@ -191,9 +191,9 @@ namespace BDsPlasmaWeapon
             {
                 if (secondaryAmmo == null)
                 {
-                    this.secondaryAmmo = new AmmoData(0, this.Props.secondaryAmmoProps.ammoSet.ammoTypes[0].ammo);
+                    secondaryAmmo = new AmmoData(0, Props.secondaryAmmoProps.ammoSet.ammoTypes[0].ammo);
                 }
-                return this.secondaryAmmo;
+                return secondaryAmmo;
             }
         }
 
@@ -243,7 +243,7 @@ namespace BDsPlasmaWeapon
                 SaveAmmo(MainAmmoData);
                 LoadAmmo(SecondaryAmmoData);
                 LoadAmmoProps(SecondaryAmmoSetData);
-                this.CompEquippable.PrimaryVerb.verbProps = secondaryVerbProps;
+                CompEquippable.PrimaryVerb.verbProps = secondaryVerbProps;
                 useSecondaryAmmo = true;
             }
             else
@@ -251,7 +251,7 @@ namespace BDsPlasmaWeapon
                 SaveAmmo(SecondaryAmmoData);
                 LoadAmmo(MainAmmoData);
                 LoadAmmoProps(OriginAmmoSetData);
-                this.CompEquippable.PrimaryVerb.verbProps = mainVerbProps;
+                CompEquippable.PrimaryVerb.verbProps = mainVerbProps;
                 useSecondaryAmmo = false;
             }
 
@@ -260,7 +260,7 @@ namespace BDsPlasmaWeapon
                 TryReload();
             }
 
-            if (this.Holder != null)
+            if (Holder != null)
             {
                 CompInventory.UpdateInventory();
             }
@@ -274,9 +274,9 @@ namespace BDsPlasmaWeapon
             {
                 return;
             }
-            this.CompAmmo.ResetAmmoCount(data.selectedAmmo);
-            this.CompAmmo.CurMagCount = data.curMagCount;
-            this.CompAmmo.SelectedAmmo = data.selectedAmmo;
+            CompAmmo.ResetAmmoCount(data.selectedAmmo);
+            CompAmmo.CurMagCount = data.curMagCount;
+            CompAmmo.SelectedAmmo = data.selectedAmmo;
         }
 
         private void SaveAmmo(AmmoData data)
@@ -285,8 +285,8 @@ namespace BDsPlasmaWeapon
             {
                 return;
             }
-            data.curMagCount = this.CompAmmo.CurMagCount;
-            data.selectedAmmo = this.CompAmmo.SelectedAmmo;
+            data.curMagCount = CompAmmo.CurMagCount;
+            data.selectedAmmo = CompAmmo.SelectedAmmo;
         }
 
         private void LoadAmmoProps(CompProperties_AmmoUser ammoProps)
@@ -295,7 +295,7 @@ namespace BDsPlasmaWeapon
             {
                 return;
             }
-            this.CompAmmo.props = ammoProps;
+            CompAmmo.props = ammoProps;
         }
 
 
@@ -305,33 +305,33 @@ namespace BDsPlasmaWeapon
 
             if (Scribe.mode == LoadSaveMode.Saving)
             {
-                this.PreSaveData();
+                PreSaveData();
             }
 
-            Scribe_Values.Look<bool>(ref this.useSecondaryAmmo, "CE_useSecondaryAmmo", false);
-            Scribe_Deep.Look<AmmoData>(ref this.mainAmmo, "CE_mainAmmoData", null);
-            Scribe_Deep.Look<AmmoData>(ref this.secondaryAmmo, "CE_secondaryAmmoProps", null);
+            Scribe_Values.Look<bool>(ref useSecondaryAmmo, "CE_useSecondaryAmmo", false);
+            Scribe_Deep.Look<AmmoData>(ref mainAmmo, "CE_mainAmmoData", null);
+            Scribe_Deep.Look<AmmoData>(ref secondaryAmmo, "CE_secondaryAmmoProps", null);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
-                this.PostAmmoDataLoaded();
+                PostAmmoDataLoaded();
             }
         }
 
         private void PreSaveData()
         {
-            bool check = this.CompAmmo.Props == this.secondaryAmmoProps;
+            bool check = CompAmmo.Props == secondaryAmmoProps;
 
             if (!check)
             {
-                this.MainAmmoData.curMagCount = this.CompAmmo.CurMagCount;
-                this.MainAmmoData.selectedAmmo = this.CompAmmo.SelectedAmmo;
+                MainAmmoData.curMagCount = CompAmmo.CurMagCount;
+                MainAmmoData.selectedAmmo = CompAmmo.SelectedAmmo;
 
                 return;
             }
 
-            this.SecondaryAmmoData.curMagCount = this.CompAmmo.CurMagCount;
-            this.SecondaryAmmoData.selectedAmmo = this.CompAmmo.SelectedAmmo;
+            SecondaryAmmoData.curMagCount = CompAmmo.CurMagCount;
+            SecondaryAmmoData.selectedAmmo = CompAmmo.SelectedAmmo;
 
             return;
         }
@@ -339,18 +339,17 @@ namespace BDsPlasmaWeapon
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-            if (this.Props.secondaryAmmoProps == null)
+            if (Props.secondaryAmmoProps == null)
             {
                 Log.Error("Prop secondaryAmmoProps not initialized");
             }
 
-            if (this.Props.secondaryVerb == null)
+            if (Props.secondaryVerb == null)
             {
                 Log.Error("Prop secondaryVerb not initialized");
             }
 
             InitData();
-            Log.Message(IsSharedAmmo.ToString());
         }
 
         private void PostAmmoDataLoaded()
@@ -360,48 +359,48 @@ namespace BDsPlasmaWeapon
 
             if (useSecondaryAmmo)
             {
-                LoadAmmo(this.SecondaryAmmoData);
-                LoadAmmoProps(this.secondaryAmmoProps);
-                this.CompEquippable.PrimaryVerb.verbProps = secondaryVerbProps;
+                LoadAmmo(SecondaryAmmoData);
+                LoadAmmoProps(secondaryAmmoProps);
+                CompEquippable.PrimaryVerb.verbProps = secondaryVerbProps;
             }
         }
 
         public void InitData()
         {
-            mainVerbProps = this.CompEquippable.PrimaryVerb.verbProps;
-            secondaryVerbProps = this.Props.secondaryVerb;
+            mainVerbProps = CompEquippable.PrimaryVerb.verbProps;
+            secondaryVerbProps = Props.secondaryVerb;
 
-            if (this.secondaryAmmoCharges == null && this.Props.secondaryWeaponChargeSpeeds != null)
+            if (secondaryAmmoCharges == null && Props.secondaryWeaponChargeSpeeds != null)
             {
                 CompProperties_Charges chargesProps = new CompProperties_Charges();
-                chargesProps.chargeSpeeds = this.Props.secondaryWeaponChargeSpeeds;
-                this.secondaryAmmoCharges = new CompCharges();
-                this.secondaryAmmoCharges.props = chargesProps;
+                chargesProps.chargeSpeeds = Props.secondaryWeaponChargeSpeeds;
+                secondaryAmmoCharges = new CompCharges();
+                secondaryAmmoCharges.props = chargesProps;
             }
 
             if (HasAmmoUser)
             {
-                if (this.originAmmoProps == null)
+                if (originAmmoProps == null)
                 {
-                    this.originAmmoProps = this.CompAmmo.Props;
+                    originAmmoProps = CompAmmo.Props;
                 }
 
-                if (this.secondaryAmmoProps == null)
+                if (secondaryAmmoProps == null)
                 {
-                    this.secondaryAmmoProps = this.Props.secondaryAmmoProps;
+                    secondaryAmmoProps = Props.secondaryAmmoProps;
                 }
             }
 
             //Command Icon
 
-            if (this.Props.mainCommandIcon == "")
+            if (Props.mainCommandIcon == "")
             {
-                this.Props.mainCommandIcon = "UI/Buttons/Reload";
+                Props.mainCommandIcon = "UI/Buttons/Reload";
             }
 
-            if (this.Props.secondaryCommandIcon == "")
+            if (Props.secondaryCommandIcon == "")
             {
-                this.Props.secondaryCommandIcon = "UI/Buttons/Reload";
+                Props.secondaryCommandIcon = "UI/Buttons/Reload";
             }
 
             //Is shared ammo
@@ -410,7 +409,7 @@ namespace BDsPlasmaWeapon
             HashSet<AmmoDef> ammoCheck = new HashSet<AmmoDef>();
             isSharedAmmo = true;
 
-            foreach (var comp in this.parent.def.comps)
+            foreach (var comp in parent.def.comps)
             {
                 compProps = comp as CompProperties_AmmoUser;
                 if (compProps != null)
@@ -419,7 +418,7 @@ namespace BDsPlasmaWeapon
                 }
             }
 
-            if (compProps == null || this.Props.secondaryAmmoProps.ammoSet.ammoTypes.Count != compProps.ammoSet.ammoTypes.Count)
+            if (compProps == null || Props.secondaryAmmoProps.ammoSet.ammoTypes.Count != compProps.ammoSet.ammoTypes.Count)
             {
                 isSharedAmmo = false;
                 return;
@@ -458,12 +457,12 @@ namespace BDsPlasmaWeapon
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
-            if (this.CompAmmo != null && !this.CompAmmo.UseAmmo)
+            if (CompAmmo != null && !CompAmmo.UseAmmo)
             {
                 yield break;
             }
 
-            if (this.Holder != null && !this.Holder.Faction.Equals(Faction.OfPlayer))
+            if (Holder != null && !Holder.Faction.Equals(Faction.OfPlayer))
             {
                 yield break;
             }
@@ -472,10 +471,10 @@ namespace BDsPlasmaWeapon
 
             yield return new Command_Action
             {
-                action = new Action(this.SwitchLauncher),
-                defaultDesc = this.Props.description,
-                icon = ContentFinder<Texture2D>.Get(IsSecondaryAmmoSelected ? this.Props.secondaryCommandIcon : this.Props.mainCommandIcon, false),
-                defaultLabel = IsSecondaryAmmoSelected ? this.Props.secondaryWeaponLabel : this.Props.mainWeaponLabel,
+                action = new Action(SwitchLauncher),
+                defaultDesc = Props.description,
+                icon = ContentFinder<Texture2D>.Get(IsSecondaryAmmoSelected ? Props.secondaryCommandIcon : Props.mainCommandIcon, false),
+                defaultLabel = IsSecondaryAmmoSelected ? Props.secondaryWeaponLabel : Props.mainWeaponLabel,
             };
 
             if (IsSharedAmmo)
@@ -493,27 +492,27 @@ namespace BDsPlasmaWeapon
 
         private void EnableChargeSpeed()
         {
-            //Log.Message("Enabling: has charges: " + (this.secondaryAmmoCharges != null) + ", has attack verb: " + (this.AttackVerb != null));
-            if (this.secondaryAmmoCharges == null || this.AttackVerb == null)
+            //Log.Message("Enabling: has charges: " + (secondaryAmmoCharges != null) + ", has attack verb: " + (AttackVerb != null));
+            if (secondaryAmmoCharges == null || AttackVerb == null)
             {
                 return;
             }
 
-            this.parent.AllComps.Add(this.secondaryAmmoCharges);
-            this.AttackVerb.compCharges = this.secondaryAmmoCharges;
+            parent.AllComps.Add(secondaryAmmoCharges);
+            AttackVerb.compCharges = secondaryAmmoCharges;
 
             //Log.Message("enabled");
         }
 
         private void DisableChargeSpeed()
         {
-            //Log.Message("Disabling: has charges: " + (this.secondaryAmmoCharges != null) + ", has attack verb: " + (this.AttackVerb != null));
-            if (this.secondaryAmmoCharges == null || this.AttackVerb == null)
+            //Log.Message("Disabling: has charges: " + (secondaryAmmoCharges != null) + ", has attack verb: " + (AttackVerb != null));
+            if (secondaryAmmoCharges == null || AttackVerb == null)
             {
                 return;
             }
-            this.parent.AllComps.Remove(this.secondaryAmmoCharges);
-            this.AttackVerb.compCharges = null;
+            parent.AllComps.Remove(secondaryAmmoCharges);
+            AttackVerb.compCharges = null;
 
             //Log.Message("disabled");
         }

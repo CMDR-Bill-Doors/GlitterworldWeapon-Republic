@@ -46,7 +46,7 @@ namespace BDsPlasmaWeapon
             {
                 if (BDStatDefOf.BDP_CasingReturn != null)
                 {
-                    return this.parent.GetStatValue(BDStatDefOf.BDP_CasingReturn);
+                    return parent.GetStatValue(BDStatDefOf.BDP_CasingReturn);
                 }
                 Log.Error("Found BDsPlasmaWeapon.CompCasingReturn without BDP_CasingReturn in stats");
                 return 0;

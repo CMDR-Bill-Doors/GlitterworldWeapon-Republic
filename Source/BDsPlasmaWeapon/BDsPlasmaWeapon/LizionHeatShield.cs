@@ -6,6 +6,9 @@ using Verse;
 using System;
 using static HarmonyLib.Code;
 using System.Drawing;
+using CombatExtended;
+using Verse.Grammar;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BDsPlasmaWeapon
 {
@@ -16,6 +19,8 @@ namespace BDsPlasmaWeapon
         private float efficiency => this.GetStatValue(StatDefOf.BDP_LizionHeatShieldEfficiency);
 
         private float hiccupChance => this.GetStatValue(StatDefOf.BDP_LizionHeatShieldHiccupChance);
+
+        private int tickNextCheck = 0;
 
         protected CompReloadableFromFiller compReloadableFromFiller
         {
@@ -114,48 +119,116 @@ namespace BDsPlasmaWeapon
         public override void Tick()
         {
             base.Tick();
-            Fire fire = (Fire)Wearer.GetAttachment(RimWorld.ThingDefOf.Fire);
-            if (fire != null && currentMode && compReloadableFromFiller != null)
+
+            int tick = Find.TickManager.TicksGame;
+
+            if (tick > tickNextCheck && Wearer != null)
             {
-                compReloadableFromFiller.DrawGas(Math.Max(fire.fireSize / efficiency, 1));
-                fire.Destroy();
+                tickNextCheck = tick + 240;
+                Fire fire = (Fire)Wearer.GetAttachment(RimWorld.ThingDefOf.Fire);
+                if (fire != null && currentMode && compReloadableFromFiller != null)
+                {
+                    compReloadableFromFiller.DrawGas(Math.Max(fire.fireSize / efficiency, 1));
+                    fire.Destroy();
+                    String text = "FireExtinguished".Translate();
+                    MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, text);
+                }
+                Hediff heatstroke = Wearer.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.Heatstroke);
+
+                if (heatstroke != null)
+                {
+                    float estimatedGasConsumption = heatstroke.Severity * compGizmo.Props.heatstrokeMitigationConstant * efficiency;
+                    if (estimatedGasConsumption > 1)
+                    {
+                        compReloadableFromFiller.DrawGas(estimatedGasConsumption);
+                        Wearer.health.RemoveHediff(heatstroke);
+                        String text = "heatstrokeMitigated".Translate();
+                        MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, text);
+                    }
+                    else if (heatstroke.Severity > 0.2)
+                    {
+                        compReloadableFromFiller.DrawGas(Math.Max(estimatedGasConsumption, 1));
+                        Wearer.health.RemoveHediff(heatstroke);
+                        String text = "heatstrokeMitigated".Translate();
+                        MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, text);
+                    }
+                }
             }
         }
 
         public override void TickRare()
         {
             base.TickRare(); base.TickRare();
-            Fire fire = (Fire)Wearer.GetAttachment(RimWorld.ThingDefOf.Fire);
-            if (fire != null && currentMode && compReloadableFromFiller != null)
+
+            int tick = Find.TickManager.TicksGame;
+
+            if (tick > tickNextCheck && Wearer != null)
             {
-                compReloadableFromFiller.DrawGas(Math.Max(fire.fireSize / efficiency, 1));
-                fire.Destroy();
+                tickNextCheck = tick + 240;
+                Fire fire = (Fire)Wearer.GetAttachment(RimWorld.ThingDefOf.Fire);
+                if (fire != null && currentMode && compReloadableFromFiller != null)
+                {
+                    compReloadableFromFiller.DrawGas(Math.Max(fire.fireSize / efficiency, 1));
+                    fire.Destroy();
+                    String text = "FireExtinguished".Translate();
+                    MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, text);
+                }
+                Hediff heatstroke = Wearer.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.Heatstroke);
+
+                if (heatstroke != null)
+                {
+                    float estimatedGasConsumption = heatstroke.Severity * compGizmo.Props.heatstrokeMitigationConstant * efficiency;
+                    if (estimatedGasConsumption > 1)
+                    {
+                        compReloadableFromFiller.DrawGas(estimatedGasConsumption);
+                        Wearer.health.RemoveHediff(heatstroke);
+                        String text = "heatstrokeMitigated".Translate();
+                        MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, text);
+                    }
+                    else if (heatstroke.Severity > 0.2)
+                    {
+                        compReloadableFromFiller.DrawGas(Math.Max(estimatedGasConsumption, 1));
+                        Wearer.health.RemoveHediff(heatstroke);
+                        String text = "heatstrokeMitigated".Translate();
+                        MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, text);
+                    }
+                }
             }
         }
 
         public override bool CheckPreAbsorbDamage(DamageInfo dinfo)
         {
             Log.Message(dinfo.ToString());
+            Log.Message(dinfo.Def.armorCategory.ToString());
             if (currentMode && dinfo.Def.armorCategory == DamageArmorCategoryDefOf.Heat && compReloadableFromFiller != null)
             {
+                Log.Message("heat damage");
                 float damageCache = dinfo.Amount;
                 float equivalentDamageAbsorbtion = compReloadableFromFiller.remainingCharges * efficiency;
+                Log.Message("damageCache" + damageCache.ToString());
+                Log.Message("equivalentDamageAbsorbtion" + equivalentDamageAbsorbtion.ToString());
                 if (equivalentDamageAbsorbtion > 0)
                 {
                     if (equivalentDamageAbsorbtion >= damageCache)
                     {
                         compReloadableFromFiller.DrawGas(Math.Max(damageCache / efficiency, 1));
+
                         if (hiccupChance >= 1 || (hiccupChance > 0 && random.NextDouble() < hiccupChance))
                         {
+                            Log.Message("hiccup");
                             dinfo.SetAmount(damageCache * hiccupDamageMultiplierRange.RandomInRange);
+                            MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, "hiccupOccured".Translate(damageCache - dinfo.Amount), damageCache);
                             return false;
                         }
+                        Log.Message("absorbed");
+                        MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, "damageMitigatedFully".Translate(damageCache));
                         return true;
 
                     }
                     else
                     {
                         dinfo.SetAmount(damageCache - (compReloadableFromFiller.remainingCharges * efficiency));
+                        MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, "partialDamageMitigation".Translate(damageCache - dinfo.Amount), damageCache);
                         compReloadableFromFiller.Empty();
                     }
                 }
@@ -182,6 +255,7 @@ namespace BDsPlasmaWeapon
         public string onLabel = "shield on";
         public string offIcon = "UI/Commands/DesirePower";
         public string offLabel = "shield off";
+        public float heatstrokeMitigationConstant = 1;
         public string description = "";
 
         public CompProperties_LizionHeatShieldDataInterface()

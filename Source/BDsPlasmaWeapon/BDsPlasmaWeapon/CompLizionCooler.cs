@@ -120,7 +120,7 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                PipeNet pipeNet = this.PipeNet;
+                PipeNet pipeNet = PipeNet;
                 if ((powerComp != null && !powerComp.PowerOn) || (breakdownableComp != null && breakdownableComp.BrokenDown) || currentMode <= 0 || (pipeNet.Stored < Props.consumptionPerMode * currentMode) || (flickableComp != null && !flickableComp.SwitchIsOn))
                 {
                     return false;
@@ -135,7 +135,7 @@ namespace BDsPlasmaWeapon
             float currentConsumption = Props.consumptionPerMode * currentMode;
             if (parent.IsHashIntervalTick(60) && ShouldPushHeatNow)
             {
-                PipeNet pipeNet = this.PipeNet;
+                PipeNet pipeNet = PipeNet;
                 GenTemperature.PushHeat(parent.PositionHeld, parent.MapHeld, Props.heatPerMode * currentMode);
                 pipeNet.DrawAmongStorage(currentConsumption, pipeNet.storages);
             }

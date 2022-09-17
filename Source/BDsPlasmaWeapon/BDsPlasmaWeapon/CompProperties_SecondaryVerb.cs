@@ -11,7 +11,7 @@ namespace BDsPlasmaWeapon
     {
         public CompProperties_SecondaryVerb()
         {
-            this.compClass = typeof(CompSecondaryVerb);
+            compClass = typeof(CompSecondaryVerb);
         }
 
         public VerbPropertiesCE verbProps = new VerbPropertiesCE();

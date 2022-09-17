@@ -79,7 +79,7 @@ namespace BDsPlasmaWeapon
                 }
                 if (productionCache > 0)
                 {
-                    PipeNet pipeNet = this.PipeNet;
+                    PipeNet pipeNet = PipeNet;
                     pipeNet.DistributeAmongStorage(productionCache);
                 }
             }
@@ -90,7 +90,7 @@ namespace BDsPlasmaWeapon
             base.CompTickRare();
             if (shouldProduce)
             {
-                PipeNet pipeNet = this.PipeNet;
+                PipeNet pipeNet = PipeNet;
                 pipeNet.DistributeAmongStorage(production * (250 / (float)Props.generateInterval));
             }
         }

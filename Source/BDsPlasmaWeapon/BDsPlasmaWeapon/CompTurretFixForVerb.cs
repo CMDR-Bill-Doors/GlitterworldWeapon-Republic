@@ -20,7 +20,7 @@ namespace BDsPlasmaWeapon
             {
                 if (turretGunInt == null)
                 {
-                    turretGunInt = (this.parent as Building_TurretGunCE)?.Gun as ThingWithComps;
+                    turretGunInt = (parent as Building_TurretGunCE)?.Gun as ThingWithComps;
                 }
                 return turretGunInt;
             }
@@ -30,8 +30,8 @@ namespace BDsPlasmaWeapon
         private bool initialized = false;
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
-            if (this.turretGunInt == null) yield break;
-            foreach (var comp in this.TurretGun.AllComps)
+            if (turretGunInt == null) yield break;
+            foreach (var comp in TurretGun.AllComps)
             {
                 foreach (var gizmo in comp.CompGetGizmosExtra())
                 {
@@ -44,11 +44,11 @@ namespace BDsPlasmaWeapon
         {
 
             initialized = true;
-            this.TurretGun.TryGetComp<CompSecondaryVerb>()?.InitData();
-            var compAmmo = this.TurretGun.TryGetComp<CompAmmoUser>();
+            TurretGun.TryGetComp<CompSecondaryVerb>()?.InitData();
+            var compAmmo = TurretGun.TryGetComp<CompAmmoUser>();
             if (compAmmo != null)
             {
-                compAmmo.turret = this.parent as Building_Turret; ;
+                compAmmo.turret = parent as Building_Turret; ;
             }
         }
     }
