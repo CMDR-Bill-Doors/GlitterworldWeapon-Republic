@@ -15,7 +15,7 @@ using System.Diagnostics;
 
 namespace BDsPlasmaWeapon
 {
-    public class CompReloadableFromFiller : ThingComp, IVerbOwner
+    public class CompReloadableFromFiller : CompRangedGizmoGiver, IVerbOwner
     {
         public int remainingCharges;
 
@@ -100,6 +100,31 @@ namespace BDsPlasmaWeapon
             }
         }
 
+        public Pawn CasterPawn
+        {
+            get
+            {
+                return Verb.caster as Pawn;
+            }
+        }
+
+        private Verb Verb
+        {
+            get
+            {
+                return EquipmentSource.PrimaryVerb;
+            }
+        }
+
+
+        private CompEquippable EquipmentSource
+        {
+            get
+            {
+                return parent.TryGetComp<CompEquippable>();
+            }
+        }
+
         public string LabelRemaining => $"{remainingCharges} / {MaxCharges}";
 
         public List<Verb> AllVerbs => VerbTracker.AllVerbs;
@@ -161,6 +186,9 @@ namespace BDsPlasmaWeapon
                 yield break;
             }
             ThingWithComps gear = parent;
+
+
+            //hardcoded for lizion backpack
             foreach (Verb allVerb in VerbTracker.AllVerbs)
             {
                 if (allVerb is Verb_ActiveVent && compActiveVentData != null)
@@ -172,6 +200,8 @@ namespace BDsPlasmaWeapon
                     yield return CreateGasJumpTargetCommand(allVerb as Verb_GasJump, compGasJumpData);
                 }
             }
+
+
             if (Prefs.DevMode)
             {
                 Command_Action command_Action = new Command_Action
@@ -201,6 +231,59 @@ namespace BDsPlasmaWeapon
                 yield return gizmo_EnergyShieldStatus;
             }
         }
+
+        public override IEnumerable<Gizmo> CompGetGizmosExtra()
+        {
+            foreach (Gizmo item in base.CompGetGizmosExtra())
+            {
+                yield return item;
+            }
+            if (Prefs.DevMode)
+            {
+                Command_Action command_Action = new Command_Action
+                {
+                    defaultLabel = "Debug: Reload to full",
+                    action = delegate
+                    {
+                        remainingCharges = MaxCharges;
+                    }
+                };
+                yield return command_Action;
+                Command_Action command_Action2 = new Command_Action
+                {
+                    defaultLabel = "Debug: Empty",
+                    action = delegate
+                    {
+                        remainingCharges = 0;
+                    }
+                };
+                yield return command_Action2;
+            }
+            if (EquipmentSource != null && CasterPawn != null)
+            {
+                bool drafted = CasterPawn.Drafted;
+                if ((drafted && !Props.displayGizmoWhileDrafted) || (!drafted && !Props.displayGizmoWhileUndrafted))
+                {
+                    yield break;
+                }
+                if (Find.Selector.SingleSelectedThing == CasterPawn)
+                {
+                    Gizmo_LizionTankStatus gizmo_EnergyShieldStatus = new Gizmo_LizionTankStatus();
+                    gizmo_EnergyShieldStatus.filler = this;
+                    yield return gizmo_EnergyShieldStatus;
+                }
+            }
+            if (Find.Selector.SingleSelectedThing == parent)
+            {
+                Gizmo_LizionTankStatus gizmo_EnergyShieldStatus = new Gizmo_LizionTankStatus();
+                gizmo_EnergyShieldStatus.filler = this;
+                yield return gizmo_EnergyShieldStatus;
+            }
+        }
+
+
+
+
 
         private Command_ReloadableFromFiller CreateActiveVentTargetCommand(Verb_ActiveVent verb, CompActiveVentDataInterface compActiveVentData)
         {
@@ -469,9 +552,9 @@ namespace BDsPlasmaWeapon
 
         protected override Job TryGiveJob(Pawn pawn)
         {
-            CompReloadableFromFiller compReloadableFromFiller = FindSomeReloadableComponent(pawn, allowForcedReload: false);
+            ThingWithComps Thing = FindSomeReloadableComponent(pawn, allowForcedReload: false);
 
-            if (compReloadableFromFiller == null)
+            if (Thing == null || Thing.TryGetComp<CompReloadableFromFiller>() == null)
             {
                 return null;
             }
@@ -480,35 +563,38 @@ namespace BDsPlasmaWeapon
             {
                 return null;
             }
-            return MakeReloadJob(compReloadableFromFiller, filler);
+            return MakeReloadJob(Thing, filler);
         }
 
-        public static Job MakeReloadJob(CompReloadableFromFiller comp, Thing chosenFiller)
+        public static Job MakeReloadJob(ThingWithComps thing, Thing chosenFiller)
         {
-            Job job = JobMaker.MakeJob(JobDefOf.BDP_JobDefRefillFromFiller, comp.parent);
+            Job job = JobMaker.MakeJob(JobDefOf.BDP_JobDefRefillFromFiller, thing);
             job.targetB = chosenFiller;
             return job;
         }
 
-        public static CompReloadableFromFiller FindSomeReloadableComponent(Pawn pawn, bool allowForcedReload)
+        public static ThingWithComps FindSomeReloadableComponent(Pawn pawn, bool allowForcedReload)
         {
             if (pawn.apparel == null)
             {
                 return null;
             }
-            List<Apparel> wornApparel = pawn.apparel.WornApparel;
+            List<ThingWithComps> weapons = pawn?.equipment.AllEquipmentListForReading;
+            for (int i = 0; i < weapons.Count; i++)
+            {
+                CompReloadableFromFiller compReloadableFromFiller = weapons[i].TryGetComp<CompReloadableFromFiller>();
+                if (compReloadableFromFiller != null && compReloadableFromFiller.NeedsReload(allowForcedReload))
+                {
+                    return weapons[i];
+                }
+            }
+            List<Apparel> wornApparel = pawn?.apparel.WornApparel;
             for (int i = 0; i < wornApparel.Count; i++)
             {
                 CompReloadableFromFiller compReloadableFromFiller = wornApparel[i].TryGetComp<CompReloadableFromFiller>();
-                if (compReloadableFromFiller != null)
-                {
-                }
-                else
-                {
-                }
                 if (compReloadableFromFiller != null && compReloadableFromFiller.NeedsReload(allowForcedReload))
                 {
-                    return compReloadableFromFiller;
+                    return wornApparel[i];
                 }
             }
             return null;
@@ -555,7 +641,7 @@ namespace BDsPlasmaWeapon
                 LizionAvaliable = compReloadableFromFiller.emptySpace;
             }
             this.FailOn(() => compReloadableFromFiller == null);
-            this.FailOn(() => compReloadableFromFiller.Wearer != pawn);
+            this.FailOn(() => compReloadableFromFiller.Wearer != pawn || compReloadableFromFiller.CasterPawn != pawn);
             this.FailOn(() => !compReloadableFromFiller.NeedsReload(allowForcedReload: true));
             this.FailOn(() => filler.Stored < 1);
             this.FailOnDestroyedOrNull(TargetIndex.A);

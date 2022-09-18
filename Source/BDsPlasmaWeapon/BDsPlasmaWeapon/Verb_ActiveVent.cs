@@ -43,7 +43,7 @@ namespace BDsPlasmaWeapon
                 int consumption = ReloadableCompSource.compActiveVentData.Props.maxConsumption;
                 if (comp.remainingCharges < consumption)
                 {
-                    radius = radius * ((float)comp.remainingCharges / (float)consumption);
+                    radius = radius * ((float)comp.remainingCharges / consumption);
                     consumption = comp.remainingCharges;
                 }
                 Pawn wearer = comp.Wearer;

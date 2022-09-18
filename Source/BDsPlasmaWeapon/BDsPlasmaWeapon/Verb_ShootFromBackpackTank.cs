@@ -12,20 +12,32 @@ namespace BDsPlasmaWeapon
 
         public CompTankFeedWeapon compTankFeedWeapon => EquipmentSource.TryGetComp<CompTankFeedWeapon>();
 
-        public CompReloadableFromFiller compTank => compTankFeedWeapon.compReloadableFromFiller;
+        public CompReloadableFromFiller compTank
+        {
+            get
+            {
+                CompReloadableFromFiller comp = EquipmentSource.TryGetComp<CompReloadableFromFiller>()
+                if (comp != null)
+                {
+                    return comp;
+                }
+                else if (compTankFeedWeapon != null)
+                {
+                    return compTankFeedWeapon.compReloadableFromFiller;
+                }
+                return null;
+            }
+        }
 
         private int ammoConsumption => (verbProps as VerbPropertiesCE).ammoConsumedPerShotCount;
 
         public void DoOutOfAmmoAction()
         {
             CompInventory CompInventory = ShooterPawn.TryGetComp<CompInventory>();
-            if (CompInventory != null && (ShooterPawn.CurJob == null || ShooterPawn.CurJob.def != RimWorld.JobDefOf.Hunt))
+            if (CompInventory != null && (ShooterPawn.CurJob == null || ShooterPawn.CurJob.def != RimWorld.JobDefOf.Hunt) && CompInventory.TryFindViableWeapon(out var weapon, !ShooterPawn.IsColonist))
             {
-                if (CompInventory.TryFindViableWeapon(out var weapon, !ShooterPawn.IsColonist))
-                {
-                    ShooterPawn.jobs.StartJob(JobMaker.MakeJob(CE_JobDefOf.EquipFromInventory, weapon), JobCondition.InterruptForced, null, resumeCurJobAfterwards: true);
-                    return;
-                }
+                ShooterPawn.jobs.StartJob(JobMaker.MakeJob(CE_JobDefOf.EquipFromInventory, weapon), JobCondition.InterruptForced, null, resumeCurJobAfterwards: true);
+                return;
             }
             CompInventory?.SwitchToNextViableWeapon(!ShooterPawn.def.weaponTags.Contains("NoSwitch"), !ShooterPawn.IsColonist, stopJob: false);
         }
@@ -33,27 +45,17 @@ namespace BDsPlasmaWeapon
         {
             if (base.Available())
             {
-                if (compTankFeedWeapon == null || compTank == null)
+                if (compTank == null)
                 {
                     return false;
                 }
                 if (compTank.remainingCharges < ammoConsumption)
                 {
-                    compTankFeedWeapon.searchTank(ammoConsumption, false);
+                    compTankFeedWeapon?.searchTank(ammoConsumption, false);
                     return false;
                 }
-                else
-                {
-                    int storedGas = compTank.remainingCharges;
-                    if (storedGas < ammoConsumption)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
-                }
+                int storedGas = compTank.remainingCharges;
+                return storedGas > ammoConsumption;
             }
             return false;
         }
@@ -62,16 +64,13 @@ namespace BDsPlasmaWeapon
         {
             if (base.TryCastShot())
             {
-                if (compTankFeedWeapon == null || compTank == null || compTank.remainingCharges < ammoConsumption)
+                if (compTank == null || compTank.remainingCharges < ammoConsumption)
                 {
-                    compTankFeedWeapon.searchTank();
+                    compTankFeedWeapon?.searchTank();
                     return false;
                 }
-                else
-                {
-                    compTank.DrawGas(ammoConsumption);
-                    return true;
-                }
+                compTank.DrawGas(ammoConsumption);
+                return true;
             }
             return false;
         }

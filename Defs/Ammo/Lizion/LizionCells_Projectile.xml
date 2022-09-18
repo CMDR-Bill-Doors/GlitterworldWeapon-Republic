@@ -31,7 +31,7 @@
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<spreadMult>10</spreadMult>
 			<pelletCount>3</pelletCount>
-			<speed>50</speed>
+			<speed>40</speed>
 			<damageDef>LizionPlasmaFlamer</damageDef>
 			<damageAmountBase>5</damageAmountBase>
 			<armorPenetrationBlunt>14.52</armorPenetrationBlunt>
@@ -65,8 +65,8 @@
 			<drawSize>(1.4,1.4)</drawSize>
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
-			<spreadMult>10</spreadMult>
-			<speed>50</speed>
+			<spreadMult>20</spreadMult>
+			<speed>25</speed>
 			<damageDef>LizionExplosion</damageDef>
 			<damageAmountBase>2</damageAmountBase>
 			<explosionRadius>1.5</explosionRadius>
@@ -74,10 +74,45 @@
 		<comps>
 			<li Class="CombatExtended.CompProperties_ExplosiveCE">
 				<explosiveDamageType>Extinguish</explosiveDamageType>
+				<damageAmountBase>9999</damageAmountBase>
 				<explosiveRadius>1.5</explosiveRadius>
 				<explosionSound>BDP_HissOneShot</explosionSound>
 				<preExplosionSpawnThingDef>Filth_Water</preExplosionSpawnThingDef>
 				<preExplosionSpawnChance>0.03</preExplosionSpawnChance>
+			</li>
+		</comps>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+				<fadeOutStartPercentage>0.25</fadeOutStartPercentage>
+				<fadeOutExpandMultiplier>5</fadeOutExpandMultiplier>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseLizionBullet">
+		<defName>Projectile_LizionFireExtinguisher</defName>
+		<label>lizion gas</label>
+		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+		<graphicData>
+			<texPath>Things/Gas/Puff</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>(1.4,1.4)</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<spreadMult>10</spreadMult>
+			<pelletCount>3</pelletCount>
+			<speed>25</speed>
+			<damageDef>LizionExplosion</damageDef>
+			<damageAmountBase>2</damageAmountBase>
+			<explosionRadius>1.5</explosionRadius>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_ExplosiveCE">
+				<damageAmountBase>9999</damageAmountBase>
+				<explosiveDamageType>Extinguish</explosiveDamageType>
+				<explosiveRadius>1.5</explosiveRadius>
+				<explosionSound>BDP_HissOneShot</explosionSound>
 			</li>
 		</comps>
 		<modExtensions>

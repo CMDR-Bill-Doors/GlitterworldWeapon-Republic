@@ -40,6 +40,7 @@
 		<xpath>Defs/ThinkTreeDef[defName="MainColonistBehaviorCore"]/thinkRoot/subNodes/li[@Class="ThinkNode_PrioritySorter"]/subNodes</xpath>
 		<value>
 			<li Class="BDsPlasmaWeapon.JobGiver_ReloadFromFiller"/>
+			<li Class="BDsPlasmaWeapon.JobGiver_DropExtinguisher"/>
 		</value>
 	</Operation>
 </Patch>

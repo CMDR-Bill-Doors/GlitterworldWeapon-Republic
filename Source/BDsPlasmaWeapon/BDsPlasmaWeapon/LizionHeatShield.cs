@@ -42,8 +42,6 @@ namespace BDsPlasmaWeapon
 
         private bool currentMode;
 
-        System.Random random = new System.Random();
-
         public override void PostPostMake()
         {
             base.PostPostMake();
@@ -71,6 +69,7 @@ namespace BDsPlasmaWeapon
         {
             base.ExposeData();
             Scribe_Values.Look(ref currentMode, "currentMode", true);
+            Scribe_Values.Look(ref tickNextCheck, "tickNextCheck", 0);
         }
 
         public override IEnumerable<Gizmo> GetWornGizmos()
@@ -199,7 +198,11 @@ namespace BDsPlasmaWeapon
         public override bool CheckPreAbsorbDamage(DamageInfo dinfo)
         {
             Log.Message(dinfo.ToString());
-            Log.Message(dinfo.Def.armorCategory.ToString());
+            if (dinfo.Def.armorCategory != null)
+            {
+                Log.Message(dinfo.Def.armorCategory.ToString());
+            }
+
             if (currentMode && dinfo.Def.armorCategory == DamageArmorCategoryDefOf.Heat && compReloadableFromFiller != null)
             {
                 Log.Message("heat damage");
@@ -212,8 +215,7 @@ namespace BDsPlasmaWeapon
                     if (equivalentDamageAbsorbtion >= damageCache)
                     {
                         compReloadableFromFiller.DrawGas(Math.Max(damageCache / efficiency, 1));
-
-                        if (hiccupChance >= 1 || (hiccupChance > 0 && random.NextDouble() < hiccupChance))
+                        if (hiccupChance >= 1 || (hiccupChance > 0 && Rand.Chance(hiccupChance)))
                         {
                             Log.Message("hiccup");
                             dinfo.SetAmount(damageCache * hiccupDamageMultiplierRange.RandomInRange);

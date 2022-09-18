@@ -35,14 +35,11 @@ namespace BDsPlasmaWeapon
                     compAmmo = null;
                     return null;
                 }
-                else
+                if (compAmmo == null && EquipmentSource != null)
                 {
-                    if (compAmmo == null && EquipmentSource != null)
-                    {
-                        compAmmo = EquipmentSource.TryGetComp<CompAmmoUser>();
-                    }
-                    return compAmmo;
+                    compAmmo = EquipmentSource.TryGetComp<CompAmmoUser>();
                 }
+                return compAmmo;
             }
         }
 
