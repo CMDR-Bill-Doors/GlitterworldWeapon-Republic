@@ -16,7 +16,7 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                CompReloadableFromFiller comp = EquipmentSource.TryGetComp<CompReloadableFromFiller>()
+                CompReloadableFromFiller comp = EquipmentSource.TryGetComp<CompReloadableFromFiller>();
                 if (comp != null)
                 {
                     return comp;

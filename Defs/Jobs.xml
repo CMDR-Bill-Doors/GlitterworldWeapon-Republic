@@ -14,4 +14,11 @@
 		<reportString>flicking switch.</reportString>
 		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
 	</JobDef>
+
+	<JobDef>
+		<defName>BDP_TriggerLizionPopper</defName>
+		<driverClass>JobDriver_UseItem</driverClass>
+		<reportString>triggering lizion popper.</reportString>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
 </Defs>
