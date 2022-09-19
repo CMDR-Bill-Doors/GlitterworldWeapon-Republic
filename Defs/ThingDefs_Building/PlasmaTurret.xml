@@ -16,7 +16,7 @@
 
 	<ThingDef ParentName="TurretAutoBase">
 		<defName>BDP_Turret_Plasma</defName>
-		<label>dual plasma turret</label>
+		<label>dual lizion blaster turret</label>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 		<graphicData>
 			<texPath>Things/Building/PlasmaTurret_Base</texPath>
@@ -128,7 +128,7 @@
 
 	<ThingDef ParentName="BaseAutoTurretGun">
 		<defName>BDP_PlasmaTurretGun</defName>
-		<label>dual plasma blaster</label>
+		<label>dual lizion blaster</label>
 		<graphicData>
 			<texPath>Things/Weapons/PlasmaTurret_Turret</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -155,7 +155,7 @@
 				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>4</ammoConsumedPerShotCount>
 				<burstShotCount>10</burstShotCount>
-				<soundCast>Shot_ChargeBlaster</soundCast>
+				<soundCast>BDP_Shot_PlasmaSniper</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 				<recoilPattern>Mounted</recoilPattern>
@@ -186,7 +186,7 @@
 					<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
 					<ammoConsumedPerShotCount>4</ammoConsumedPerShotCount>
 					<burstShotCount>10</burstShotCount>
-					<soundCast>Shot_ChargeBlaster</soundCast>
+					<soundCast>BDP_Shot_PlasmaSniper</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 					<recoilPattern>Mounted</recoilPattern>
@@ -220,7 +220,7 @@
 
 	<ThingDef ParentName="TurretAutoBase">
 		<defName>BDP_Turret_Plasmaheavy</defName>
-		<label>piped heavy plasma turret</label>
+		<label>heavy lizion turret</label>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 		<designatorDropdown>Group_PlasmaTurrets</designatorDropdown>
 		<graphicData>
@@ -232,7 +232,7 @@
 				<offset>(0,0,0)</offset>
 			</shadowData>
 		</graphicData>
-		<uiIconPath>UI/Icons/BDP_PlasmaTurret_Icon</uiIconPath>
+		<uiIconPath>UI/Icons/BDP_PlasmaTurretHeavy_icon</uiIconPath>
 		<statBases>
 			<WorkToBuild>80000</WorkToBuild>
 			<MaxHitPoints>600</MaxHitPoints>
@@ -332,13 +332,12 @@
 
 	<ThingDef ParentName="BaseAutoTurretGun">
 		<defName>BDP_PlasmaTurretGunHeavy</defName>
-		<label>heavy plasma blaster</label>
-
+		<label>heavy lizion blaster</label>
 		<graphicData>
 			<texPath>Things/Weapons/BDP_PlasmaTurret_TurretHeavy</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<description>Charge blaster attached to a turret mount.</description>
+		<description>A single heavy lizion blaster cannon attached to a turret mount.</description>
 		<soundInteract>Interact_ChargeRifle</soundInteract>
 		<statBases>
 			<MarketValue>2000</MarketValue>
@@ -360,7 +359,7 @@
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>20</ammoConsumedPerShotCount>
 				<burstShotCount>3</burstShotCount>
-				<soundCast>Shot_ChargeBlaster</soundCast>
+				<soundCast>BDP_Shot_PlasmaHeavy</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 				<recoilPattern>Mounted</recoilPattern>
@@ -373,10 +372,6 @@
 				<magazineSize>600</magazineSize>
 				<reloadTime>7.8</reloadTime>
 				<ammoSet>AmmoSet_LizionCellHeavy</ammoSet>
-			</li>
-			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
-				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
-				<casingAmount>20</casingAmount>
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_SecondaryAmmo">
 				<secondaryAmmoProps>
@@ -395,7 +390,7 @@
 					<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 					<ammoConsumedPerShotCount>20</ammoConsumedPerShotCount>
 					<burstShotCount>3</burstShotCount>
-					<soundCast>Shot_ChargeBlaster</soundCast>
+					<soundCast>BDP_Shot_PlasmaHeavy</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 					<recoilPattern>Mounted</recoilPattern>
@@ -408,6 +403,10 @@
 				<mainCommandIcon>UI/Icons/FireModes/PlasmaTurret_Off</mainCommandIcon>
 				<secondaryCommandIcon>UI/Icons/FireModes/PlasmaTurret_On</secondaryCommandIcon>
 				<showSecondaryAmmoStat>false</showSecondaryAmmoStat>
+			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
+				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
+				<casingAmount>20</casingAmount>
 			</li>
 		</comps>
 	</ThingDef>
@@ -423,7 +422,7 @@
 
 	<ThingDef ParentName="TurretAutoBase">
 		<defName>BDP_Turret_PlasmaSmall</defName>
-		<label>small plasma turret</label>
+		<label>small lizion turret</label>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 		<graphicData>
 			<texPath>Things/Building/BDP_PlasmTurret_SmallBase</texPath>
@@ -483,7 +482,7 @@
 
 	<ThingDef ParentName="BaseAutoTurretGun">
 		<defName>BDP_PlasmaTurretGunSmall</defName>
-		<label>small plasma blaster</label>
+		<label>small lizion blaster</label>
 		<graphicData>
 			<texPath>Things/Weapons/BDP_PlasmaTurret_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -508,7 +507,7 @@
 				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>2</ammoConsumedPerShotCount>
 				<range>48</range>
-				<soundCast>Shot_ChargeBlaster</soundCast>
+				<soundCast>BDP_Shot_PlasmaRifle</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<recoilAmount>0.8</recoilAmount>
 				<muzzleFlashScale>12</muzzleFlashScale>
@@ -519,10 +518,6 @@
 				<magazineSize>200</magazineSize>
 				<reloadTime>4.8</reloadTime>
 				<ammoSet>AmmoSet_LizionCellRifle</ammoSet>
-			</li>
-			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
-				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
-				<casingAmount>2</casingAmount>
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_SecondaryAmmo">
 				<secondaryAmmoProps>
@@ -539,7 +534,7 @@
 					<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
 					<ammoConsumedPerShotCount>2</ammoConsumedPerShotCount>
 					<range>48</range>
-					<soundCast>Shot_ChargeBlaster</soundCast>
+					<soundCast>BDP_Shot_PlasmaRifle</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<recoilAmount>0.8</recoilAmount>
 					<muzzleFlashScale>12</muzzleFlashScale>
@@ -550,6 +545,10 @@
 				<mainCommandIcon>UI/Icons/FireModes/PlasmaTurret_Off</mainCommandIcon>
 				<secondaryCommandIcon>UI/Icons/FireModes/PlasmaTurret_On</secondaryCommandIcon>
 				<showSecondaryAmmoStat>false</showSecondaryAmmoStat>
+			</li>
+			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
+				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
+				<casingAmount>2</casingAmount>
 			</li>
 		</comps>
 	</ThingDef>

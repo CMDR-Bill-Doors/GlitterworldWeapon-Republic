@@ -271,7 +271,7 @@
 				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>1</ammoConsumedPerShotCount>
 				<range>12</range>
-				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCast>BDP_Shot_PlasmaSmall</soundCast>
 				<soundCastTail>GunTail_Light</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -305,7 +305,7 @@
 					<warmupTime>2.3</warmupTime>
 					<range>12</range>
 					<ammoConsumedPerShotCount>4</ammoConsumedPerShotCount>
-					<soundCast>Shot_ChargeBlaster</soundCast>
+					<soundCast>BDP_Shot_PlasmaSniper</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</secondaryVerb>

@@ -204,7 +204,7 @@
 		<comps>
 			<li Class="CompProperties_Explosive">
 				<compClass>BDsPlasmaWeapon.CompLizionPopperExplosion</compClass>
-				<explosiveRadius>7.9</explosiveRadius>
+				<explosiveRadius>5.9</explosiveRadius>
 				<explosiveDamageType>Extinguish</explosiveDamageType>
 				<startWickHitPointsPercent>-1</startWickHitPointsPercent>
 				<destroyThingOnExplosionSize>9999999</destroyThingOnExplosionSize>
@@ -235,6 +235,7 @@
 						<offset>(0,0,-0.1)</offset>
 					</shadowData>
 				</popperGraphicData>
+				<lizionNeeded>50</lizionNeeded>
 			</li>
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>

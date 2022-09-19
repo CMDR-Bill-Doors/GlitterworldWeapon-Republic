@@ -116,6 +116,7 @@
 				<heatstrokeMitigationConstant>10</heatstrokeMitigationConstant>
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_ActiveVentDataInterface">
+				<maxConsumption>50</maxConsumption>
 				<Label>active vent</Label>
 				<description>Actively dispence large amounts of freezing lizion at low pressure, flush out nearby fires and cooling surrounding area to create water crystal clouds that can obstruct line of sight.</description>
 				<Icon>UI/Icons/PlasmaBackpackActiveVent</Icon>

@@ -56,7 +56,7 @@
 				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>2</ammoConsumedPerShotCount>
 				<range>48</range>
-				<soundCast>Shot_ChargeBlaster</soundCast>
+				<soundCast>BDP_Shot_PlasmaRifle</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<recoilAmount>1.5</recoilAmount>
 				<muzzleFlashScale>12</muzzleFlashScale>
@@ -80,7 +80,6 @@
 		<weaponTags>
 			<li>SpacerGun</li>
 			<li>CE_MachineGun</li>
-			<li>NoSwitch</li>
 		</weaponTags>
 		<tools>
 			<li Class="CombatExtended.ToolCE">
@@ -130,6 +129,7 @@
 		<graphicData>
 			<texPath>Things/Weapons/BDP_PlasmaPistol</texPath>
 		</graphicData>
+		<soundInteract>Interact_Autopistol</soundInteract>
 		<statBases>
 			<WorkToMake>17500</WorkToMake>
 			<Mass>1.50</Mass>
@@ -154,7 +154,7 @@
 				<defaultProjectile>Projectile_LizionPistolNormal</defaultProjectile>
 				<warmupTime>0.5</warmupTime>
 				<range>12</range>
-				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCast>BDP_Shot_PlasmaSmall</soundCast>
 				<soundCastTail>GunTail_Light</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -216,6 +216,7 @@
 		<graphicData>
 			<texPath>Things/Weapons/BDP_PlasmaSMG</texPath>
 		</graphicData>
+		<soundInteract>Interact_SMG</soundInteract>
 		<statBases>
 			<WorkToMake>36000</WorkToMake>
 			<Mass>2.80</Mass>
@@ -242,7 +243,7 @@
 				<range>22</range>
 				<burstShotCount>5</burstShotCount>
 				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
-				<soundCast>Shot_ChargeBlaster</soundCast>
+				<soundCast>BDP_Shot_PlasmaSmall</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 				<recoilAmount>1.20</recoilAmount>
@@ -310,6 +311,7 @@
 			<RangedWeapon_Cooldown>0.46</RangedWeapon_Cooldown>
 			<BDP_CasingReturn>0.8</BDP_CasingReturn>
 		</statBases>
+		<soundInteract>Interact_AssaultRifle</soundInteract>
 		<costList>
 			<Steel>55</Steel>
 			<Plasteel>25</Plasteel>
@@ -327,7 +329,7 @@
 				<range>48</range>
 				<burstShotCount>6</burstShotCount>
 				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
-				<soundCast>Shot_ChargeBlaster</soundCast>
+				<soundCast>BDP_Shot_PlasmaRifle</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 				<recoilAmount>1.50</recoilAmount>
@@ -410,7 +412,7 @@
 				<ammoConsumedPerShotCount>4</ammoConsumedPerShotCount>
 				<warmupTime>2</warmupTime>
 				<range>68</range>
-				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCast>BDP_Shot_PlasmaSniper</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 				<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
@@ -507,7 +509,7 @@
 				<ammoConsumedPerShotCount>6</ammoConsumedPerShotCount>
 				<warmupTime>0.7</warmupTime>
 				<range>16</range>
-				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCast>BDP_Shot_PlasmaHeavy</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -574,6 +576,7 @@
 			<texPath>Things/Weapons/BDP_PlasmaCannon</texPath>
 			<drawSize>(1.5,1.5)</drawSize>
 		</graphicData>
+		<soundInteract>Interact_ChargeLance</soundInteract>
 		<statBases>
 			<WorkToMake>90000</WorkToMake>
 			<Mass>24.0</Mass>
@@ -598,7 +601,7 @@
 				<ammoConsumedPerShotCount>20</ammoConsumedPerShotCount>
 				<warmupTime>3</warmupTime>
 				<range>48</range>
-				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCast>BDP_Shot_PlasmaHeavy</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 				<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>

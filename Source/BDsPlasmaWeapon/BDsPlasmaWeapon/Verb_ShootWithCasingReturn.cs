@@ -2,11 +2,14 @@
 using CombatExtended;
 using RimWorld;
 using System.Collections.Generic;
+using Verse.Sound;
+using System;
 
 namespace BDsPlasmaWeapon
 {
     public class Verb_ShootWithCasingReturn : Verb_ShootCE
     {
+        private int beepCoolDown = 0;
 
         public CompCasingReturn CompCasing
         {
@@ -41,6 +44,25 @@ namespace BDsPlasmaWeapon
                 }
                 return compAmmo;
             }
+        }
+
+        public override void VerbTickCE()
+        {
+            if (beepCoolDown > 0)
+            {
+                beepCoolDown--;
+            }
+            base.VerbTickCE();
+        }
+
+        public override bool TryStartCastOn(LocalTargetInfo castTarg, LocalTargetInfo destTarg, bool surpriseAttack = false, bool canHitNonTargetPawns = true, bool preventFriendlyFire = false)
+        {
+            if (Rand.Chance((verbProps.warmupTime + EquipmentSource.GetStatValue(RimWorld.StatDefOf.RangedWeapon_Cooldown)) / 5f) && beepCoolDown < 1)
+            {
+                ThingDefOf.BDP_Shot_PlasmaWarmUp.PlayOneShot(caster);
+                beepCoolDown = Rand.Range(300, 1000);
+            }
+            return base.TryStartCastOn(castTarg, destTarg, surpriseAttack, canHitNonTargetPawns, preventFriendlyFire);
         }
 
         public override bool Available()

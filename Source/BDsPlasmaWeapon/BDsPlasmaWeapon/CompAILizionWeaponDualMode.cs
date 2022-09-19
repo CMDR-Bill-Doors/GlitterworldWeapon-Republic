@@ -18,19 +18,11 @@ namespace BDsPlasmaWeapon
             return false;
             CompTankFeedWeapon gun = verb.EquipmentSource.TryGetComp<CompTankFeedWeapon>();
 
-            if (gun == null)
+            if (gun == null && !gun.isOn)
             {
                 return false;
             }
-            if (gun != null && !gun.isOn)
-            {
-                return false;
-            }
-            if (gun != null && gun.isOn && gun.compReloadableFromFiller.remainingCharges >= (verb.verbProps as VerbPropertiesCE).ammoConsumedPerShotCount)
-            {
-                return true;
-            }
-            if (gun != null && gun.isOn && gun.searchTank((verb.verbProps as VerbPropertiesCE).ammoConsumedPerShotCount, false))
+            if (gun.compReloadableFromFiller.remainingCharges >= (verb.verbProps as VerbPropertiesCE).ammoConsumedPerShotCount || gun.searchTank((verb.verbProps as VerbPropertiesCE).ammoConsumedPerShotCount, false))
             {
                 return true;
             }

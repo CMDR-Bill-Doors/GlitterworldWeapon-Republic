@@ -16,6 +16,8 @@ namespace BDsPlasmaWeapon
 
         public static SoundDef BDP_HissOneShot;
 
+        public static SoundDef BDP_Shot_PlasmaWarmUp;
+
         public static ThingDef BDP_FireExtinguisher;
     }
 }
