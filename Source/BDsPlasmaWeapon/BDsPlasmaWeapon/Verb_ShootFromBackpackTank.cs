@@ -55,7 +55,7 @@ namespace BDsPlasmaWeapon
                     return false;
                 }
                 int storedGas = compTank.remainingCharges;
-                return storedGas > ammoConsumption;
+                return storedGas >= ammoConsumption;
             }
             return false;
         }

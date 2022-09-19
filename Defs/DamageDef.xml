@@ -14,7 +14,7 @@
 		<minDamageToFragment>15</minDamageToFragment>
 		<defaultDamage>68</defaultDamage>
 		<defaultArmorPenetration>100</defaultArmorPenetration>
-		<explosionHeatEnergyPerCell>-150</explosionHeatEnergyPerCell>
+		<explosionHeatEnergyPerCell>-5</explosionHeatEnergyPerCell>
 		<explosionCellFleck>BlastDry</explosionCellFleck>
 		<explosionColorCenter>(184, 233, 255)</explosionColorCenter>
 		<explosionColorEdge>(255, 255, 255)</explosionColorEdge>

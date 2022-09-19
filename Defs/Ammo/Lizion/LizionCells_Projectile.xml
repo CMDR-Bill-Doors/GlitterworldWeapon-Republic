@@ -68,7 +68,7 @@
 			<spreadMult>20</spreadMult>
 			<speed>25</speed>
 			<damageDef>LizionExplosion</damageDef>
-			<damageAmountBase>2</damageAmountBase>
+			<damageAmountBase>1</damageAmountBase>
 			<explosionRadius>1.5</explosionRadius>
 		</projectile>
 		<comps>
@@ -78,7 +78,7 @@
 				<explosiveRadius>1.5</explosiveRadius>
 				<explosionSound>BDP_HissOneShot</explosionSound>
 				<preExplosionSpawnThingDef>Filth_Water</preExplosionSpawnThingDef>
-				<preExplosionSpawnChance>0.03</preExplosionSpawnChance>
+				<preExplosionSpawnChance>0.01</preExplosionSpawnChance>
 			</li>
 		</comps>
 		<modExtensions>
@@ -104,7 +104,7 @@
 			<pelletCount>3</pelletCount>
 			<speed>25</speed>
 			<damageDef>LizionExplosion</damageDef>
-			<damageAmountBase>2</damageAmountBase>
+			<damageAmountBase>1</damageAmountBase>
 			<explosionRadius>1.5</explosionRadius>
 		</projectile>
 		<comps>
@@ -113,6 +113,8 @@
 				<explosiveDamageType>Extinguish</explosiveDamageType>
 				<explosiveRadius>1.5</explosiveRadius>
 				<explosionSound>BDP_HissOneShot</explosionSound>
+				<preExplosionSpawnThingDef>Filth_Water</preExplosionSpawnThingDef>
+				<preExplosionSpawnChance>0.01</preExplosionSpawnChance>
 			</li>
 		</comps>
 		<modExtensions>

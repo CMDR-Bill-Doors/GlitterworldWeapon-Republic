@@ -3,7 +3,7 @@
 	<StatDef>
 		<defName>BDP_CasingReturn</defName>
 		<label>Casing return chance</label>
-		<description>The probability of empty casings get ejected from the weapon undamaged. This value is affected by weapon't inherited base chance and weapon's quality.\n\nAwful: x50%\nPoor: x80%\nNormal: x100%\nGood: +5%\nExcellent: +10%\nMasterwork: +15%\nLegendary: Fixed 100%</description>
+		<description>The probability of empty casings get ejected from the weapon undamaged. This value is affected by weapon't inherited base chance and weapon's quality. Note that overcharged cells always broke when firing.\n\nAwful: x50%\nPoor: x80%\nNormal: x100%\nGood: +5%\nExcellent: +10%\nMasterwork: +15%\nLegendary: Fixed 100%</description>
 		<category>Weapon_Ranged</category>
 		<defaultBaseValue>0</defaultBaseValue>
 		<minValue>0</minValue>
@@ -19,7 +19,7 @@
 	<StatDef>
 		<defName>BDP_LizionHeatShieldEfficiency</defName>
 		<label>lizion deflector efficiency</label>
-		<description>How effective this lizion deflector is at mitigating heat damage. Any heat damage the wearer take is multiplied against this value, and forming actual lizion gas consumption for absorbing this attack. The lower the stat, the more effective this deflector is.</description>
+		<description>How effective this lizion deflector is at mitigating heat damage. Any heat damage the wearer take is divided against this value, and forming actual lizion gas consumption for absorbing this attack.</description>
 		<category>Apparel</category>
 		<defaultBaseValue>0</defaultBaseValue>
 		<minValue>0</minValue>

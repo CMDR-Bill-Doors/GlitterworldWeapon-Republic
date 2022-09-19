@@ -641,7 +641,6 @@ namespace BDsPlasmaWeapon
                 LizionAvaliable = compReloadableFromFiller.emptySpace;
             }
             this.FailOn(() => compReloadableFromFiller == null);
-            this.FailOn(() => compReloadableFromFiller.Wearer != pawn || compReloadableFromFiller.CasterPawn != pawn);
             this.FailOn(() => !compReloadableFromFiller.NeedsReload(allowForcedReload: true));
             this.FailOn(() => filler.Stored < 1);
             this.FailOnDestroyedOrNull(TargetIndex.A);

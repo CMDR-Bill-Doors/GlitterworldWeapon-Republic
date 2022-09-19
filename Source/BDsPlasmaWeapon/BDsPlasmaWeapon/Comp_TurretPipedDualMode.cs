@@ -2,32 +2,49 @@
 using CombatExtended;
 using RimWorld;
 using PipeSystem;
+using static UnityEngine.GraphicsBuffer;
 
 namespace BDsPlasmaWeapon
 {
-    public class Comp_TurretPipedDualMode : CompResource
+    public class CompTurretPipedDualMode : CompResource
     {
+        ThingWithComps gun;
+        CompSecondaryAmmo compSecondaryAmmoUser;
+        Building_TurretGunCE turret;
+        CompBreakdownable compBreakdownable;
+        CompAmmoUser compAmmoUser;
+
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            base.PostSpawnSetup(respawningAfterLoad);
+            if (parent is Building_TurretGunCE)
+            {
+                turret = parent as Building_TurretGunCE;
+                gun = turret.Gun as ThingWithComps;
+                compSecondaryAmmoUser = gun.TryGetComp<CompSecondaryAmmo>();
+                compBreakdownable = turret.TryGetComp<CompBreakdownable>();
+            }
+        }
+
+        private bool IsAvailableForRecharge => (turret != null) && (turret.powerComp == null || turret.powerComp.PowerOn) && (compBreakdownable == null || !compBreakdownable.BrokenDown) && (compSecondaryAmmoUser != null && compSecondaryAmmoUser.IsSecondaryAmmoSelected) && PipeNet.Stored > 0;
+
         public override void CompTick()
         {
             base.CompTick();
-            if (parent is Building_TurretGunCE turret)
+            if (IsAvailableForRecharge)
             {
-                ThingWithComps Gun = turret.Gun as ThingWithComps;
-                CompAmmoUser compAmmoUser = Gun.TryGetComp<CompAmmoUser>();
-                CompSecondaryAmmo compSecondaryAmmoUser = Gun.TryGetComp<CompSecondaryAmmo>();
-                int ammoDifference = compSecondaryAmmoUser.CompAmmo.CurMagCount - compSecondaryAmmoUser.CompAmmo.CurMagCount;
-                if (compSecondaryAmmoUser.IsSecondaryAmmoSelected && ammoDifference > 0)
+                int ammoDifference = compSecondaryAmmoUser.SecondaryAmmoSetData.magazineSize - compSecondaryAmmoUser.CompAmmo.CurMagCount;
+                if (ammoDifference > 0)
                 {
-                    PipeNet pipeNet = PipeNet;
-                    if (pipeNet != null && pipeNet.Stored >= ammoDifference)
+                    if (PipeNet.Stored >= ammoDifference)
                     {
-                        pipeNet.DrawAmongStorage(ammoDifference, pipeNet.storages);
+                        PipeNet.DrawAmongStorage(ammoDifference, PipeNet.storages);
                         compSecondaryAmmoUser.CompAmmo.CurMagCount += ammoDifference;
                     }
-                    else if (pipeNet != null && pipeNet.Stored > 1)
+                    else
                     {
-                        pipeNet.DrawAmongStorage(pipeNet.Stored, pipeNet.storages);
-                        compSecondaryAmmoUser.CompAmmo.CurMagCount += (int)pipeNet.Stored;
+                        PipeNet.DrawAmongStorage(PipeNet.Stored, PipeNet.storages);
+                        compSecondaryAmmoUser.CompAmmo.CurMagCount += (int)PipeNet.Stored;
                     }
                 }
             }

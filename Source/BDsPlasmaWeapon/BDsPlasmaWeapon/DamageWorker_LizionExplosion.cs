@@ -11,8 +11,13 @@ namespace BDsPlasmaWeapon
     {
         public override void ExplosionStart(Explosion explosion, List<IntVec3> cellsToAffect)
         {
-            base.ExplosionStart(explosion, cellsToAffect);
             GenTemperature.PushHeat(explosion.Position, explosion.Map, def.explosionHeatEnergyPerCell * (float)cellsToAffect.Count);
+            if (explosion.Map == Find.CurrentMap && explosion.radius > 4)
+            {
+                float magnitude = (explosion.Position.ToVector3Shifted() - Find.Camera.transform.position).magnitude;
+                Find.CameraDriver.shaker.DoShake(4f * explosion.radius / magnitude);
+            }
+            ExplosionVisualEffectCenter(explosion);
         }
 
         public override void ExplosionAffectCell(Explosion explosion, IntVec3 c, List<Thing> damagedThings, List<Thing> ignoredThings, bool canThrowMotes)
@@ -24,6 +29,16 @@ namespace BDsPlasmaWeapon
             {
                 explosion.Map.snowGrid.AddDepth(c, (0f - num2) * def.explosionSnowMeltAmount);
             }
+        }
+
+        public override DamageResult Apply(DamageInfo dinfo, Thing victim)
+        {
+            DamageResult result = new DamageResult();
+            if (victim is Pawn || victim is Plant)
+            {
+                return base.Apply(dinfo, victim);
+            }
+            return result;
         }
     }
 }

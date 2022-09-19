@@ -203,7 +203,7 @@ namespace BDsPlasmaWeapon
                 Log.Message(dinfo.Def.armorCategory.ToString());
             }
 
-            if (currentMode && dinfo.Def.armorCategory == DamageArmorCategoryDefOf.Heat && compReloadableFromFiller != null)
+            if (currentMode && dinfo.Def.armorCategory == DamageArmorCategoryDefOf.Heat && compReloadableFromFiller != null && dinfo.Def != DamageDefOf.LizionExplosion)
             {
                 Log.Message("heat damage");
                 float damageCache = dinfo.Amount;

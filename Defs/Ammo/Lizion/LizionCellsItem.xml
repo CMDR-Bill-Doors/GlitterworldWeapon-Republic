@@ -175,7 +175,7 @@
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="SmallLizionCellBase">
 		<defName>Ammo_LizionCellOvercharged</defName>
 		<label>overcharged lizion cell</label>
-		<description>A dangerously overpressurized lizion cell, while it packs more punch, the extra pressure inteferes with plasma chamber injection, disrupts projectile trajectory and hurts accuracy a lot.</description>
+		<description>A dangerously overpressurized lizion cell, while it packs more punch, the extra pressure inteferes with plasma chamber injection, disrupts projectile trajectory and hurts accuracy a lot. Rapid decompressurization at higher than standard pressure almost always render this cell unusable for recycling.</description>
 		<generateAllowChance>0.1</generateAllowChance>
 		<statBases>
 			<MarketValue>0.44</MarketValue>

@@ -14,15 +14,28 @@ namespace BDsPlasmaWeapon
                 return (CompProperties_CasingReturn)props;
             }
         }
-        Random random = new Random();
 
-        private int dropedCasingAmount()
+        private VerbPropertiesCE verbProperties;
+
+        private CompSecondaryAmmo compSecondaryAmmo;
+
+        public override void Initialize(CompProperties props)
+        {
+            compSecondaryAmmo = parent.TryGetComp<CompSecondaryAmmo>();
+            base.Initialize(props);
+            verbProperties = parent.TryGetComp<CompEquippable>().verbTracker.PrimaryVerb.verbProps as VerbPropertiesCE; ;
+        }
+
+        private int DropedCasingAmount()
         {
             int dropedCasingAmount = 0;
             int actualCasingAmount;
+            if (compSecondaryAmmo != null && Props.dontShootInSecondaryMode && compSecondaryAmmo.IsSecondaryAmmoSelected)
+            {
+                return 0;
+            }
             if (Props.casingAmount < 0)
             {
-                VerbPropertiesCE verbProperties = parent.TryGetComp<CompEquippable>()?.verbTracker.PrimaryVerb.verbProps as VerbPropertiesCE;
                 actualCasingAmount = verbProperties.ammoConsumedPerShotCount;
             }
             else
@@ -31,8 +44,7 @@ namespace BDsPlasmaWeapon
             }
             for (int i = 0; i < actualCasingAmount; i++)
             {
-                double Random = random.NextDouble();
-                if (Random <= actualCasingRate)
+                if (Rand.Chance(ActualCasingRate))
                 {
                     dropedCasingAmount++;
                 }
@@ -40,7 +52,7 @@ namespace BDsPlasmaWeapon
             return dropedCasingAmount;
         }
 
-        public float actualCasingRate
+        public float ActualCasingRate
         {
             get
             {
@@ -55,7 +67,7 @@ namespace BDsPlasmaWeapon
 
         public void DropCasing(IntVec3 pos, Map map)
         {
-            int DropedCasingAmount = dropedCasingAmount();
+            int DropedCasingAmount = this.DropedCasingAmount();
             if (DropedCasingAmount > 0)
             {
                 Thing thing = ThingMaker.MakeThing(Props.casingThingDef, null);
@@ -67,7 +79,7 @@ namespace BDsPlasmaWeapon
 
         public void DropCasing(Pawn Caster)
         {
-            int DropedCasingAmount = dropedCasingAmount();
+            int DropedCasingAmount = this.DropedCasingAmount();
             if (DropedCasingAmount > 0)
             {
                 Thing thing = ThingMaker.MakeThing(Props.casingThingDef, null);
@@ -86,5 +98,6 @@ namespace BDsPlasmaWeapon
         public ThingDef casingThingDef;
         public int casingAmount = -1;
         public bool rateAffectedByQuality = true;
+        public bool dontShootInSecondaryMode = true;
     }
 }

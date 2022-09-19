@@ -15,7 +15,6 @@ namespace BDsPlasmaWeapon
             {
                 GenTemperature.PushHeat(explosion.Position, explosion.Map, def.explosionHeatEnergyPerCell * (float)cellsToAffect.Count);
             }
-            FleckMaker.Static(explosion.Position, explosion.Map, FleckDefOf.ExplosionFlash, explosion.radius * 6f);
             ExplosionVisualEffectCenter(explosion);
         }
     }

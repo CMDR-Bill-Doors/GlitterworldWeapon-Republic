@@ -11,5 +11,7 @@ namespace BDsPlasmaWeapon
         public static JobDef BDP_JobDefRefillFromFiller;
 
         public static JobDef BDP_FlickLizionCooler;
+
+        public static JobDef BDP_Extinguish;
     }
 }

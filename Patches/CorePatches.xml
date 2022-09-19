@@ -39,8 +39,16 @@
 	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/ThinkTreeDef[defName="MainColonistBehaviorCore"]/thinkRoot/subNodes/li[@Class="ThinkNode_PrioritySorter"]/subNodes</xpath>
 		<value>
+			<li Class="BDsPlasmaWeapon.JobGiver_ExtinguishFireWithWeapon" />
 			<li Class="BDsPlasmaWeapon.JobGiver_ReloadFromFiller"/>
-			<li Class="BDsPlasmaWeapon.JobGiver_DropExtinguisher"/>
+		</value>
+	</Operation>
+
+
+	<Operation Class="PatchOperationInsert">
+		<xpath>Defs/ThinkTreeDef[defName="Humanlike"]/thinkRoot/subNodes/li[subNodes/li[tagToGive="DraftedOrder"]]/subNodes/li[1]/subNodes/li[@Class="JobGiver_MoveToStandable"]</xpath>
+		<value>
+			<li Class="BDsPlasmaWeapon.JobGiver_ExtinguishFireWithWeapon" />
 		</value>
 	</Operation>
 </Patch>

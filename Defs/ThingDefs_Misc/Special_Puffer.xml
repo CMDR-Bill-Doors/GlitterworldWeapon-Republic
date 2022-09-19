@@ -4,6 +4,7 @@
 		<defName>Gas_Lizion</defName>
 		<label>lizion</label>
 		<thingClass>ThingWithComps</thingClass>
+		<uiIconPath>Things/Ammo/LizionSmall/Normal/SmallLizionCanister_Normal_c</uiIconPath>
 		<category>Gas</category>
 		<altitudeLayer>Filth</altitudeLayer>
 		<useHitPoints>false</useHitPoints>
@@ -15,6 +16,7 @@
 			<graphicClass>Graphic_Gas</graphicClass>
 			<shaderType>Transparent</shaderType>
 		</graphicData>
+		<ammoClass>BDP_Plasma</ammoClass>
 		<comps>
 			<li>
 				<compClass>BDsPlasmaWeapon.CompPuffer</compClass>

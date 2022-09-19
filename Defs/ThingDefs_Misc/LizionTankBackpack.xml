@@ -5,7 +5,7 @@
 		<label>lizon tank backpack</label>
 		<thingClass>BDsPlasmaWeapon.LizionHeatShield</thingClass>
 		<tickerType>Normal</tickerType>
-		<description>A comfortable and spacious backpack for storing all kinds of items.</description>
+		<description>A portable lizion tank with several nozzles and a connective pipe designed to connect to handheld plasma weapons. Automated directed gimballed lizion dispenser could shield the wearer from heat damages, extinguish fire on wearer and ease heat strokes, while the downward large nozzles can cover the surrounding area with condenced water crystal clouds, extinguish fire in an area, or even propell wearer for a short distance.</description>
 		<graphicData>
 			<texPath>Things/Apparel/PlasmaBackpack/PlasmaBackpack</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -108,7 +108,7 @@
 				<baseReloadTicks>2</baseReloadTicks>
 				<soundReload>Standard_Reload</soundReload>
 				<hotKey>Misc4</hotKey>
-				<chargeNoun>smokepop</chargeNoun>
+				<chargeNoun>lizion</chargeNoun>
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_LizionHeatShieldDataInterface">
 				<onIcon>UI/Icons/PlasmaShield_on</onIcon>
@@ -117,12 +117,12 @@
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_ActiveVentDataInterface">
 				<Label>active vent</Label>
-				<description>1</description>
+				<description>Actively dispence large amounts of freezing lizion at low pressure, flush out nearby fires and cooling surrounding area to create water crystal clouds that can obstruct line of sight.</description>
 				<Icon>UI/Icons/PlasmaBackpackActiveVent</Icon>
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_GasJumpDataInterface">
 				<Label>eruption jump</Label>
-				<description>1</description>
+				<description>Propells user over a short distance via calculated violent gasification of liquid lizion.</description>
 				<maxConsumption>25</maxConsumption>
 				<Icon>UI/Icons/PlasmaBackpackJump</Icon>
 			</li>
@@ -130,7 +130,7 @@
 		<verbs>
 			<li>
 				<verbClass>BDsPlasmaWeapon.Verb_ActiveVent</verbClass>
-				<label>pop smoke</label>
+				<label>vent lizion</label>
 				<violent>false</violent>
 				<hasStandardCommand>true</hasStandardCommand>
 				<targetable>false</targetable>
