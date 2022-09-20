@@ -20,7 +20,7 @@
 		</pipeDefs>
 		<designator>
 			<deconstructIconPath>Things/Building/BDP_LizionPipe_Icon_Deconstruct</deconstructIconPath>
-			<designationCategoryDef>Structure</designationCategoryDef>
+			<designationCategoryDef>BDP_Lizion</designationCategoryDef>
 		</designator>
 		<overlayOptions>
 			<overlayColor>(149, 99, 60)</overlayColor>
@@ -91,7 +91,7 @@
 		<neverMultiSelect>true</neverMultiSelect>
 		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Structure</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<constructEffect>ConstructMetal</constructEffect>
 		<clearBuildingArea>false</clearBuildingArea>
 		<researchPrerequisites>
@@ -160,7 +160,7 @@
 		<neverMultiSelect>true</neverMultiSelect>
 		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Structure</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<constructEffect>ConstructMetal</constructEffect>
 		<clearBuildingArea>false</clearBuildingArea>
 		<researchPrerequisites>
@@ -228,7 +228,7 @@
 			</relatedBuildCommands>
 		</building>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
@@ -249,7 +249,7 @@
 		<graphicData>
 			<texPath>Things/Building/LizionTank_Large</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(5,5)</drawSize>
+			<drawSize>(4.5,4.5)</drawSize>
 			<damageData>
 				<cornerTL>Damage/Corner</cornerTL>
 				<cornerTR>Damage/Corner</cornerTR>
@@ -301,7 +301,7 @@
 			</relatedBuildCommands>
 		</building>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>

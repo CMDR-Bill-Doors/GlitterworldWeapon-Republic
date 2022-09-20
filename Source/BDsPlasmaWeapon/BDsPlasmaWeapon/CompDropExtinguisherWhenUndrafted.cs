@@ -54,18 +54,15 @@ namespace BDsPlasmaWeapon
             dropLogic = DropLogic;
         }
 
-        public override void PostSpawnSetup(bool respawningAfterLoad)
+        public override void Initialize(CompProperties props)
         {
-            base.PostSpawnSetup(respawningAfterLoad);
+            base.Initialize(props);
             compTank = parent.TryGetComp<CompReloadableFromFiller>();
             compEquippable = parent.TryGetComp<CompEquippable>();
+            dropLogic = Props.defaultDropLogic;
             if (compTank == null)
             {
                 Log.Error("CompDropExtinguisherWhenUndrafted is meant to work with CompReloadableFromFiller!");
-            }
-            if (!respawningAfterLoad)
-            {
-                dropLogic = Props.defaultDropLogic;
             }
         }
 

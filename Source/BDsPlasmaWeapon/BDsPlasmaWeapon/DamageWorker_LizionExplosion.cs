@@ -38,6 +38,10 @@ namespace BDsPlasmaWeapon
             {
                 return base.Apply(dinfo, victim);
             }
+            if (victim is Fire)
+            {
+                victim.Destroy();
+            }
             return result;
         }
     }

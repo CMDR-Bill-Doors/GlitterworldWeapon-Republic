@@ -46,7 +46,7 @@
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
@@ -107,7 +107,7 @@
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
@@ -261,7 +261,7 @@
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<pathCost>30</pathCost>
 		<passability>PassThroughOnly</passability>
-		<designationCategory>Misc</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<rotatable>false</rotatable>
 		<researchPrerequisites>
 			<li>BiofuelRefining</li>

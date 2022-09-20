@@ -59,7 +59,7 @@
 			<Flammability>0.2</Flammability>
 			<DeteriorationRate>2</DeteriorationRate>
 			<Mass>0.05</Mass>
-			<Bulk>0.01</Bulk>
+			<Bulk>0.05</Bulk>
 		</statBases>
 		<thingCategories>
 			<li>Manufactured</li>
@@ -71,8 +71,8 @@
 
 	<ThingDef Class="CombatExtended.AmmoDef" Name="SmallLizionCellBase" ParentName="SpacerSmallAmmoBase" Abstract="true">
 		<statBases>
-			<Mass>0.05</Mass>
-			<Bulk>0.01</Bulk>
+			<Mass>0.07</Mass>
+			<Bulk>0.05</Bulk>
 		</statBases>
 		<tradeTags>
 			<li>CE_AutoEnableTrade</li>
@@ -90,7 +90,7 @@
 		<label>standard lizion cell</label>
 		<description>A lizion cell that perfectly fall within Pan-Humanoid Republic WP-4028-3 protocol, does not contain any non-standard addictives and does not exceed safe pressure.</description>
 		<statBases>
-			<MarketValue>0.24</MarketValue>
+			<MarketValue>2.88</MarketValue>
 		</statBases>
 		<graphicData>
 			<texPath>Things/Ammo/LizionSmall/Normal</texPath>
@@ -118,7 +118,7 @@
 		<description>A lizion cell with prometheum content, ignites target on impact.</description>
 		<generateAllowChance>0.5</generateAllowChance>
 		<statBases>
-			<MarketValue>0.34</MarketValue>
+			<MarketValue>3.28</MarketValue>
 		</statBases>
 		<graphicData>
 			<texPath>Things/Ammo/LizionSmall/Incendiary</texPath>
@@ -151,7 +151,7 @@
 		<description>A less pressurized lizion cell, less lethal than a standard cell but good when you want somebody downed alive.</description>
 		<generateAllowChance>0.5</generateAllowChance>
 		<statBases>
-			<MarketValue>0.14</MarketValue>
+			<MarketValue>2.78</MarketValue>
 		</statBases>
 		<graphicData>
 			<texPath>Things/Ammo/LizionSmall/Inert</texPath>
@@ -178,7 +178,7 @@
 		<description>A dangerously overpressurized lizion cell, while it packs more punch, the extra pressure inteferes with plasma chamber injection, disrupts projectile trajectory and hurts accuracy a lot. Rapid decompressurization at higher than standard pressure almost always render this cell unusable for recycling.</description>
 		<generateAllowChance>0.1</generateAllowChance>
 		<statBases>
-			<MarketValue>0.44</MarketValue>
+			<MarketValue>3.28</MarketValue>
 		</statBases>
 		<graphicData>
 			<texPath>Things/Ammo/LizionSmall/Overcharged</texPath>

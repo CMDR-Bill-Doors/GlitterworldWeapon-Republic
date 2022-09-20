@@ -14,8 +14,8 @@
 		<soundInteract>Interact_ChargeRifle</soundInteract>
 		<statBases>
 			<WorkToMake>55000</WorkToMake>
-			<Mass>11.5</Mass>
-			<Bulk>17.3</Bulk>
+			<Mass>13.5</Mass>
+			<Bulk>20.2</Bulk>
 			<SwayFactor>1.7</SwayFactor>
 			<ShotSpread>0.5</ShotSpread>
 			<SightsEfficiency>0.6</SightsEfficiency>
@@ -144,8 +144,8 @@
 		<soundInteract>Interact_ChargeRifle</soundInteract>
 		<statBases>
 			<WorkToMake>4000</WorkToMake>
-			<Mass>4.35</Mass>
-			<Bulk>6.0</Bulk>
+			<Mass>10.8</Mass>
+			<Bulk>15</Bulk>
 			<SwayFactor>1.25</SwayFactor>
 			<ShotSpread>0.24</ShotSpread>
 			<SightsEfficiency>1</SightsEfficiency>

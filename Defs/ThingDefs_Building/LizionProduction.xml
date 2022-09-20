@@ -67,7 +67,7 @@
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
@@ -142,7 +142,7 @@
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
@@ -155,7 +155,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>BDP_PrimitiveGeyserCollector</defName>
 		<label>primitive geyser lizion collector</label>
-		<description>Delicate manipulation of gaseous fluid dynamics allow this device to passively extract lizion from underground geyser gas at snail speed.</description>
+		<description>Delicate manipulation of gaseous fluid dynamics allow this device to passively extract lizion from underground steam geyser gas at snail speed.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/BDP_SmallLizionFiller</texPath>
@@ -245,7 +245,7 @@
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
@@ -349,7 +349,7 @@
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
@@ -458,7 +458,7 @@
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>

@@ -20,7 +20,7 @@
 		</pipeDefs>
 		<designator>
 			<deconstructIconPath>Things/Building/BDP_AirPipe_Icon_Deconstruct</deconstructIconPath>
-			<designationCategoryDef>Structure</designationCategoryDef>
+			<designationCategoryDef>BDP_Lizion</designationCategoryDef>
 		</designator>
 		<overlayOptions>
 			<overlayColor>(35, 144, 190)</overlayColor>
@@ -90,7 +90,7 @@
 		<neverMultiSelect>true</neverMultiSelect>
 		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Structure</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<constructEffect>ConstructMetal</constructEffect>
 		<clearBuildingArea>false</clearBuildingArea>
 		<researchPrerequisites>
@@ -158,7 +158,7 @@
 		<neverMultiSelect>true</neverMultiSelect>
 		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Structure</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<constructEffect>ConstructMetal</constructEffect>
 		<clearBuildingArea>false</clearBuildingArea>
 		<researchPrerequisites>
@@ -223,7 +223,7 @@
 			</relatedBuildCommands>
 		</building>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
@@ -299,7 +299,7 @@
 			<li>BDsPlasmaWeapon.PlaceWorker_AirIntake</li>
 		</placeWorkers>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
@@ -314,8 +314,8 @@
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>BDP_GeyserIntake</defName>
-		<label>geyser intake</label>
-		<description>A structure that taps lizion rich underground gas from geysers, cool and purify it for later use.</description>
+		<label>steam geyser intake</label>
+		<description>A structure that taps lizion rich underground gas from steam geysers, cool and purify it for later use.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>Things/Building/BDP_GeyserIntake</texPath>
@@ -364,7 +364,7 @@
 			</relatedBuildCommands>
 		</building>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>BDP_Lizion</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<canOverlapZones>false</canOverlapZones>
