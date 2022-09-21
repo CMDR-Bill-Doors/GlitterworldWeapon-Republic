@@ -3,39 +3,39 @@
 
 	<ThingCategoryDef>
 		<defName>AmmoCategory_LizionCell</defName>
-		<label>Lizion Plasma Cell</label>
+		<label>lizion plasma cell</label>
 		<parent>AmmoAdvanced</parent>
 		<iconPath>UI/Icons/ThingCategories/CaliberPlasmaMedium</iconPath>
 	</ThingCategoryDef>
 
 	<CombatExtended.AmmoCategoryDef>
 		<defName>BDP_Plasma</defName>
-		<label>Plasma</label>
-		<labelShort>Plasma</labelShort>
+		<label>plasma</label>
+		<labelShort>plasma</labelShort>
 		<description>Energized and superheated plasma state lizion accelerated with magnetic field.</description>
 		<advanced>true</advanced>
 	</CombatExtended.AmmoCategoryDef>
 
 	<CombatExtended.AmmoCategoryDef>
 		<defName>BDP_PlasmaIncendiary</defName>
-		<label>Incendiary plasma</label>
-		<labelShort>Incendiary</labelShort>
+		<label>incendiary plasma</label>
+		<labelShort>incendiary</labelShort>
 		<description>Energized and superheated plasma state lizion with prometheum content, ignites target in addition to thermal damage.</description>
 		<advanced>true</advanced>
 	</CombatExtended.AmmoCategoryDef>
 
 	<CombatExtended.AmmoCategoryDef>
 		<defName>BDP_PlasmaInert</defName>
-		<label>Inert plasma</label>
-		<labelShort>Inert</labelShort>
+		<label>inert plasma</label>
+		<labelShort>inert</labelShort>
 		<description>Energized plasma state lizion accelerated with magnetic field, does not burn target but deal blunt damage instead.</description>
 		<advanced>true</advanced>
 	</CombatExtended.AmmoCategoryDef>
 
 	<CombatExtended.AmmoCategoryDef>
 		<defName>BDP_PlasmaOvercharged</defName>
-		<label>Overcharged plasma</label>
-		<labelShort>Overcharged</labelShort>
+		<label>overcharged plasma</label>
+		<labelShort>overcharged</labelShort>
 		<description>Superenergized,hyperheated high pressure plasma state lizion accelerated with magnetic field, causes tremendous damage but can't hit the broad side of a barn.</description>
 		<advanced>true</advanced>
 	</CombatExtended.AmmoCategoryDef>

@@ -127,7 +127,7 @@ namespace BDsPlasmaWeapon
 
             if (!alwaysTrue)
             {
-                string commandIcon = isOn ? Props.onIcon : Props.offIcon;
+                string commandIcon = (compReloadableFromFiller == null ? Props.disabledIcon : (isOn ? Props.onIcon : Props.offIcon));
 
                 if (commandIcon == "")
                 {
@@ -137,19 +137,18 @@ namespace BDsPlasmaWeapon
                 Command_Action switchSecondaryLauncher = new Command_Action
                 {
                     action = new Action(toggle),
-                    defaultLabel = isOn ? Props.onLabel : Props.offLabel,
-                    defaultDesc = Props.description,
+                    defaultLabel = (compReloadableFromFiller == null ? Props.disabledLabel : (isOn ? Props.onLabel : Props.offLabel)).Translate(),
+                    defaultDesc = (compReloadableFromFiller == null ? Props.disabledDescription.Translate() + "\n\n" : "".Translate()) + Props.description.Translate(),
                     icon = ContentFinder<Texture2D>.Get(commandIcon, false),
-                    //tutorTag = "Switch between rifle and grenade launcher"
                 };
                 yield return switchSecondaryLauncher;
             }
 
             Command_Action command_Action = new Command_Action
             {
-                defaultLabel = Props.reconnectLabel,
+                defaultLabel = Props.reconnect.Translate(),
                 icon = ContentFinder<Texture2D>.Get("UI/Icons/PlasmaBackpack_Reconnect", false),
-                defaultDesc = Props.reconnectdescription,
+                defaultDesc = Props.reconnectdescription.Translate(),
                 action = delegate
                 {
                     searchTank();
@@ -183,13 +182,16 @@ namespace BDsPlasmaWeapon
     public class CompProperties_TankFeedWeapon : CompProperties
     {
         public string onIcon = "UI/Commands/DesirePower";
-        public string onLabel = "tank mode on";
+        public string onLabel = "BDP_SiphonOn";
         public string offIcon = "UI/Commands/DesirePower";
-        public string offLabel = "take mode off";
-        public string description = "";
+        public string offLabel = "BDP_SiphonOff";
+        public string disabledIcon = "UI/Commands/DesirePower";
+        public string disabledLabel = "BDP_SiphonDisabled";
+        public string description = "BDP_SiphonModeDesc";
+        public string disabledDescription = "BDP_SiphonDisabledDesc";
         public bool alwaysTrue = false;
-        public string reconnectLabel = "reconnect";
-        public string reconnectdescription = "";
+        public string reconnect = "BDP_SiphonReconnect";
+        public string reconnectdescription = "BDP_SiphonReconnectDesc";
         public CompProperties_TankFeedWeapon()
         {
             compClass = typeof(CompTankFeedWeapon);

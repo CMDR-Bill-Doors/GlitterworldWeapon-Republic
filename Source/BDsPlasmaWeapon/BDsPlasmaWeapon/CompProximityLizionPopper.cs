@@ -70,10 +70,10 @@ namespace BDsPlasmaWeapon
 
         public override string CompInspectStringExtra()
         {
-            string inspectStringExtra = "LizionPopperStatus".Translate() + ": ";
+            string inspectStringExtra = "BDP_LizionPopperStatus".Translate() + ": ";
             if (isAvailableForPop)
             {
-                inspectStringExtra += "PopperReady".Translate();
+                inspectStringExtra += "BDP_PopperReady".Translate();
                 return inspectStringExtra;
             }
             if (isAvailableForRecharge)
@@ -81,7 +81,7 @@ namespace BDsPlasmaWeapon
                 inspectStringExtra += storedLizion + "/" + capacity;
                 return inspectStringExtra;
             }
-            inspectStringExtra += "PopperBroken".Translate();
+            inspectStringExtra += "BDP_PopperBroken".Translate();
             return inspectStringExtra;
         }
 

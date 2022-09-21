@@ -2,7 +2,7 @@
 <Defs>
 	<StatDef>
 		<defName>BDP_CasingReturn</defName>
-		<label>Casing return chance</label>
+		<label>casing return chance</label>
 		<description>The probability of empty casings get ejected from the weapon undamaged. This value is affected by weapon't inherited base chance and weapon's quality. Note that overcharged cells always broke when firing.\n\nAwful: x50%\nPoor: x80%\nNormal: x100%\nGood: +5%\nExcellent: +10%\nMasterwork: +15%\nLegendary: Fixed 100%</description>
 		<category>Weapon_Ranged</category>
 		<defaultBaseValue>0</defaultBaseValue>

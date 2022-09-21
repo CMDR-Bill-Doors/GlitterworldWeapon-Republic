@@ -112,8 +112,8 @@ namespace BDsPlasmaWeapon
             Command_Action switchSecondaryLauncher = new Command_Action
             {
                 action = new Action(SwitchVerb),
-                defaultLabel = IsSecondaryVerbSelected ? Props.secondaryWeaponLabel : Props.mainWeaponLabel,
-                defaultDesc = Props.description,
+                defaultLabel = (IsSecondaryVerbSelected ? Props.secondaryWeaponLabel : Props.mainWeaponLabel).Translate(),
+                defaultDesc = Props.description.Translate(),
                 icon = ContentFinder<Texture2D>.Get(commandIcon, false),
                 //tutorTag = "Switch between rifle and grenade launcher"
             };

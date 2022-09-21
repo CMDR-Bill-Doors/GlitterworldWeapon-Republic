@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Recipes -->
+
+  <MakeEmptyLizionCell.label>制作空的L离子单元x100</MakeEmptyLizionCell.label>
+  <MakeEmptyLizionCell.description>制作100个空的L离子单元。</MakeEmptyLizionCell.description>
+  <MakeEmptyLizionCell.jobString>正在制作空等离子单元。</MakeEmptyLizionCell.jobString>
+
+  <MakeAmmo_LizionCellIncendiary.label>罐装燃烧等离子单元x100</MakeAmmo_LizionCellIncendiary.label>
+  <MakeAmmo_LizionCellIncendiary.description>往标准压力L离子单元里面罐装苯基液体燃料。</MakeAmmo_LizionCellIncendiary.description>
+  <MakeAmmo_LizionCellIncendiary.jobString>正在装填燃烧等离子单元。</MakeAmmo_LizionCellIncendiary.jobString>
+
+
+</LanguageData>

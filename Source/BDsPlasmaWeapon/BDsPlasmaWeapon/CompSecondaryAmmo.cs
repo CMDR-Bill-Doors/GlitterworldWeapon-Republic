@@ -472,9 +472,9 @@ namespace BDsPlasmaWeapon
             yield return new Command_Action
             {
                 action = new Action(SwitchLauncher),
-                defaultDesc = Props.description,
+                defaultDesc = Props.description.Translate(),
                 icon = ContentFinder<Texture2D>.Get(IsSecondaryAmmoSelected ? Props.secondaryCommandIcon : Props.mainCommandIcon, false),
-                defaultLabel = IsSecondaryAmmoSelected ? Props.secondaryWeaponLabel : Props.mainWeaponLabel,
+                defaultLabel = (IsSecondaryAmmoSelected ? Props.secondaryWeaponLabel : Props.mainWeaponLabel).Translate(),
             };
 
             if (IsSharedAmmo)

@@ -19,7 +19,7 @@ namespace BDsPlasmaWeapon
                 return false;
             }
             CompLizionCellFiller compLizionCellFiller = t.TryGetComp<CompLizionCellFiller>();
-            if (compLizionCellFiller == null || !compLizionCellFiller.isAvaliable())
+            if (compLizionCellFiller == null || !compLizionCellFiller.IsAvaliable())
             {
                 return false;
             }
@@ -76,7 +76,7 @@ namespace BDsPlasmaWeapon
                 return false;
             }
             CompLizionCellFiller compLizionCellFiller = t.TryGetComp<CompLizionCellFiller>();
-            if (compLizionCellFiller == null || !compLizionCellFiller.isAvaliable())
+            if (compLizionCellFiller == null || !compLizionCellFiller.IsAvaliable())
             {
                 return false;
             }

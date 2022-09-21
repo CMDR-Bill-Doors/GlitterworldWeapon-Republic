@@ -129,15 +129,15 @@ namespace BDsPlasmaWeapon
             switch (dropLogic)
             {
                 case DropLogic.DontDrop:
-                    return Props.dontDropLabel;
+                    return "BDP_dontDrop".Translate();
                 case DropLogic.AlwaysDrop:
-                    return Props.alwaysDropLabel;
+                    return "BDP_alwaysDrop".Translate();
                 case DropLogic.DropWhenEmpty:
-                    return Props.dropWhenEmptyLabel;
+                    return "BDP_dropWhenEmpty".Translate();
                 case DropLogic.DropWhenFull:
-                    return Props.dropWhenFullLabel;
+                    return "BDP_dropWhenFull".Translate();
                 case DropLogic.DropIfNotFull:
-                    return Props.dropIfNotFullLabel;
+                    return "BDP_dropIfNotFull".Translate();
                 default:
                     return "None";
             }
@@ -152,8 +152,8 @@ namespace BDsPlasmaWeapon
             yield return new Command_SwitchDropLogic
             {
                 compExtinguisher = this,
-                defaultLabel = Props.label + ": " + getLabel(dropLogic),
-                defaultDesc = Props.description,
+                defaultLabel = Props.label.Translate() + ": " + getLabel(dropLogic),
+                defaultDesc = Props.description.Translate(),
                 icon = ContentFinder<Texture2D>.Get(getIconTex(dropLogic)),
             };
             yield break;
@@ -168,13 +168,8 @@ namespace BDsPlasmaWeapon
         public string dropIfNotFullIcon = "UI/Icons/DropLogicIcons_dropIfNotFull";
         public string dropWhenFullIcon = "UI/Icons/DropLogicIcons_dropWhenFull";
         public string alwaysDropIcon = "UI/Icons/DropLogicIcons_alwaysDrop";
-        public string description = "UI/Commands/DesirePower";
-        public string dontDropLabel = "Dont drop";
-        public string dropWhenEmptyLabel = "When Empty";
-        public string dropIfNotFullLabel = "Not full";
-        public string dropWhenFullLabel = "When full";
-        public string alwaysDropLabel = "Always drop";
-        public string label = "Drop logic";
+        public string description = "BDP_DropLogicDesc";
+        public string label = "BDP_Droplogic";
         public CompProperties_DropExtinguisherWhenUndrafted()
         {
             compClass = typeof(CompDropExtinguisherWhenUndrafted);
@@ -250,11 +245,11 @@ namespace BDsPlasmaWeapon
                 compExtinguisher.switchMode(DropLogic.DropWhenEmpty);
             };
 
-            list.Add(new FloatMenuOption("dontDrop".Translate(), action1));
-            list.Add(new FloatMenuOption("alwaysDrop".Translate(), action2));
-            list.Add(new FloatMenuOption("dropIfNotFull".Translate(), action3));
-            list.Add(new FloatMenuOption("dropWhenFull".Translate(), action4));
-            list.Add(new FloatMenuOption("dropWhenEmpty".Translate(), action5));
+            list.Add(new FloatMenuOption("BDP_dontDrop".Translate(), action1));
+            list.Add(new FloatMenuOption("BDP_alwaysDrop".Translate(), action2));
+            list.Add(new FloatMenuOption("BDP_dropIfNotFull".Translate(), action3));
+            list.Add(new FloatMenuOption("BDP_dropWhenFull".Translate(), action4));
+            list.Add(new FloatMenuOption("BDP_dropWhenEmpty".Translate(), action5));
             return list;
         }
     }

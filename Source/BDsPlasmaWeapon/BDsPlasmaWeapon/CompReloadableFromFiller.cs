@@ -15,6 +15,15 @@ using System.Diagnostics;
 
 namespace BDsPlasmaWeapon
 {
+    public class DefModExtension_TankQualityModifier : DefModExtension
+    {
+        public float Awful = 1;
+        public float Poor = 1;
+        public float Good = 1;
+        public float Excellent = 1;
+        public float Masterwork = 1;
+        public float Legendary = 1;
+    }
     public class CompReloadableFromFiller : CompRangedGizmoGiver, IVerbOwner
     {
         public int remainingCharges;
@@ -23,16 +32,18 @@ namespace BDsPlasmaWeapon
 
         public CompProperties_Reloadable Props => props as CompProperties_Reloadable;
 
-        public CompActiveVentDataInterface compActiveVentData => parent.TryGetComp<CompActiveVentDataInterface>();
+        public DefModExtension_ActiveVent compActiveVentData => parent.def.GetModExtension<DefModExtension_ActiveVent>();
 
-        public CompGasJumpDataInterface compGasJumpData => parent.TryGetComp<CompGasJumpDataInterface>();
+        public DefModExtension_GasJump compGasJumpData => parent.def.GetModExtension<DefModExtension_GasJump>();
+
+        public DefModExtension_TankQualityModifier qualityModifier => parent.def.GetModExtension<DefModExtension_TankQualityModifier>();
 
         public int MaxCharges
         {
             get
             {
                 CompQuality compQuality = parent.TryGetComp<CompQuality>();
-                if (compQuality == null)
+                if (compQuality == null || qualityModifier == null)
                 {
                     return Props.maxCharges;
                 }
@@ -41,17 +52,17 @@ namespace BDsPlasmaWeapon
                     switch (compQuality.Quality)
                     {
                         case QualityCategory.Awful:
-                            return (int)(Props.maxCharges * 0.7);
+                            return (int)(Props.maxCharges * qualityModifier.Awful);
                         case QualityCategory.Poor:
-                            return (int)(Props.maxCharges * 0.9);
+                            return (int)(Props.maxCharges * qualityModifier.Poor);
                         case QualityCategory.Good:
-                            return (int)(Props.maxCharges * 1.05);
+                            return (int)(Props.maxCharges * qualityModifier.Good);
                         case QualityCategory.Excellent:
-                            return (int)(Props.maxCharges * 1.1);
+                            return (int)(Props.maxCharges * qualityModifier.Excellent);
                         case QualityCategory.Masterwork:
-                            return (int)(Props.maxCharges * 1.2);
+                            return (int)(Props.maxCharges * qualityModifier.Masterwork);
                         case QualityCategory.Legendary:
-                            return (int)(Props.maxCharges * 1.3);
+                            return (int)(Props.maxCharges * qualityModifier.Legendary);
                         default:
                             return Props.maxCharges;
                     }
@@ -285,13 +296,13 @@ namespace BDsPlasmaWeapon
 
 
 
-        private Command_ReloadableFromFiller CreateActiveVentTargetCommand(Verb_ActiveVent verb, CompActiveVentDataInterface compActiveVentData)
+        private Command_ReloadableFromFiller CreateActiveVentTargetCommand(Verb_ActiveVent verb, DefModExtension_ActiveVent compActiveVentData)
         {
             Command_ReloadableFromFiller command_Reloadable = new Command_ReloadableFromFiller(this);
-            command_Reloadable.defaultDesc = compActiveVentData.Props.description;
-            command_Reloadable.defaultLabel = compActiveVentData.Props.Label;
+            command_Reloadable.defaultDesc = compActiveVentData.description.Translate();
+            command_Reloadable.defaultLabel = compActiveVentData.label.Translate();
             command_Reloadable.verb = verb;
-            command_Reloadable.icon = ContentFinder<Texture2D>.Get(compActiveVentData.Props.Icon, false);
+            command_Reloadable.icon = ContentFinder<Texture2D>.Get(compActiveVentData.icon, false);
             if (!Wearer.IsColonistPlayerControlled)
             {
                 command_Reloadable.Disable();
@@ -307,13 +318,13 @@ namespace BDsPlasmaWeapon
             return command_Reloadable;
         }
 
-        private Command_ReloadableFromFiller CreateGasJumpTargetCommand(Verb_GasJump verb, CompGasJumpDataInterface compGasJumoData)
+        private Command_ReloadableFromFiller CreateGasJumpTargetCommand(Verb_GasJump verb, DefModExtension_GasJump compGasJumoData)
         {
             Command_ReloadableFromFiller command_Reloadable = new Command_ReloadableFromFiller(this);
-            command_Reloadable.defaultDesc = compGasJumoData.Props.description;
-            command_Reloadable.defaultLabel = compGasJumoData.Props.Label;
+            command_Reloadable.defaultDesc = compGasJumoData.description.Translate();
+            command_Reloadable.defaultLabel = compGasJumoData.label.Translate();
             command_Reloadable.verb = verb;
-            command_Reloadable.icon = ContentFinder<Texture2D>.Get(compGasJumoData.Props.Icon, false);
+            command_Reloadable.icon = ContentFinder<Texture2D>.Get(compGasJumoData.icon, false);
             if (!Wearer.IsColonistPlayerControlled)
             {
                 command_Reloadable.Disable();
@@ -445,7 +456,7 @@ namespace BDsPlasmaWeapon
             {
                 Log.Error("tried to draw zero or negative amount of gas from CompReloadableFromFiller");
             }
-            if (amount <= remainingCharges)
+            if (amount < remainingCharges)
             {
                 remainingCharges -= amount;
                 for (int i = 0; i < amount; i++)
@@ -461,7 +472,7 @@ namespace BDsPlasmaWeapon
                 ThingDefOf.BDP_HissOneShot.PlayOneShot(parent);
                 if (parent.ParentHolder is Pawn pawn)
                 {
-                    Messages.Message(string.Format("BDP_LizionTankDepletedWithPawn".Translate(), parent.LabelCap, pawn), parent, MessageTypeDefOf.RejectInput, historical: false);
+                    Messages.Message(string.Format("BDP_LizionTankDepletedWithPawn".Translate(), parent.LabelCap, pawn.Name, pawn), parent, MessageTypeDefOf.RejectInput, historical: false);
                 }
                 else
                 {
@@ -609,7 +620,7 @@ namespace BDsPlasmaWeapon
                 {
                     if (compfiller.PipeNet.Stored > 1)
                     {
-                        if (compfiller.isAvaliable())
+                        if (compfiller.IsAvaliable())
                         {
                             return true;
                         }

@@ -8,7 +8,7 @@
 	<!--==================== Dual turret =========================-->
 	<CombatExtended.AmmoSetDef>
 		<defName>AmmoSet_LizionPipedSniper</defName>
-		<label>Lizion Gas</label>
+		<label>lizion gas</label>
 		<ammoTypes>
 			<Gas_Lizion>Projectile_LizionSniperNormal</Gas_Lizion>
 		</ammoTypes>
@@ -150,8 +150,8 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Projectile_LizionSniperNormal</defaultProjectile>
 				<warmupTime>1.3</warmupTime>
-				<range>68</range>
-				<minRange>3</minRange>
+				<range>67.9</range>
+				<minRange>2.9</minRange>
 				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>4</ammoConsumedPerShotCount>
 				<burstShotCount>10</burstShotCount>
@@ -181,8 +181,8 @@
 					<hasStandardCommand>true</hasStandardCommand>
 					<defaultProjectile>Projectile_LizionSniperNormal</defaultProjectile>
 					<warmupTime>1.3</warmupTime>
-					<range>68</range>
-					<minRange>3</minRange>
+					<range>67.9</range>
+					<minRange>2.9</minRange>
 					<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
 					<ammoConsumedPerShotCount>4</ammoConsumedPerShotCount>
 					<burstShotCount>10</burstShotCount>
@@ -193,9 +193,9 @@
 					<stopBurstWithoutLos>false</stopBurstWithoutLos>
 					<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
 				</secondaryVerb>
-				<mainWeaponLabel>Ammo mode</mainWeaponLabel>
-				<secondaryWeaponLabel>Pipe mode</secondaryWeaponLabel>
-				<description>switch between ammo mode and piped mode</description>
+				<mainWeaponLabel>BDP_TurretAmmoMode</mainWeaponLabel>
+				<secondaryWeaponLabel>BDP_TurretPipeMode</secondaryWeaponLabel>
+				<description>BDP_TurretDesc</description>
 				<mainCommandIcon>UI/Icons/FireModes/PlasmaTurret_Off</mainCommandIcon>
 				<secondaryCommandIcon>UI/Icons/FireModes/PlasmaTurret_On</secondaryCommandIcon>
 				<showSecondaryAmmoStat>false</showSecondaryAmmoStat>
@@ -212,7 +212,7 @@
 
 	<CombatExtended.AmmoSetDef>
 		<defName>AmmoSet_LizionPipedHeavy</defName>
-		<label>Lizion Gas</label>
+		<label>lizion gas</label>
 		<ammoTypes>
 			<Gas_Lizion>Projectile_LizionHeavyNormal</Gas_Lizion>
 		</ammoTypes>
@@ -354,8 +354,8 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>Projectile_LizionHeavyNormal</defaultProjectile>
 				<warmupTime>2.3</warmupTime>
-				<range>68</range>
-				<minRange>8</minRange>
+				<range>67.9</range>
+				<minRange>7.9</minRange>
 				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>20</ammoConsumedPerShotCount>
 				<burstShotCount>3</burstShotCount>
@@ -385,8 +385,8 @@
 					<hasStandardCommand>true</hasStandardCommand>
 					<defaultProjectile>Projectile_LizionHeavyNormal</defaultProjectile>
 					<warmupTime>2.3</warmupTime>
-					<range>68</range>
-					<minRange>8</minRange>
+					<range>67.9</range>
+					<minRange>7.9</minRange>
 					<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 					<ammoConsumedPerShotCount>20</ammoConsumedPerShotCount>
 					<burstShotCount>3</burstShotCount>
@@ -397,9 +397,9 @@
 					<stopBurstWithoutLos>false</stopBurstWithoutLos>
 					<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
 				</secondaryVerb>
-				<mainWeaponLabel>Ammo mode</mainWeaponLabel>
-				<secondaryWeaponLabel>Pipe mode</secondaryWeaponLabel>
-				<description>switch between ammo mode and piped mode</description>
+				<mainWeaponLabel>BDP_TurretAmmoMode</mainWeaponLabel>
+				<secondaryWeaponLabel>BDP_TurretPipeMode</secondaryWeaponLabel>
+				<description>BDP_TurretDesc</description>
 				<mainCommandIcon>UI/Icons/FireModes/PlasmaTurret_Off</mainCommandIcon>
 				<secondaryCommandIcon>UI/Icons/FireModes/PlasmaTurret_On</secondaryCommandIcon>
 				<showSecondaryAmmoStat>false</showSecondaryAmmoStat>
@@ -414,7 +414,7 @@
 	<!--==================== Small turret =========================-->
 	<CombatExtended.AmmoSetDef>
 		<defName>AmmoSet_LizionPipedRifle</defName>
-		<label>Lizion Gas</label>
+		<label>lizion gas</label>
 		<ammoTypes>
 			<Gas_Lizion>Projectile_LizionRifleNormal</Gas_Lizion>
 		</ammoTypes>
@@ -506,7 +506,7 @@
 				<burstShotCount>6</burstShotCount>
 				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>2</ammoConsumedPerShotCount>
-				<range>48</range>
+				<range>47.9</range>
 				<soundCast>BDP_Shot_PlasmaRifle</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<recoilAmount>0.8</recoilAmount>
@@ -533,15 +533,15 @@
 					<burstShotCount>6</burstShotCount>
 					<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
 					<ammoConsumedPerShotCount>2</ammoConsumedPerShotCount>
-					<range>48</range>
+					<range>47.9</range>
 					<soundCast>BDP_Shot_PlasmaRifle</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<recoilAmount>0.8</recoilAmount>
 					<muzzleFlashScale>12</muzzleFlashScale>
 				</secondaryVerb>
-				<mainWeaponLabel>Ammo mode</mainWeaponLabel>
-				<secondaryWeaponLabel>Pipe mode</secondaryWeaponLabel>
-				<description>switch between ammo mode and piped mode</description>
+				<mainWeaponLabel>BDP_TurretAmmoMode</mainWeaponLabel>
+				<secondaryWeaponLabel>BDP_TurretPipeMode</secondaryWeaponLabel>
+				<description>BDP_TurretDesc</description>
 				<mainCommandIcon>UI/Icons/FireModes/PlasmaTurret_Off</mainCommandIcon>
 				<secondaryCommandIcon>UI/Icons/FireModes/PlasmaTurret_On</secondaryCommandIcon>
 				<showSecondaryAmmoStat>false</showSecondaryAmmoStat>

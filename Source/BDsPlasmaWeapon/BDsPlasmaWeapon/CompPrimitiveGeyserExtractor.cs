@@ -43,7 +43,7 @@ namespace BDsPlasmaWeapon
             return null;
         }
 
-        private bool shouldProduce
+        private bool ShouldProduce
         {
             get
             {
@@ -59,7 +59,7 @@ namespace BDsPlasmaWeapon
         public override void CompTick()
         {
             base.CompTick();
-            if (parent.IsHashIntervalTick(Props.generateInterval) && shouldProduce)
+            if (parent.IsHashIntervalTick(Props.generateInterval) && ShouldProduce)
             {
                 CompResourceStorage compResourceStorage = parent.TryGetComp<CompResourceStorage>();
                 float productionCache = production;
@@ -88,7 +88,7 @@ namespace BDsPlasmaWeapon
         public override void CompTickRare()
         {
             base.CompTickRare();
-            if (shouldProduce)
+            if (ShouldProduce)
             {
                 PipeNet pipeNet = PipeNet;
                 pipeNet.DistributeAmongStorage(production * (250 / (float)Props.generateInterval));

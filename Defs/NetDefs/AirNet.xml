@@ -2,17 +2,17 @@
 <Defs>
 	<DesignatorDropdownGroupDef>
 		<defName>Group_BDP_Airpipe</defName>
-		<label>Air pipes</label>
+		<label>air pipes</label>
 	</DesignatorDropdownGroupDef>
 
 	<PipeSystem.PipeNetDef>
 		<defName>BDP_AirNetwork</defName>
 		<resource>
 			<name>Air</name>
-			<unit>L</unit>
+			<unit>Unit</unit>
 			<color>(47, 193, 255)</color>
 			<onlyShowStored>True</onlyShowStored>
-			<offTexPath>Things/Item/Resource/Chemfuel</offTexPath>
+			<offTexPath>Things/Ammo/LizionSmall/Inert/SmallLizionCanister_Inert_c</offTexPath>
 		</resource>
 		<pipeDefs>
 			<li>BDP_AirPipe</li>

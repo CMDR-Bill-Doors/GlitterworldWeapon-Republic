@@ -10,6 +10,14 @@ namespace BDsPlasmaWeapon
 {
     public class Verb_ActiveVent : Verb
     {
+        public DefModExtension_ActiveVent Data
+        {
+            get
+            {
+                return ReloadableCompSource.parent.def.GetModExtension<DefModExtension_ActiveVent>();
+            }
+        }
+
         public new CompReloadableFromFiller ReloadableCompSource => DirectOwner as CompReloadableFromFiller;
 
         protected override bool TryCastShot()
@@ -21,8 +29,8 @@ namespace BDsPlasmaWeapon
         public override float HighlightFieldRadiusAroundTarget(out bool needLOSToCenter)
         {
             needLOSToCenter = false;
-            float radius = ReloadableCompSource.compActiveVentData.Props.radius;
-            int consumption = ReloadableCompSource.compActiveVentData.Props.maxConsumption;
+            float radius = Data.radius;
+            int consumption = Data.maxConsumption;
             if (ReloadableCompSource.remainingCharges < consumption)
             {
                 radius = radius * ((float)ReloadableCompSource.remainingCharges / (float)consumption);
@@ -39,8 +47,8 @@ namespace BDsPlasmaWeapon
         {
             if (comp != null && comp.CanBeUsed && ReloadableCompSource.compActiveVentData != null)
             {
-                float radius = ReloadableCompSource.compActiveVentData.Props.radius;
-                int consumption = ReloadableCompSource.compActiveVentData.Props.maxConsumption;
+                float radius = Data.radius;
+                int consumption = Data.maxConsumption;
                 if (comp.remainingCharges < consumption)
                 {
                     radius = radius * ((float)comp.remainingCharges / consumption);
@@ -52,31 +60,13 @@ namespace BDsPlasmaWeapon
             }
         }
     }
-
-    public class CompActiveVentDataInterface : ThingComp
+    public class DefModExtension_ActiveVent : DefModExtension
     {
-        public CompProperties_ActiveVentDataInterface Props
-        {
-            get
-            {
-                return (CompProperties_ActiveVentDataInterface)props;
-            }
-        }
-    }
-
-
-    public class CompProperties_ActiveVentDataInterface : CompProperties
-    {
-        public string Icon = "UI/Commands/DesirePower";
-        public string Label = "shield on";
-        public string description = "";
+        public string icon = "UI/Commands/DesirePower";
+        public string label = "BDP_ActiveVentLabel";
+        public string description = "BDP_ActiveVentDesc";
         public float radius = 5;
         public int maxConsumption = 100;
         public float heatPushPerUnit = -1;
-
-        public CompProperties_ActiveVentDataInterface()
-        {
-            compClass = typeof(CompActiveVentDataInterface);
-        }
     }
 }

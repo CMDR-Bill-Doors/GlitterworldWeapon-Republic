@@ -40,9 +40,7 @@
 				<heatPerMode>-8</heatPerMode>
 				<consumptionPerMode>0.4</consumptionPerMode>
 				<turnUpIcon>UI/Icons/LizionCooler_Up</turnUpIcon>
-				<turnUpLabel>Turn Up</turnUpLabel>
 				<turnDownIcon>UI/Icons/LizionCooler_Down</turnDownIcon>
-				<turnDownLabel>Turn Down</turnDownLabel>
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>

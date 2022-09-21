@@ -1,11 +1,20 @@
 ﻿using UnityEngine;
 using RimWorld;
 using Verse;
+using System.Security.Cryptography;
 
 namespace BDsPlasmaWeapon
 {
     public class Verb_GasJump : Verb_Jump
     {
+        public DefModExtension_GasJump Data
+        {
+            get
+            {
+                return ReloadableCompSource.parent.def.GetModExtension<DefModExtension_GasJump>();
+            }
+        }
+
         public new CompReloadableFromFiller ReloadableCompSource => DirectOwner as CompReloadableFromFiller;
 
         public override bool MultiSelect => true;
@@ -13,11 +22,11 @@ namespace BDsPlasmaWeapon
         {
             get
             {
-                float radius = ReloadableCompSource.compGasJumpData.Props.radius;
-                int consumption = ReloadableCompSource.compGasJumpData.Props.maxConsumption;
+                float radius = Data.radius;
+                int consumption = Data.maxConsumption;
                 if (ReloadableCompSource.remainingCharges < consumption)
                 {
-                    radius = radius * ((float)ReloadableCompSource.remainingCharges / (float)consumption);
+                    radius *= ReloadableCompSource.remainingCharges / (float)consumption;
                 }
                 return radius;
             }
@@ -40,8 +49,8 @@ namespace BDsPlasmaWeapon
             }
             IntVec3 cell = currentTarget.Cell;
             Map map = casterPawn.Map;
-            GenExplosion.DoExplosion(casterPawn.Position, casterPawn.Map, ReloadableCompSource.compGasJumpData.Props.BlastCloudRadius, RimWorld.DamageDefOf.Extinguish, null, -1, -1f, null, null, null, null, RimWorld.ThingDefOf.Gas_Smoke, 1f);
-            ReloadableCompSource.DrawGas(ReloadableCompSource.compGasJumpData.Props.maxConsumption);
+            GenExplosion.DoExplosion(casterPawn.Position, casterPawn.Map, Data.blastCloudRadius, RimWorld.DamageDefOf.Extinguish, null, -1, -1f, null, null, null, null, RimWorld.ThingDefOf.Gas_Smoke, 1f);
+            ReloadableCompSource.DrawGas(Data.maxConsumption);
             PawnFlyer pawnFlyer = PawnFlyer.MakeFlyer(RimWorld.ThingDefOf.PawnJumper, casterPawn, cell);
             if (pawnFlyer != null)
             {
@@ -60,30 +69,13 @@ namespace BDsPlasmaWeapon
         }
     }
 
-    public class CompGasJumpDataInterface : ThingComp
+    public class DefModExtension_GasJump : DefModExtension
     {
-        public CompProperties_GasJumpDataInterface Props
-        {
-            get
-            {
-                return (CompProperties_GasJumpDataInterface)props;
-            }
-        }
-    }
-
-
-    public class CompProperties_GasJumpDataInterface : CompProperties
-    {
-        public string Icon = "UI/Commands/DesirePower";
-        public string Label = "shield on";
-        public string description = "";
+        public string icon = "UI/Commands/DesirePower";
+        public string label = "BDP_GasJumpLabel";
+        public string description = "BDP_GasJumpDesc";
         public float radius = 5;
         public int maxConsumption = 100;
-        public float BlastCloudRadius = 2;
-
-        public CompProperties_GasJumpDataInterface()
-        {
-            compClass = typeof(CompGasJumpDataInterface);
-        }
+        public float blastCloudRadius = 2;
     }
 }

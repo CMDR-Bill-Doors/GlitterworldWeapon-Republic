@@ -78,7 +78,7 @@ namespace BDsPlasmaWeapon
             Command_Action turnUp = new Command_Action
             {
                 action = new Action(this.turnUp),
-                defaultLabel = Props.turnUpLabel,
+                defaultLabel = Props.turnUpLabel.Translate(),
                 icon = ContentFinder<Texture2D>.Get(Props.turnUpIcon, false),
             };
             yield return turnUp;
@@ -86,7 +86,7 @@ namespace BDsPlasmaWeapon
             Command_Action turnDown = new Command_Action
             {
                 action = new Action(this.turnDown),
-                defaultLabel = Props.turnDownLabel,
+                defaultLabel = Props.turnDownLabel.Translate(),
                 icon = ContentFinder<Texture2D>.Get(Props.turnDownIcon, false),
             };
             yield return turnDown;
@@ -163,9 +163,9 @@ namespace BDsPlasmaWeapon
         public float heatPerMode = -10;
         public float consumptionPerMode = 1;
         public string turnUpIcon = "UI/Commands/DesirePower";
-        public string turnUpLabel = "turn up";
+        public string turnUpLabel = "BDP_LizionCoolerTurnUp";
         public string turnDownIcon = "UI/Commands/DesirePower";
-        public string turnDownLabel = "turn down";
+        public string turnDownLabel = "BDP_LizionCoolerTurnDown";
 
 
         public CompProperties_LizionCooler()

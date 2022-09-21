@@ -10,7 +10,7 @@ namespace BDsPlasmaWeapon
 {
     public class DisintegratingProjectile : BulletCE
     {
-        public DefModExtension_DisintegratingProjectile data
+        public DefModExtension_DisintegratingProjectile Data
         {
             get
             {
@@ -20,25 +20,25 @@ namespace BDsPlasmaWeapon
 
         System.Random random = new System.Random();
 
-        private float fadeOutStartPercentage
+        private float FadeOutStartPercentage
         {
             get
             {
-                if (data != null && data.fadeOutStartPercentage > 0 && data.fadeOutStartPercentage < 1)
+                if (Data != null && Data.fadeOutStartPercentage > 0 && Data.fadeOutStartPercentage < 1)
                 {
-                    return data.fadeOutStartPercentage;
+                    return Data.fadeOutStartPercentage;
                 }
                 return (2 / 3f);
             }
         }
 
-        private float fadeOutExpandMultiplier
+        private float FadeOutExpandMultiplier
         {
             get
             {
-                if (data != null)
+                if (Data != null)
                 {
-                    return data.fadeOutExpandMultiplier;
+                    return Data.fadeOutExpandMultiplier;
                 }
                 return 1;
             }
@@ -93,7 +93,7 @@ namespace BDsPlasmaWeapon
                 return distance / equipmentDef.Verbs[0].range;
             }
         }
-        public float FadeOutPercent => Math.Max(0f, (float)(DistancePercent - fadeOutStartPercentage) / ((4 / 3f) - fadeOutStartPercentage));
+        public float FadeOutPercent => Math.Max(0f, (float)(DistancePercent - FadeOutStartPercentage) / ((4 / 3f) - FadeOutStartPercentage));
         public override void Tick()
         {
             if (DistancePercent <= 1f)
@@ -127,7 +127,7 @@ namespace BDsPlasmaWeapon
         {
             Map map = base.Map;
             base.Impact(hitThing);
-            if (data != null && data.shouldStartFire)
+            if (Data != null && Data.shouldStartFire)
             {
                 if (landed)
                 {
@@ -142,9 +142,9 @@ namespace BDsPlasmaWeapon
 
         private void startFire(Map map)
         {
-            if (random.NextDouble() < data.chanceOfFire)
+            if (Rand.Chance(Data.chanceOfFire))
             {
-                float fireSize = data.minFireSize + (float)(random.NextDouble() * (data.maxFireSize - data.minFireSize));
+                float fireSize = Data.minFireSize + (float)(random.NextDouble() * (Data.maxFireSize - Data.minFireSize));
                 Log.Message(ExactPosition.ToIntVec3().ToString());
                 FireUtility.TryStartFireIn(ExactPosition.ToIntVec3(), map, fireSize);
             }
@@ -152,9 +152,9 @@ namespace BDsPlasmaWeapon
 
         private void startFire(Thing thing, Map map)
         {
-            if (random.NextDouble() < data.chanceOfFire)
+            if (Rand.Chance(Data.chanceOfFire))
             {
-                float fireSize = data.minFireSize + (float)(random.NextDouble() * (data.maxFireSize - data.minFireSize));
+                float fireSize = Data.minFireSize + (float)(random.NextDouble() * (Data.maxFireSize - Data.minFireSize));
 
                 if (thing is Pawn)
                 {
@@ -175,7 +175,7 @@ namespace BDsPlasmaWeapon
                 Color color = material.color;
                 color.a *= 1 - FadeOutPercent;
                 material.color = color;
-                float drawSize = 1 + (FadeOutPercent * fadeOutExpandMultiplier);
+                float drawSize = 1 + (FadeOutPercent * FadeOutExpandMultiplier);
                 Graphics.DrawMesh(MeshPool.GridPlane(def.graphicData.drawSize * drawSize), DrawPos, DrawRotation, material, 0);
                 if (castShadow)
                 {

@@ -30,7 +30,7 @@ namespace BDsPlasmaWeapon
                     compReloadableFromFiller = a;
                 }
             }
-            if (compLizionCellFiller == null || compLizionCellFiller.PipeNet.Stored < 1 || !compLizionCellFiller.isAvaliable())
+            if (compLizionCellFiller == null || compLizionCellFiller.PipeNet.Stored < 1 || !compLizionCellFiller.IsAvaliable())
             {
                 return false;
             }
@@ -54,7 +54,7 @@ namespace BDsPlasmaWeapon
                     compReloadableFromFiller = a;
                 }
             }
-            if (compLizionCellFiller == null || compLizionCellFiller.PipeNet.Stored < 1 || !compLizionCellFiller.isAvaliable())
+            if (compLizionCellFiller == null || compLizionCellFiller.PipeNet.Stored < 1 || !compLizionCellFiller.IsAvaliable())
             {
                 return null;
             }
@@ -93,7 +93,7 @@ namespace BDsPlasmaWeapon
                     compReloadableFromFiller = a;
                 }
             }
-            if (compLizionCellFiller == null || compLizionCellFiller.PipeNet.Stored < 1 || !compLizionCellFiller.isAvaliable())
+            if (compLizionCellFiller == null || compLizionCellFiller.PipeNet.Stored < 1 || !compLizionCellFiller.IsAvaliable())
             {
                 return false;
             }
@@ -117,7 +117,7 @@ namespace BDsPlasmaWeapon
                     compReloadableFromFiller = a;
                 }
             }
-            if (compLizionCellFiller == null || compLizionCellFiller.PipeNet.Stored < 1 || !compLizionCellFiller.isAvaliable())
+            if (compLizionCellFiller == null || compLizionCellFiller.PipeNet.Stored < 1 || !compLizionCellFiller.IsAvaliable())
             {
                 return null;
             }

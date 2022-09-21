@@ -30,11 +30,11 @@ namespace BDsPlasmaWeapon
             }
         }
 
-        protected CompLizionHeatShieldDataInterface compGizmo
+        protected DefModExtension_LizionDeflector compGizmo
         {
             get
             {
-                return GetComp<CompLizionHeatShieldDataInterface>();
+                return def.GetModExtension<DefModExtension_LizionDeflector>();
             }
         }
 
@@ -92,7 +92,7 @@ namespace BDsPlasmaWeapon
             }
             if (Wearer.Faction.Equals(Faction.OfPlayer))
             {
-                string commandIcon = currentMode ? compGizmo.Props.onIcon : compGizmo.Props.offIcon;
+                string commandIcon = currentMode ? compGizmo.onIcon : compGizmo.offIcon;
 
                 if (commandIcon == "")
                 {
@@ -102,8 +102,8 @@ namespace BDsPlasmaWeapon
                 Command_Action switchSecondaryLauncher = new Command_Action
                 {
                     action = new Action(toggle),
-                    defaultLabel = currentMode ? compGizmo.Props.onLabel : compGizmo.Props.offLabel,
-                    defaultDesc = compGizmo.Props.description,
+                    defaultLabel = (currentMode ? compGizmo.onLabel : compGizmo.offLabel).Translate(),
+                    defaultDesc = compGizmo.description.Translate(),
                     icon = ContentFinder<Texture2D>.Get(commandIcon, false),
                 };
                 yield return switchSecondaryLauncher;
@@ -129,26 +129,26 @@ namespace BDsPlasmaWeapon
                 {
                     compReloadableFromFiller.DrawGas(Math.Max(fire.fireSize / efficiency, 1));
                     fire.Destroy();
-                    String text = "FireExtinguished".Translate();
+                    String text = "BDP_FireExtinguished".Translate();
                     MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, text);
                 }
                 Hediff heatstroke = Wearer.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.Heatstroke);
 
                 if (heatstroke != null)
                 {
-                    float estimatedGasConsumption = heatstroke.Severity * compGizmo.Props.heatstrokeMitigationConstant * efficiency;
+                    float estimatedGasConsumption = heatstroke.Severity * compGizmo.heatstrokeMitigationConstant * efficiency;
                     if (estimatedGasConsumption > 1)
                     {
                         compReloadableFromFiller.DrawGas(estimatedGasConsumption);
                         Wearer.health.RemoveHediff(heatstroke);
-                        String text = "heatstrokeMitigated".Translate();
+                        String text = "BDP_heatstrokeMitigated".Translate();
                         MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, text);
                     }
                     else if (heatstroke.Severity > 0.2)
                     {
                         compReloadableFromFiller.DrawGas(Math.Max(estimatedGasConsumption, 1));
                         Wearer.health.RemoveHediff(heatstroke);
-                        String text = "heatstrokeMitigated".Translate();
+                        String text = "BDP_heatstrokeMitigated".Translate();
                         MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, text);
                     }
                 }
@@ -169,26 +169,26 @@ namespace BDsPlasmaWeapon
                 {
                     compReloadableFromFiller.DrawGas(Math.Max(fire.fireSize / efficiency, 1));
                     fire.Destroy();
-                    String text = "FireExtinguished".Translate();
+                    String text = "BDP_FireExtinguished".Translate();
                     MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, text);
                 }
                 Hediff heatstroke = Wearer.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.Heatstroke);
 
                 if (heatstroke != null)
                 {
-                    float estimatedGasConsumption = heatstroke.Severity * compGizmo.Props.heatstrokeMitigationConstant * efficiency;
+                    float estimatedGasConsumption = heatstroke.Severity * compGizmo.heatstrokeMitigationConstant * efficiency;
                     if (estimatedGasConsumption > 1)
                     {
                         compReloadableFromFiller.DrawGas(estimatedGasConsumption);
                         Wearer.health.RemoveHediff(heatstroke);
-                        String text = "heatstrokeMitigated".Translate();
+                        String text = "BDP_heatstrokeMitigated".Translate();
                         MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, text);
                     }
                     else if (heatstroke.Severity > 0.2)
                     {
                         compReloadableFromFiller.DrawGas(Math.Max(estimatedGasConsumption, 1));
                         Wearer.health.RemoveHediff(heatstroke);
-                        String text = "heatstrokeMitigated".Translate();
+                        String text = "BDP_heatstrokeMitigated".Translate();
                         MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, text);
                     }
                 }
@@ -219,18 +219,18 @@ namespace BDsPlasmaWeapon
                         {
                             Log.Message("hiccup");
                             dinfo.SetAmount(damageCache * hiccupDamageMultiplierRange.RandomInRange);
-                            MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, "hiccupOccured".Translate(damageCache - dinfo.Amount), damageCache);
+                            MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, "BDP_hiccupOccured".Translate(damageCache - dinfo.Amount), damageCache);
                             return false;
                         }
                         Log.Message("absorbed");
-                        MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, "damageMitigatedFully".Translate(damageCache));
+                        MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, "BDP_damageMitigatedFully".Translate(damageCache));
                         return true;
 
                     }
                     else
                     {
                         dinfo.SetAmount(damageCache - (compReloadableFromFiller.remainingCharges * efficiency));
-                        MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, "partialDamageMitigation".Translate(damageCache - dinfo.Amount), damageCache);
+                        MoteMakerCE.ThrowText(Wearer.Position.ToVector3Shifted(), Wearer.Map, "BDP_partialDamageMitigation".Translate(damageCache - dinfo.Amount), damageCache);
                         compReloadableFromFiller.Empty();
                     }
                 }
@@ -238,31 +238,13 @@ namespace BDsPlasmaWeapon
             return false;
         }
     }
-
-    public class CompLizionHeatShieldDataInterface : ThingComp
-    {
-        public CompProperties_LizionHeatShieldDataInterface Props
-        {
-            get
-            {
-                return (CompProperties_LizionHeatShieldDataInterface)props;
-            }
-        }
-    }
-
-
-    public class CompProperties_LizionHeatShieldDataInterface : CompProperties
+    public class DefModExtension_LizionDeflector : DefModExtension
     {
         public string onIcon = "UI/Commands/DesirePower";
-        public string onLabel = "shield on";
+        public string onLabel = "BDP_ShieldOn";
         public string offIcon = "UI/Commands/DesirePower";
-        public string offLabel = "shield off";
+        public string offLabel = "BDP_ShieldOff";
         public float heatstrokeMitigationConstant = 1;
-        public string description = "";
-
-        public CompProperties_LizionHeatShieldDataInterface()
-        {
-            compClass = typeof(CompLizionHeatShieldDataInterface);
-        }
+        public string description = "BDP_ShieldDesc";
     }
 }

@@ -2,17 +2,17 @@
 <Defs>
 	<DesignatorDropdownGroupDef>
 		<defName>Group_BDP_Lizionpipe</defName>
-		<label>Lizion pipes</label>
+		<label>lizion pipes</label>
 	</DesignatorDropdownGroupDef>
 
 	<PipeSystem.PipeNetDef>
 		<defName>BDP_LizionNetwork</defName>
 		<resource>
 			<name>lizion</name>
-			<unit>L</unit>
+			<unit>Unit</unit>
 			<color>(249, 157, 88)</color>
 			<onlyShowStored>True</onlyShowStored>
-			<offTexPath>Things/Item/Resource/Chemfuel</offTexPath>
+			<offTexPath>Things/Ammo/LizionSmall/Normal/SmallLizionCanister_Normal_c</offTexPath>
 		</resource>
 		<pipeDefs>
 			<li>BDP_LizionPipe</li>

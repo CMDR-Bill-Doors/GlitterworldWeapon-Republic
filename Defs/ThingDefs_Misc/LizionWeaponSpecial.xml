@@ -3,7 +3,7 @@
 
 	<ThingDef ParentName="BaseMakeableGun">
 		<defName>BDP_PlasmaFlameThrower</defName>
-		<label>Lizion Plasmathrower</label>
+		<label>lizion plasmathrower</label>
 		<description>Designed to spray out a continuous stream of energized plasma, unleashing a lizionic inferno onto enemies and probably friendlies, the F58A2 sustained plasma emitter is uncapable of using standarized lizion cells. Instead it requires a specialized lizion gas tank backpack to operate.\n\nWhile republic military doctorine explictly banned such usage, it's said that by turning off the lizion energizer, this weapon can be modified to unleash a jet of near absolute zero, unflammable lizion gas, capable of acting as a fire extinguisher. However it is useless against self-combusting materials like prometheum.</description>
 		<generateAllowChance>0.5</generateAllowChance>
 		<graphicData>
@@ -24,6 +24,7 @@
 		<costList>
 			<Steel>120</Steel>
 			<Plasteel>80</Plasteel>
+			<Jade>100</Jade>
 			<ComponentIndustrial>10</ComponentIndustrial>
 			<ComponentSpacer>5</ComponentSpacer>
 		</costList>
@@ -39,7 +40,7 @@
 				<burstShotCount>20</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>2</ammoConsumedPerShotCount>
-				<range>12</range>
+				<range>11.9</range>
 				<soundCast>BDP_HissOneShot</soundCast>
 				<recoilAmount>1.5</recoilAmount>
 				<muzzleFlashScale>12</muzzleFlashScale>
@@ -66,7 +67,7 @@
 					<burstShotCount>20</burstShotCount>
 					<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 					<ammoConsumedPerShotCount>2</ammoConsumedPerShotCount>
-					<range>12</range>
+					<range>11.9</range>
 					<soundCast>BDP_HissOneShot</soundCast>
 					<recoilAmount>1.5</recoilAmount>
 					<muzzleFlashScale>0</muzzleFlashScale>
@@ -75,9 +76,9 @@
 					</targetParams>
 					<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
 				</verbProps>
-				<mainWeaponLabel>hot mode</mainWeaponLabel>
-				<secondaryWeaponLabel>cold mode</secondaryWeaponLabel>
-				<description>Turns the lizion energizer off to make this weapon act as a fire extinguisher, or turn it back on to set people on fire.</description>
+				<mainWeaponLabel>BDP_FlammerHot</mainWeaponLabel>
+				<secondaryWeaponLabel>BDP_FlammerCold</secondaryWeaponLabel>
+				<description>BDP_FlammerDesc</description>
 				<mainCommandIcon>UI/Icons/FireModes/PlasmaFlamethrower_on</mainCommandIcon>
 				<secondaryCommandIcon>UI/Icons/FireModes/PlasmaFlamethrower_off</secondaryCommandIcon>
 			</li>
@@ -148,7 +149,7 @@
 			<Bulk>15</Bulk>
 			<SwayFactor>1.25</SwayFactor>
 			<ShotSpread>0.24</ShotSpread>
-			<SightsEfficiency>1</SightsEfficiency>
+			<SightsEfficiency>0.1</SightsEfficiency>
 			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
@@ -165,7 +166,7 @@
 				<burstShotCount>10</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>1</ammoConsumedPerShotCount>
-				<range>12</range>
+				<range>11.9</range>
 				<soundCast>BDP_HissOneShot</soundCast>
 				<recoilAmount>1.5</recoilAmount>
 				<muzzleFlashScale>0</muzzleFlashScale>
@@ -197,9 +198,19 @@
 				<defaultDropLogic>AlwaysDrop</defaultDropLogic>
 			</li>
 		</comps>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_TankQualityModifier">
+				<Awful>0.5</Awful>
+				<Poor>0.8</Poor>
+				<Good>1.2</Good>
+				<Excellent>1.4</Excellent>
+				<Masterwork>1.65</Masterwork>
+				<Legendary>2</Legendary>
+			</li>
+		</modExtensions>
 		<tools>
 			<li Class="CombatExtended.ToolCE">
-				<label>stock</label>
+				<label>body</label>
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
@@ -207,27 +218,7 @@
 				<cooldownTime>1.55</cooldownTime>
 				<chanceFactor>1.5</chanceFactor>
 				<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
-				<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
-			</li>
-			<li Class="CombatExtended.ToolCE">
-				<label>barrel</label>
-				<capacities>
-					<li>Blunt</li>
-				</capacities>
-				<power>5</power>
-				<cooldownTime>2.02</cooldownTime>
-				<armorPenetrationBlunt>1.630</armorPenetrationBlunt>
-				<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
-			</li>
-			<li Class="CombatExtended.ToolCE">
-				<label>muzzle</label>
-				<capacities>
-					<li>Poke</li>
-				</capacities>
-				<power>8</power>
-				<cooldownTime>1.55</cooldownTime>
-				<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
-				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+				<linkedBodyPartsGroup>BDP_ExtinguisherBody</linkedBodyPartsGroup>
 			</li>
 		</tools>
 		<recipeMaker>
@@ -235,6 +226,10 @@
 		</recipeMaker>
 	</ThingDef>
 
+	<BodyPartGroupDef>
+		<defName>BDP_ExtinguisherBody</defName>
+		<label>extinguisher body</label>
+	</BodyPartGroupDef>
 
 	<ThingDef ParentName="BaseMakeableGun">
 		<defName>BDP_PlasmaCharger</defName>
@@ -247,19 +242,20 @@
 		<soundInteract>Interact_ChargeRifle</soundInteract>
 		<statBases>
 			<WorkToMake>17500</WorkToMake>
-			<Mass>1.50</Mass>
+			<Mass>2.50</Mass>
 			<Bulk>2.60</Bulk>
 			<SwayFactor>1.07</SwayFactor>
 			<ShotSpread>0.15</ShotSpread>
-			<SightsEfficiency>0.8</SightsEfficiency>
+			<SightsEfficiency>0.6</SightsEfficiency>
 			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
 			<BDP_CasingReturn>0.8</BDP_CasingReturn>
 		</statBases>
 		<costList>
 			<Steel>20</Steel>
 			<Plasteel>30</Plasteel>
-			<Chemfuel>5</Chemfuel>
+			<Jade>30</Jade>
 			<ComponentIndustrial>2</ComponentIndustrial>
+			<ComponentSpacer>1</ComponentSpacer>
 		</costList>
 		<verbs>
 			<li Class="CombatExtended.VerbPropertiesCE">
@@ -270,7 +266,7 @@
 				<burstShotCount>4</burstShotCount>
 				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>1</ammoConsumedPerShotCount>
-				<range>12</range>
+				<range>11.9</range>
 				<soundCast>BDP_Shot_PlasmaSmall</soundCast>
 				<soundCastTail>GunTail_Light</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
@@ -303,15 +299,15 @@
 					<hasStandardCommand>true</hasStandardCommand>
 					<defaultProjectile>Projectile_LizionSniperNormal</defaultProjectile>
 					<warmupTime>2.3</warmupTime>
-					<range>12</range>
+					<range>11.9</range>
 					<ammoConsumedPerShotCount>4</ammoConsumedPerShotCount>
 					<soundCast>BDP_Shot_PlasmaSniper</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</secondaryVerb>
-				<mainWeaponLabel>Burst mode</mainWeaponLabel>
-				<secondaryWeaponLabel>Charged mode</secondaryWeaponLabel>
-				<description>switch between burst mode and charged mode</description>
+				<mainWeaponLabel>BDP_ChargerBurstMode</mainWeaponLabel>
+				<secondaryWeaponLabel>BDP_ChargerChargedMode</secondaryWeaponLabel>
+				<description>BDP_ChargerDesc</description>
 				<mainCommandIcon>UI/Icons/FireModes/PlasmaWeapon_ChargerP</mainCommandIcon>
 				<secondaryCommandIcon>UI/Icons/FireModes/PlasmaWeapon_ChargerS</secondaryCommandIcon>
 			</li>

@@ -110,13 +110,14 @@
 				<hotKey>Misc4</hotKey>
 				<chargeNoun>lizion</chargeNoun>
 			</li>
+			<!--
 			<li Class="BDsPlasmaWeapon.CompProperties_LizionHeatShieldDataInterface">
 				<onIcon>UI/Icons/PlasmaShield_on</onIcon>
 				<offIcon>UI/Icons/PlasmaShield_off</offIcon>
 				<heatstrokeMitigationConstant>10</heatstrokeMitigationConstant>
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_ActiveVentDataInterface">
-				<maxConsumption>50</maxConsumption>
+
 				<Label>active vent</Label>
 				<description>Actively dispence large amounts of freezing lizion at low pressure, flush out nearby fires and cooling surrounding area to create water crystal clouds that can obstruct line of sight.</description>
 				<Icon>UI/Icons/PlasmaBackpackActiveVent</Icon>
@@ -127,7 +128,33 @@
 				<maxConsumption>25</maxConsumption>
 				<Icon>UI/Icons/PlasmaBackpackJump</Icon>
 			</li>
+			-->
 		</comps>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_ActiveVent">
+				<maxConsumption>50</maxConsumption>
+				<icon>UI/Icons/PlasmaBackpackActiveVent</icon>
+				<radius>4.9</radius>
+			</li>
+			<li Class="BDsPlasmaWeapon.DefModExtension_GasJump">
+				<maxConsumption>25</maxConsumption>
+				<icon>UI/Icons/PlasmaBackpackJump</icon>
+				<radius>4.9</radius>
+			</li>
+			<li Class="BDsPlasmaWeapon.DefModExtension_LizionDeflector">
+				<onIcon>UI/Icons/PlasmaShield_on</onIcon>
+				<offIcon>UI/Icons/PlasmaShield_off</offIcon>
+				<heatstrokeMitigationConstant>10</heatstrokeMitigationConstant>
+			</li>
+			<li Class="BDsPlasmaWeapon.DefModExtension_TankQualityModifier">
+				<Awful>0.5</Awful>
+				<Poor>0.8</Poor>
+				<Good>1.1</Good>
+				<Excellent>1.2</Excellent>
+				<Masterwork>1.3</Masterwork>
+				<Legendary>1.5</Legendary>
+			</li>
+		</modExtensions>
 		<verbs>
 			<li>
 				<verbClass>BDsPlasmaWeapon.Verb_ActiveVent</verbClass>

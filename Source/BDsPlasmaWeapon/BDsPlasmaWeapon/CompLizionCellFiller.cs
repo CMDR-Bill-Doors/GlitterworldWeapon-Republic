@@ -58,7 +58,7 @@ namespace BDsPlasmaWeapon
                             Result res = Props.results[i];
                             string text = ((res.net != null) ? res.net.resource.name : res.thing.label);
                             int num = ((res.net != null) ? res.netCount : res.thingCount);
-                            list.Add(new FloatMenuOption("PipeSystem_Produce".Translate(num, text), delegate
+                            list.Add(new FloatMenuOption("BDP_Produce".Translate(num, text), delegate
                             {
                                 resultIndex = Props.results.IndexOf(res);
                                 SetupForChoice();
@@ -67,8 +67,8 @@ namespace BDsPlasmaWeapon
                         }
                         Find.WindowStack.Add(new FloatMenu(list));
                     },
-                    defaultLabel = "PipeSystem_ChooseResult".Translate(),
-                    defaultDesc = "PipeSystem_ChooseResultDesc".Translate(),
+                    defaultLabel = "BDP_ChooseResult".Translate(),
+                    defaultDesc = "BDP_ChooseResultDesc".Translate(),
                     icon = ((ChoosedResult.thing != null) ? ChoosedResult.thing.uiIcon : emptyIcon)
                 };
             }
@@ -119,7 +119,7 @@ namespace BDsPlasmaWeapon
             }
         }
 
-        public bool isAvaliable()
+        public bool IsAvaliable()
         {
             CompFlickable compFlickable = parent.TryGetComp<CompFlickable>();
             CompSchedule compSchedule = parent.TryGetComp<CompSchedule>();
