@@ -66,7 +66,7 @@
 					<warmupTime>1.2</warmupTime>
 					<burstShotCount>20</burstShotCount>
 					<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
-					<ammoConsumedPerShotCount>2</ammoConsumedPerShotCount>
+					<ammoConsumedPerShotCount>3</ammoConsumedPerShotCount>
 					<range>11.9</range>
 					<soundCast>BDP_HissOneShot</soundCast>
 					<recoilAmount>1.5</recoilAmount>
@@ -286,6 +286,8 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>-1</casingAmount>
+				<overchargeDamageChance>0.7</overchargeDamageChance>
+				<overchargeDamageMultiplier>3</overchargeDamageMultiplier>
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_SecondaryAmmo">
 				<secondaryAmmoProps>

@@ -5,6 +5,12 @@
 		<label>small lizion extractor</label>
 		<description>A serie of condensors, supercoolers, centifuge and nanomembranes extracts the trace amount of lizion withing the atmosphere.</description>
 		<drawerType>MapMeshOnly</drawerType>
+		<building>
+			<relatedBuildCommands>
+				<li>BDP_LizionPipe</li>
+				<li>BDP_LizionPipeUnderground</li>
+			</relatedBuildCommands>
+		</building>
 		<graphicData>
 			<texPath>Things/Building/BDP_SmallLizionRefinery</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -81,6 +87,12 @@
 		<label>large lizion extractor</label>
 		<description>Jaw dropping variety of condensors, supercoolers, centifuge and nanomembranes extract lizion from atmosphere at industrial scale.</description>
 		<drawerType>MapMeshOnly</drawerType>
+		<building>
+			<relatedBuildCommands>
+				<li>BDP_LizionPipe</li>
+				<li>BDP_LizionPipeUnderground</li>
+			</relatedBuildCommands>
+		</building>
 		<graphicData>
 			<texPath>Things/Building/BDP_LargeLizionRefinery</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -157,6 +169,12 @@
 		<label>primitive geyser lizion collector</label>
 		<description>Delicate manipulation of gaseous fluid dynamics allow this device to passively extract lizion from underground steam geyser gas at snail speed.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
+		<building>
+			<relatedBuildCommands>
+				<li>BDP_LizionPipe</li>
+				<li>BDP_LizionPipeUnderground</li>
+			</relatedBuildCommands>
+		</building>
 		<graphicData>
 			<texPath>Things/Building/BDP_SmallLizionFiller</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -266,6 +284,12 @@
 		<label>small lizion filling machine</label>
 		<description>Most basic filling tap, not quite fast but at least it can fill the juice for no power cost.</description>
 		<drawerType>MapMeshOnly</drawerType>
+		<building>
+			<relatedBuildCommands>
+				<li>BDP_LizionPipe</li>
+				<li>BDP_LizionPipeUnderground</li>
+			</relatedBuildCommands>
+		</building>
 		<graphicData>
 			<texPath>Things/Building/BDP_SmallLizionFiller</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -327,7 +351,7 @@
 				<pipeNet>BDP_LizionNetwork</pipeNet>
 			</li>
 			<li Class="CompProperties_ThingContainer">
-				<compClass>CompEggContainer</compClass>
+				<compClass>BDsPlasmaWeapon.CompLizionCellBuffer</compClass>
 				<stackLimit>50</stackLimit>
 				<minCountToEmpty>30</minCountToEmpty>
 				<drawStackLabel>false</drawStackLabel>
@@ -367,6 +391,12 @@
 		<label>large lizion filling machine</label>
 		<description>An array of computer controled filling taps fills up canisters faster than you can collect.</description>
 		<drawerType>MapMeshOnly</drawerType>
+		<building>
+			<relatedBuildCommands>
+				<li>BDP_LizionPipe</li>
+				<li>BDP_LizionPipeUnderground</li>
+			</relatedBuildCommands>
+		</building>
 		<graphicData>
 			<texPath>Things/Building/BDP_LargeLizionFiller</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -427,7 +457,7 @@
 				<notWorkingKey>BDP_CantRefine</notWorkingKey>
 			</li>
 			<li Class="CompProperties_ThingContainer">
-				<compClass>CompEggContainer</compClass>
+				<compClass>BDsPlasmaWeapon.CompLizionCellBuffer</compClass>
 				<stackLimit>1000</stackLimit>
 				<minCountToEmpty>100</minCountToEmpty>
 				<drawStackLabel>false</drawStackLabel>

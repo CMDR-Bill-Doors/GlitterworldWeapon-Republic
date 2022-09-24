@@ -18,6 +18,7 @@
 		<defName>BDP_Turret_Plasma</defName>
 		<label>dual lizion blaster turret</label>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<specialDisplayRadius>67.9</specialDisplayRadius>
 		<graphicData>
 			<texPath>Things/Building/PlasmaTurret_Base</texPath>
 			<drawSize>(1.8,1.8)</drawSize>
@@ -203,6 +204,8 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>4</casingAmount>
+				<overchargeDamageChance>1</overchargeDamageChance>
+				<overchargeDamageMultiplier>25</overchargeDamageMultiplier>
 			</li>
 		</comps>
 	</ThingDef>
@@ -223,6 +226,7 @@
 		<label>heavy lizion turret</label>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 		<designatorDropdown>Group_PlasmaTurrets</designatorDropdown>
+		<specialDisplayRadius>67.9</specialDisplayRadius>
 		<graphicData>
 			<texPath>Things/Building/PlasmaTurret_Base</texPath>
 			<drawSize>(1.8,1.8)</drawSize>
@@ -407,6 +411,8 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>20</casingAmount>
+				<overchargeDamageChance>0.7</overchargeDamageChance>
+				<overchargeDamageMultiplier>10</overchargeDamageMultiplier>
 			</li>
 		</comps>
 	</ThingDef>
@@ -424,6 +430,7 @@
 		<defName>BDP_Turret_PlasmaSmall</defName>
 		<label>small lizion turret</label>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<specialDisplayRadius>47.9</specialDisplayRadius>
 		<graphicData>
 			<texPath>Things/Building/BDP_PlasmTurret_SmallBase</texPath>
 			<drawSize>(2.3,2.3)</drawSize>
@@ -549,6 +556,8 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>2</casingAmount>
+				<overchargeDamageChance>0.7</overchargeDamageChance>
+				<overchargeDamageMultiplier>1</overchargeDamageMultiplier>
 			</li>
 		</comps>
 	</ThingDef>

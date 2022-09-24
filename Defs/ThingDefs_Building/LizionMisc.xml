@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Defs><ThingDef ParentName="BuildingBase">
+<Defs>
+	<ThingDef ParentName="BuildingBase">
 		<defName>BDP_LizionCooler</defName>
 		<label>lizion cooler</label>
 		<description>An adjustable lizion vent. Nowhere near power efficient compared to air conditioners but it don't need power to operate and they can cool down rooms fast, this vent is also capable of lowering tempreature to extreme values. Useful as a back up cooler or at making potentially cannibalistic ice creams.</description>
 		<drawerType>MapMeshOnly</drawerType>
+		<building>
+			<relatedBuildCommands>
+				<li>BDP_LizionPipe</li>
+				<li>BDP_LizionPipeUnderground</li>
+			</relatedBuildCommands>
+		</building>
 		<graphicData>
 			<texPath>Things/Building/BDP_LizionCooler</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -62,6 +69,12 @@
 		<label>lizion valve</label>
 		<description>A valve reinforced for cryogenic operation enviroments.</description>
 		<drawerType>MapMeshOnly</drawerType>
+		<building>
+			<relatedBuildCommands>
+				<li>BDP_LizionPipe</li>
+				<li>BDP_LizionPipeUnderground</li>
+			</relatedBuildCommands>
+		</building>
 		<thingClass>PipeSystem.Building_PipeValve</thingClass>
 		<graphicData>
 			<texPath>Things/Building/LizionValve</texPath>
@@ -148,6 +161,10 @@
 		</statBases>
 		<size>(1,1)</size>
 		<building>
+			<relatedBuildCommands>
+				<li>BDP_LizionPipe</li>
+				<li>BDP_LizionPipeUnderground</li>
+			</relatedBuildCommands>
 			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
 			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
 			<fixedStorageSettings>
@@ -188,6 +205,12 @@
 		<defName>BDP_LizionFirePopper</defName>
 		<label>lizion popper</label>
 		<description>When it detects fire, this safety device pops and sprays stored cryogenic lizion in a circular field around itself. Can also be triggered manually. Breaks down once popped and needs connection to lizion pipe network for normal operation.</description>
+		<building>
+			<relatedBuildCommands>
+				<li>BDP_LizionPipe</li>
+				<li>BDP_LizionPipeUnderground</li>
+			</relatedBuildCommands>
+		</building>
 		<graphicData>
 			<texPath>Things/Building/LizionFirePopper_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

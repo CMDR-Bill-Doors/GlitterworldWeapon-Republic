@@ -23,4 +23,56 @@
 			</li>
 		</comps>
 	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>BDP_ReplacementAccelerator</defName>
+		<label>replacement accelerator</label>
+		<description>A modular accelerator assembly that can be used to replace and repair damaged plasma weapons. Can only repair up to 75% HP percentage. Only weapons that can be damaged from overcharged cells can be repaired by this kit.</description>
+		<graphicData>
+			<texPath>Things/Item/BDP_PlasmaComponent</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>10</stackLimit>
+		<healthAffectsPrice>false</healthAffectsPrice>
+		<statBases>
+			<MaxHitPoints>70</MaxHitPoints>
+			<Mass>0.6</Mass>
+			<Flammability>0.6</Flammability>
+			<DeteriorationRate>2.0</DeteriorationRate>
+			<WorkToMake>15000</WorkToMake>
+		</statBases>
+		<costList>
+			<Plasteel>25</Plasteel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+			<ComponentSpacer>1</ComponentSpacer>
+			<Jade>25</Jade>
+		</costList>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<tradeTags>
+			<li>ExoticMisc</li>
+		</tradeTags>
+		<thingSetMakerTags>
+			<li>RewardStandardHighFreq</li>
+		</thingSetMakerTags>
+		<recipeMaker>
+			<researchPrerequisite>ChargedShot</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>FabricationBench</li>
+			</recipeUsers>
+		</recipeMaker>
+		<comps>
+			<li Class="CompProperties_Usable">
+				<useJob>UseItem</useJob>
+				<useLabel>Repair weapon</useLabel>
+				<useDuration>1200</useDuration>
+			</li>
+			<li Class="CompProperties_UseEffect">
+				<compClass>BDsPlasmaWeapon.CompUseEffect_ReplacementAccelerator</compClass>
+			</li>
+		</comps>
+	</ThingDef>
 </Defs>

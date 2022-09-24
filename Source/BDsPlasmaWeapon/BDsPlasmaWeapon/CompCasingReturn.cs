@@ -65,6 +65,38 @@ namespace BDsPlasmaWeapon
             }
         }
 
+        public void OverchargedDamage(ThingWithComps weapon)
+        {
+            if (Rand.Chance(Props.overchargeDamageChance))
+            {
+                float HPcache = (float)weapon.HitPoints / weapon.MaxHitPoints;
+                weapon.HitPoints -= (int)Math.Round(Rand.Value * Props.overchargeDamageMultiplier);
+                float HPnow = (float)weapon.HitPoints / weapon.MaxHitPoints;
+                if (parent.ParentHolder is Pawn pawn)
+                {
+                    if (HPcache > 0.5 && HPnow <= 0.5)
+                    {
+                        Messages.Message(string.Format("BDP_WeaponFailingPawn".Translate(), pawn, parent.LabelCap), parent, MessageTypeDefOf.RejectInput, historical: false);
+                    }
+                    else if (HPcache > 0.25 && HPnow <= 0.25)
+                    {
+                        Messages.Message(string.Format("BDP_WeaponFailingUrgentPawn".Translate(), pawn, parent.LabelCap), parent, MessageTypeDefOf.ThreatSmall, historical: false);
+                    }
+                }
+                else
+                {
+                    if (HPcache > 0.5 && HPnow <= 0.5)
+                    {
+                        Messages.Message(string.Format("BDP_WeaponFailing".Translate(), parent.LabelCap), parent, MessageTypeDefOf.RejectInput, historical: false);
+                    }
+                    else if (HPcache > 0.25 && HPnow <= 0.25)
+                    {
+                        Messages.Message(string.Format("BDP_WeaponFailingUrgent".Translate(), parent.LabelCap), parent, MessageTypeDefOf.ThreatSmall, historical: false);
+                    }
+                }
+            }
+        }
+
         public void DropCasing(IntVec3 pos, Map map)
         {
             int DropedCasingAmount = this.DropedCasingAmount();
@@ -99,5 +131,7 @@ namespace BDsPlasmaWeapon
         public int casingAmount = -1;
         public bool rateAffectedByQuality = true;
         public bool dontShootInSecondaryMode = true;
+        public float overchargeDamageChance = 0;
+        public float overchargeDamageMultiplier = 1;
     }
 }

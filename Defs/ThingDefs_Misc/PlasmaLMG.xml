@@ -75,6 +75,8 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>2</casingAmount>
+				<overchargeDamageChance>0.7</overchargeDamageChance>
+				<overchargeDamageMultiplier>3</overchargeDamageMultiplier>
 			</li>
 		</comps>
 		<weaponTags>
@@ -167,11 +169,13 @@
 				<ammoSet>AmmoSet_LizionCellPistol</ammoSet>
 			</li>
 			<li Class="CombatExtended.CompProperties_FireModes">
-				<aiAimMode>SuppressFire</aiAimMode>
+				<aiAimMode>Snapshot</aiAimMode>
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>1</casingAmount>
+				<overchargeDamageChance>0.7</overchargeDamageChance>
+				<overchargeDamageMultiplier>2</overchargeDamageMultiplier>
 			</li>
 		</comps>
 		<weaponTags>
@@ -264,6 +268,8 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>1</casingAmount>
+				<overchargeDamageChance>0.7</overchargeDamageChance>
+				<overchargeDamageMultiplier>2</overchargeDamageMultiplier>
 			</li>
 		</comps>
 		<weaponTags>
@@ -346,11 +352,13 @@
 			</li>
 			<li Class="CombatExtended.CompProperties_FireModes">
 				<aimedBurstShotCount>3</aimedBurstShotCount>
-				<aiAimMode>SuppressFire</aiAimMode>
+				<aiAimMode>AimedShot</aiAimMode>
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>2</casingAmount>
+				<overchargeDamageChance>0.7</overchargeDamageChance>
+				<overchargeDamageMultiplier>2</overchargeDamageMultiplier>
 			</li>
 		</comps>
 		<weaponTags>
@@ -434,6 +442,8 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>4</casingAmount>
+				<overchargeDamageChance>0.9</overchargeDamageChance>
+				<overchargeDamageMultiplier>6</overchargeDamageMultiplier>
 			</li>
 		</comps>
 		<weaponTags>
@@ -526,11 +536,13 @@
 				<ammoSet>AmmoSet_LizionCellShotgun</ammoSet>
 			</li>
 			<li Class="CombatExtended.CompProperties_FireModes">
-				<aiAimMode>AimedShot</aiAimMode>
+				<aiAimMode>Snapshot</aiAimMode>
 			</li>
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>6</casingAmount>
+				<overchargeDamageChance>0.7</overchargeDamageChance>
+				<overchargeDamageMultiplier>5</overchargeDamageMultiplier>
 			</li>
 		</comps>
 		<weaponTags>
@@ -628,6 +640,8 @@
 			<li Class="BDsPlasmaWeapon.CompProperties_CasingReturn">
 				<casingThingDef>BDP_EmptyLizionCell</casingThingDef>
 				<casingAmount>20</casingAmount>
+				<overchargeDamageChance>1</overchargeDamageChance>
+				<overchargeDamageMultiplier>9</overchargeDamageMultiplier>
 			</li>
 		</comps>
 		<weaponTags>

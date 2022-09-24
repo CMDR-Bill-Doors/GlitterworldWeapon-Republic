@@ -27,7 +27,7 @@
 		<label>lizion production</label>
 		<priority>50</priority>
 		<needsOpportunity>false</needsOpportunity>
-		<helpText>In order to produce lizion, you'll need air inlets and lizion refineries, connected with air pipes and preferably a buffer air tank. Air inlets needs clear space to operate, or their efficiency decreases. Steam geyser intakes are another solution that're fast and not space consuming, but their availbility are restricted just like other steam geyser using buildings.\n\nLizion produced from refineries can be stored in tanks for other uses or used to fill cells into actual ammo using fillers.</helpText>
+		<helpText>In order to produce lizion, you'll need air inlets and lizion extractors, connected with air pipes and preferably a buffer air tank. Air inlets needs clear space to operate, or their efficiency decreases. Steam geyser intakes are another solution that're fast and not space consuming, but their availbility are restricted just like other steam geyser using buildings.\n\nLizion produced from refineries can be stored in tanks for other uses or used to fill cells into actual ammo using fillers.</helpText>
 		<highlightTags>
 			<li>BDGW_RailRearm</li>
 		</highlightTags>

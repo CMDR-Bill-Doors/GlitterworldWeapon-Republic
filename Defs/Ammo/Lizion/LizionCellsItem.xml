@@ -10,8 +10,8 @@
 
 	<CombatExtended.AmmoCategoryDef>
 		<defName>BDP_Plasma</defName>
-		<label>plasma</label>
-		<labelShort>plasma</labelShort>
+		<label>standard plasma</label>
+		<labelShort>standard</labelShort>
 		<description>Energized and superheated plasma state lizion accelerated with magnetic field.</description>
 		<advanced>true</advanced>
 	</CombatExtended.AmmoCategoryDef>
@@ -291,5 +291,44 @@
 		<products>
 			<Ammo_LizionCellIncendiary>100</Ammo_LizionCellIncendiary>
 		</products>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>VentLizionCells</defName>
+		<label>vent lizion cells</label>
+		<description>Vent 100 lizion cells to make them available for refilling. 10% of them will be damaged in thr process.</description>
+		<jobString>Venting lizion cells.</jobString>
+		<effectWorking>LizionCoolerLow</effectWorking>
+		<soundWorking>HissSmall</soundWorking>
+		<workAmount>1000</workAmount>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Ammo_LizionCellNormal</li>
+						<li>Ammo_LizionCellIncendiary</li>
+						<li>Ammo_LizionCellInert</li>
+						<li>Ammo_LizionCellOvercharged</li>
+					</thingDefs>
+				</filter>
+				<count>100</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Ammo_LizionCellNormal</li>
+				<li>Ammo_LizionCellIncendiary</li>
+				<li>Ammo_LizionCellInert</li>
+				<li>Ammo_LizionCellOvercharged</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BDP_EmptyLizionCell>90</BDP_EmptyLizionCell>
+		</products>
+		<recipeUsers Inherit="false">
+			<li>CraftingSpot</li>
+		</recipeUsers>
 	</RecipeDef>
 </Defs>

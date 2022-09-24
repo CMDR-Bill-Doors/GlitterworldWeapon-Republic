@@ -29,7 +29,7 @@ namespace BDsPlasmaWeapon
 
         private CompRefuelable compRefuelable;
 
-        private CompThingContainer compThingContainer;
+        private CompLizionCellBuffer compThingContainer;
 
         public Result ChoosedResult => Props.results[resultIndex];
 
@@ -44,7 +44,7 @@ namespace BDsPlasmaWeapon
         {
             base.PostSpawnSetup(respawningAfterLoad);
             compRefuelable = parent.TryGetComp<CompRefuelable>();
-            compThingContainer = parent.TryGetComp<CompThingContainer>();
+            compThingContainer = parent.TryGetComp<CompLizionCellBuffer>();
             adjCells = GenAdj.CellsAdjacent8Way(parent).ToList();
             if (Props.results.Count > 1)
             {
@@ -56,9 +56,10 @@ namespace BDsPlasmaWeapon
                         for (int i = 0; i < Props.results.Count; i++)
                         {
                             Result res = Props.results[i];
-                            string text = ((res.net != null) ? res.net.resource.name : res.thing.label);
-                            int num = ((res.net != null) ? res.netCount : res.thingCount);
-                            list.Add(new FloatMenuOption("BDP_Produce".Translate(num, text), delegate
+                            string result = (res.thing.label);
+                            string gas = Props.pipeNet.resource.name;
+                            int num = (res.countNeeded);
+                            list.Add(new FloatMenuOption("BDP_Produce".Translate(result, gas, num), delegate
                             {
                                 resultIndex = Props.results.IndexOf(res);
                                 SetupForChoice();
@@ -131,9 +132,11 @@ namespace BDsPlasmaWeapon
         private void DropProduct()
         {
             Thing firstThing = ThingMaker.MakeThing(ChoosedResult.thing);
+            firstThing.stackCount = ChoosedResult.thingCount;
             if (compThingContainer != null && !compThingContainer.Full)
             {
                 compThingContainer.innerContainer.TryAdd(firstThing);
+                compThingContainer.NotifyOperational();
             }
             else
             {

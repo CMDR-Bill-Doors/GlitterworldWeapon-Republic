@@ -47,7 +47,7 @@ namespace BDsPlasmaWeapon
                     {
                         hitPointPenalty += (float)(0.5 - hitPointPercentage) * 2;
                     }
-                    hitPointModifier = "CurrentHitPointPercentage".Translate() + Math.Round(hitPointPercentage * 100, 0) + "%, -" + hitPointPenalty * 100 + "%" + " hitPointPenaltyApplied".Translate();
+                    hitPointModifier = "CurrentHitPointPercentage".Translate() + Math.Round(hitPointPercentage * 100, 0) + "%, -" + hitPointPenalty * 100 + "%" + "hitPointPenaltyApplied".Translate();
                 }
 
                 return QualityModifier + "\n" + hitPointModifier + "\n";

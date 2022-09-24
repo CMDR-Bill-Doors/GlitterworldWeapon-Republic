@@ -19,4 +19,11 @@
 	<BDP_TurretAmmoMode>Ammo mode</BDP_TurretAmmoMode>
 	<BDP_TurretPipeMode>Pipe mode</BDP_TurretPipeMode>
 	<BDP_TurretDesc>switch between ammo mode and piped mode</BDP_TurretDesc>
+
+	<BDP_WeaponFailingPawn>{0}'s {1} is being damaged from the use of overcharged cells!</BDP_WeaponFailingPawn>
+	<BDP_WeaponFailingUrgentPawn>{0}'s {1} is falling apart due the use of overcharged cells! Switch ammo type before it breaks!</BDP_WeaponFailingUrgentPawn>
+
+	<BDP_WeaponFailing>{0} is being damaged from the use of overcharged cells!</BDP_WeaponFailing>
+	<BDP_WeaponFailingUrgent>{0} is falling apart due the use of overcharged cells! Switch ammo type before it breaks!</BDP_WeaponFailingUrgent>
+
 </LanguageData>

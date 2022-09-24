@@ -90,11 +90,22 @@ namespace BDsPlasmaWeapon
                     return true;
                 }
             }
-            else
+            else if (base.TryCastShot())
             {
-                if (base.TryCastShot())
+                if (CompCasing != null && CompAmmo != null)
                 {
-                    if (CompCasing != null && CompAmmo != null && compAmmo.CurrentAmmo != AmmoDefOf.Ammo_LizionCellOvercharged)
+                    if (compAmmo.CurrentAmmo == AmmoDefOf.Ammo_LizionCellOvercharged)
+                    {
+                        if (Caster is Building turret)
+                        {
+                            CompCasing.OverchargedDamage(turret);
+                        }
+                        else
+                        {
+                            CompCasing.OverchargedDamage(EquipmentSource);
+                        }
+                    }
+                    else
                     {
                         if (CasterIsPawn && ShooterPawn.Faction == Faction.OfPlayer)
                         {

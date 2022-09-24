@@ -10,10 +10,11 @@
 	<CurrentMode>Current mode: </CurrentMode>
 	<TargetMode>Target mode: </TargetMode>
 
-	<Deconstruct>拆除</Deconstruct>
-	<Pipes>管道</Pipes>
-
-	<BDP_Produce>Fill {1}s</BDP_Produce>
+	<BDP_Produce>Fill {0}s from {2} units of {1}</BDP_Produce>
 	<BDP_ChooseResult>Select result</BDP_ChooseResult>
 	<BDP_ChooseResultDesc>Select which kind of lizion cell to produce.</BDP_ChooseResultDesc>
+
+	<BDP_RepairFailNoWeapon>no weapon</BDP_RepairFailNoWeapon>
+	<BDP_RepairFailHitpoint>HP above 75%</BDP_RepairFailHitpoint>
+	<BDP_RepairFailWrongWeapon>weapon type unsupported</BDP_RepairFailWrongWeapon>
 </LanguageData>
