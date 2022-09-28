@@ -32,6 +32,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionFireExtinguisher</defName>
+		<thingClass>BDsPlasmaWeaponVanilla.DisintegratingProjectileExplosive</thingClass>
 		<label>lizion gas</label>
 		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
 		<graphicData>
@@ -45,16 +46,6 @@
 			<damageAmountBase>1</damageAmountBase>
 			<explosionRadius>1.5</explosionRadius>
 		</projectile>
-		<comps>
-			<li Class="CompProperties_Explosive">
-				<damageAmountBase>9999</damageAmountBase>
-				<explosiveDamageType>Extinguish</explosiveDamageType>
-				<explosiveRadius>1.5</explosiveRadius>
-				<explosionSound>BDP_HissOneShot</explosionSound>
-				<preExplosionSpawnThingDef>Filth_Water</preExplosionSpawnThingDef>
-				<preExplosionSpawnChance>0.01</preExplosionSpawnChance>
-			</li>
-		</comps>
 		<modExtensions>
 			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
 				<fadeOutStartPercentage>0.1</fadeOutStartPercentage>
@@ -98,6 +89,9 @@
 				<range>7.9</range>
 				<soundCast>BDP_HissOneShot</soundCast>
 				<muzzleFlashScale>12</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
 			</li>
 		</verbs>
 		<comps>
@@ -188,6 +182,9 @@
 				<range>10.9</range>
 				<soundCast>BDP_HissOneShot</soundCast>
 				<muzzleFlashScale>12</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
 			</li>
 		</verbs>
 		<comps>
@@ -196,9 +193,9 @@
 			</li>
 			<li Class="CompProperties_Reloadable">
 				<compClass>BDsPlasmaWeaponVanilla.CompReloadableFromFiller</compClass>
-				<maxCharges>150</maxCharges>
+				<maxCharges>100</maxCharges>
 				<ammoDef>Gas_Lizion</ammoDef>
-				<ammoCountToRefill>150</ammoCountToRefill>
+				<ammoCountToRefill>100</ammoCountToRefill>
 				<baseReloadTicks>1</baseReloadTicks>
 				<soundReload>Standard_Reload</soundReload>
 				<hotKey>Misc4</hotKey>

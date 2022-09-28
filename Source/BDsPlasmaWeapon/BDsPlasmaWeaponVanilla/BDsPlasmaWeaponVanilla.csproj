@@ -88,6 +88,7 @@
     <Compile Include="DamageDefOf.cs" />
     <Compile Include="DamageWorker_LizionExplosion.cs" />
     <Compile Include="DamageWorker_WithoutShake.cs" />
+    <Compile Include="DisintegratingProjectileExplosive.cs" />
     <Compile Include="DisintegratingProjectile.cs" />
     <Compile Include="Gizmo_LizionTankStatus.cs" />
     <Compile Include="HarmonyPatch.cs" />

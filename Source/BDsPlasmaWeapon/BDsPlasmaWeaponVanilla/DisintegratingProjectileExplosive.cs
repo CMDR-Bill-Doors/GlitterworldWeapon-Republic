@@ -6,7 +6,7 @@ using Verse;
 
 namespace BDsPlasmaWeaponVanilla
 {
-    public class DisintegratingProjectile : Bullet
+    public class DisintegratingProjectileExplosive : Projectile_Explosive
     {
         public DefModExtension_DisintegratingProjectile Data
         {
@@ -175,15 +175,5 @@ namespace BDsPlasmaWeaponVanilla
                 Graphics.DrawMesh(MeshPool.GridPlane(def.graphicData.drawSize * drawSize), DrawPos, ExactRotation, material, 0);
             }
         }
-    }
-
-    public class DefModExtension_DisintegratingProjectile : DefModExtension
-    {
-        public float fadeOutStartPercentage = (2 / 3f);
-        public float fadeOutExpandMultiplier = 1;
-        public bool shouldStartFire = false;
-        public float chanceOfFire = 1f;
-        public float minFireSize = 0.1f;
-        public float maxFireSize = 1;
     }
 }

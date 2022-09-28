@@ -436,7 +436,10 @@
 			<drawSize>(2.3,2.3)</drawSize>
 			<damageData>
 				<rect>(0.2,0.2,0.6,0.6)</rect>
-			</damageData>
+			</damageData>			<shadowData>
+				<volume>(0.27,0.25,0.27)</volume>
+				<offset>(0,0,0)</offset>
+			</shadowData>
 		</graphicData>
 		<uiIconPath>UI/Icons/BDP_PlasmaTurretSmall_Icon</uiIconPath>
 		<statBases>

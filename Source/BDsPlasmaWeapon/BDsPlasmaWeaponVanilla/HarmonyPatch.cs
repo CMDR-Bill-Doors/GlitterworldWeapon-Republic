@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using HarmonyLib;
@@ -11,14 +13,36 @@ using Verse;
 namespace BDsPlasmaWeaponVanilla
 {
     [StaticConstructorOnStartup]
-    public static class HarmonyPatch
+    public static class HarmonyPatches
     {
-        private static readonly Type patchType = typeof(HarmonyPatch);
-        static HarmonyPatch()
+        private static readonly Type patchType = typeof(HarmonyPatches);
+        static HarmonyPatches()
         {
             Harmony harmony = new Harmony("BDsPlasmaWeapon");
 
             harmony.Patch(AccessTools.Method(typeof(PawnGenerator), "PostProcessGeneratedGear"), postfix: new HarmonyMethod(patchType, nameof(PostProcessGeneratedGear_Postfix)));
+
+            harmony.PatchAll(Assembly.GetExecutingAssembly());
+        }
+
+        [HarmonyPatch(typeof(PawnRenderer), nameof(PawnRenderer.DrawEquipmentAiming))]
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            List<CodeInstruction> codes = instructions.ToList();
+            MethodInfo drawMeshMI = typeof(Graphics).GetMethod(nameof(Graphics.DrawMesh),
+                new Type[] { typeof(Mesh), typeof(Vector3), typeof(Quaternion), typeof(Material), typeof(int) });
+            int index = codes.FindIndex((x) => x.Calls(drawMeshMI));
+            MethodInfo myDrawingMethod = typeof(HarmonyPatches).GetMethod(nameof(HarmonyPatches.DrawEquipmentAiming_postfix));
+            codes.InsertRange(index + 1, new List<CodeInstruction>()
+            {
+                new CodeInstruction(OpCodes.Ldarg_1),
+                new CodeInstruction(OpCodes.Ldarg_2),
+                new CodeInstruction(OpCodes.Ldloc_0),
+                new CodeInstruction(OpCodes.Ldloc_1),
+            new CodeInstruction(OpCodes.Call, myDrawingMethod)
+            });
+
+            return codes;
         }
 
         public static void PostProcessGeneratedGear_Postfix(Thing gear)

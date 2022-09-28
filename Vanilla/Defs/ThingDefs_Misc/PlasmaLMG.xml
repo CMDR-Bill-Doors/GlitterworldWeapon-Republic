@@ -26,6 +26,17 @@
 		</graphicData>
 	</ThingDef>
 
+	<ThingDef Name="BaseLizionBulletOC" ParentName="BaseBullet" Abstract="true">
+		<thingClass>BDsPlasmaWeaponVanilla.DisintegratingProjectileExplosive</thingClass>
+		<label>plasma bolt</label>
+		<graphicData>
+			<texPath>Things/Projectile/LauncherShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(200,200,0)</color>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+	</ThingDef>
+
 	<!-- LMG and Rifle-->
 
 	<ThingDef ParentName="BaseLizionBullet">
@@ -54,11 +65,10 @@
 		</modExtensions>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseLizionBullet">
+	<ThingDef ParentName="BaseLizionBulletOC">
 		<defName>Projectile_LizionRifleOvercharged</defName>
 		<graphicData>
 			<drawSize>(1,1.4)</drawSize>
-			<color>(200,200,0)</color>
 		</graphicData>
 		<projectile>
 			<damageDef>LizionPlasma</damageDef>
@@ -66,6 +76,7 @@
 			<armorPenetrationBase>0.20</armorPenetrationBase>
 			<speed>60</speed>
 			<stoppingPower>1.5</stoppingPower>
+			<explosionRadius>0.5</explosionRadius>
 			<extraDamages>
 				<li>
 					<def>Burn</def>
@@ -186,6 +197,13 @@
 				<Excellent>1.4</Excellent>
 				<Masterwork>1.65</Masterwork>
 				<Legendary>2</Legendary>
+			</li>
+			<li Class="BDsPlasmaWeaponVanilla.DefModExtension_WeaponGlowRender">
+				<graphicData>
+					<texPath>Things/Weapons/BDP_PlasmaLMG_Glow</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<shaderType>TransparentPostLight</shaderType>
+				</graphicData>
 			</li>
 		</modExtensions>
 	</ThingDef>
@@ -596,11 +614,10 @@
 		</modExtensions>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseLizionBullet">
+	<ThingDef ParentName="BaseLizionBulletOC">
 		<defName>Projectile_LizionSniperOvercharged</defName>
 		<graphicData>
 			<drawSize>(1.4,2)</drawSize>
-			<color>(200,200,0)</color>
 		</graphicData>
 		<projectile>
 			<damageDef>LizionPlasma</damageDef>
@@ -608,6 +625,7 @@
 			<armorPenetrationBase>0.20</armorPenetrationBase>
 			<speed>60</speed>
 			<stoppingPower>1.5</stoppingPower>
+			<explosionRadius>1</explosionRadius>
 			<extraDamages>
 				<li>
 					<def>Burn</def>
@@ -754,7 +772,7 @@
 		</modExtensions>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseLizionBullet">
+	<ThingDef ParentName="BaseLizionBulletOC">
 		<defName>Projectile_LizionShotgunOvercharged</defName>
 		<graphicData>
 			<texPath>Things/Projectile/Bullet_Shotgun</texPath>
@@ -766,6 +784,7 @@
 			<armorPenetrationBase>0.20</armorPenetrationBase>
 			<speed>60</speed>
 			<stoppingPower>1.5</stoppingPower>
+			<explosionRadius>1.5</explosionRadius>
 			<extraDamages>
 				<li>
 					<def>Burn</def>
@@ -889,7 +908,7 @@
 	<!-- Cannon -->
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionHeavyNormal</defName>
-		<thingClass>Projectile_Explosive</thingClass>
+		<thingClass>BDsPlasmaWeaponVanilla.DisintegratingProjectileExplosive</thingClass>
 		<graphicData>
 			<drawSize>(3.0,3.0)</drawSize>
 		</graphicData>
@@ -897,7 +916,7 @@
 			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>55</damageAmountBase>
 			<armorPenetrationBase>0.20</armorPenetrationBase>
-			<explosionRadius>3</explosionRadius>
+			<explosionRadius>2</explosionRadius>
 			<speed>60</speed>
 			<stoppingPower>1.5</stoppingPower>
 			<extraDamages>
@@ -909,18 +928,16 @@
 		</projectile>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseLizionBullet">
+	<ThingDef ParentName="BaseLizionBulletOC">
 		<defName>Projectile_LizionHeavyOvercharged</defName>
-		<thingClass>Projectile_Explosive</thingClass>
 		<graphicData>
 			<drawSize>(3.0,3.0)</drawSize>
-			<color>(200,200,0)</color>
 		</graphicData>
 		<projectile>
 			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>115</damageAmountBase>
 			<armorPenetrationBase>0.20</armorPenetrationBase>
-			<explosionRadius>5</explosionRadius>
+			<explosionRadius>3</explosionRadius>
 			<speed>60</speed>
 			<stoppingPower>1.5</stoppingPower>
 			<extraDamages>
@@ -964,7 +981,7 @@
 				<defaultProjectile>Projectile_LizionHeavyNormal</defaultProjectile>
 				<warmupTime>5</warmupTime>
 				<range>45.9</range>
-				<soundCast>BDP_Shot_PlasmaSniper</soundCast>
+				<soundCast>BDP_Shot_PlasmaHeavy</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>15</muzzleFlashScale>
 				<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
@@ -998,7 +1015,7 @@
 					<defaultProjectile>Projectile_LizionHeavyOvercharged</defaultProjectile>
 					<warmupTime>5</warmupTime>
 					<range>45.9</range>
-					<soundCast>BDP_Shot_PlasmaSniper</soundCast>
+					<soundCast>BDP_Shot_PlasmaHeavy</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<muzzleFlashScale>12</muzzleFlashScale>
 					<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>

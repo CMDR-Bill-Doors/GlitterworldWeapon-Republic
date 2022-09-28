@@ -50,17 +50,17 @@ namespace BDsPlasmaWeaponVanilla
                     switch (compQuality.Quality)
                     {
                         case QualityCategory.Awful:
-                            return (int)(Props.maxCharges * qualityModifier.Awful);
+                            return (int)Math.Round(Props.maxCharges * qualityModifier.Awful);
                         case QualityCategory.Poor:
-                            return (int)(Props.maxCharges * qualityModifier.Poor);
+                            return (int)Math.Round(Props.maxCharges * qualityModifier.Poor);
                         case QualityCategory.Good:
-                            return (int)(Props.maxCharges * qualityModifier.Good);
+                            return (int)Math.Round(Props.maxCharges * qualityModifier.Good);
                         case QualityCategory.Excellent:
-                            return (int)(Props.maxCharges * qualityModifier.Excellent);
+                            return (int)Math.Round(Props.maxCharges * qualityModifier.Excellent);
                         case QualityCategory.Masterwork:
-                            return (int)(Props.maxCharges * qualityModifier.Masterwork);
+                            return (int)Math.Round(Props.maxCharges * qualityModifier.Masterwork);
                         case QualityCategory.Legendary:
-                            return (int)(Props.maxCharges * qualityModifier.Legendary);
+                            return (int)Math.Round(Props.maxCharges * qualityModifier.Legendary);
                         default:
                             return Props.maxCharges;
                     }
