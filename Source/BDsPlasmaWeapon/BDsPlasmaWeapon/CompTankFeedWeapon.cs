@@ -21,12 +21,17 @@ namespace BDsPlasmaWeapon
 
         public CompReloadableFromFiller compReloadableFromFiller;
 
+        CompReloadableFromFiller compWeaponTank => parent.TryGetComp<CompReloadableFromFiller>();
+
+        public CompAmmoUser CompAmmoUser;
+
         public bool alwaysTrue => Props.alwaysTrue;
 
         public bool isOn;
         public override void PostPostMake()
         {
             base.PostPostMake();
+            CompAmmoUser = parent.TryGetComp<CompAmmoUser>();
             searchTank(1, false);
             isOn = alwaysTrue;
         }
@@ -35,6 +40,7 @@ namespace BDsPlasmaWeapon
         {
             base.PostSpawnSetup(respawningAfterLoad);
             searchTank(1, false);
+            CompAmmoUser = parent.TryGetComp<CompAmmoUser>();
             if (!respawningAfterLoad)
             {
                 isOn = alwaysTrue;
@@ -52,6 +58,12 @@ namespace BDsPlasmaWeapon
             {
                 searchTank(1, false);
             }
+        }
+
+        public override void Notify_Unequipped(Pawn pawn)
+        {
+            base.Notify_Unequipped(pawn);
+            compReloadableFromFiller = null;
         }
 
         public override void PostExposeData()
@@ -115,6 +127,35 @@ namespace BDsPlasmaWeapon
             return false;
         }
 
+        private void siphonTank()
+        {
+            if (compReloadableFromFiller != null && compWeaponTank != null)
+            {
+                int gasNeeded = compWeaponTank.emptySpace;
+                int gasAvailable = compReloadableFromFiller.remainingCharges;
+                if (gasNeeded > 0)
+                {
+                    if (gasNeeded <= gasAvailable)
+                    {
+                        compWeaponTank.RefillGas(gasNeeded);
+                        compReloadableFromFiller.DrawGas(gasNeeded);
+                    }
+                    else
+                    {
+                        compWeaponTank.RefillGas(gasAvailable);
+                        compReloadableFromFiller.DrawGas(gasAvailable);
+                    }
+                }
+            }
+        }
+
+        private bool isDisabled
+        {
+            get
+            {
+                return (compReloadableFromFiller == null || (CompAmmoUser != null && CompAmmoUser.EmptyMagazine));
+            }
+        }
 
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
@@ -127,7 +168,7 @@ namespace BDsPlasmaWeapon
 
             if (!alwaysTrue)
             {
-                string commandIcon = (compReloadableFromFiller == null ? Props.disabledIcon : (isOn ? Props.onIcon : Props.offIcon));
+                string commandIcon = (isDisabled ? Props.disabledIcon : (isOn ? Props.onIcon : Props.offIcon));
 
                 if (commandIcon == "")
                 {
@@ -137,11 +178,26 @@ namespace BDsPlasmaWeapon
                 Command_Action switchSecondaryLauncher = new Command_Action
                 {
                     action = new Action(toggle),
-                    defaultLabel = (compReloadableFromFiller == null ? Props.disabledLabel : (isOn ? Props.onLabel : Props.offLabel)).Translate(),
-                    defaultDesc = (compReloadableFromFiller == null ? Props.disabledDescription.Translate() + "\n\n" : "".Translate()) + Props.description.Translate(),
+                    defaultLabel = (isDisabled ? Props.disabledLabel : (isOn ? Props.onLabel : Props.offLabel)).Translate(),
+                    defaultDesc = (isDisabled ? Props.disabledDescription.Translate() + "\n\n" : "".Translate()) + Props.description.Translate(),
                     icon = ContentFinder<Texture2D>.Get(commandIcon, false),
                 };
                 yield return switchSecondaryLauncher;
+            }
+
+            if (compReloadableFromFiller != null && compWeaponTank != null)
+            {
+                Command_Action command_Siphon = new Command_Action
+                {
+                    defaultLabel = Props.siphon.Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Icons/FireModes/PlasmaWeaponTankMode_on", false),
+                    defaultDesc = Props.siphondescription.Translate(),
+                    action = delegate
+                    {
+                        siphonTank();
+                    }
+                };
+                yield return command_Siphon;
             }
 
             Command_Action command_Action = new Command_Action
@@ -161,7 +217,7 @@ namespace BDsPlasmaWeapon
 
         public void toggle()
         {
-            if (compReloadableFromFiller == null)
+            if (isDisabled)
             {
                 if (!searchTank() && !alwaysTrue)
                 {
@@ -190,6 +246,8 @@ namespace BDsPlasmaWeapon
         public string description = "BDP_SiphonModeDesc";
         public string disabledDescription = "BDP_SiphonDisabledDesc";
         public bool alwaysTrue = false;
+        public string siphon = "BDP_SiphonVanilla";
+        public string siphondescription = "BDP_SiphonDiscVanilla";
         public string reconnect = "BDP_SiphonReconnect";
         public string reconnectdescription = "BDP_SiphonReconnectDesc";
         public CompProperties_TankFeedWeapon()

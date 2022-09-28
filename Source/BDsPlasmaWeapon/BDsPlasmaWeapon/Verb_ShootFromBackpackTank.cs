@@ -17,7 +17,7 @@ namespace BDsPlasmaWeapon
             get
             {
                 CompReloadableFromFiller comp = EquipmentSource.TryGetComp<CompReloadableFromFiller>();
-                if (comp != null)
+                if (comp != null && (compTankFeedWeapon != null && comp.remainingCharges > ammoConsumption))
                 {
                     return comp;
                 }

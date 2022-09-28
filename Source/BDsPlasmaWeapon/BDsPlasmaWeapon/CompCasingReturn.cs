@@ -72,7 +72,7 @@ namespace BDsPlasmaWeapon
                 float HPcache = (float)weapon.HitPoints / weapon.MaxHitPoints;
                 weapon.HitPoints -= (int)Math.Round(Rand.Value * Props.overchargeDamageMultiplier);
                 float HPnow = (float)weapon.HitPoints / weapon.MaxHitPoints;
-                if (parent.ParentHolder is Pawn pawn)
+                if (parent.ParentHolder is Pawn pawn && pawn.Faction == Faction.OfPlayer)
                 {
                     if (HPcache > 0.5 && HPnow <= 0.5)
                     {

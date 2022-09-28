@@ -156,6 +156,26 @@ namespace BDsPlasmaWeapon
             remainingCharges = 0;
         }
 
+        public override void Notify_Equipped(Pawn pawn)
+        {
+            base.Notify_Equipped(pawn);
+            CompTankFeedWeapon compWeapon = pawn.equipment.Primary.TryGetComp<CompTankFeedWeapon>();
+            if (compWeapon != null)
+            {
+                compWeapon.Notify_Equipped(pawn);
+            }
+        }
+
+        public override void Notify_Unequipped(Pawn pawn)
+        {
+            base.Notify_Unequipped(pawn);
+            CompTankFeedWeapon compWeapon = pawn.equipment.Primary.TryGetComp<CompTankFeedWeapon>();
+            if (compWeapon != null)
+            {
+                compWeapon.compReloadableFromFiller = null;
+                compWeapon.searchTank(1, false);
+            }
+        }
         public override string CompInspectStringExtra()
         {
             return "ChargesRemaining".Translate(Props.ChargeNounArgument) + ": " + LabelRemaining;
@@ -192,7 +212,7 @@ namespace BDsPlasmaWeapon
                 yield return item;
             }
             bool drafted = Wearer.Drafted;
-            if ((drafted && !Props.displayGizmoWhileDrafted) || (!drafted && !Props.displayGizmoWhileUndrafted))
+            if (Wearer.Faction != Faction.OfPlayer || (drafted && !Props.displayGizmoWhileDrafted) || (!drafted && !Props.displayGizmoWhileUndrafted))
             {
                 yield break;
             }

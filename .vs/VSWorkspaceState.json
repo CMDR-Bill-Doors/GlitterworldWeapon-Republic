@@ -2,10 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\Defs",
-    "\\Defs\\Ammo",
-    "\\Defs\\Ammo\\Lizion",
-    "\\Defs\\ThingDefs_Misc"
+    "\\Defs\\ThingDefs_Building",
+    "\\Defs\\ThingDefs_Misc",
+    "\\Languages",
+    "\\Languages\\ChineseSimplified",
+    "\\Languages\\ChineseSimplified\\DefInjected",
+    "\\Languages\\English",
+    "\\Languages\\English\\Keyed",
+    "\\Source\\BDsPlasmaWeapon",
+    "\\Source\\BDsPlasmaWeapon\\BDsPlasmaWeapon"
   ],
-  "SelectedNode": "\\Defs\\Ammo\\Lizion\\LizionCellsItem.xml",
+  "SelectedNode": "\\Languages\\English\\Keyed\\Weapon.xml",
   "PreviewInSolutionExplorer": false
 }

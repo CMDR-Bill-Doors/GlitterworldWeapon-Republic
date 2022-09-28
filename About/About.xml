@@ -16,11 +16,6 @@
 	</loadAfter>
 	<modDependencies>
 		<li>
-			<packageId>CETeam.CombatExtended</packageId>
-			<displayName>Combat Extended</displayName>
-			<downloadUrl>https://github.com/CombatExtended-Continued/CombatExtended</downloadUrl>
-		</li>
-		<li>
 			<packageId>brrainz.harmony</packageId>
 			<displayName>Harmony</displayName>
 			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>

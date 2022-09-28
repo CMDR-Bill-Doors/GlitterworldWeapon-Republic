@@ -94,7 +94,7 @@ namespace BDsPlasmaWeapon
             {
                 if (CompCasing != null && CompAmmo != null)
                 {
-                    if (compAmmo.CurrentAmmo == AmmoDefOf.Ammo_LizionCellOvercharged)
+                    if (BDPMod.OverchargeDamageWeapon && compAmmo.CurrentAmmo == AmmoDefOf.Ammo_LizionCellOvercharged && Caster.Faction == Faction.OfPlayer)
                     {
                         if (Caster is Building turret)
                         {
@@ -105,7 +105,7 @@ namespace BDsPlasmaWeapon
                             CompCasing.OverchargedDamage(EquipmentSource);
                         }
                     }
-                    else
+                    else if (!BDPMod.OverchargeDontReturnCasing || (compAmmo.CurrentAmmo != AmmoDefOf.Ammo_LizionCellOvercharged))
                     {
                         if (CasterIsPawn && ShooterPawn.Faction == Faction.OfPlayer)
                         {
