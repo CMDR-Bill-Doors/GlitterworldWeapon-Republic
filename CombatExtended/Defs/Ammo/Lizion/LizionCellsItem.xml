@@ -149,7 +149,7 @@
 		<defName>Ammo_LizionCellInert</defName>
 		<label>inert lizion cell</label>
 		<description>A less pressurized lizion cell, less lethal than a standard cell but good when you want somebody downed alive.</description>
-		<generateAllowChance>0.5</generateAllowChance>
+		<generateAllowChance>0</generateAllowChance>
 		<statBases>
 			<MarketValue>2.78</MarketValue>
 		</statBases>

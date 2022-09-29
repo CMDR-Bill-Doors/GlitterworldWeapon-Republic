@@ -20,7 +20,7 @@ namespace BDsPlasmaWeaponVanilla
             get
             {
                 CompReloadableFromFiller comp = EquipmentSource.TryGetComp<CompReloadableFromFiller>();
-                if (comp != null && (compTankFeedWeapon != null && comp.remainingCharges > compTankFeedWeapon.Props.ammoConsumption))
+                if (comp != null && (compTankFeedWeapon != null && comp.remainingCharges >= compTankFeedWeapon.Props.ammoConsumption))
                 {
                     return comp;
                 }
@@ -38,28 +38,21 @@ namespace BDsPlasmaWeaponVanilla
         {
             if (base.Available())
             {
-                if (CasterIsPawn && CasterPawn.Faction != Faction.OfPlayer)
-                {
-                    return true;
-                }
-                if (compTank == null)
+                if (compTank == null || compTankFeedWeapon == null)
                 {
                     return false;
                 }
                 if (compTank.remainingCharges < ammoConsumption)
                 {
-                    compTankFeedWeapon?.searchTank(ammoConsumption, false);
-                    return false;
+                    return compTankFeedWeapon.searchTank(ammoConsumption, false);
                 }
-                int storedGas = compTank.remainingCharges;
-                return storedGas >= ammoConsumption;
+                return true;
             }
             return false;
         }
 
         protected override bool TryCastShot()
         {
-            Log.Message(ammoConsumption.ToString());
             if (base.TryCastShot())
             {
                 if (!(CasterIsPawn && CasterPawn.Faction != Faction.OfPlayer) && (compTank == null || compTank.remainingCharges < ammoConsumption))
@@ -75,7 +68,7 @@ namespace BDsPlasmaWeaponVanilla
                     }
                     else
                     {
-                        compTankFeedWeapon.OverchargedDamage(EquipmentSource); Log.Message("1");
+                        compTankFeedWeapon.OverchargedDamage(EquipmentSource);
                     }
                 }
                 compTank.DrawGas(ammoConsumption);

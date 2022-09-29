@@ -24,7 +24,6 @@ namespace BDsPlasmaWeaponVanilla
         {
             base.PostPostMake();
             searchTank(1, false);
-            Log.Message(Props.ammoConsumption.ToString());
         }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)

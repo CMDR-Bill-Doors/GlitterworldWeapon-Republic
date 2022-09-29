@@ -21,7 +21,7 @@
 			</extraDamages>
 		</projectile>
 		<modExtensions>
-			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+			<li Class="BDsPlasmaWeaponVanilla.DefModExtension_DisintegratingProjectile">
 				<fadeOutStartPercentage>0.1</fadeOutStartPercentage>
 				<fadeOutExpandMultiplier>5</fadeOutExpandMultiplier>
 				<shouldStartFire>true</shouldStartFire>
@@ -47,7 +47,7 @@
 			<explosionRadius>1.5</explosionRadius>
 		</projectile>
 		<modExtensions>
-			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+			<li Class="BDsPlasmaWeaponVanilla.DefModExtension_DisintegratingProjectile">
 				<fadeOutStartPercentage>0.1</fadeOutStartPercentage>
 				<fadeOutExpandMultiplier>5</fadeOutExpandMultiplier>
 			</li>
@@ -111,8 +111,10 @@
 		</comps>
 		<weaponTags>
 			<li>SpacerGun</li>
-			<li>BDP_LMG</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
 		<tools>
 			<li>
 				<label>stock</label>
@@ -160,11 +162,11 @@
 		<statBases>
 			<WorkToMake>4000</WorkToMake>
 			<Mass>10.8</Mass>
-			<Bulk>15</Bulk>
-			<SwayFactor>1.25</SwayFactor>
-			<ShotSpread>0.24</ShotSpread>
-			<SightsEfficiency>0.1</SightsEfficiency>
-			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+			<AccuracyTouch>0.83</AccuracyTouch>
+			<AccuracyShort>0.7</AccuracyShort>
+			<AccuracyMedium>0.42</AccuracyMedium>
+			<AccuracyLong>0.35</AccuracyLong>
+			<RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
 		</statBases>
 		<costList>
 			<Steel>50</Steel>
@@ -182,6 +184,7 @@
 				<range>10.9</range>
 				<soundCast>BDP_HissOneShot</soundCast>
 				<muzzleFlashScale>12</muzzleFlashScale>
+				<forcedMissRadius>0.1</forcedMissRadius>
 				<targetParams>
 					<canTargetLocations>true</canTargetLocations>
 				</targetParams>
@@ -206,7 +209,7 @@
 			<li>BDP_FireExtinguisher</li>
 		</weaponTags>
 		<modExtensions>
-			<li Class="BDsPlasmaWeapon.DefModExtension_TankQualityModifier">
+			<li Class="BDsPlasmaWeaponVanilla.DefModExtension_TankQualityModifier">
 				<Awful>0.5</Awful>
 				<Poor>0.8</Poor>
 				<Good>1.2</Good>

@@ -230,6 +230,8 @@
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>12</muzzleFlashScale>
 				<consumeFuelPerShot>50</consumeFuelPerShot>
+				<minRange>4.9</minRange>
+				<forcedMissRadius>5</forcedMissRadius>
 			</li>
 		</verbs>
 	</ThingDef>

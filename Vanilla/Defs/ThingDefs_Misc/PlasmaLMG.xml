@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<ThingDef Name="BaseLizionWeapon" ParentName="BaseMakeableGun" Abstract="true">
+		<generateCommonality>10</generateCommonality>
 		<tickerType>Normal</tickerType>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -49,7 +50,7 @@
 			<damageAmountBase>8</damageAmountBase>
 			<armorPenetrationBase>0.20</armorPenetrationBase>
 			<speed>60</speed>
-			<stoppingPower>1.5</stoppingPower>
+			<stoppingPower>1</stoppingPower>
 			<extraDamages>
 				<li>
 					<def>Burn</def>
@@ -75,7 +76,7 @@
 			<damageAmountBase>12</damageAmountBase>
 			<armorPenetrationBase>0.20</armorPenetrationBase>
 			<speed>60</speed>
-			<stoppingPower>1.5</stoppingPower>
+			<stoppingPower>2</stoppingPower>
 			<explosionRadius>0.5</explosionRadius>
 			<extraDamages>
 				<li>
@@ -168,8 +169,10 @@
 		</comps>
 		<weaponTags>
 			<li>SpacerGun</li>
-			<li>BDP_LMG</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
 		<tools>
 			<li>
 				<label>stock</label>
@@ -212,7 +215,6 @@
 		<defName>BDP_PlasmaCarbine</defName>
 		<label>lizion plasma carbine</label>
 		<description>Originally designed to be a submachinegun, the AR32C carbine proved too bulky as a sidearm and was instead converted into full power rifle to compensate for the failing assault rifle project of the republic arsenal.</description>
-		<generateAllowChance>0.5</generateAllowChance>
 		<graphicData>
 			<texPath>Things/Weapons/BDP_PlasmaCarbine</texPath>
 		</graphicData>
@@ -286,8 +288,10 @@
 		</comps>
 		<weaponTags>
 			<li>SpacerGun</li>
-			<li>BDP_LMG</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedLight</li>
+		</weaponClasses>
 		<tools>
 			<li>
 				<label>stock</label>
@@ -330,7 +334,7 @@
 			<damageAmountBase>5</damageAmountBase>
 			<armorPenetrationBase>0.20</armorPenetrationBase>
 			<speed>60</speed>
-			<stoppingPower>1.5</stoppingPower>
+			<stoppingPower>0.5</stoppingPower>
 			<extraDamages>
 				<li>
 					<def>Burn</def>
@@ -357,7 +361,7 @@
 			<damageAmountBase>10</damageAmountBase>
 			<armorPenetrationBase>0.20</armorPenetrationBase>
 			<speed>60</speed>
-			<stoppingPower>1.5</stoppingPower>
+			<stoppingPower>1</stoppingPower>
 			<extraDamages>
 				<li>
 					<def>Burn</def>
@@ -447,8 +451,10 @@
 		</comps>
 		<weaponTags>
 			<li>SpacerGun</li>
-			<li>BDP_LMG</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedLight</li>
+		</weaponClasses>
 		<tools>
 			<li>
 				<label>stock</label>
@@ -540,6 +546,8 @@
 					<hasStandardCommand>true</hasStandardCommand>
 					<defaultProjectile>Projectile_LizionPistolOvercharged</defaultProjectile>
 					<warmupTime>1</warmupTime>
+					<burstShotCount>3</burstShotCount>
+					<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 					<range>18.9</range>
 					<soundCast>BDP_Shot_PlasmaSmall</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
@@ -554,8 +562,10 @@
 		</comps>
 		<weaponTags>
 			<li>SpacerGun</li>
-			<li>BDP_LMG</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedLight</li>
+		</weaponClasses>
 		<tools>
 			<li>
 				<label>stock</label>
@@ -624,7 +634,7 @@
 			<damageAmountBase>36</damageAmountBase>
 			<armorPenetrationBase>0.20</armorPenetrationBase>
 			<speed>60</speed>
-			<stoppingPower>1.5</stoppingPower>
+			<stoppingPower>3</stoppingPower>
 			<explosionRadius>1</explosionRadius>
 			<extraDamages>
 				<li>
@@ -712,8 +722,10 @@
 		</comps>
 		<weaponTags>
 			<li>SpacerGun</li>
-			<li>BDP_LMG</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
 		<tools>
 			<li>
 				<label>stock</label>
@@ -783,7 +795,7 @@
 			<damageAmountBase>36</damageAmountBase>
 			<armorPenetrationBase>0.20</armorPenetrationBase>
 			<speed>60</speed>
-			<stoppingPower>1.5</stoppingPower>
+			<stoppingPower>3</stoppingPower>
 			<explosionRadius>1.5</explosionRadius>
 			<extraDamages>
 				<li>
@@ -872,8 +884,10 @@
 		</comps>
 		<weaponTags>
 			<li>SpacerGun</li>
-			<li>BDP_LMG</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
 		<tools>
 			<li>
 				<label>stock</label>
@@ -918,7 +932,7 @@
 			<armorPenetrationBase>0.20</armorPenetrationBase>
 			<explosionRadius>2</explosionRadius>
 			<speed>60</speed>
-			<stoppingPower>1.5</stoppingPower>
+			<stoppingPower>10</stoppingPower>
 			<extraDamages>
 				<li>
 					<def>Burn</def>
@@ -939,7 +953,7 @@
 			<armorPenetrationBase>0.20</armorPenetrationBase>
 			<explosionRadius>3</explosionRadius>
 			<speed>60</speed>
-			<stoppingPower>1.5</stoppingPower>
+			<stoppingPower>10</stoppingPower>
 			<extraDamages>
 				<li>
 					<def>Burn</def>
@@ -1034,8 +1048,10 @@
 		</comps>
 		<weaponTags>
 			<li>SpacerGun</li>
-			<li>BDP_LMG</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
 		<tools>
 			<li>
 				<label>stock</label>
