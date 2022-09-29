@@ -55,7 +55,7 @@ namespace BDsPlasmaWeaponVanilla
         {
             if (CasterPawn == null || CasterPawn.Faction.Equals(Faction.OfPlayer))
             {
-                string text = (IsSecondaryVerbSelected ? Props.secondaryCommandIcon : Props.mainCommandIcon).Translate();
+                string text = (IsSecondaryVerbSelected ? Props.secondaryCommandIcon : Props.mainCommandIcon);
                 if (text == "")
                 {
                     text = "UI/Buttons/Reload";
@@ -107,11 +107,11 @@ namespace BDsPlasmaWeaponVanilla
     {
         public VerbProperties verbProps = new VerbProperties();
 
-        public string mainCommandIcon = "UI/Icons/FireModes/PlasmaTurret_Off";
+        public string mainCommandIcon = "UI/Icons/FireModes/BDP_Overcharge_Off";
 
         public string mainWeaponLabel = "BDP_MainWeaponLabelVanilla";
 
-        public string secondaryCommandIcon = "UI/Icons/FireModes/PlasmaTurret_On";
+        public string secondaryCommandIcon = "UI/Icons/FireModes/BDP_Overcharge_On";
 
         public string secondaryWeaponLabel = "BDP_SecondaryWeaponLabelVanilla";
 

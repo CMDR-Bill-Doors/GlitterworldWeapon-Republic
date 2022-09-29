@@ -53,7 +53,7 @@
 				<defaultProjectile>Projectile_LizionRifleNormal</defaultProjectile>
 				<warmupTime>1.2</warmupTime>
 				<burstShotCount>10</burstShotCount>
-				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>2</ammoConsumedPerShotCount>
 				<range>47.9</range>
 				<soundCast>BDP_Shot_PlasmaRifle</soundCast>
@@ -253,7 +253,7 @@
 				<warmupTime>0.5</warmupTime>
 				<range>21.9</range>
 				<burstShotCount>5</burstShotCount>
-				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
 				<soundCast>BDP_Shot_PlasmaSmall</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
@@ -345,7 +345,7 @@
 				<ammoConsumedPerShotCount>2</ammoConsumedPerShotCount>
 				<range>47.9</range>
 				<burstShotCount>6</burstShotCount>
-				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<soundCast>BDP_Shot_PlasmaRifle</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>

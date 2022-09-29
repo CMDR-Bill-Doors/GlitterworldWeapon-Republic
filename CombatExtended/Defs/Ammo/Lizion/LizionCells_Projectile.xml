@@ -3,12 +3,11 @@
 
 	<ThingDef Name="BaseLizionBullet" ParentName="BaseBullet" Abstract="true">
 		<thingClass>BDsPlasmaWeapon.DisintegratingProjectile</thingClass>
+		<label>plasma bolt</label>
 		<graphicData>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 	</ThingDef>
-
-
 
 	<CombatExtended.AmmoSetDef>
 		<defName>AmmoSet_LizionCellFlamethrower</defName>
@@ -140,7 +139,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionPistolNormal</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/charge_regular</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -163,7 +162,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionPistolIncendiary</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/Charge_concentrated</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -191,7 +190,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionPistolInert</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/Charge_ion</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -212,7 +211,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionPistolOvercharged</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/charge_regular</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -248,7 +247,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionShotgunNormal</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/charge_regular</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -272,7 +271,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionShotgunIncendiary</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/Charge_concentrated</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -302,7 +301,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionShotgunInert</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/Charge_ion</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -325,7 +324,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionShotgunOvercharged</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/charge_regular</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -362,7 +361,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionRifleNormal</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/charge_regular</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -385,7 +384,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionRifleIncendiary</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/Charge_concentrated</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -414,7 +413,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionRifleInert</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/Charge_ion</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -436,7 +435,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionRifleOvercharged</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/charge_regular</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -473,7 +472,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionSniperNormal</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/charge_regular</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -496,7 +495,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionSniperIncendiary</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/Charge_concentrated</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -526,7 +525,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionSniperInert</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/Charge_ion</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -548,7 +547,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionSniperOvercharged</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/charge_regular</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -585,7 +584,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionHeavyNormal</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/charge_regular</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -609,7 +608,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionHeavyIncendiary</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/Charge_concentrated</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -642,7 +641,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionHeavyInert</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/Charge_ion</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -664,7 +663,7 @@
 
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionHeavyOvercharged</defName>
-		<label>plasma bolt</label>
+		
 		<graphicData>
 			<texPath>Things/Projectile/Charged/charge_regular</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

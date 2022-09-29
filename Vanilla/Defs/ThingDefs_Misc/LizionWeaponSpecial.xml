@@ -3,6 +3,7 @@
 	<ThingDef ParentName="BaseLizionBullet">
 		<defName>Projectile_LizionFlameThrower</defName>
 		<label>plasma flame</label>
+		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
 		<graphicData>
 			<texPath>Things/Gas/Puff</texPath>
 			<drawSize>(1.4,1.4)</drawSize>

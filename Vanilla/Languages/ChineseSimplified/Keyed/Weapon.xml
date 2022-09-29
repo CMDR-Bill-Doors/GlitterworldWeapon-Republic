@@ -20,4 +20,8 @@
   <BDP_TurretPipeMode>管路模式</BDP_TurretPipeMode>
   <BDP_TurretDesc>在消耗弹药弹药与消耗管路内气体的模式之间切换。</BDP_TurretDesc>
 
+	<BDP_MainWeaponLabelVanilla>常规模式</BDP_MainWeaponLabelVanilla>
+	<BDP_SecondaryWeaponLabelVanilla>过载模式</BDP_SecondaryWeaponLabelVanilla>
+	<BDP_WeaponDescVanilla>在过载模式下，等离子武器的伤害更高，造成范围伤害，但是耗气量翻倍且会损坏武器。</BDP_WeaponDescVanilla>
+
 </LanguageData>
