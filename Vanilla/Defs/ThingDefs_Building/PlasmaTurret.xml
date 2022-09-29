@@ -78,7 +78,7 @@
 		<building>
 			<turretGunDef>BDP_PlasmaTurretGun</turretGunDef>
 			<turretBurstCooldownTime>3.5</turretBurstCooldownTime>
-			<turretTopDrawSize>2.5</turretTopDrawSize>
+			<turretTopDrawSize>5</turretTopDrawSize>
 		</building>
 		<researchPrerequisites>
 			<li>GunTurrets</li>
@@ -90,7 +90,7 @@
 		<defName>BDP_PlasmaTurretGun</defName>
 		<label>dual lizion blaster</label>
 		<graphicData>
-			<texPath>Things/Weapons/PlasmaTurret_Turret</texPath>
+			<texPath>Things/Weapons/BDP_PlasmaTurret_Turret</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<description>Two lizion blasters attached to a turret mount.</description>

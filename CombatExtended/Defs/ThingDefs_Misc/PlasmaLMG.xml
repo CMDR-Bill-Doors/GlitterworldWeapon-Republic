@@ -25,9 +25,9 @@
 		<label>lizion plasma machinegun</label>
 		<description>MG38A general purpose machinegun is a heavy lizion plasma accelerator developed by Pan-Humanoid Republic Arsenals. Gulping lizion gas cells and inaccurately spray out energized plasma, this machinegun will suppress anyone within its limited range until the cells run dry.</description>
 		<generateAllowChance>0.5</generateAllowChance>
+		<equippedAngleOffset>45</equippedAngleOffset>
 		<graphicData>
 			<texPath>Things/Weapons/BDP_PlasmaLMG</texPath>
-			<drawSize>(1.3,1.3)</drawSize>
 		</graphicData>
 		<statBases>
 			<WorkToMake>55000</WorkToMake>
@@ -83,6 +83,9 @@
 			<li>SpacerGun</li>
 			<li>CE_MachineGun</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
 		<tools>
 			<li Class="CombatExtended.ToolCE">
 				<label>stock</label>
@@ -118,7 +121,6 @@
 		</tools>
 		<modExtensions>
 			<li Class="CombatExtended.GunDrawExtension">
-				<DrawSize>1.3,1.3</DrawSize>
 				<DrawOffset>0.1,-0.05</DrawOffset>
 			</li>
 		</modExtensions>
@@ -183,6 +185,9 @@
 			<li>CE_Sidearm</li>
 			<li>CE_OneHandedWeapon</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedLight</li>
+		</weaponClasses>
 		<tools>
 			<li Class="CombatExtended.ToolCE">
 				<label>grip</label>
@@ -277,6 +282,9 @@
 			<li>CE_Sidearm</li>
 			<li>CE_AI_AssaultWeapon</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedLight</li>
+		</weaponClasses>
 		<tools>
 			<li Class="CombatExtended.ToolCE">
 				<label>grip</label>
@@ -366,6 +374,9 @@
 			<li>CE_Sidearm</li>
 			<li>CE_AI_AssaultWeapon</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedLight</li>
+		</weaponClasses>
 		<tools>
 			<li Class="CombatExtended.ToolCE">
 				<label>grip</label>
@@ -395,9 +406,9 @@
 		<defName>BDP_PlasmaSniper</defName>
 		<label>lizion plasma sniper</label>
 		<description>M19 precise rifle is a heavy lizion plasma accelerator developed by Pan-Humanoid Republic Arsenals.</description>
+		<equippedAngleOffset>45</equippedAngleOffset>
 		<graphicData>
 			<texPath>Things/Weapons/BDP_PlasmaSniper</texPath>
-			<drawSize>(1.3,1.3)</drawSize>
 		</graphicData>
 		<statBases>
 			<WorkToMake>50500</WorkToMake>
@@ -450,6 +461,9 @@
 			<li>SniperRifle</li>
 			<li>SpacerGun</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
 		<tools>
 			<li Class="CombatExtended.ToolCE">
 				<label>stock</label>
@@ -485,7 +499,6 @@
 		</tools>
 		<modExtensions>
 			<li Class="CombatExtended.GunDrawExtension">
-				<DrawSize>1.3,1.3</DrawSize>
 				<DrawOffset>0.15,0.05</DrawOffset>
 			</li>
 		</modExtensions>
@@ -549,6 +562,9 @@
 			<li>CE_AI_AssaultWeapon</li>
 			<li>SpacerGun</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
 		<tools>
 			<li Class="CombatExtended.ToolCE">
 				<label>stock</label>
@@ -588,10 +604,11 @@
 		<defName>BDP_PlasmaCannon</defName>
 		<label>lizion plasma cannon</label>
 		<description>Effectly an shoulder resting vehicular cannon, the HIT M2203 heavy lizion cannon is a dreaded sight for both enemy infantry and vehicles.</description>
+		<equippedAngleOffset>45</equippedAngleOffset>
 		<generateAllowChance>0.5</generateAllowChance>
 		<graphicData>
 			<texPath>Things/Weapons/BDP_PlasmaCannon</texPath>
-			<drawSize>(1.5,1.5)</drawSize>
+			<drawSize>(1.2,1.2)</drawSize>
 		</graphicData>
 		<soundInteract>Interact_ChargeLance</soundInteract>
 		<statBases>
@@ -648,6 +665,9 @@
 			<li>GunHeavy</li>
 			<li>SpacerGun</li>
 		</weaponTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
 		<tools>
 			<li Class="CombatExtended.ToolCE">
 				<label>stock</label>
@@ -683,7 +703,7 @@
 		</tools>
 		<modExtensions>
 			<li Class="CombatExtended.GunDrawExtension">
-				<DrawSize>1.5,1.5</DrawSize>
+				<DrawSize>1.2,1.2</DrawSize>
 				<DrawOffset>-0.3,0</DrawOffset>
 			</li>
 		</modExtensions>
