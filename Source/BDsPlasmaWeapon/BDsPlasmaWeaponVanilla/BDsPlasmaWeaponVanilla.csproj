@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="AirIntakeUtility.cs" />
     <Compile Include="BDStatDefOf.cs" />
+    <Compile Include="CompColorableFaction.cs" />
     <Compile Include="CompAirIntake.cs" />
     <Compile Include="CompDropExtinguisherWhenUndrafted.cs" />
     <Compile Include="CompExtinguisherFiller.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="CompSecondaryVerb.cs" />
     <Compile Include="CompSpillWhenDamagedWithHeatPusher.cs" />
     <Compile Include="CompTankFeedWeapon.cs" />
+    <Compile Include="CompTurretFixForVerb.cs" />
     <Compile Include="CompUseEffect_LizionPopper.cs" />
     <Compile Include="CompUseEffect_ReplacementAccelerator.cs" />
     <Compile Include="DamageDefOf.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="JobGiver_ExtinguishFireWithWeapon.cs" />
     <Compile Include="LizionHeatShield.cs" />
     <Compile Include="PlaceWorker_AirIntake.cs" />
+    <Compile Include="Setting.cs" />
     <Compile Include="StatDefOf.cs" />
     <Compile Include="ThingDefOf.cs" />
     <Compile Include="Verb_ActiveVent.cs" />

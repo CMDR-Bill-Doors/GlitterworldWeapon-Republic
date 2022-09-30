@@ -455,7 +455,7 @@ namespace BDsPlasmaWeaponVanilla
             }
         }
 
-        public void DrawGas(int amount)
+        public void DrawGas(int amount, bool doFleck)
         {
             if (amount <= 0)
             {
@@ -483,12 +483,20 @@ namespace BDsPlasmaWeaponVanilla
                 {
                     Messages.Message(string.Format("BDP_LizionTankDepleted".Translate(), parent.LabelCap), parent, MessageTypeDefOf.RejectInput, historical: false);
                 }
-                for (int i = 0; i < amount; i++)
+                if (doFleck)
                 {
-                    Effecter effecter = BDStatDefOf.LizionCoolerHigh.Spawn(parent.Position, parent.Map);
-                    effecter.Trigger(parent, TargetInfo.Invalid);
+                    for (int i = 0; i < amount; i++)
+                    {
+                        Effecter effecter = BDStatDefOf.LizionCoolerHigh.Spawn(parent.Position, parent.Map);
+                        effecter.Trigger(parent, TargetInfo.Invalid);
+                    }
                 }
             }
+        }
+
+        public void DrawGas(int amount)
+        {
+            DrawGas(amount, false);
         }
 
         public void DrawGas(float amount)

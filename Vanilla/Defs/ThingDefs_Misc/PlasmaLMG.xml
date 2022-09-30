@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<ThingDef Name="BaseLizionWeapon" ParentName="BaseMakeableGun" Abstract="true">
-		<generateCommonality>10</generateCommonality>
 		<tickerType>Normal</tickerType>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -25,6 +24,11 @@
 			<color>(200,100,0)</color>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
+		<modExtensions>
+			<li Class="BDsPlasmaWeaponVanilla.DefModExtension_DisintegratingProjectile">
+				<shouldIgnoreColorable>false</shouldIgnoreColorable>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef Name="BaseLizionBulletOC" ParentName="BaseBullet" Abstract="true">
@@ -48,7 +52,7 @@
 		<projectile>
 			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>8</damageAmountBase>
-			<armorPenetrationBase>0.20</armorPenetrationBase>
+			<armorPenetrationBase>0.25</armorPenetrationBase>
 			<speed>60</speed>
 			<stoppingPower>1</stoppingPower>
 			<extraDamages>
@@ -74,7 +78,7 @@
 		<projectile>
 			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>12</damageAmountBase>
-			<armorPenetrationBase>0.20</armorPenetrationBase>
+			<armorPenetrationBase>0.375</armorPenetrationBase>
 			<speed>60</speed>
 			<stoppingPower>2</stoppingPower>
 			<explosionRadius>0.5</explosionRadius>
@@ -328,7 +332,7 @@
 		<projectile>
 			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>5</damageAmountBase>
-			<armorPenetrationBase>0.20</armorPenetrationBase>
+			<armorPenetrationBase>0.10</armorPenetrationBase>
 			<speed>60</speed>
 			<stoppingPower>0.5</stoppingPower>
 			<extraDamages>
@@ -354,7 +358,7 @@
 		<projectile>
 			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>10</damageAmountBase>
-			<armorPenetrationBase>0.20</armorPenetrationBase>
+			<armorPenetrationBase>0.15</armorPenetrationBase>
 			<speed>60</speed>
 			<stoppingPower>1</stoppingPower>
 			<extraDamages>
@@ -597,7 +601,7 @@
 		<projectile>
 			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>18</damageAmountBase>
-			<armorPenetrationBase>0.20</armorPenetrationBase>
+			<armorPenetrationBase>0.3</armorPenetrationBase>
 			<speed>60</speed>
 			<stoppingPower>1.5</stoppingPower>
 			<extraDamages>
@@ -623,7 +627,7 @@
 		<projectile>
 			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>36</damageAmountBase>
-			<armorPenetrationBase>0.20</armorPenetrationBase>
+			<armorPenetrationBase>0.45</armorPenetrationBase>
 			<speed>60</speed>
 			<stoppingPower>3</stoppingPower>
 			<explosionRadius>1</explosionRadius>
@@ -756,7 +760,7 @@
 		<projectile>
 			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>18</damageAmountBase>
-			<armorPenetrationBase>0.20</armorPenetrationBase>
+			<armorPenetrationBase>0.1</armorPenetrationBase>
 			<speed>60</speed>
 			<stoppingPower>1.5</stoppingPower>
 			<extraDamages>
@@ -916,7 +920,7 @@
 		<projectile>
 			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>55</damageAmountBase>
-			<armorPenetrationBase>0.20</armorPenetrationBase>
+			<armorPenetrationBase>0.30</armorPenetrationBase>
 			<explosionRadius>2</explosionRadius>
 			<speed>60</speed>
 			<stoppingPower>10</stoppingPower>
@@ -937,7 +941,7 @@
 		<projectile>
 			<damageDef>LizionPlasma</damageDef>
 			<damageAmountBase>115</damageAmountBase>
-			<armorPenetrationBase>0.20</armorPenetrationBase>
+			<armorPenetrationBase>0.45</armorPenetrationBase>
 			<explosionRadius>3</explosionRadius>
 			<speed>60</speed>
 			<stoppingPower>10</stoppingPower>

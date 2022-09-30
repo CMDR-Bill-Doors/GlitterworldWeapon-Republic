@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.AI;
 
 namespace BDsPlasmaWeaponVanilla
 {
@@ -19,6 +20,8 @@ namespace BDsPlasmaWeaponVanilla
         public CompProperties_SecondaryVerb Props => (CompProperties_SecondaryVerb)props;
 
         public bool IsSecondaryVerbSelected => isSecondaryVerbSelected;
+
+        public Verb secondaryVerb;
 
         private CompEquippable EquipmentSource
         {
@@ -82,6 +85,18 @@ namespace BDsPlasmaWeaponVanilla
 
         private void SwitchVerb()
         {
+            /*
+            Verb verb = (Verb)Activator.CreateInstance(Props.verbProps.verbClass);
+            string text = Verb.CalculateUniqueLoadID(EquipmentSource, 114514);
+            verb.loadID = text;
+            verb.verbProps = Props.verbProps;
+            verb.verbTracker = EquipmentSource.verbTracker;
+            verb.caster = Verb.caster;
+            verb.tool = null;
+            verb.maneuver = null;
+            Log.Message(verb.ToString());
+            secondaryVerb = verb;
+            */
             if (!IsSecondaryVerbSelected)
             {
                 EquipmentSource.PrimaryVerb.verbProps = Props.verbProps;

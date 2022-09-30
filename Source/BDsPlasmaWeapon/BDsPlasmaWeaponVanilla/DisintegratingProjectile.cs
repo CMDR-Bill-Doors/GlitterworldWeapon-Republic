@@ -16,6 +16,14 @@ namespace BDsPlasmaWeaponVanilla
             }
         }
 
+        public CompColorableFaction compColorableFaction;
+
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            compColorableFaction = this.TryGetComp<CompColorableFaction>();
+        }
+
         System.Random random = new System.Random();
 
         private float FadeOutStartPercentage
@@ -82,6 +90,7 @@ namespace BDsPlasmaWeaponVanilla
                 }
             }
         }
+
         public float DistancePercent
         {
             get
@@ -90,6 +99,7 @@ namespace BDsPlasmaWeaponVanilla
                 return distance / equipmentDef.Verbs[0].range;
             }
         }
+
         public float FadeOutPercent => Math.Max(0f, (float)(DistancePercent - FadeOutStartPercentage) / (1 - FadeOutStartPercentage));
         public override void Tick()
         {
@@ -169,6 +179,10 @@ namespace BDsPlasmaWeaponVanilla
             {
                 Material material = new Material(def.DrawMatSingle);
                 Color color = material.color;
+                if (!Data.shouldIgnoreColorable && compColorableFaction != null)
+                {
+                    color = compColorableFaction.FactionColor();
+                }
                 color.a *= 1 - FadeOutPercent;
                 material.color = color;
                 float drawSize = 1 + (FadeOutPercent * FadeOutExpandMultiplier);
@@ -185,5 +199,6 @@ namespace BDsPlasmaWeaponVanilla
         public float chanceOfFire = 1f;
         public float minFireSize = 0.1f;
         public float maxFireSize = 1;
+        public bool shouldIgnoreColorable = true;
     }
 }

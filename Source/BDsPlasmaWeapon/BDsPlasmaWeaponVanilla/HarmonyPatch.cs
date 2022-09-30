@@ -64,6 +64,28 @@ namespace BDsPlasmaWeaponVanilla
         }
     }
 
+    [HarmonyPatch]
+    internal class Harmony_PlaceWorker_ShowTurretRadius
+    {
+        private const string className = "<>c";
+
+        private const string methodName = "<AllowsPlacing>";
+
+        public static MethodBase TargetMethod()
+        {
+            IEnumerable<Type> source = from x in typeof(PlaceWorker_ShowTurretRadius).GetNestedTypes(AccessTools.all)
+                                       where x.Name.Contains("<>c")
+                                       select x;
+            MethodInfo methodInfo = source.SelectMany((Type x) => x.GetMethods(AccessTools.all)).FirstOrDefault((MethodInfo x) => x.Name.Contains("<AllowsPlacing>"));
+            return methodInfo;
+        }
+
+        [HarmonyPostfix]
+        public static void PostFix(VerbProperties v, ref bool __result)
+        {
+            __result = __result || v.verbClass == typeof(Verb_ShootOverchargeDamage);
+        }
+    }
 
     public class DefModExtension_WeaponGlowRender : DefModExtension
     {

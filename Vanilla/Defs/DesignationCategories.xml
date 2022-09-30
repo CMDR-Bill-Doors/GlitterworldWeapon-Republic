@@ -9,4 +9,12 @@
 			<li>Designator_Deconstruct</li>
 		</specialDesignatorClasses>
 	</DesignationCategoryDef>
+
+	<MVCF.ModDef>
+		<defName>BDP_PlasmaWeapon</defName>
+		<label>Bill Door's Plasma Weapons</label>
+		<description>I'm implementing my own toggleable verbs, so this is a disabler</description>
+		<Features>
+		</Features>
+	</MVCF.ModDef>
 </Defs>

@@ -19,7 +19,8 @@ namespace BDsPlasmaWeaponVanilla
 
         public CompReloadableFromFiller compReloadableFromFiller;
 
-        CompReloadableFromFiller compWeaponTank => parent.TryGetComp<CompReloadableFromFiller>();
+        CompReloadableFromFiller compWeaponTank;
+
         public override void PostPostMake()
         {
             base.PostPostMake();
@@ -30,6 +31,7 @@ namespace BDsPlasmaWeaponVanilla
         {
             base.PostSpawnSetup(respawningAfterLoad);
             searchTank(1, false);
+            compWeaponTank = parent.TryGetComp<CompReloadableFromFiller>();
         }
 
         public override void Notify_Equipped(Pawn pawn)

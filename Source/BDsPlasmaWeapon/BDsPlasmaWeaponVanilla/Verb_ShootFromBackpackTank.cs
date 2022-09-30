@@ -3,6 +3,9 @@ using RimWorld;
 using PipeSystem;
 using System.Runtime.Remoting.Messaging;
 using Verse.AI;
+using static HarmonyLib.Code;
+using System;
+using System.Security.Cryptography;
 
 namespace BDsPlasmaWeaponVanilla
 {
@@ -60,7 +63,7 @@ namespace BDsPlasmaWeaponVanilla
                     compTankFeedWeapon?.searchTank();
                     return false;
                 }
-                if (isOvercharged)
+                if (isOvercharged && BDPMod.OverchargeDamageWeapon)
                 {
                     if (Caster is Building turret)
                     {
@@ -76,5 +79,80 @@ namespace BDsPlasmaWeaponVanilla
             }
             return false;
         }
+    }
+
+
+    public class Verb_ShootOverchargeDamage : Verb_Shoot
+    {
+
+        public DefModExtension_VerbOverchargeDamage Data
+        {
+            get
+            {
+                return EquipmentSource.def.GetModExtension<DefModExtension_VerbOverchargeDamage>();
+            }
+        }
+
+        private CompSecondaryVerb compSecondaryVerb => EquipmentSource.TryGetComp<CompSecondaryVerb>();
+
+        private bool isOvercharged => compSecondaryVerb != null && compSecondaryVerb.IsSecondaryVerbSelected;
+
+        protected override bool TryCastShot()
+        {
+            if (base.TryCastShot())
+            {
+                if (Data != null && isOvercharged && BDPMod.OverchargeDamageWeapon)
+                {
+                    if (Caster is Building turret)
+                    {
+                        OverchargedDamage(turret);
+                    }
+                    else
+                    {
+                        OverchargedDamage(EquipmentSource);
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public void OverchargedDamage(ThingWithComps weapon)
+        {
+            if (Rand.Chance(Data.overchargeDamageChance))
+            {
+                float HPcache = (float)weapon.HitPoints / weapon.MaxHitPoints;
+                weapon.HitPoints -= (int)Math.Round(Rand.Value * Data.overchargeDamageMultiplier);
+                float HPnow = (float)weapon.HitPoints / weapon.MaxHitPoints;
+                if (EquipmentSource.ParentHolder is Pawn pawn && pawn.Faction == Faction.OfPlayer)
+                {
+                    if (HPcache > 0.5 && HPnow <= 0.5)
+                    {
+                        Messages.Message(string.Format("BDP_WeaponFailingPawn".Translate(), pawn, EquipmentSource.LabelCap), EquipmentSource, MessageTypeDefOf.RejectInput, historical: false);
+                    }
+                    else if (HPcache > 0.25 && HPnow <= 0.25)
+                    {
+                        Messages.Message(string.Format("BDP_WeaponFailingUrgentPawn".Translate(), pawn, EquipmentSource.LabelCap), EquipmentSource, MessageTypeDefOf.ThreatSmall, historical: false);
+                    }
+                }
+                else
+                {
+                    if (HPcache > 0.5 && HPnow <= 0.5)
+                    {
+                        Messages.Message(string.Format("BDP_WeaponFailing".Translate(), EquipmentSource.LabelCap), EquipmentSource, MessageTypeDefOf.RejectInput, historical: false);
+                    }
+                    else if (HPcache > 0.25 && HPnow <= 0.25)
+                    {
+                        Messages.Message(string.Format("BDP_WeaponFailingUrgent".Translate(), EquipmentSource.LabelCap), EquipmentSource, MessageTypeDefOf.ThreatSmall, historical: false);
+                    }
+                }
+            }
+        }
+    }
+
+    public class DefModExtension_VerbOverchargeDamage : DefModExtension
+    {
+        public float overchargeDamageChance = 0;
+        public float overchargeDamageMultiplier = 1;
     }
 }

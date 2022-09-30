@@ -14,6 +14,12 @@ namespace BDsPlasmaWeapon
 {
     public class CompTurretFixForAmmo : ThingComp
     {
+        public override void Initialize(CompProperties props)
+        {
+            base.Initialize(props);
+            turretGunInt = (parent as Building_TurretGunCE)?.Gun as ThingWithComps;
+        }
+
         public ThingWithComps TurretGun
         {
             get
