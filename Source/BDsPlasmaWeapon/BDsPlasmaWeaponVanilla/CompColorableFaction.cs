@@ -15,8 +15,6 @@ namespace BDsPlasmaWeaponVanilla
             }
         }
 
-        public Color playerProjectileColor = new Color(BDPMod.CustomPlayerProjectileColorR, BDPMod.CustomPlayerProjectileColorG, BDPMod.CustomPlayerProjectileColorB);
-
         public Color colorCache;
 
         private bool colorGetted;
@@ -50,23 +48,27 @@ namespace BDsPlasmaWeaponVanilla
                     {
                         if (faction == Faction.OfPlayer)
                         {
-                            return BDPMod.CustomPlayerProjectileColor ? playerProjectileColor : (Props.colorPlayer);
+                            return BDPMod.CustomProjectileColor ? BDPMod.CustomPlayerProjectileColor : (Props.colorPlayer);
                         }
                         if (faction == Faction.OfPirates)
                         {
-                            return (Props.colorPirate);
+                            return BDPMod.CustomProjectileColor ? BDPMod.CustomPirateProjectileColor : (Props.colorPirate);
                         }
                         if (faction == Faction.OfEmpire)
                         {
-                            return (Props.colorEmpire);
+                            return BDPMod.CustomProjectileColor ? BDPMod.CustomEmpireProjectileColor : (Props.colorEmpire);
+                        }
+                        if (faction == Faction.OfMechanoids)
+                        {
+                            return BDPMod.CustomProjectileColor ? BDPMod.CustomMechanoidProjectileColor : (Props.colorMechanoid);
                         }
                         if (faction.HostileTo(Faction.OfPlayer))
                         {
-                            return (Props.colorHostile);
+                            return BDPMod.CustomProjectileColor ? BDPMod.CustomHostilesProjectileColor : (Props.colorHostile);
                         }
                         if (faction.AllyOrNeutralTo(Faction.OfPlayer))
                         {
-                            return (Props.colorNeutualOrAlly);
+                            return BDPMod.CustomProjectileColor ? BDPMod.CustomOthersProjectileColor : (Props.colorNeutualOrAlly);
                         }
                     }
                 }
@@ -91,13 +93,15 @@ namespace BDsPlasmaWeaponVanilla
     {
         public Color colorPlayer = Color.cyan;
 
-        public Color colorPirate = Color.red;
+        public Color colorPirate = Color.yellow;
 
         public Color colorEmpire = Color.green;
 
         public Color colorHostile = Color.red;
 
         public Color colorNeutualOrAlly = Color.cyan;
+
+        public Color colorMechanoid = Color.magenta;
 
         public bool overrideExistingColoring = false;
 

@@ -18,6 +18,14 @@ namespace BDsPlasmaWeapon
             }
         }
 
+        public CompColorableFaction compColorableFaction;
+
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            compColorableFaction = this.TryGetComp<CompColorableFaction>();
+        }
+
         System.Random random = new System.Random();
 
         private float FadeOutStartPercentage
@@ -169,14 +177,26 @@ namespace BDsPlasmaWeapon
 
         public override void Draw()
         {
+            Log.Message("1");
             if (!(FlightTicks == 0 && launcher != null && launcher is Pawn))
             {
+                Log.Message("2");
                 Material material = new Material(def.DrawMatSingle);
+                Log.Message("3");
                 Color color = material.color;
+                Log.Message("4");
+                if (Data != null && !Data.shouldIgnoreColorable && compColorableFaction != null)
+                {
+                    color = compColorableFaction.FactionColor();
+                }
+                Log.Message("5");
                 color.a *= 1 - FadeOutPercent;
+                Log.Message("6");
                 material.color = color;
                 float drawSize = 1 + (FadeOutPercent * FadeOutExpandMultiplier);
+                Log.Message("7");
                 Graphics.DrawMesh(MeshPool.GridPlane(def.graphicData.drawSize * drawSize), DrawPos, DrawRotation, material, 0);
+                Log.Message("8");
                 if (castShadow)
                 {
                     Vector3 position = new Vector3(ExactPosition.x, def.Altitude - 0.01f, ExactPosition.z - Mathf.Lerp(shotHeight, 0f, fTicks / StartingTicksToImpact));
@@ -186,6 +206,7 @@ namespace BDsPlasmaWeapon
                     shadowMaterial.color = color;
                     Graphics.DrawMesh(MeshPool.GridPlane(def.graphicData.drawSize * drawSize), position, DrawRotation, shadowMaterial, 0);
                 }
+                Log.Message("9");
             }
         }
     }
@@ -198,5 +219,6 @@ namespace BDsPlasmaWeapon
         public float chanceOfFire = 1f;
         public float minFireSize = 0.1f;
         public float maxFireSize = 1;
+        public bool shouldIgnoreColorable = true;
     }
 }

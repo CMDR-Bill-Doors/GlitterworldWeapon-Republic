@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -12,7 +13,7 @@ namespace BDsPlasmaWeaponVanilla
     {
         public bool OverchargeDamageWeapon = true;
 
-        public bool CustomPlayerProjectileColor = true;
+        public bool CustomProjectileColor = true;
 
         public bool useFactionColor = false;
 
@@ -20,28 +21,34 @@ namespace BDsPlasmaWeaponVanilla
 
         public bool isRGB = true;
 
-        public float CustomPlayerProjectileColorR;
-        public float CustomPlayerProjectileColorG;
-        public float CustomPlayerProjectileColorB;
+        public bool enableProjectileColoring = true;
 
-        public float CustomPlayerProjectileColorH;
-        public float CustomPlayerProjectileColorS;
-        public float CustomPlayerProjectileColorV;
+        public Color CustomPlayerProjectileColor;
+        public Color CustomPirateProjectileColor;
+        public Color CustomEmpireProjectileColor;
+        public Color CustomMechanoidProjectileColor;
+        public Color CustomHostilesProjectileColor;
+        public Color CustomOthersProjectileColor;
+
+
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look(ref OverchargeDamageWeapon, "OverchargeDamageWeapon", defaultValue: true);
-            Scribe_Values.Look(ref CustomPlayerProjectileColor, "CustomPlayerProjectileColor", defaultValue: true);
+            Scribe_Values.Look(ref CustomProjectileColor, "CustomPlayerProjectileColor", defaultValue: true);
             Scribe_Values.Look(ref useFactionColor, "useFactionColor", defaultValue: false);
             Scribe_Values.Look(ref discoLightMode, "discoLightMode", defaultValue: false);
             Scribe_Values.Look(ref isRGB, "isRGB", defaultValue: true);
-            Scribe_Values.Look(ref CustomPlayerProjectileColorR, "CustomPlayerProjectileColorR", defaultValue: 1);
-            Scribe_Values.Look(ref CustomPlayerProjectileColorG, "CustomPlayerProjectileColorG", defaultValue: 1);
-            Scribe_Values.Look(ref CustomPlayerProjectileColorB, "CustomPlayerProjectileColorB", defaultValue: 1);
-            Scribe_Values.Look(ref CustomPlayerProjectileColorH, "CustomPlayerProjectileColorH", defaultValue: 1);
-            Scribe_Values.Look(ref CustomPlayerProjectileColorS, "CustomPlayerProjectileColorS", defaultValue: 1);
-            Scribe_Values.Look(ref CustomPlayerProjectileColorV, "CustomPlayerProjectileColorV", defaultValue: 1);
+            Scribe_Values.Look(ref enableProjectileColoring, "enableProjectileColoring", defaultValue: true);
+
+            Scribe_Values.Look(ref CustomPlayerProjectileColor, "CustomPlayerProjectileColor", defaultValue: Color.cyan);
+            Scribe_Values.Look(ref CustomPirateProjectileColor, "CustomPirateProjectileColor", defaultValue: Color.yellow);
+            Scribe_Values.Look(ref CustomEmpireProjectileColor, "CustomEmpireProjectileColor", defaultValue: Color.green);
+            Scribe_Values.Look(ref CustomMechanoidProjectileColor, "CustomMechanoidProjectileColor", defaultValue: Color.magenta);
+            Scribe_Values.Look(ref CustomHostilesProjectileColor, "CustomHostilesProjectileColor", defaultValue: Color.red);
+            Scribe_Values.Look(ref CustomOthersProjectileColor, "CustomOthersProjectileColor", defaultValue: Color.cyan);
+
         }
     }
 
@@ -49,7 +56,7 @@ namespace BDsPlasmaWeaponVanilla
     {
         public static Setting settings;
 
-        public static bool CustomPlayerProjectileColor => settings.CustomPlayerProjectileColor;
+        public static bool CustomProjectileColor => settings.CustomProjectileColor;
 
         public static bool OverchargeDamageWeapon => settings.OverchargeDamageWeapon;
 
@@ -57,19 +64,21 @@ namespace BDsPlasmaWeaponVanilla
 
         public static bool discoLightMode => settings.discoLightMode;
 
-        public static float CustomPlayerProjectileColorR => settings.CustomPlayerProjectileColorR;
+        public static bool enableProjectileColoring => settings.enableProjectileColoring;
 
-        public static float CustomPlayerProjectileColorG => settings.CustomPlayerProjectileColorG;
+        public static Color CustomPlayerProjectileColor => settings.CustomPlayerProjectileColor;
+        public static Color CustomPirateProjectileColor => settings.CustomPirateProjectileColor;
+        public static Color CustomEmpireProjectileColor => settings.CustomEmpireProjectileColor;
+        public static Color CustomMechanoidProjectileColor => settings.CustomMechanoidProjectileColor;
+        public static Color CustomHostilesProjectileColor => settings.CustomHostilesProjectileColor;
+        public static Color CustomOthersProjectileColor => settings.CustomOthersProjectileColor;
 
-        public static float CustomPlayerProjectileColorB => settings.CustomPlayerProjectileColorB;
-
-        public static float CustomPlayerProjectileColorH => settings.CustomPlayerProjectileColorH;
-
-        public static float CustomPlayerProjectileColorS => settings.CustomPlayerProjectileColorS;
-
-        public static float CustomPlayerProjectileColorV => settings.CustomPlayerProjectileColorV;
+        Color colorCache = Color.clear;
+        Color colorCacheAdjusted = Color.clear;
 
         public static bool isRGB => settings.isRGB;
+
+        public FactionTypes selectedFaction = FactionTypes.Player;
 
         public BDPMod(ModContentPack content)
             : base(content)
@@ -84,52 +93,112 @@ namespace BDsPlasmaWeaponVanilla
             listing_Standard.ColumnWidth = (inRect.width - 17f) / 2f;
             listing_Standard.Begin(inRect);
             Text.Font = GameFont.Small;
-            listing_Standard.Gap();
+            listing_Standard.GapLine();
             listing_Standard.CheckboxLabeled("BDP_OverchargeDamageWeapon_Title".Translate(), ref settings.OverchargeDamageWeapon, "BDP_OverchargeDamageWeapon_Desc".Translate());
-            listing_Standard.CheckboxLabeled("BDP_CustomPlayerProjectileColor_Title".Translate(), ref settings.CustomPlayerProjectileColor, "BDP_CustomPlayerProjectileColor_Desc".Translate());
+            listing_Standard.CheckboxLabeled("BDP_enableProjectileColoring_Title".Translate(), ref settings.enableProjectileColoring, "BDP_enableProjectileColoring_Desc".Translate());
+            listing_Standard.CheckboxLabeled("BDP_CustomPlayerProjectileColor_Title".Translate(), ref settings.CustomProjectileColor, "BDP_CustomPlayerProjectileColor_Desc".Translate());
             listing_Standard.CheckboxLabeled("BDP_useFactionColor_Title".Translate(), ref settings.useFactionColor, "BDP_useFactionColor_Desc".Translate());
             listing_Standard.CheckboxLabeled("BDP_discoLightMode_Title".Translate(), ref settings.discoLightMode, "BDP_discoLightMode_Desc".Translate());
-            if (CustomPlayerProjectileColor && !useFactionColor)
+            if (CustomProjectileColor && !useFactionColor)
             {
-                listing_Standard.Gap();
-                if (listing_Standard.RadioButton("BDP_SettingRGB", isRGB))
+                listing_Standard.GapLine();
+                if (listing_Standard.RadioButton("BDP_SettingPlayer".Translate(), selectedFaction == FactionTypes.Player))
+                {
+                    colorCache = CustomPlayerProjectileColor;
+                    selectedFaction = FactionTypes.Player;
+                }
+                if (listing_Standard.RadioButton("BDP_SettingPirate".Translate(), selectedFaction == FactionTypes.Pirate))
+                {
+                    colorCache = CustomPirateProjectileColor;
+                    selectedFaction = FactionTypes.Pirate;
+                }
+                if (listing_Standard.RadioButton("BDP_SettingEmpire".Translate(), selectedFaction == FactionTypes.Empire))
+                {
+                    colorCache = CustomEmpireProjectileColor;
+                    selectedFaction = FactionTypes.Empire;
+                }
+                if (listing_Standard.RadioButton("BDP_SettingMechanoid".Translate(), selectedFaction == FactionTypes.Mechanoid))
+                {
+                    colorCache = CustomMechanoidProjectileColor;
+                    selectedFaction = FactionTypes.Mechanoid;
+                }
+                if (listing_Standard.RadioButton("BDP_SettingHostile".Translate(), selectedFaction == FactionTypes.Hostiles))
+                {
+                    colorCache = CustomHostilesProjectileColor;
+                    selectedFaction = FactionTypes.Hostiles;
+                }
+                if (listing_Standard.RadioButton("BDP_SettingOthers".Translate(), selectedFaction == FactionTypes.Others))
+                {
+                    colorCache = CustomOthersProjectileColor;
+                    selectedFaction = FactionTypes.Others;
+                }
+                listing_Standard.GapLine();
+                if (listing_Standard.RadioButton("BDP_SettingRGB".Translate(), isRGB))
                 {
                     settings.isRGB = true;
                 }
-                if (listing_Standard.RadioButton("BDP_SettingHSV", !isRGB))
+                if (listing_Standard.RadioButton("BDP_SettingHSV".Translate(), !isRGB))
                 {
                     settings.isRGB = false;
                 }
                 if (isRGB)
                 {
-                    listing_Standard.Label("R: " + Math.Round(CustomPlayerProjectileColorR * 255).ToString());
-                    settings.CustomPlayerProjectileColorR = listing_Standard.Slider(settings.CustomPlayerProjectileColorR, 0, 1);
-                    listing_Standard.Label("G: " + Math.Round(CustomPlayerProjectileColorG * 255).ToString());
-                    settings.CustomPlayerProjectileColorG = listing_Standard.Slider(settings.CustomPlayerProjectileColorG, 0, 1);
-                    listing_Standard.Label("B: " + Math.Round(CustomPlayerProjectileColorB * 255).ToString());
-                    settings.CustomPlayerProjectileColorB = listing_Standard.Slider(settings.CustomPlayerProjectileColorB, 0, 1);
+                    listing_Standard.Label("R: " + Math.Round(colorCache.r * 255).ToString());
+                    colorCacheAdjusted.r = listing_Standard.Slider(colorCache.r, 0, 1);
+
+                    listing_Standard.Label("G: " + Math.Round(colorCache.g * 255).ToString());
+                    colorCacheAdjusted.g = listing_Standard.Slider(colorCache.g, 0, 1);
+
+                    listing_Standard.Label("B: " + Math.Round(colorCache.b * 255).ToString());
+                    colorCacheAdjusted.b = listing_Standard.Slider(colorCache.b, 0, 1);
+
                     Rect ColorPreview = new Rect(0, 500, 100, 100);
                     Texture2D bullet = ContentFinder<Texture2D>.Get("Things/Projectile/Bullet_Small", false);
-                    Color color = new Color(settings.CustomPlayerProjectileColorR, settings.CustomPlayerProjectileColorG, settings.CustomPlayerProjectileColorB);
-                    Color.RGBToHSV(color, out settings.CustomPlayerProjectileColorH, out settings.CustomPlayerProjectileColorS, out settings.CustomPlayerProjectileColorV);
-                    GUI.DrawTexture(ColorPreview, bullet, ScaleMode.ScaleToFit, true, 0, color, 0, 0);
+                    GUI.DrawTexture(ColorPreview, bullet, ScaleMode.ScaleToFit, true, 0, colorCacheAdjusted, 0, 0);
+                    colorCache = colorCacheAdjusted;
                 }
                 else
                 {
-                    listing_Standard.Label("H: " + Math.Round(CustomPlayerProjectileColorH * 360).ToString());
-                    settings.CustomPlayerProjectileColorH = listing_Standard.Slider(settings.CustomPlayerProjectileColorH, 0, 1);
-                    listing_Standard.Label("S: " + Math.Round(CustomPlayerProjectileColorS * 100).ToString() + "%");
-                    settings.CustomPlayerProjectileColorS = listing_Standard.Slider(settings.CustomPlayerProjectileColorS, 0, 1);
-                    listing_Standard.Label("V: " + Math.Round(CustomPlayerProjectileColorV * 100).ToString() + "%");
-                    settings.CustomPlayerProjectileColorV = listing_Standard.Slider(settings.CustomPlayerProjectileColorV, 0, 1);
+                    Color.RGBToHSV(colorCache, out float H, out float S, out float V);
+
+                    listing_Standard.Label("H: " + Math.Round(H * 360).ToString());
+                    float Hadj = listing_Standard.Slider(H, 0, 1);
+
+                    listing_Standard.Label("S: " + Math.Round(S * 100).ToString() + "%");
+                    float Sadj = listing_Standard.Slider(S, 0, 1);
+
+                    listing_Standard.Label("V: " + Math.Round(V * 100).ToString() + "%");
+                    float Vadj = listing_Standard.Slider(V, 0, 1);
+
+                    colorCacheAdjusted = Color.HSVToRGB(Hadj, Sadj, Vadj);
+
                     Rect ColorPreview = new Rect(0, 500, 100, 100);
                     Texture2D bullet = ContentFinder<Texture2D>.Get("Things/Projectile/Bullet_Small", false);
-                    Color color = Color.HSVToRGB(settings.CustomPlayerProjectileColorH, settings.CustomPlayerProjectileColorS, settings.CustomPlayerProjectileColorV);
-                    settings.CustomPlayerProjectileColorR = color.r;
-                    settings.CustomPlayerProjectileColorG = color.g;
-                    settings.CustomPlayerProjectileColorB = color.b;
-                    GUI.DrawTexture(ColorPreview, bullet, ScaleMode.ScaleToFit, true, 0, color, 0, 0);
+                    GUI.DrawTexture(ColorPreview, bullet, ScaleMode.ScaleToFit, true, 0, colorCacheAdjusted, 0, 0);
+                    colorCache = colorCacheAdjusted;
                 }
+                switch (selectedFaction)
+                {
+                    case FactionTypes.Player:
+                        settings.CustomPlayerProjectileColor = colorCache;
+                        break;
+                    case FactionTypes.Pirate:
+                        settings.CustomPirateProjectileColor = colorCache;
+                        break;
+                    case FactionTypes.Empire:
+                        settings.CustomEmpireProjectileColor = colorCache;
+                        break;
+                    case FactionTypes.Mechanoid:
+                        settings.CustomMechanoidProjectileColor = colorCache;
+                        break;
+                    case FactionTypes.Hostiles:
+                        settings.CustomHostilesProjectileColor = colorCache;
+                        break;
+                    case FactionTypes.Others:
+                        settings.CustomOthersProjectileColor = colorCache;
+                        break;
+                }
+
 
             }
             listing_Standard.End();
@@ -139,5 +208,15 @@ namespace BDsPlasmaWeaponVanilla
         {
             return "BDP_Setting".Translate();
         }
+    }
+
+    public enum FactionTypes
+    {
+        Player,
+        Pirate,
+        Empire,
+        Mechanoid,
+        Hostiles,
+        Others,
     }
 }

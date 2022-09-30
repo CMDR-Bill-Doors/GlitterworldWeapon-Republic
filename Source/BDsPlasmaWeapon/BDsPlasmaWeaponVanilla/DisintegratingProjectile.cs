@@ -179,7 +179,7 @@ namespace BDsPlasmaWeaponVanilla
             {
                 Material material = new Material(def.DrawMatSingle);
                 Color color = material.color;
-                if (!Data.shouldIgnoreColorable && compColorableFaction != null)
+                if (Data != null && !Data.shouldIgnoreColorable && compColorableFaction != null)
                 {
                     color = compColorableFaction.FactionColor();
                 }

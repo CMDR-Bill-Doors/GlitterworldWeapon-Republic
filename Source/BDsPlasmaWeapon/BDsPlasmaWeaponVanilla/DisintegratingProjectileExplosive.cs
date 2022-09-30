@@ -16,6 +16,14 @@ namespace BDsPlasmaWeaponVanilla
             }
         }
 
+        public CompColorableFaction compColorableFaction;
+
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            compColorableFaction = this.TryGetComp<CompColorableFaction>();
+        }
+
         System.Random random = new System.Random();
 
         private float FadeOutStartPercentage
@@ -169,6 +177,10 @@ namespace BDsPlasmaWeaponVanilla
             {
                 Material material = new Material(def.DrawMatSingle);
                 Color color = material.color;
+                if (!Data.shouldIgnoreColorable && compColorableFaction != null)
+                {
+                    color = compColorableFaction.FactionColor();
+                }
                 color.a *= 1 - FadeOutPercent;
                 material.color = color;
                 float drawSize = 1 + (FadeOutPercent * FadeOutExpandMultiplier);

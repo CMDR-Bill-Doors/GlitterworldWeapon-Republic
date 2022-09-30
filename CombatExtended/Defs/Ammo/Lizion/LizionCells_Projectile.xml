@@ -158,6 +158,11 @@
 				</li>
 			</secondaryDamage>
 		</projectile>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+				<shouldIgnoreColorable>false</shouldIgnoreColorable>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="BaseLizionBullet">
@@ -267,6 +272,11 @@
 				</li>
 			</secondaryDamage>
 		</projectile>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+				<shouldIgnoreColorable>false</shouldIgnoreColorable>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="BaseLizionBullet">
@@ -380,6 +390,11 @@
 				</li>
 			</secondaryDamage>
 		</projectile>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+				<shouldIgnoreColorable>false</shouldIgnoreColorable>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="BaseLizionBullet">
@@ -491,6 +506,11 @@
 				</li>
 			</secondaryDamage>
 		</projectile>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+				<shouldIgnoreColorable>false</shouldIgnoreColorable>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="BaseLizionBullet">
@@ -604,6 +624,11 @@
 				</li>
 			</secondaryDamage>
 		</projectile>
+		<modExtensions>
+			<li Class="BDsPlasmaWeapon.DefModExtension_DisintegratingProjectile">
+				<shouldIgnoreColorable>false</shouldIgnoreColorable>
+			</li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="BaseLizionBullet">

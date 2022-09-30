@@ -2,6 +2,8 @@
 using Verse;
 using RimWorld;
 using UnityEngine;
+using CombatExtended;
+
 namespace BDsPlasmaWeapon
 {
     public class CompColorableFaction : ThingComp
@@ -14,41 +16,61 @@ namespace BDsPlasmaWeapon
             }
         }
 
+        public Color colorCache;
+
+        private bool colorGetted;
+
         public Color FactionColor()
         {
-            Faction faction = parent.Faction;
-            if (parent is Projectile projectile)
+            if (Props.discoLightMode || BDPMod.discoLightMode)
             {
-                faction = projectile.Launcher?.Faction;
-            }
-            if (faction != null)
-            {
-                Log.Message(parent.def.drawerType.ToString());
-                if (Props.useFactionColor)
+                if (!colorGetted)
                 {
-                    return (faction.Color);
+                    colorCache = Color.HSVToRGB(Rand.Value, Rand.Range(8, 10) / 10f, Rand.Range(8, 10) / 10f);
+                    Log.Message(colorCache.ToString());
+                    colorGetted = true;
                 }
-                else
+                return colorCache;
+            }
+            else
+            {
+                Faction faction = parent.Faction;
+                if (parent is ProjectileCE projectile)
                 {
-                    if (faction == Faction.OfPlayer)
+                    faction = projectile.launcher?.Faction;
+                }
+                if (faction != null)
+                {
+                    if (BDPMod.useFactionColor)
                     {
-                        return (Props.colorPlayer);
+                        return (faction.Color);
                     }
-                    if (faction.HostileTo(Faction.OfPlayer))
+                    else
                     {
-                        return (Props.colorHostile);
-                    }
-                    if (faction.AllyOrNeutralTo(Faction.OfPlayer))
-                    {
-                        return (Props.colorNeutualOrAlly);
-                    }
-                    if (faction == Faction.OfPirates)
-                    {
-                        return (Props.colorPirate);
-                    }
-                    if (faction == Faction.OfEmpire)
-                    {
-                        return (Props.colorEmpire);
+                        if (faction == Faction.OfPlayer)
+                        {
+                            return BDPMod.CustomProjectileColor ? BDPMod.CustomPlayerProjectileColor : (Props.colorPlayer);
+                        }
+                        if (faction == Faction.OfPirates)
+                        {
+                            return BDPMod.CustomProjectileColor ? BDPMod.CustomPirateProjectileColor : (Props.colorPirate);
+                        }
+                        if (faction == Faction.OfEmpire)
+                        {
+                            return BDPMod.CustomProjectileColor ? BDPMod.CustomEmpireProjectileColor : (Props.colorEmpire);
+                        }
+                        if (faction == Faction.OfMechanoids)
+                        {
+                            return BDPMod.CustomProjectileColor ? BDPMod.CustomMechanoidProjectileColor : (Props.colorMechanoid);
+                        }
+                        if (faction.HostileTo(Faction.OfPlayer))
+                        {
+                            return BDPMod.CustomProjectileColor ? BDPMod.CustomHostilesProjectileColor : (Props.colorHostile);
+                        }
+                        if (faction.AllyOrNeutralTo(Faction.OfPlayer))
+                        {
+                            return BDPMod.CustomProjectileColor ? BDPMod.CustomOthersProjectileColor : (Props.colorNeutualOrAlly);
+                        }
                     }
                 }
             }
@@ -58,11 +80,16 @@ namespace BDsPlasmaWeapon
         public override void PostDraw()
         {
             base.PostDraw();
-            if ((parent.def.graphic.color == Color.white || Props.overrideExistingColoring) && parent is Projectile projectile)
+            if ((parent.def.graphic.color == Color.white || Props.overrideExistingColoring) && parent is ProjectileCE projectile)
             {
                 Vector3 drawPos = projectile.DrawPos;
                 Material material = projectile.def.DrawMatSingle;
-                material.color = FactionColor();
+                if (!colorGetted)
+                {
+                    colorCache = FactionColor();
+                    colorGetted = true;
+                }
+                material.color = colorCache;
                 Graphics.DrawMesh(MeshPool.GridPlane(projectile.def.graphicData.drawSize), drawPos, projectile.ExactRotation, material, 0);
             }
         }
@@ -70,9 +97,9 @@ namespace BDsPlasmaWeapon
 
     public class CompProperties_ColorableFaction : CompProperties
     {
-        public Color colorPlayer = Color.blue;
+        public Color colorPlayer = Color.cyan;
 
-        public Color colorPirate = Color.red;
+        public Color colorPirate = Color.yellow;
 
         public Color colorEmpire = Color.green;
 
@@ -80,9 +107,11 @@ namespace BDsPlasmaWeapon
 
         public Color colorNeutualOrAlly = Color.cyan;
 
-        public bool useFactionColor = false;
+        public Color colorMechanoid = Color.magenta;
 
         public bool overrideExistingColoring = false;
+
+        public bool discoLightMode = false;
 
         public CompProperties_ColorableFaction()
         {
