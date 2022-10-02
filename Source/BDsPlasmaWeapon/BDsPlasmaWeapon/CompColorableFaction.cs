@@ -22,12 +22,15 @@ namespace BDsPlasmaWeapon
 
         public Color FactionColor()
         {
+            if (!BDPMod.enableProjectileColoring)
+            {
+                return parent.Graphic.Color;
+            }
             if (Props.discoLightMode || BDPMod.discoLightMode)
             {
                 if (!colorGetted)
                 {
                     colorCache = Color.HSVToRGB(Rand.Value, Rand.Range(8, 10) / 10f, Rand.Range(8, 10) / 10f);
-                    Log.Message(colorCache.ToString());
                     colorGetted = true;
                 }
                 return colorCache;

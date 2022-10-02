@@ -14,6 +14,7 @@
 		<defName>BDP_PlasmaWeapon</defName>
 		<label>Bill Door's Plasma Weapons</label>
 		<description>I'm implementing my own toggleable verbs, so this is a disabler</description>
+		<IgnoreThisMod>true</IgnoreThisMod>
 		<Features>
 		</Features>
 	</MVCF.ModDef>

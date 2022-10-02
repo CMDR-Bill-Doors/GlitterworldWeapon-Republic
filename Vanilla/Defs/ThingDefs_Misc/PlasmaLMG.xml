@@ -516,6 +516,8 @@
 				<defaultProjectile>Projectile_LizionPistolNormal</defaultProjectile>
 				<warmupTime>1</warmupTime>
 				<range>18.9</range>
+				<burstShotCount>3</burstShotCount>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<soundCast>BDP_Shot_PlasmaSmall</soundCast>
 				<soundCastTail>GunTail_Light</soundCastTail>
 				<muzzleFlashScale>12</muzzleFlashScale>

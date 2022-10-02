@@ -27,6 +27,7 @@
 				<fadeOutExpandMultiplier>5</fadeOutExpandMultiplier>
 				<shouldStartFire>true</shouldStartFire>
 				<chanceOfFire>0.2</chanceOfFire>
+				<shouldIgnoreColorable>false</shouldIgnoreColorable>
 			</li>
 		</modExtensions>
 	</ThingDef>
@@ -51,6 +52,7 @@
 			<li Class="BDsPlasmaWeaponVanilla.DefModExtension_DisintegratingProjectile">
 				<fadeOutStartPercentage>0.1</fadeOutStartPercentage>
 				<fadeOutExpandMultiplier>5</fadeOutExpandMultiplier>
+				<shouldIgnoreColorable>false</shouldIgnoreColorable>
 			</li>
 		</modExtensions>
 	</ThingDef>

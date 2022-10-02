@@ -21,6 +21,10 @@ namespace BDsPlasmaWeaponVanilla
 
         public Color FactionColor()
         {
+            if (!BDPMod.enableProjectileColoring)
+            {
+                return parent.Graphic.Color;
+            }
             if (Props.discoLightMode || BDPMod.discoLightMode)
             {
                 if (!colorGetted)

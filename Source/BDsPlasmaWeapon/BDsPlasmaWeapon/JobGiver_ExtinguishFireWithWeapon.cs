@@ -19,12 +19,11 @@ namespace BDsPlasmaWeapon
 
         protected override Job TryGiveJob(Pawn pawn)
         {
-            if (pawn.Faction == Faction.OfPlayer && pawn.Drafted && pawn.drafter.FireAtWill && !pawn.WorkTagIsDisabled(WorkTags.Firefighting))
+            if (pawn.Faction == Faction.OfPlayer && !pawn.WorkTagIsDisabled(WorkTags.Violent) && pawn.Drafted && pawn.drafter.FireAtWill && !pawn.WorkTagIsDisabled(WorkTags.Firefighting))
             {
-                Log.Message("1");
                 ThingWithComps weapon = pawn.equipment.Primary;
                 if (weapon != null &&
-                    (weapon.def.weaponTags.Contains("BDP_FireExtinguisher") || (weapon.def.weaponTags.Contains("BDP_FireExtinguisherSecondary") && weapon.TryGetComp<CompSecondaryVerb>().IsSecondaryVerbSelected))
+                    (!weapon.def.weaponTags.NullOrEmpty() && weapon.def.weaponTags.Count > 0 && weapon.def.weaponTags.Contains("BDP_FireExtinguisher") || (weapon.def.weaponTags.Contains("BDP_FireExtinguisherSecondary") && weapon.TryGetComp<CompSecondaryVerb>().IsSecondaryVerbSelected))
                     && pawn.CurrentEffectiveVerb.Available())
                 {
                     return JobMaker.MakeJob(JobDefOf.BDP_Extinguish);

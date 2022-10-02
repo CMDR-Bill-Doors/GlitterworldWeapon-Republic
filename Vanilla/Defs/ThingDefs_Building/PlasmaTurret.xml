@@ -13,6 +13,7 @@
 		<description>Automatic turret equipped with two lizion plasma blasters.</description>
 		<designatorDropdown>Group_PlasmaTurrets</designatorDropdown>
 		<specialDisplayRadius>35.9</specialDisplayRadius>
+		<tradeability>None</tradeability>
 		<graphicData>
 			<texPath>Things/Building/PlasmaTurret_Base</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -154,6 +155,7 @@
 		<thingClass>BDsPlasmaWeaponVanilla.Building_TurretGunWithGizmo</thingClass>
 		<defName>BDP_Turret_Plasmaheavy</defName>
 		<label>heavy lizion turret</label>
+		<tradeability>None</tradeability>
 		<specialDisplayRadius>28.9</specialDisplayRadius>
 		<description>Automatic turret equipped with a heavy lizion cannon.</description>
 		<designatorDropdown>Group_PlasmaTurrets</designatorDropdown>

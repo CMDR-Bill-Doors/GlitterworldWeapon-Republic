@@ -31,6 +31,15 @@ namespace BDsPlasmaWeapon
             }
         }
 
+        protected override void ExplosionDamageThing(Explosion explosion, Thing t, List<Thing> damagedThings, List<Thing> ignoredThings, IntVec3 cell)
+        {
+            if (!(t is Pawn || t is Plant || t is Fire))
+            {
+                return;
+            }
+            base.ExplosionDamageThing(explosion, t, damagedThings, ignoredThings, cell);
+        }
+
         public override DamageResult Apply(DamageInfo dinfo, Thing victim)
         {
             DamageResult result = new DamageResult();

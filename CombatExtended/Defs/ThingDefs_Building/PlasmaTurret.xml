@@ -19,6 +19,7 @@
 		<label>dual lizion blaster turret</label>
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 		<specialDisplayRadius>67.9</specialDisplayRadius>
+		<tradeability>None</tradeability>
 		<graphicData>
 			<texPath>Things/Building/PlasmaTurret_Base</texPath>
 			<drawSize>(1.8,1.8)</drawSize>
@@ -153,7 +154,7 @@
 				<warmupTime>1.3</warmupTime>
 				<range>67.9</range>
 				<minRange>2.9</minRange>
-				<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>4</ammoConsumedPerShotCount>
 				<burstShotCount>10</burstShotCount>
 				<soundCast>BDP_Shot_PlasmaSniper</soundCast>
@@ -227,6 +228,7 @@
 		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
 		<designatorDropdown>Group_PlasmaTurrets</designatorDropdown>
 		<specialDisplayRadius>67.9</specialDisplayRadius>
+		<tradeability>None</tradeability>
 		<graphicData>
 			<texPath>Things/Building/PlasmaTurret_Base</texPath>
 			<drawSize>(1.8,1.8)</drawSize>
@@ -391,7 +393,7 @@
 					<warmupTime>2.3</warmupTime>
 					<range>67.9</range>
 					<minRange>7.9</minRange>
-					<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+					<ticksBetweenBurstShots>20</ticksBetweenBurstShots>
 					<ammoConsumedPerShotCount>20</ammoConsumedPerShotCount>
 					<burstShotCount>3</burstShotCount>
 					<soundCast>BDP_Shot_PlasmaHeavy</soundCast>
@@ -514,7 +516,7 @@
 				<defaultProjectile>Projectile_LizionRifleNormal</defaultProjectile>
 				<warmupTime>1.2</warmupTime>
 				<burstShotCount>6</burstShotCount>
-				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
 				<ammoConsumedPerShotCount>2</ammoConsumedPerShotCount>
 				<range>47.9</range>
 				<soundCast>BDP_Shot_PlasmaRifle</soundCast>

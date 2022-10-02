@@ -1,17 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Defs",
-    "\\Defs\\ThingDefs_Building",
-    "\\Defs\\ThingDefs_Misc",
-    "\\Languages",
-    "\\Languages\\ChineseSimplified",
-    "\\Languages\\ChineseSimplified\\DefInjected",
-    "\\Languages\\English",
-    "\\Languages\\English\\Keyed",
+    "\\CombatExtended",
+    "\\CombatExtended\\Languages",
+    "\\CombatExtended\\Languages\\ChineseSimplified",
+    "\\CombatExtended\\Languages\\ChineseSimplified\\Keyed",
     "\\Source\\BDsPlasmaWeapon",
-    "\\Source\\BDsPlasmaWeapon\\BDsPlasmaWeapon"
+    "\\Source\\BDsPlasmaWeapon\\BDsPlasmaWeaponVanilla",
+    "\\Source\\BDsPlasmaWeapon\\BDsPlasmaWeaponVanilla\\Properties",
+    "\\Vanilla",
+    "\\Vanilla\\Languages"
   ],
-  "SelectedNode": "\\Languages\\English\\Keyed\\Weapon.xml",
+  "SelectedNode": "\\Vanilla\\Languages\\ChineseSimplified\\Keyed\\Setting.xml",
   "PreviewInSolutionExplorer": false
 }

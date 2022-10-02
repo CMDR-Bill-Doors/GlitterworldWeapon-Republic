@@ -20,6 +20,14 @@ namespace BDsPlasmaWeaponVanilla
             ExplosionVisualEffectCenter(explosion);
         }
 
+        protected override void ExplosionDamageThing(Explosion explosion, Thing t, List<Thing> damagedThings, List<Thing> ignoredThings, IntVec3 cell)
+        {
+            if (!(t is Pawn || t is Plant || t is Fire))
+            {
+                return;
+            }
+            base.ExplosionDamageThing(explosion, t, damagedThings, ignoredThings, cell);
+        }
         public override void ExplosionAffectCell(Explosion explosion, IntVec3 c, List<Thing> damagedThings, List<Thing> ignoredThings, bool canThrowMotes)
         {
             base.ExplosionAffectCell(explosion, c, damagedThings, ignoredThings, canThrowMotes);

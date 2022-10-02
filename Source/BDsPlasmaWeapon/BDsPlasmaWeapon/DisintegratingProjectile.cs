@@ -1,9 +1,11 @@
 ﻿using CombatExtended;
 using RimWorld;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 using static HarmonyLib.Code;
 
 namespace BDsPlasmaWeapon
@@ -15,6 +17,14 @@ namespace BDsPlasmaWeapon
             get
             {
                 return def.GetModExtension<DefModExtension_DisintegratingProjectile>();
+            }
+        }
+
+        public DefModExtension_DisintegratingProjectileSoundExtension SoundData
+        {
+            get
+            {
+                return def.GetModExtension<DefModExtension_DisintegratingProjectileSoundExtension>();
             }
         }
 
@@ -146,6 +156,56 @@ namespace BDsPlasmaWeapon
                     startFire(hitThing, map);
                 }
             }
+            if (SoundData != null)
+            {
+                if (hitThing != null)
+                {
+                    if (hitThing is Pawn pawn)
+                    {
+                        if (pawn.IsNotFresh())
+                        {
+                            SoundData.metalImpactSound?.PlayOneShot(new TargetInfo(base.Position, map));
+                        }
+                        else
+                        {
+                            SoundData.fleshImpactSound?.PlayOneShot(new TargetInfo(base.Position, map));
+                        }
+                    }
+                    if (hitThing is Plant plant && ((plant.def.ingestible != null && plant.def.ingestible.foodType == FoodTypeFlags.Tree) || plant.def.defName == "BurnedTree"))
+                    {
+                        SoundData.woodImpactSound?.PlayOneShot(new TargetInfo(base.Position, map));
+                    }
+                    if (hitThing is Building building && building.Stuff != null)
+                    {
+                        List<StuffCategoryDef> stuffs = building.Stuff.stuffProps.categories;
+
+                        if (stuffs.Contains(StuffCategoryDefOf.Stony))
+                        {
+                            SoundData.stoneImpactSound?.PlayOneShot(new TargetInfo(base.Position, map));
+                        }
+                        if (stuffs.Contains(StuffCategoryDefOf.Woody))
+                        {
+                            SoundData.woodImpactSound?.PlayOneShot(new TargetInfo(base.Position, map));
+                        }
+                        if (stuffs.Contains(StuffCategoryDefOf.Metallic))
+                        {
+                            SoundData.metalImpactSound?.PlayOneShot(new TargetInfo(base.Position, map));
+                        }
+                    }
+                    if (hitThing is Mineable)
+                    {
+                        SoundData.stoneImpactSound?.PlayOneShot(new TargetInfo(base.Position, map));
+                    }
+                }
+                else if (base.Position.GetTerrain(map).takeSplashes)
+                {
+                    SoundData.waterImpactSound?.PlayOneShot(new TargetInfo(base.Position, map));
+                }
+                else
+                {
+                    SoundData.terrainImpactSound?.PlayOneShot(new TargetInfo(base.Position, map));
+                }
+            }
         }
 
         private void startFire(Map map)
@@ -153,7 +213,6 @@ namespace BDsPlasmaWeapon
             if (Rand.Chance(Data.chanceOfFire))
             {
                 float fireSize = Data.minFireSize + (float)(random.NextDouble() * (Data.maxFireSize - Data.minFireSize));
-                Log.Message(ExactPosition.ToIntVec3().ToString());
                 FireUtility.TryStartFireIn(ExactPosition.ToIntVec3(), map, fireSize);
             }
         }
@@ -177,26 +236,18 @@ namespace BDsPlasmaWeapon
 
         public override void Draw()
         {
-            Log.Message("1");
             if (!(FlightTicks == 0 && launcher != null && launcher is Pawn))
             {
-                Log.Message("2");
                 Material material = new Material(def.DrawMatSingle);
-                Log.Message("3");
                 Color color = material.color;
-                Log.Message("4");
                 if (Data != null && !Data.shouldIgnoreColorable && compColorableFaction != null)
                 {
                     color = compColorableFaction.FactionColor();
                 }
-                Log.Message("5");
                 color.a *= 1 - FadeOutPercent;
-                Log.Message("6");
                 material.color = color;
                 float drawSize = 1 + (FadeOutPercent * FadeOutExpandMultiplier);
-                Log.Message("7");
                 Graphics.DrawMesh(MeshPool.GridPlane(def.graphicData.drawSize * drawSize), DrawPos, DrawRotation, material, 0);
-                Log.Message("8");
                 if (castShadow)
                 {
                     Vector3 position = new Vector3(ExactPosition.x, def.Altitude - 0.01f, ExactPosition.z - Mathf.Lerp(shotHeight, 0f, fTicks / StartingTicksToImpact));
@@ -206,7 +257,6 @@ namespace BDsPlasmaWeapon
                     shadowMaterial.color = color;
                     Graphics.DrawMesh(MeshPool.GridPlane(def.graphicData.drawSize * drawSize), position, DrawRotation, shadowMaterial, 0);
                 }
-                Log.Message("9");
             }
         }
     }
@@ -220,5 +270,15 @@ namespace BDsPlasmaWeapon
         public float minFireSize = 0.1f;
         public float maxFireSize = 1;
         public bool shouldIgnoreColorable = true;
+    }
+
+    public class DefModExtension_DisintegratingProjectileSoundExtension : DefModExtension
+    {
+        public SoundDef fleshImpactSound;
+        public SoundDef metalImpactSound;
+        public SoundDef stoneImpactSound;
+        public SoundDef terrainImpactSound;
+        public SoundDef waterImpactSound;
+        public SoundDef woodImpactSound;
     }
 }
