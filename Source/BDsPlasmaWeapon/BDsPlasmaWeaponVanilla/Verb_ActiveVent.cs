@@ -55,7 +55,7 @@ namespace BDsPlasmaWeaponVanilla
                     consumption = comp.remainingCharges;
                 }
                 Pawn wearer = comp.Wearer;
-                GenExplosion.DoExplosion(wearer.Position, wearer.Map, radius, RimWorld.DamageDefOf.Extinguish, null, -1, -1f, null, null, null, null, RimWorld.ThingDefOf.Gas_Smoke, 1f);
+                GenExplosion.DoExplosion(wearer.Position, wearer.Map, radius, RimWorld.DamageDefOf.Extinguish, null, -1, -1f, null, null, null, null, null, 0f, 1, GasType.BlindSmoke);
                 comp.DrawGas(consumption);
             }
         }

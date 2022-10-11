@@ -36,15 +36,16 @@ namespace BDsPlasmaWeapon
                 int ammoDifference = compSecondaryAmmoUser.SecondaryAmmoSetData.magazineSize - compSecondaryAmmoUser.CompAmmo.CurMagCount;
                 if (ammoDifference > 0)
                 {
-                    if (PipeNet.Stored >= ammoDifference)
+                    int stored = (int)PipeNet.CurrentStored();
+                    if (stored >= ammoDifference)
                     {
                         PipeNet.DrawAmongStorage(ammoDifference, PipeNet.storages);
                         compSecondaryAmmoUser.CompAmmo.CurMagCount += ammoDifference;
                     }
-                    else
+                    else if (stored > 0)
                     {
-                        PipeNet.DrawAmongStorage(PipeNet.Stored, PipeNet.storages);
-                        compSecondaryAmmoUser.CompAmmo.CurMagCount += (int)PipeNet.Stored;
+                        compSecondaryAmmoUser.CompAmmo.CurMagCount += stored;
+                        PipeNet.DrawAmongStorage(stored, PipeNet.storages);
                     }
                 }
             }

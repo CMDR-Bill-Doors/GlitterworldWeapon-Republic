@@ -2,6 +2,7 @@
 using RimWorld;
 using Verse;
 using System.Security.Cryptography;
+using System.Runtime.Remoting.Messaging;
 
 namespace BDsPlasmaWeaponVanilla
 {
@@ -34,38 +35,41 @@ namespace BDsPlasmaWeaponVanilla
 
         protected override bool TryCastShot()
         {
-            if (!ModLister.CheckRoyalty("Jumping"))
+            if (!ModLister.CheckRoyaltyOrBiotech("Jumping"))
             {
                 return false;
             }
-            if (ReloadableCompSource == null || !ReloadableCompSource.CanBeUsed || ReloadableCompSource.compGasJumpData == null)
+            if (ReloadableCompSource != null && !ReloadableCompSource.CanBeUsed)
             {
                 return false;
             }
-            Pawn casterPawn = CasterPawn;
-            if (casterPawn == null || ReloadableCompSource == null || !ReloadableCompSource.CanBeUsed)
-            {
-                return false;
-            }
+            ReloadableCompSource?.UsedOnce();
+            IntVec3 position = CasterPawn.Position;
             IntVec3 cell = currentTarget.Cell;
-            Map map = casterPawn.Map;
-            GenExplosion.DoExplosion(casterPawn.Position, casterPawn.Map, Data.blastCloudRadius, RimWorld.DamageDefOf.Extinguish, null, -1, -1f, null, null, null, null, RimWorld.ThingDefOf.Gas_Smoke, 1f);
+            Map map = CasterPawn.Map;
+            GenExplosion.DoExplosion(CasterPawn.Position, CasterPawn.Map, Data.blastCloudRadius, RimWorld.DamageDefOf.Extinguish, null, -1, -1f, null, null, null, null, null, 0f, 1, GasType.BlindSmoke);
             ReloadableCompSource.DrawGas(Data.maxConsumption);
-            PawnFlyer pawnFlyer = PawnFlyer.MakeFlyer(RimWorld.ThingDefOf.PawnJumper, casterPawn, cell);
+            bool flag = Find.Selector.IsSelected(CasterPawn);
+            PawnFlyer pawnFlyer = PawnFlyer.MakeFlyer(RimWorld.ThingDefOf.PawnJumper, CasterPawn, cell, verbProps.flightEffecterDef, verbProps.soundLanding, verbProps.flyWithCarriedThing);
             if (pawnFlyer != null)
             {
+                FleckMaker.ThrowDustPuff(position.ToVector3Shifted() + Gen.RandomHorizontalVector(0.5f), map, 2f);
                 GenSpawn.Spawn(pawnFlyer, cell, map);
+                if (flag)
+                {
+                    Find.Selector.Select(CasterPawn, playSound: false, forceDesignatorDeselect: false);
+                }
                 return true;
             }
             return false;
         }
         public override void DrawHighlight(LocalTargetInfo target)
         {
-            if (target.IsValid && ValidJumpTarget(caster.Map, target.Cell))
+            if (target.IsValid && JumpUtility.ValidJumpTarget(caster.Map, target.Cell))
             {
                 GenDraw.DrawTargetHighlightWithLayer(target.CenterVector3, AltitudeLayer.MetaOverlays);
             }
-            GenDraw.DrawRadiusRing(caster.Position, EffectiveRange, Color.white, (IntVec3 c) => GenSight.LineOfSight(caster.Position, c, caster.Map) && ValidJumpTarget(caster.Map, c));
+            GenDraw.DrawRadiusRing(caster.Position, EffectiveRange, Color.white, (IntVec3 c) => GenSight.LineOfSight(caster.Position, c, caster.Map) && JumpUtility.ValidJumpTarget(caster.Map, c));
         }
     }
 

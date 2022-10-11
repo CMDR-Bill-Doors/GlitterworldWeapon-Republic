@@ -140,7 +140,7 @@ namespace BDsPlasmaWeaponVanilla
             }
         }
 
-        protected override void Impact(Thing hitThing)
+        protected override void Impact(Thing hitThing, bool blockedByShield = false)
         {
             Map map = base.Map;
             base.Impact(hitThing);
@@ -239,7 +239,7 @@ namespace BDsPlasmaWeaponVanilla
             {
                 Material material = new Material(def.DrawMatSingle);
                 Color color = material.color;
-                if (Data != null && !Data.shouldIgnoreColorable && compColorableFaction != null)
+                if (Data != null && !Data.shouldIgnoreColorable && compColorableFaction != null && BDPMod.enableProjectileColoring)
                 {
                     color = compColorableFaction.FactionColor();
                 }

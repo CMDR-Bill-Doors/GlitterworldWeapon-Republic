@@ -240,7 +240,7 @@ namespace BDsPlasmaWeapon
             {
                 Material material = new Material(def.DrawMatSingle);
                 Color color = material.color;
-                if (Data != null && !Data.shouldIgnoreColorable && compColorableFaction != null)
+                if (Data != null && !Data.shouldIgnoreColorable && compColorableFaction != null && BDPMod.enableProjectileColoring)
                 {
                     color = compColorableFaction.FactionColor();
                 }

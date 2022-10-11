@@ -22,10 +22,7 @@ namespace BDsPlasmaWeapon
 
         public Color FactionColor()
         {
-            if (!BDPMod.enableProjectileColoring)
-            {
-                return parent.Graphic.Color;
-            }
+
             if (Props.discoLightMode || BDPMod.discoLightMode)
             {
                 if (!colorGetted)
@@ -83,7 +80,7 @@ namespace BDsPlasmaWeapon
         public override void PostDraw()
         {
             base.PostDraw();
-            if ((parent.def.graphic.color == Color.white || Props.overrideExistingColoring) && parent is ProjectileCE projectile)
+            if (BDPMod.enableProjectileColoring && (parent.def.graphic.color == Color.white || Props.overrideExistingColoring) && parent is ProjectileCE projectile)
             {
                 Vector3 drawPos = projectile.DrawPos;
                 Material material = projectile.def.DrawMatSingle;
@@ -93,7 +90,6 @@ namespace BDsPlasmaWeapon
                     colorGetted = true;
                 }
                 material.color = colorCache;
-                Graphics.DrawMesh(MeshPool.GridPlane(projectile.def.graphicData.drawSize), drawPos, projectile.ExactRotation, material, 0);
             }
         }
     }

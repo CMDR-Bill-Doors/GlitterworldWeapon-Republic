@@ -17,7 +17,7 @@ namespace BDsPlasmaWeaponVanilla
 
         public Gizmo_LizionTankStatus()
         {
-            order = -100f;
+            Order = -100f;
         }
 
         public override float GetWidth(float maxWidth)
